@@ -1,0 +1,96 @@
+================================================================================
+--------------------------------------------------------------------------------
+# PFR Sheet FR (Unofficial)
+--------------------------------------------------------------------------------
+================================================================================
+
+	Based upon Pathfinder Official by Roll20 by Natha [https://github.com/Roll20/roll20-character-sheets/tree/master/Pathfinder%20by%20Roll20]
+	Version 1.303
+
+	Start  - 2020-08-11
+	Beta 1 - 2020-09-06
+
+================================================================================
+--------------------------------------------------------------------------------
+# Regexp
+--------------------------------------------------------------------------------
+================================================================================
+
+	(data-(i)!18[^"]+"[^"]*").*
+
+================================================================================
+--------------------------------------------------------------------------------
+# NOTES
+--------------------------------------------------------------------------------
+================================================================================
+
+	on("clicked:") => only button, not repeating items
+
+	data-i18n-dynamic => get select value translated
+	data-i18n-list="translation-key" + data-i18n-list-item="array-value" => sort item alphabetically
+
+	NOTE : PC sheet width => 850px
+	NOTE : NPC sheet width => 600px
+	NOTE : btn ui-draggable => put to the macro bar
+	NOTE : base line-height = 22 px ; small lines = 18px
+	NOTE : compendium not up to date => gearitem => notes + attr_strength_oneandahalf_mod (and such)
+
+================================================================================
+--------------------------------------------------------------------------------
+# BUGS
+--------------------------------------------------------------------------------
+================================================================================
+
+# npc ranged miss =>  @{repeating_npcatk-ranged_$id_}
+	@{repeating_npcatk-ranged_$id_atkname}
+	@{repeating_npcatk-melee_$id_atkmod}
+	@{repeating_npcatk-melee_$id_atkcritrange}
+	@{repeating_npcatk-melee_$id_atkmod2}
+	@{repeating_npcatk-melee_$id_multipleatk_flag}
+> no change for now due to Compendium drop feature
+
+================================================================================
+--------------------------------------------------------------------------------
+# TODO
+--------------------------------------------------------------------------------
+================================================================================
+
+	TODO : Global format HTML syntax => class="", name="", type=""
+	TODO : Add list-item for conditions + npc skills + skill option
+	TODO : Fix 'tabindex="0"' (remove from pseudoattr?)
+	TODO : Fix templates CSS classes (like overlapping boxes)
+	TODO : Remove blank grey under AC in chat log ('condition' line in template)
+	TODO : Rename class .npcatk
+	TODO : Rename .fullpc and .statblock
+	TODO : Rename .myrow and .myrol
+	TODO : Replace background by background-color when possible
+	TODO : Track and remove !important in CSS
+	TODO : Translate Mod = Mod. ; Temp = Temp. ; Condition = État préj. ; Query = Demande in rolls
+
+================================================================================
+--------------------------------------------------------------------------------
+# Enhancement
+--------------------------------------------------------------------------------
+================================================================================
+
+	ENH : Use columns instead of label rows
+	ENH : Add xp boxes with calc like in DD3.5
+	ENH : Global toggle whisper to gm + global toggle query modifier
+	ENH : Restore hp on rest
+	ENH : Add charges number in inventory
+	ENH : Spend spell use on click (like ammo)
+	ENH : Add choice list for Attack Type / Category / Damage Type
+	ENH : Add option to change kg to lbs and vice versa ; eventually the change can affect ALL objets weight
+
+================================================================================
+--------------------------------------------------------------------------------
+# Ideas
+--------------------------------------------------------------------------------
+================================================================================
+
+	IDEA : Féminisation (·e·s)
+	IDEA : Use SASS for CSS
+	IDEA : Replace labelcheck by pseudocheck
+	IDEA : ALL input text/number are underlined ... set it by default ?
+	IDEA : ALMOST ALL of input number are nospin... set it by default and add class spin ?
+	IDEA : Find a way to put acvalues, saves, babandsr, combatmaneuvers and attackmods options out in order to have options-flag hover only on proper box

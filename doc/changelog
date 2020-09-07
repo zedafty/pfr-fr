@@ -1,0 +1,504 @@
+================================================================================
+--------------------------------------------------------------------------------
+# PFR Sheet FR (Unofficial)
+--------------------------------------------------------------------------------
+================================================================================
+
+	Based upon Pathfinder Official by Roll20 by Natha [https://github.com/Roll20/roll20-character-sheets/tree/master/Pathfinder%20by%20Roll20]
+	Version 1.303
+
+	Start  - 2020-08-11
+	Beta 1 - 2020-09-07
+
+================================================================================
+--------------------------------------------------------------------------------
+# Beta 1 Summary
+--------------------------------------------------------------------------------
+================================================================================
+
+	Worker
+	CSS
+	HTML
+	HTML PC
+	HTML NPC
+	Translation
+
+================================================================================
+--------------------------------------------------------------------------------
+# Worker
+--------------------------------------------------------------------------------
+================================================================================
+
+	Convert feet to squares -- WARNING
+	Rename 'le_big_stuff' function to 'recalculate'
+	Update sheet version at sheet open (instead of creation)
+	Add Edit mode toggle (like Cthulu v7 by Roll20)
+	Add Special Ability Display event and function (i.e. choice list with Ex, Sp or Su)
+	Add update attack event on 'attack-vs' field change
+	Add size modifier bonus/malus to stealth
+	Add left-over 'fly_size' and 'stealth_size' modifiers to skill updates
+	Add attributes 'caster1_ability_name' & 'caster2_ability_name'
+	Add option 'speed_factor_base' (can be set up to x8)
+	Add 'use_ammo' on click based on CharSetAttr API (one ammo per attack)
+	Rename 'attr_options-flag-conditions' to 'attr_options_flag_conditions' (format consistency) -- WARNING
+	Changed speed based unit to 'sq' (squares) instead of 'ft' (feet) -- WARNING
+	Change 'misc' attribute for 'other' in 'acitems' select -- WARNING
+	Set 'overload' 'run_factor' to 1 and 'max_dex' to 0 (core rules do not specify that point)
+	Set 'armor_check_penalty' and 'encumbrance_check_penalty' cumulative (instead of minimum) [fix]
+	Fix 'armor_speed_max' and 'run_max' => changing armor type change inputs values, calc are based upon inputs values
+	Hide 'armor_speed' if AC Item type is 'shield' or 'other'
+
+================================================================================
+--------------------------------------------------------------------------------
+# CSS
+--------------------------------------------------------------------------------
+================================================================================
+
+	Reorder CSS file (remove most of useless tag markers ; like div.myclass) -- WARNING
+	Rename .weight to .wgt
+	Rename .grtopbrd to .topborder
+	Rename .sheet-indent to .sheet-textindent
+	Rename 'head-info' to 'npc-options'
+	Rename .pictocheck to .fonticon
+	Rename .spelldsp to .headline
+	Rename .domain-flag to .flag
+	Rename .pnty to .flexible)
+	Expand .touch width (from 72px to 92px)
+	Expand .npc-speed width (from 210px to 550px)
+	Expand .sheet-atk width (from 55px to 60px)
+	Expand .sheet-skills .sheet-name width (from 180px to 200px)
+	Expand .sheet-skill input[type="text"].sheet-custom width (from 117px to 140px)
+	Reduce .feat width (from 210px to 200px)
+	Reduce .dmgbase width (from 75px to 65px)
+	Reduce .type width from (350px to 300px)
+	Reduce .defensive_abilities, .npc_dr, .immune, .resist and .weaknesses width (from 210px to 200px)
+	Reduce .sheet-attacks .sheet-dmgbase width (from 115px to 110px)
+	Reduce .sheet-attacks .sheet-dmgtype width (from 115px to 110px)
+	Reduce .flat-footed width (from 131px to 111px)
+	Remove capitalization (.sheet-lbl)
+	Remove capitalization (.sheet-lab)
+	Remove .sheet-whitebg
+	Remove .bestiary
+	Remove 'text-shadow' properties (use bold + background color on label checks hover) -- WARNING
+	Add .sheet-ac-notes
+	Add .sheet-wealth
+	Add .sheet-pictos
+	Add .sheet-upper
+	Add cover mask on npc options -- WARNING
+	Add black circle to caster number spells and placed radio after text instead of before (.roundblack)
+	Add .inbox and .options background color
+	Add temporary values (.tmpval) color (light blue)
+	Add skill color when hovered (grey) and skill rank (green)
+	Replace .sheet-greybg by .sheet-greyed
+	Replace '0px' by '0' -- WARNING
+	Replace '0.n' by '.n' -- WARNING
+	Replace #be202e color by 'crimson' (#dc143c)
+	Replace #c3996b color by 'peru' (#cd853f)
+	Replace #ffbac0 color by 'pink' (#ffc0cb)
+	Replace #d8dbe6 color by 'lavender' (#e6e6fa)
+	Replace .sheet-inboxright .sheet-inbox.sheet-right
+	Set .sheet-colhalf at fixed width (from 49.8% to 420px)
+	Set .atk, .dmg, .misc, .reset, .recalc to lowercase
+	Fix ability scores boxes (large and high enough to trigger title appearance ; .baseattr, .finalattr, .boxed)
+	Fix .sheet-boxed children width to maximum space available (width: 100%)
+	Fix elements vertical align to top or default (radio, .roundblack)
+
+================================================================================
+--------------------------------------------------------------------------------
+# HTML
+--------------------------------------------------------------------------------
+================================================================================
+
+	Globally add titles and help cursor to sheet labels when it was necessary and possible
+	Globally remove white spaces (i.e. minify code without any trailing spaces) -- WARNING
+	Sort Conditions alphabetically (HTML only, JS unaffected)
+	Sort Saves alphabetically (HTML only, JS unaffected)
+	Reorder attack fieldset input distribution (remove colons, put crit/mult at same place with shorten text format, align fields) -- WARNING
+	Remove 'style' properties (replaced by classes)
+	Remove title from 'special-qualities' (unused in french)
+	Remove title attribute from 'total' and 'base'
+	Replace 'data-18n' by 'data-i18n' (typo fix)
+	Replace 'data-i18n="base-attack-bonus"' by 'data-i18n="bab-u" data-i18n-title="base-attack-bonus"' (invalid data attribute)
+	Replace 'data-i18n="spell-resistance"' by 'data-i18n="sr-u" data-i18n-title="spell-resistance"' (invalid data attribute)
+	Replace 'data-i18n-title="speed-bonus:"' by 'data-i18n-title="speed-bonus"' (minor punctation fix)
+	Replace 'short description:' by 'short description' (unmatching key-value)
+	Replace 'range-place' by 'range-ph' (consistency fix)
+	Replace 'job' by 'profession-ph' (consistency fix)
+	Replace 'item creation' by 'item-creation' (consistency fix)
+	Replace 'short description' by 'short-description' (consistency fix)
+	Replace 'temporaray-hp' by 'temporary-hp' (consistency fix)
+	Replace 'notes-ability-placeholder' by 'ability-notes-ph' (consistency fix)
+	Replace 'group' by 'craft-ph' (consistency fix)
+	Replace 'field-of-study' by 'knowledge-ph' (consistency fix)
+	Replace 'tou' by 'touch-u' (naming rule fix)
+	Replace 'spl' by 'sf-u' (opportunity fix)
+	Replace '<span class="sheet-big" data-i18n="touch">' by '<span class="sheet-big" data-i18n="touch-u">' (opportunity fix)
+	Replace 'data-i18n-placeholder="c.-u"' by 'data-i18n-placeholder="cls-sk-u"' (format fix)
+	Replace 'data-i18n-placeholder="slashing"' by 'data-i18n-placeholder="dmgtype-ph"' (confusing data attribute)
+	Replace 'data-i18n-placeholder="fire"' by 'data-i18n-placeholder="spelldmg1type-ph"' (confusing data attribute)
+	Replace 'data-i18n-placeholder="force"' by 'data-i18n-placeholder="spelldmg2type-ph"' (confusing data attribute)
+	Replace Special Ability field by choice list
+	Replace 'ability-modifier' by 'mod' under Abilities
+	Replace 'data-i18n-title="short description:"' by 'data-i18n-title="short-description"'
+	Replace 'data-i18n="caster"' by 'data-i18n="cl-u"' under Spell Concentration
+	Replace 'data-i18n="ability"' by 'data-i18n="mod"' under Spell Concentration
+	Replace 'data-i18n="at-will"' by 'data-i18n="at-will-u"'
+	Replace 'data-i18n="melee"' by 'data-i18n="melee-u"'
+	Replace 'pointy' images by full CSS on .blacklabel
+	Change 'attr_quantity' ' step (0.01 to 0.5)
+	Put labels above text areas (instead of below)
+	Put compendium icons everywhere at the same place (i.e. below option menu)
+	Fix 'data-i18n-bonus="combat-maneuver-defense"' with 'data-i18n-title="combat-maneuver-defense"' (misspelled data attribute)
+	Fix 'data-i18n-bonus="combat-maneuver-bonus"' with 'data-i18n-title="combat-maneuver-bonus"' (misspelled data attribute)
+	Add 'data-i18n-placeholder="wpn-cat-ph" placeholder="One-Handed Melee"' to 'input type="text" name="attr_category"'
+	Add 'data-i18n-placeholder="wpn-type-ph" placeholder="Martial"' to 'input type="text" name="attr_type"'
+	Add 'spacer' elements to embed isolated characters -- WARNING
+	Add 'min' and 'max' properties to type'number'
+	Add field 'domain' to spells
+
+================================================================================
+--------------------------------------------------------------------------------
+# HTML PC
+--------------------------------------------------------------------------------
+================================================================================
+
+	Reorder BAB / CMB / CMD / SR / Melee / Range (change fields order, align fields) -- WARNING
+	Remove <span class='lab under' data-i18n='max'>Max</span> under 'Natural'
+	Remove <span class='lab under' data-i18n='max'>Max</span> under 'Deflection'
+	Remove <span class='lab under' data-i18n='max'>Max</span> under 'Armor Check Penalty'
+	Remove 'Max' labels from 'AC'
+	Remove tag style on 'attr_spelldisplay' ('style="width: 205px; max-width: 205px;"')
+	Remove '-' option from attack choices list (i.e. display a blank space instead of a dash)
+	Remove pointy images on 'babandsr', 'combatmaneuvers' and 'attackmods' headers
+	Replace 'misc-notes' attribute by 'additional-gear' (left-over)
+	Replace 'background' attribute by 'misc-notes' (left-over)
+	Replace 'Corps à corps vs...' by 'CàC vs...' in attacks options and chatlog
+	Replace 'ability modifier' by 'casting ability' in spellcasting boxes
+	Deactivate 'armor_speed_20ft' and 'armor_speed_30ft' attributes and instead add 'reduced_speed' checkbox
+	Increase tabs size and add icons uppon them
+	Change 'Damage reduction' box input (small input box instead of autoex textarea)
+	Change 'Experience' box layout (to fit the 'Wealth box' below)
+	Change 'Hit points' values display (use round boxes like tokens)
+	Put show buff icon out of options block
+	Move 'ac_condition_note' under 'ac_options' (instead of above)
+	Move 'Misc' sectio nup to 'Show throws' (instead of down) in PC Configuration
+	Move conditions and buffs container up to logo
+	Move 'BAB and SR', 'Combat Maneuvers' and "Attack Mods' below 'Weapons / Attacks' (instead of above)
+	Move 'Initiative' above 'Hit points' (instead of below)
+	Add 'repeating_buff' missing placeholders for name and description
+	Add <span class='lab under' data-i18n='max'>Max</span> under 'AC Ability Maximum'
+	Add label 'squares' under 'speed'
+	Add label 'load' before 'light-load', 'medium-load', 'heavy-load'
+	Add 'category' field to 'ability/feature' section
+	Add 'spelltype' choice list to 'spellcasting' 'spell-like abilities'
+	Add block collider to 'Weapon Extra-attacks'
+	Add cusor icon help on titled elements (except on labels where cursor is pointer)
+
+================================================================================
+--------------------------------------------------------------------------------
+# HTML NPC
+--------------------------------------------------------------------------------
+================================================================================
+
+	Sort Skills alphabetically (HTML only, Worker unaffected)
+	Reorder NPC Defensive Abilities block (both edit and view ; Immune/Resist/DR/SR -- Weaknesses)
+	Set 'Languages' field optional (i.e. hidden if empty)
+	Remove class 'atk' from attack 'description'
+	Remove 'MR' field (can't be sure of what it is ; maybe terrain)
+	Replace 'base-atk' field by 'bab-u' ('BAB' instead of 'Atq Base')
+	Move feat details ('prerequisites', 'benefits', 'normal' and 'special') on four rows instead of two
+	Move 'ecology' labels (before inputs instead of after) and set 'topspace' class (on labels instead of on inputs)
+	Move 'Defenses' and 'Head info' blocks out of 'NPC options' [fix]
+	Move up spells notes (just after CL & Concentration)
+	Move 'Special abilities' under 'Ecology' (instead of above)
+	Move NPC Background field to a proper section (i.e. remove from Ecology) and add 'show option'
+	Put skills 'racial-modifiers' after inputs instead of before
+	Hide last colons in NPC abilities repeating items
+	Add field 'Autre équipement' after 'Équipement de combat'
+	Add rows 'tactics_before', 'tactics_during' and 'tactics_morale' under 'Tactics' section
+	Add show/hide checkbox for 'Tactics' section
+	Add class 'bold' to 'ecology' labels
+	Add left-over NPC Type, NPC Terrain and NPC Climate icons
+	Change order and format of 'race-class-and-level' (<type> de taille <size_long>, <AL>)
+	Change order of 'alignment', 'size' and 'type' to 'type', 'size' and 'alignment' in 'NPC options'
+	Alternate 'Notes' and 'Type' in attack repeating section ('Notes/Type' by 'Type/Notes')
+
+================================================================================
+--------------------------------------------------------------------------------
+# Translation
+--------------------------------------------------------------------------------
+================================================================================
+
+~ Reorder keys by HTML use (i.e. NPC then PC then Template) and category (when possible)
+
+	Global lower case fix #1 (specialized skill between parenthesis)
+	Global lower case fix #2 (description placeholders)
+	Global punctuation fix #1 ('letter + colon' replaced by 'letter + white space + colon')
+	Global punctuation fix #2 (''' replaced by '’')
+	Global punctuation fix #3 ('...' replaced by '…')
+	Global ligature fix ('oe' replaced by 'œ')
+
+	Remove 'slashing' (replaced data attribute)
+	Remove 'c.-u' (replaced data attribute)
+	Remove 'fire' (replaced data attribute)
+	Remove 'force' (replaced data attribute)
+	Remove 'item creation' (replaced by item-creation)
+	Remove 'group' (replaced data attribute)
+	Remove 'field-of-study' (replaced data attribute)
+	Remove 'damage-resistance' (replaced data attribute)
+
+	Rename 'domaine-spell' ('domain-spell')
+	Rename 'domaine-spell-u' ('domain-spell-u')
+
+	Replace 'close' ('Mêlée' by 'Fermer')
+	Replace 'sickened' ('Nauséeux' by 'Fiévreux')
+	Replace 'will' ('Volonté' by 'Vol')
+	Replace 'immune' ('Immunisé' by 'Immunités')
+	Replace 'resist' ('Résiste' by 'Résistances')
+	Replace 'special-abilities' and 'show-special-abilities' ('Pouvoirs Spéciaux' by 'Capacités spéciales')
+	Replace 'full-attack-damage-roll' ('Jet d’Attaque Totale & Dégâts' by 'Jet de dégâts d’attaque à outrance')
+	Replace 'gear' ('Équip.' by 'Équipement')
+	Replace 'spellduration-ph' ('Instantannée' by 'Instantanée')
+	Replace 'targets:' ('Cibles:' by 'Cible:')
+	Replace 'sr-notes' ('Notes de Résistance Magique' by 'Notes de Résistance à la magie')
+	Replace 'saving-throws-bonus:' ('Bonus aux Jets de Sauvegardes:' by 'Bonus aux Jets de sauvegarde:')
+	Replace 'ac-secondary-ability:' ('Capacité secondaire de CA:' by 'Caractéristique secondaire de CA:')
+	Replace 'ability-score-increase' ('Augmentation du score de capacité:' by 'Augmentation du score de caractéristique:')
+	Replace 'rollab-generation' ('Génération des scores de capacité:' by 'Génération des scores de caractéristiques:')
+	Replace 'benefits:' ('Avantages:' by 'Avantage:')
+	Replace 'prerequisites:' ('Prérequis:' by 'Conditions:')
+	Replace 'class-level:' ('Classe/Niveau:' by 'Niveau:')
+	Replace 'secondary-ability-monk-rule' ('Mod de Capa. Sec. : appliquer les bonus à la CA du moine' by 'Appliquer Caractéristique secondaire à la CA')
+	Replace 'short description' ('Courte Description' by 'Description courte')
+	Replace 'short-desc:' ('Courte Desc.:' by 'Desc. courte:')
+	Replace 'base-attack-bonus' ('Bonus de Base' by 'BBA')
+	Replace 'base-attack-bonus:' ('Bonus à l’Attaque de Base:' by 'Bonus de Base à l’Attaque :')
+	Replace 'spell-resistance' ('Résistance Magie' by 'Résistance à la magie')
+	Replace 'critical-multiplier:' ('Dégâts critiques:' by 'Multiplicateur:')
+	Replace 'critical-multiplier' ('Dégâts critiques' by 'Facteur de critique')
+	Replace 'critical-range' ('Critique' by 'Zone de critique possible')
+	Replace 'caster-level' ('Niveau de Lancer de Sort' by 'Niveau de Lanceur de Sorts')
+	Replace 'abilities' ('Capacités' by 'Caractéristiques')
+	Replace 'save-dc-misc-bonus' ('Bonus au DD de Sauvegarde' by 'Bonus au DD des sorts')
+	Replace 'save-dc-temp-adjustment' ('Ajustement temp au DD de Sauvegarde' by 'Ajustement temporaire au DD des sorts')
+	Replace 'incorporeal (Incorporel' by 'Intangible')
+	Replace 'environment (Environement' by 'Environnement')
+	Replace 'ff-touch (Contact Supris' by 'Contact Surpris')
+	Replace 'hit-dice (Dé de Vie' by 'Dés de Vie')
+	Replace 'stable (Stable' by 'Stabilisé')
+	Replace 'flat-footed' ('Surpris' by 'Dépourvu')
+	Replace 'flat-footed-bonus' ('Modificateur Surpris' by 'Bonus à la CA Pris au dépourvu')
+	Replace 'cannot-be-caught-flat-footed' ('Ne peut pas être Pris au dépourvu')
+	Replace 'touch-bonus' ('Bonus Contact' by 'Bonus à la CA Contact')
+	Replace 'performance' ('Représentation' by 'Spectacle')
+	Replace 'disabled' ('Désactivé' by 'Hors de combat')
+	Replace 'stunned' ('Sonné' by 'Étourdi')
+	Replace 'energy_drained' ('Énergie absorbée' by 'Vidé de son énergie')
+	Replace 'deafened-spell' ('Assourdi : a 20% de chance de rater son sort en lançant des sorts à composants verbaux.' by 'Assourdi : 20% de chance de rater l’incantation d’un sort à composante verbale.')
+	Replace 'casting-ability' ('Carac. de Sort' by 'Caractéristique d’incantation')
+	Replace 'item creation' ('Création d’objet' by 'Création d’objets')
+	Replace 'skill-names' ('Noms des compétences' by 'Compétence')
+	Replace 'notes-ability-phaceholder' ('Notes : +1 objet magique ...' by 'Race +2 Don +1 Objet +1')
+	Replace 'features-traits-title' ('Aptitudes de Race & Class Traits ...' by 'Aptitudes et traits')
+	Replace 'apply-armor-encumbrance-penalty' ('Appliquer la pénalité d'Encombrance/d'Armure' by 'Appliquer les pénalités d’encombrement et d’armure')
+	Replace 'check-penalty' ('Pénalité aux tests')
+	Replace 'max-dex-bonus' ('Dex Max')
+	Replace 'class-name' ('Classe' by 'Nom de la classe')
+	Replace 'cowering' ('Recroquevillé sur soi-même' by 'Recroquevillé')
+	Replace 'damage-reduction-immunities' ('Réduction de dégâts, Immunités ...' by 'Réduction des dégâts ...')
+	Replace 'chk' ('Test' by 'Pén.')
+	Replace 'reach' ('Portée' by 'Allonge)
+	Replace 'light-load' ('Charge légère ' => 'Légère')
+	Replace 'heavy-load' ('Charge lourde' => 'Lourde')
+	Replace 'weaknesses' ('Vulnérabilités' by 'Faiblesses')
+	Replace 'spellarea-ph' ('Zone de 20 pieds' by 'étendue de 4 cases (6 m)')
+	Replace 'spellcomponent-ph' ('V, G, M (de la fiente de chauve-souris et du soufre)' by 'V, G, M (du soufre)')
+	Replace 'dexterity-modifier' ('Modification de Dexterité' by 'Modificateur de Dexterité')
+	Replace 'bonus-spells' ('Sorts Bonus' by 'Sorts en bonus')
+	Replace 'prepared' ('Préparé' by 'Préparés')
+	Replace 'prepared-once' ('Préparé une fois' by 'Préparé 1 fois')
+	Replace 'vs' ('Vs.' by 'vs')
+	Replace 'bab-full' ('BBA Outrance' by 'Outrance')
+	Replace 'str-off-hand' ('FOR (main gauche)' by 'FOR (main non dir.)')
+	Replace 'dex-off-hand' ('DEX (mauvaise main)' by 'DEX (main non dir.)')
+	Replace '#1' ('1' by 'n°1')
+	Replace '#2' ('2' by 'n°2')
+	Replace '#3' ('3' by 'n°3')
+	Replace '#4' ('4' by 'n°4')
+	Replace '#5' ('5' by 'n°5')
+	Replace '#6' ('6' by 'n°6')
+	Replace '#7' ('7' by 'n°7')
+	Replace '#8' ('8' by 'n°8')
+	Replace '#9' ('9' by 'n°9')
+	Replace 'reset-to-npc' ('RàZ en PNJ (Monstre/Personnage Non Joueur).' by 'RàZ en PNJ')
+	Replace 'reset-to-pc' ('RàZ en PJ (Personnage Joueur).' by 'RàZ en PJ')
+	Replace 'show-notes-in' ('Montrer les Notes dans :' by 'Montrer les Notes pour')
+	Replace 'query-modifier' ('Demander un modificateur pour :' by 'Demander un modificateur pour')
+	Replace 'skill-roll' ('Jet de compétence' by 'Test de compétence')
+	Replace 'skill-rolls' ('Jets de compétence' by 'Tests de compétence')
+	Replace 'str-u' ('FOR' by 'For') [case fix]
+	Replace 'dex-u' ('DEX' by 'Dex') [case fix]
+	Replace 'con-u' ('CON' by 'Con') [case fix]
+	Replace 'int-u' ('INT' by 'Int') [case fix]
+	Replace 'wis-u' ('SAG' by 'Sag') [case fix]
+	Replace 'cha-u' ('CHA' by 'Cha') [case fix]
+	Replace 'skills-notes' ('Notes sur les compétences' by 'Notes')
+	Replace 'money' ('Richesses' by 'Argent') [unused]
+
+	Add 'dmgtype-ph' ('tranchants')
+	Add 'class-skill-u' ('Cls')
+	Add 'spelldmg1type-ph' ('feu')
+	Add 'spelldmg2type-ph' ('son')
+	Add 'craft-ph' ('alchimie')
+	Add 'knowledge-ph' ('mythe de Cthulhu')
+	Add 'k_arcana' ('C. (mystères)') [missing value]
+	Add 'other-gear' ('Autre équipement')
+	Add 'combat-maneuver-defense' ('Dégré de Manœuvre Défensive')
+	Add 'speed-bonus' ('Bonus de vitesse')
+	Add 'buff-name-ph' ('Armure de mage')
+	Add 'buff-desc-ph' ('+4 bonus d’armure à la CA')
+	Add 'multiple-attacks' ('Attaques multiples') [missing field]
+	Add 'attack-roll-5' ('Jet d’attaque 5' [missing value]
+	Add 'attack-roll-6' ('Jet d’attaque 6' [missing value]
+	Add 'attack-roll-7' ('Jet d’attaque 7' [missing value]
+	Add 'custom-rep' ('Compétence') [missing value]
+	Add 'craft-rep' ('Artisanat') [missing value]
+	Add 'knowledge-rep' ('Connaissances) ' [missing value]
+	Add 'perform-rep' ('Représentation') [missing value]
+	Add 'profession-rep' ('Profession') [missing value]
+	Add 'spellcaster-class' ('Class de lanceur de sorts') [missing value] [hidden]
+	Add 'name:' ('Nom :') [missing value] [hidden]
+	Add 'spellcasting-ability:' ('Sorts') [missing value]
+	Add 'spellcaster-level:' ('Niveau de lanceur de sorts') [missing value]
+	Add 'perform-ph' ('déclamation')
+	Add 'spd' ('VD')
+	Add 'shld' ('Bouc.')
+	Add 'arm' ('Arm.')
+	Add 'wpn-cat-ph' : 'Arme à une main')
+	Add 'wpn-type-ph' : 'Armes de guerre')
+	Add 'senses-ph' ('vision dans le noir 12 cases (18 m), vision nocturne, …')
+	Add 'use_m_dev' ('Util. obj. mag.')
+	Add 'tactics-before' ('Avant le combat')
+	Add 'tactics-during' ('Pendant le combat')
+	Add 'tactics-morale' ('Moral')
+	Add 'show-tactics' ('Montrer Tactique')
+	Add 'race-class-and-level-ph' ('Demi-troll, roublard 1')
+	Add 'of-size' ('de taille')
+	Add 'melee-u' ('CàC')
+	Add 'speed-ph' ('6 cases (9 m), nage 2 cases (3 m), …')
+	Add 'land-speed' ('Vitesse de déplacement')
+	Add 'background' ('Description')
+	Add 'environment-ph' ('forêts tempérées')
+	Add 'organization-ph' ('solitaire, couple, ou groupe (3–12)')
+	Add 'treasure-ph' ('équipement de PNJ (arc court avec 10 flèches, épée longue, autres trésors)')
+	Add 'background-ph' ('Cette créature a une tête, deux bras, deux jambes …')
+	Add 'npc-type-ph' ('Humanoïde (humain et géant)')
+	Add 'npc-align-ph' ('CM')
+	Add 'aura-ph' ('terreur (3 m, DD 12), …')
+	Add 'fine-u' ('I')
+	Add 'diminutive-u' ('Min')
+	Add 'tiny-u' ('TP')
+	Add 'small-u' ('P')
+	Add 'medium-u' ('M')
+	Add 'large-u' ('G')
+	Add 'huge-u' ('TG')
+	Add 'gargantuan-u' ('Gig')
+	Add 'colossal-u' ('C')
+	Add 'will-s' ('Vol')
+	Add 'combat-gear-ph' ('potion de soins légers, …')
+	Add 'other-gear-ph' ('épée longue, armure de cuir, outils de voleur, …')
+	Add 'space-ph' ('2 cases (3 m)')
+	Add 'reach-ph' ('2 cases (3 m)')
+	Add 'ac-notes-ph' ('armure +2, Dex +1, naturelle +3, taille –1')
+	Add 'extraordinary-ability' ('Pouvoir extraordinaire')
+	Add 'spell-like-ability' ('Pouvoir magique')
+	Add 'supernatural-ability' ('Pouvoir surnaturel')
+	Add 'extraordinary-ability-u' ('Ext')
+	Add 'spell-like-ability-u' ('Mag')
+	Add 'supernatural-ability-u' ('Sur')
+	Add 'ability-category-ph' ('Race / Classe / Aptitude / Trait, …')
+	Add 'additional-gear-ph' ('Un bocal de cornichon, une pierre ioun, et …')
+	Add 'misc-notes' ('Notes diverses')
+	Add 'misc-notes-ph' ('Mordu par un loup-garou dans la nuit du …')
+	Add 'condition-u' ('État préj.')
+	Add 'ac-misc-bonus' ('Bonus divers à la CA')
+	Add 'armor-from-acitems' ('Bonus d’armure des objets')
+	Add 'shield-from-acitems' ('Bonus de bouclier des objets')
+	Add 'per-day:' ('Par jour :')
+	Add 'spell-save-dc' ('Degré de difficulté de la sauvegarde')
+	Add 'spellcaster-class-u' ('CLS')
+	Add 'at-will' ('À volonté')
+	Add 'at-will-u' ('à vol.')
+	Add 'domaine-spell-u' ('Domaine')
+	Add 'spd-u' ('Vit.')
+	Add 'range' ('Portée')
+	Add 'max-dex-bonus-u' ('Max Dex')
+	Add 'check-penalty-u' ('Pén. tests')
+	Add 'bonus-dice-no-crit' ('Dé(s)bonus (hors crit.)')
+	Add 'conditions-u' ('États préj.')
+	Add 'buffs' ('Buffs')
+	Add 'cost' ('Prix')
+	Add 'slot' ('Emplacement')
+	Add 'special' ('Spécial')
+	Add 'normal' ('Normal')
+	Add 'prerequisites' ('Conditions')
+	Add 'benefits' ('Avantage')
+	Add 'short-desc' ('Desc. courte')
+	Add 'school' ('École')
+	Add 'class-level' ('Niveau')
+	Add 'casting-time-u' ('Incantation')
+	Add 'casting-time' ('Temps d’incantation')
+	Add 'components-u' ('Compos.')
+	Add 'components' ('Composantes')
+	Add 'area' ('Zone')
+	Add 'targets' ('Cible(s)')
+	Add 'effect' ('Effet')
+	Add 'duration' ('Durée')
+	Add 'saving-throw-u' ('JS')
+	Add 'saving-throw' ('Jet de sauvegarde')
+	Add 'dc-u' ('DD')
+	Add 'spell-save-dc' ('Degré de difficulté de la sauvegarde')
+	Add 'spell-resistance-u' ('Résis.')
+	Add 'mod-two-handed' ('Modificateur à deux mains')
+	Add 'mod-off-hand' ('Modificateur main non directrice')
+	Add 'domain-spell-ph' ('Feu 1')
+	Add 'reset-to-npc-t' ('Effacer la feuille pour créer un personnage non joueur ou un monstre)
+	Add 'reset-to-pc-t' ('Effacer la feuille pour créer un personnage joueur')
+	Add 'base-speed' ('Vitesse de base')
+	Add 'base-speed-t' ('Vitesse de base au sol')
+	Add 'ranks-u' ('Rgs')
+	Add 'class-fortitude' ('Bonus de classe aux jets de Vigueur')
+	Add 'class-reflex' ('Bonus de classe aux jets de Réflexes')
+	Add 'class-will' ('Bonus de classe aux jets de Volonté')
+	Add 'whisp-rolls-gm' ('Murmurer les jets au MJ')
+	Add 'tab-main-t' ('Caractéristiques, Attaques et Compétences')
+	Add 'tab-additional-t' ('Équipement, Richesses, Dons et Aptitudes')
+	Add 'tab-spells-t' ('Sorts, Pouvoirs magiques et Métamagie')
+	Add 'tab-configuration-t' ('Classes, Race et Affichage')
+	Add 'strength-value-bonus' ('Bonus à la valeur de Force')
+	Add 'load-factor' ('Facteur de charge')
+	Add 'uses' ('Utilisations')
+	Add 'prepared' ('Préparé')
+	Add 'initiative-notes-ph' ('Notes sur l’initiative …')
+	Add 'damage-reduction' ('Réduction des dégâts')
+	Add 'none-f' ('Aucune')
+	Add 'sq' ('c')
+	Add 'ft' ('pi')
+	Add 'm' ('m')
+	Add 'sq-lp' ('cases')
+	Add 'ft-lp' ('pieds')
+	Add 'm-lp' ('mètres')
+	Add 'sq-ls' ('case')
+	Add 'ft-ls' ('pied')
+	Add 'm-ls' ('mètre')
+	Add 'speed-unit' ('Unité de vitesse')
+	Add 'base-run-factor' ('Facteur de course de base')
+	Add 'speed-reduced' ('Vitesse réduite')
+	Add 'run-reduced' ('Course réduite')
+	Add 'max-land-speed' ('Vitesse au sol maximum')
+	Add 'max-run-factor' ('Facteur de course maximum'
+	Add 'wealth' ('Richesses')
+	Add 'skills-notes-ph' ('Notes sur les compétences …')
+	Add 'display' ('Affichage')
+	Add 'use-ammo' ('Utiliser munitions')
+	Add 'use-ammo-t' ('Retire les munitions de l’attaque primaire (API CharSetAttr)')
