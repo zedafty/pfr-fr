@@ -13,6 +13,20 @@
 
 // =============================================================================
 // -----------------------------------------------------------------------------
+// # Events : MIGRATE
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+	// === Migrate from Official
+	on("clicked:migrate_confirm", () => { // NEW
+		pfom.migrate_from_official();
+	});
+	on("clicked:migrate_cancel", () => { // NEW
+		pfom.close_migrate_confirm();
+	});
+
+// =============================================================================
+// -----------------------------------------------------------------------------
 // # Events : MANCERS
 // -----------------------------------------------------------------------------
 // =============================================================================
@@ -24,7 +38,7 @@
 		});
 	});
 	on("clicked:mancer_npc", () => {
-		setAttrs({"npc": "1", "mancer_confirm_flag": "0", "l1mancer_status": "completed"}, {silent: true});
+		setAttrs({"mancer_confirm_flag": "0", "l1mancer_status": "completed", "npc": "1"}, {silent: true});
 	});
 	on("clicked:mancer_cancel", () => {
 		setAttrs({"mancer_confirm_flag": "0", "l1mancer_status": "completed"}, {silent: true});
@@ -142,8 +156,8 @@
 		}
 	});
 
-	// === Repeating Items Controller -- NEW
-	on("clicked:repcontrol_toggle_button", () => {
+	// === Repeating Items Controller
+	on("clicked:repcontrol_toggle_button", () => { // NEW
 		getAttrs(["repcontrol_toggle"], (v) => {
 			let n = v["repcontrol_toggle"] == "0" ? "1" : "0";
 			setAttrs({
@@ -181,22 +195,22 @@
 // -----------------------------------------------------------------------------
 // =============================================================================
 
-	// === NPC Icon Type -- NEW
-	on("change:npc_icon_type_choice", () => {
+	// === NPC Icon Type
+	on("change:npc_icon_type_choice", () => { // NEW
 		getAttrs(["npc_icon_type_choice"], (v) => {
 			setAttrs({"npc_icon_type" : v["npc_icon_type_choice"]});
 		});
 	});
 
-	// === NPC Icon Terrain -- NEW
-	on("change:npc_icon_terrain_choice", () => {
+	// === NPC Icon Terrain
+	on("change:npc_icon_terrain_choice", () => { // NEW
 		getAttrs(["npc_icon_terrain_choice"], (v) => {
 			setAttrs({"npc_icon_terrain" : v["npc_icon_terrain_choice"]});
 		});
 	});
 
-	// === NPC Icon Climate -- NEW
-	on("change:npc_icon_climate_choice", () => {
+	// === NPC Icon Climate
+	on("change:npc_icon_climate_choice", () => { // NEW
 		getAttrs(["npc_icon_climate_choice"], (v) => {
 			setAttrs({"npc_icon_climate" : v["npc_icon_climate_choice"]});
 		});
@@ -297,9 +311,6 @@
 	on("change:size", (e) => {
 		pfom.update_size(e.newValue);
 	});
-	on("change:encumbrance_size", () => {
-		pfom.update_encumbrance();
-	});
 
 	// === HP
 	on("change:hp", (e) => {
@@ -312,7 +323,7 @@
 				var newv = parseInt(e.newValue) || 0;
 				if (newv > 0) {
 					if ((parseInt(v.hp_max) || 0) < newv) {
-						setAttrs({"hp_max":newv},{silent:true});
+						setAttrs({"hp_max":newv},{silent: true});
 					}
 				}
 			}
@@ -731,11 +742,11 @@
 		pfom.update_attacks("all");
 		pfom.update_all_spells("all");
 	 });
-	on("change:show_charsetattr", (e) => { // NEW
-		setAttrs({"show_charsetattr_flag" : e.newValue == "0" ? "0" : "1"});
+	on("change:show_ChatSetAttr", (e) => { // NEW
+		setAttrs({"show_ChatSetAttr_flag" : e.newValue == "0" ? "0" : "1"});
 	});
 	on("change:speed_unit_select", (e) => {// NEW
-		pfom.change_speed_unit(e);
+		pfom.update_speed_unit(e);
 	});
 
 // =============================================================================
@@ -981,7 +992,13 @@
 
 		// === Version
 		const pfoglobals_currentversion = 1.303;
-		const pfoglobals_currentbuild = "Unofficial FR beta 1";
+		const pfoglobals_currentbuild = "Unofficial FR beta";
+		const pfoglobals_currentbuildversion = 1.1;
+		const pfoglobals_currentversion_obj = { // NEW
+				"version" : pfoglobals_currentversion,
+				"build" : pfoglobals_currentbuild,
+				"build_version" : pfoglobals_currentbuildversion
+			};
 
 		// === Translation
 		var pfoglobals_i18n_obj = (function () {
@@ -1084,7 +1101,7 @@
 		const pfoglobals_save_fields = ["reflex_base","reflex_ability","reflex_ability_mod","reflex_misc","reflex_bonus","fortitude_base","fortitude_ability","fortitude_ability_mod","fortitude_misc","fortitude_bonus","will_base","will_ability","will_ability_mod","will_misc","will_bonus"].concat(pfoglobals_mods);
 		const pfoglobals_babs_fields = ["npc","bab","bab_multi","bab_size","cmb_size","cmb_ability","cmb_ability_mod","cmb_misc","cmb_bonus","melee_ability","melee_ability_mod","melee_misc","melee_bonus","ranged_ability","ranged_ability_mod","ranged_misc","ranged_bonus","ac_ability_mod","ac_dodge_bonus","ac_dodge_items","ac_deflection_bonus","ac_deflection_items","cmd_misc","cmd_bonus","cmd_condition","ac_condition_nobonus","class1_name","class2_name","class3_name","class1_bab","class2_bab","class3_bab","class1_level","class2_level","class3_level"].concat(pfoglobals_mods);
 		const pfoglobals_skill_list = ["acrobatics","appraise","bluff","climb","craft","diplomacy","disable_device","disguise","escape_artist","fly","handle_animal","heal","intimidate","knowledge_arcana","knowledge_dungeoneering","knowledge_engineering","knowledge_geography","knowledge_history","knowledge_local","knowledge_nature","knowledge_nobility","knowledge_planes","knowledge_religion","linguistics","perception","perform","profession","ride","sense_motive","sleight_of_hand","spellcraft","stealth","survival","swim","use_magic_device"];
-		const pfoglobals_skill_attr = ["classkill","ability","ability_mod","ranks","misc","bonus","armor_penalty","base_mod"]; // EDIT
+		const pfoglobals_skill_attr = ["classkill_flag","classkill","ability","ability_mod","ranks","misc","bonus","armor_penalty","base_mod"]; // EDIT
 		const pfoglobals_skill_fields = ["skill_check_penalty","armor_check_penalty","encumbrance_check_penalty"].concat(pfoglobals_mods);
 		const pfoglobals_skillranks_fields = ["intelligence_mod","class1_skillranks_misc","class1_skillranks_base","class2_skillranks_misc","class2_skillranks_base","class3_skillranks_misc","class3_skillranks_base","class1_level","class2_level","class3_level"];
 		var pfoglobals_repsec_skills = [{section:"skillcraft",attrs:pfoglobals_skill_attr},{section:"skillknowledge",attrs:pfoglobals_skill_attr},{section:"skillperform",attrs:pfoglobals_skill_attr},{section:"skillprofession",attrs:pfoglobals_skill_attr},{section:"skillcustom",attrs:pfoglobals_skill_attr}];
@@ -1110,64 +1127,10 @@
 
 // =============================================================================
 // -----------------------------------------------------------------------------
-// # Module : GLOBAL FUNCTIONS
+// # Module : MANCER FINISH
 // -----------------------------------------------------------------------------
 // =============================================================================
 
-		const sheet_open = function(eventinfo) {
-			if (pfoglobals_initdone == 0) {
-				// Constructing array of repeating sections' attributes
-				var obj = {};
-				obj["section"] = "spell-like";
-				obj["attrs"] = pfoglobals_spell_attr.concat(pfoglobals_spell_like_attr);
-				pfoglobals_repsec_spell.push(obj);
-				for (var i = 0; i < 10; i++) {
-					obj = {};
-					obj["section"] = "spell-" + i;
-					obj["attrs"] = pfoglobals_spell_attr.concat(pfoglobals_spell_only_attr);
-					pfoglobals_repsec_spell.push(obj);
-				}
-				// console.log("*** DEBUG pfoglobals_repsec_spell:" + JSON.stringify(pfoglobals_repsec_spell,null,"  "));
-				// Query modifiers translation
-				setAttrs({
-					ask_modifier: getTranslationByKey("ask-modifier"),
-					ask_atk_modifier: getTranslationByKey("ask-atk-modifier"),
-					ask_dmg_modifier: getTranslationByKey("ask-dmg-modifier"),
-					ask_whisper: getTranslationByKey("ask-whisper"),
-					ask_public_roll: getTranslationByKey("ask-public-roll"),
-					ask_whisper_roll: getTranslationByKey("ask-whisper-roll")},{silent: true},() => {
-						pfoglobals_initdone = 1;
-				});
-			}
-			// console.log("*** OPENED:" + JSON.stringify(eventinfo,null,"  "));
-			if ((!eventinfo.sourceType) || (eventinfo.sourceType && eventinfo.sourceType != "sheetworker")) { // not NPC dropped from Compendium
-				versioning();
-			}
-		};
-		const updateVersionAttributes = function() { // NEW
-			setAttrs({
-				"version": pfoglobals_currentversion,
-				"build": pfoglobals_currentbuild
-			},{silent: true});
-		};
-		const reset_to_xpc = function(npcvalue) { // 0 = PC, 1 = NPC
-			// reset and revert from NPC to PC or PC to NPC
-			setAttrs({"initialize_character_flag" : 1, "npc" : npcvalue}, {silent: true}, () => {
-				erase_repsec_ids(JSON.parse(JSON.stringify(pfoglobals_allrepsecs)), () => { // delete repeating sections
-					setAttrs(calc_reset_character(), {silent: true}, (npcvalue) => { // reset other attributes
-						if (npcvalue == 0) {
-							recalculate("all", {}, () => {
-								versioning();
-								setAttrs({initialize_character_flag: 0, npc_confirm_flag: 0}, {silent: true});
-							}); // recalculate all for PC
-						} else {
-							updateVersionAttributes(); // NEW
-							setAttrs({initialize_character_flag: 0, npc_confirm_flag: 0}, {silent: true});
-						}
-					});
-				});
-			});
-		};
 		const mancer_finish = function(eventinfo) {
 
 			// === VARIABLES ===
@@ -1279,7 +1242,7 @@
 						// Custom race
 						charUpd["race"] = (mancerdata["l1-race"].values["race_custom_name"] || "Unknown");
 						charUpd["size"] = (mancerdata["l1-race"].values["race_custom_size"] || "medium");
-						finalRaceSpeed += (parseInt(mancerdata["l1-race"].values["race_custom_speed"]) || 6); // EDIT
+						finalRaceSpeed += (parseFloat(mancerdata["l1-race"].values["race_custom_speed"]) || 30); // EDIT
 					} else {
 						charUpd["race"] = mancerdata["l1-race"].values.race.replace("Races:","");
 					}
@@ -1853,16 +1816,14 @@
 
 // =============================================================================
 // -----------------------------------------------------------------------------
-// # Module : NPC CREATION
+// # Module : COMPENDIUM NPC DROPS
 // -----------------------------------------------------------------------------
 // =============================================================================
 
 		const update_npc_drop = function(cdata, attrs,callback) {
 			// console.log("*** DEBUG update_npc_drop cdata: " + JSON.stringify(cdata,null,"  "));
-			var update = {};
+			var update = {...pfoglobals_currentversion_obj}; // update version
 			// Initialize NPC & show building splash
-			// update["version"] = "&nbsp;" + pfoglobals_currentversion;
-			updateVersionAttributes(); // NEW
 			update["l1mancer_status"] = "completed";
 			update["npc"] = 1;
 			update["options-flag-npc"] = 0;
@@ -2467,7 +2428,7 @@
 					}
 				}
 				// Do 2 setAttrs: one "quick", one "long" (after getCompendiumPages), to avoid setTokenAttrs timeout
-				setAttrs(update,{silent:true},() => {
+				setAttrs(update,{silent: true},() => {
 					if (callback) {
 						callback();
 					}
@@ -2541,7 +2502,7 @@
 							tmpobj = drop_add_feats(objfeats,cdatarr,false);
 							_.extend(update, tmpobj);
 						}
-						setAttrs(update,{silent:true},() => {
+						setAttrs(update,{silent: true},() => {
 							// Hide building splash
 							setAttrs({"build-flag-npc": 0},{silent: true});
 						});
@@ -2920,7 +2881,7 @@
 
 // =============================================================================
 // -----------------------------------------------------------------------------
-// # Module : COMPENDIUM DROPS
+// # Module : COMPENDIUM PC DROPS
 // -----------------------------------------------------------------------------
 // =============================================================================
 
@@ -3647,6 +3608,7 @@
 						update_babs_all();
 						pfom.update_skill("fly", ""); // NEW
 						pfom.update_skill("stealth", ""); // NEW
+						update_encumbrance(); // NEW
 					});
 				}
 			});
@@ -3792,7 +3754,7 @@
 				});
 				getAttrs(attrs, (v) => {
 					let update = {}, bonusarmor = 0, bonusshield = 0, bonusff = 0, bonustouch = 0, bonusnatural = 0, bonusdeflection = 0, bonusdodge = 0, checkpen = 0, maxdex = 99, spellf = 0, maxab = "-";
-					let speedbase = (parseFloat(v.speed_race) || 6) + (parseFloat(v.speed_class) || 0); // EDIT
+					let speedbase = (parseFloat(v.speed_race) || 30) + (parseFloat(v.speed_class) || 0); // EDIT
 					let speedreduced = calc_reduced_speed(speedbase, v.speed_unit); // heavy and medium armor
 					let speed = speedbase;
 					let runbase = parseInt(v.base_run_factor);
@@ -4521,7 +4483,7 @@
 			let fields = [base + "atkname",base + "atkflag",base + "atkmod",base + "multipleatk_flag",base + "atkmod2",base + "atkmod3",base + "atkmod4",base + "atkmod5",base + "atkmod6",base + "atkmod7",base + "atkmod8",base + "atkmod9",base + "atkcritrange",base + "dmgflag",base + "dmgbase",base + "dmgtype",base + "dmgcritmulti",base + "dmg2flag",base + "dmg2base",base + "dmg2type",base + "dmg2critmulti"];
 			if (type == "ranged") {fields.push(base + "atkrange");}
 			getAttrs(fields, (v) => {
-				setAttrs(calc_npc_attack(type,id,v),{silent:true});
+				setAttrs(calc_npc_attack(type,id,v),{silent: true});
 			});
 		};
 		const calc_npc_attack = function(type,id,v) {
@@ -4657,7 +4619,7 @@
 		};
 
 		// === SKILLS
-		const update_all_skills = function() {
+		const update_all_skills = function(update_ranks = false) { // NOTE : function used only for check penalty due to armor or encumbrance
 			// console.log("*** DEBUG update_all_skills call");
 			get_repsec_ids(JSON.parse(JSON.stringify(pfoglobals_repsec_skills)), (repsec_agr) => {
 				let fixskill_fields = pfoglobals_skill_fields;
@@ -4677,7 +4639,7 @@
 					// Recalculating and updating skill_check_penalty
 					v.skill_check_penalty = (parseInt(v.armor_check_penalty) || 0) + (parseInt(v.encumbrance_check_penalty) || 0); // EDIT
 					// Calculating global update
-					let update = calc_skill(skills_array, v, true);
+					let update = calc_skill(skills_array, v, update_ranks); // EDIT
 					update["skill_check_penalty"] = v.skill_check_penalty;
 					// Updating
 					setAttrs(update,{silent: true});
@@ -4696,13 +4658,14 @@
 				});
 			});
 		};
-		const calc_skill = function(skills_array, v, update_ranks = false) {
-			// console.log("*** DEBUG calc_skill call" + skills_array);
+		const calc_skill = function(skills_array, v, update_ranks = false, check_class_skill = false) {
 			let update = {};
+			let total_ranks = 0;
 			_.each(skills_array, (skillname) => {
-				let penlt = abltmod = clsbonus = sizemod = total_ranks = 0; // EDIT
+				let penlt = abltmod = clsbonus = sizemod = 0; // EDIT
 				let cls = parseInt(v[`${skillname}_classkill`]) || 0;
 				let ranks = parseInt(v[`${skillname}_ranks`]) || 0;
+				let penlt_val = v.skill_check_value
 				total_ranks += ranks;
 				if (["strength","dexterity"].includes(v[`${skillname}_ability`])) {
 					if (v[`${skillname}_armor_penalty`] != "0") {
@@ -4711,6 +4674,7 @@
 						update[`${skillname}_armor_penalty`] = "1";
 					}
 				} else update[`${skillname}_armor_penalty`] = "0";
+				update[`${skillname}_check_penalty_value`] = penlt; // NEW
 				if (cls * ranks != 0) clsbonus = 3;
 				update[`${skillname}_class_skill_bonus`] = clsbonus; // NEW
 				let flag = (penlt != 0 ? 1 : 0) + (((parseInt(v[`${skillname}_bonus`]) || 0) != 0 ? 1 : 0) * 2);
@@ -4723,12 +4687,17 @@
 				update[`${skillname}_base_mod`] = basemod; // NEW
 				if (skillname.substr(0, 15) == "repeating_skill") update[`${skillname}_skill`] = skill;
 				else update[skillname] = skill;
+				if (check_class_skill) { // only on recalculate
+					if (v[`${skillname}_classkill_flag`] !== v[`${skillname}_classkill`]) {
+						console.log("Update class list flag for " + skillname); // DEBUG
+						update[`${skillname}_classkill_flag`] = v[`${skillname}_classkill`];
+					}
+				}
 			});
 			if (update_ranks) update["skills_ranks_total"] = total_ranks;
 			return update;
 		};
 		const update_skills_ranks = function() {
-			// console.log("*** DEBUG update_skills_ranks call");
 			get_repsec_ids(JSON.parse(JSON.stringify(pfoglobals_repsec_skills)), (repsec_agr) => {
 				let fields = get_repsec_fields(repsec_agr,[...pfoglobals_skill_list.map((skill) => `${skill}_ranks`)])
 					.filter(fld => fld.slice(-5) == "ranks");
@@ -4737,7 +4706,7 @@
 					_.each(fields, (fld) => {
 						ranks += parseInt(v[fld]) || 0;
 					});
-					setAttrs({"skills_ranks_total":ranks},{silent:true});
+					setAttrs({"skills_ranks_total":ranks},{silent: true});
 				});
 			});
 		};
@@ -4757,16 +4726,16 @@
 		};
 
 		// === SPEED
-		const rnd_sq = function(n) { // converts a number to an integer multiple of 1 -- NEW
+		const rnd_sq = function(n) { // NEW -- converts a number to an integer multiple of 1
 			return Math.max(1, Math.floor(n));
 		};
-		const rnd_ft = function(n) { // converts a number to an integer multiple of 5 -- NEW
+		const rnd_ft = function(n) { // NEW -- converts a number to an integer multiple of 5
 			return Math.max(5, Math.floor(n / 5) * 5);
 		};
-		const rnd_m = function(n) { // converts a number to an float multiple of 1.5 -- NEW
+		const rnd_m = function(n) { // NEW -- converts a number to an float multiple of 1.5
 			return Math.max(1.5, Math.floor(n / 1.5) * 1.5);
 		};
-		const get_min_speed = function(u) { // u = speed unit -- NEW
+		const get_min_speed = function(u) { //NEW -- u = speed unit
 			let n = 1;
 			if (u == "ft") n = 5;
 			else if (u == "m") n = 1.5;
@@ -4797,7 +4766,7 @@
 			// console.log("*** DEBUG calc_speed call");
 			let update = {};
 			// Speed encumbrance
-			let speed_base = (parseFloat(v.speed_race) || 6) + (parseFloat(v.speed_class) || 0); // EDIT
+			let speed_base = (parseFloat(v.speed_race) || 30) + (parseFloat(v.speed_class) || 0); // EDIT
 			update["speed_character"] = speed_base;
 			let speed_encumbrance = speed_base;
 			if (["medium","heavy"].includes(v.encumbrance)) speed_encumbrance = calc_reduced_speed(speed_base, v.speed_unit); // EDIT
@@ -4817,7 +4786,7 @@
 			let fourth = 0;
 			let run = 0;
 			if (v.speed_condition_nospeed != "1") {
-				speed = ((parseFloat(v.speed_base) || 6) + (parseFloat(v.speed_bonus) || 0)) * (parseFloat(v.speed_condition_multiplier) || 1.0); // EDIT
+				speed = ((parseFloat(v.speed_base) || 30) + (parseFloat(v.speed_bonus) || 0)) * (parseFloat(v.speed_condition_multiplier) || 1.0); // EDIT
 				fourth = calc_round_speed(speed / 4, v.speed_unit); // EDIT
 				speed = calc_round_speed(speed, v.speed_unit); // EDIT
 				run = speed * ((v.speed_condition_norun == "1") ? 0 : (parseInt(v.speed_run_factor) || 4));
@@ -4833,16 +4802,20 @@
 			// console.log("*** DEBUG calc_speed update: " + JSON.stringify(update,null,"  "));
 			return update;
 		};
-		const change_speed_unit = function(source) { // NEW
-			let old = source.previousValue;
-			let val = source.newValue;
+		const update_speed_unit = function(src, flg) { // NEW -- src = source string, flg = force update flag
 			getAttrs(["speed_unit", "speed_race"], (v) => {
 				let speed_unit = v.speed_unit, n = 0;
+				let old, val = speed_unit;
+				let f = parseFloat(v.speed_race);
+				if (src) {
+					old = speed_unit;
+					val = src.newValue;
+				}
 				if (speed_unit == val) {
-					console.log("Change speed unit : Same unit ; no change"); // DEBUG
-					return;
-				} else {
-					let f = parseFloat(v.speed_race);
+					console.log("No speed unit conversion ; " + (flg ? "Force update speed unit" : "Exit")); // DEBUG
+					if (!flg) return; // not force update
+					else n = f;
+				} else { // convert speed
 					if (old == "sq") {
 						if (val == "ft") n = rnd_ft(f * 5);
 						else if (val == "m") n = rnd_m(f * 1.5);
@@ -4855,25 +4828,22 @@
 					}
 				}
 				update = {
-					"speed_unit": val,
+					"speed_unit" : val,
 					"speed_unit_short" : val,
 					"speed_unit_long" : val + "-l" + (n >= 2 ? "p" : "s"),
-					"speed_race": n
+					"speed_race" : n
 				};
 				let repsec = [{section:"acitems",attrs:["speed_unit_short"]}];
 				get_repsec_ids(JSON.parse(JSON.stringify(repsec)), (repsec_agr) => {
-					// console.log(repsec_agr); // DEBUG
 					_.each(repsec_agr, (sec) => {
-						// console.log(sec); // DEBUG
 						_.each(sec.ids, (id) => {
-							// console.log(id); // DEBUG
 							update[`repeating_acitems_${id}_speed_unit_short`] = val;
 						});
 					});
-					setAttrs(update, {silent: true}, () => {
-						update_ac_items();
-						update_speed();
-					});
+				});
+				setAttrs(update, {silent: true}, () => {
+					update_ac_items();
+					update_speed();
 				});
 			});
 		};
@@ -4941,7 +4911,7 @@
 			let update = {}, checkpen = 0, dexmax = 99, maxab = "-", display = "";
 			let runfactor = parseInt(v.base_run_factor) || 4;
 			let weight = parseInt(v.encumbrance_gear_weight) || 0;
-			let speedbase = (parseFloat(v.speed_race) || 6) + (parseFloat(v.speed_class) || 0); // EDIT
+			let speedbase = (parseFloat(v.speed_race) || 30) + (parseFloat(v.speed_class) || 0); // EDIT
 			let bonus = parseInt(v.encumbrance_load_bonus) || 0;
 			let str = (parseInt(v.strength) || 10) + bonus;
 			let multi = parseFloat(v.encumbrance_load_multiplier) || 1.0;
@@ -5614,7 +5584,7 @@
 // -----------------------------------------------------------------------------
 // =============================================================================
 
-		const recalculate = function(ability, objoptions = {}, callback = null) {
+		const recalculate = function(ability, opts = {}, callback = null) {
 			let debug_start = new Date();
 
 			// console.log("*** DEBUG recalculate start for ability: " + ability + ", at " + debug_start);
@@ -5654,10 +5624,10 @@
 						skills_array.push(...repsec.ids.map((id) => `repeating_${repsec.section}_${id}`));
 					});
 					// Conditions & Buffs
-					update = calc_conditions(v, (true && objoptions.reset_conditions));
+					update = calc_conditions(v, (true && opts.reset_conditions));
 					_.extend(big_update, update);
 					_.extend(v, update);
-					update = calc_buffs(repsec_agr.filter(current_section => current_section.section == "buff"),v, (true && objoptions.reset_buffs), skills_array);
+					update = calc_buffs(repsec_agr.filter(current_section => current_section.section == "buff"),v, (true && opts.reset_buffs), skills_array);
 					_.extend(big_update, update);
 					_.extend(v, update);
 					// Abilities
@@ -5799,7 +5769,7 @@
 					update = calc_skillranks_total(v);
 					_.extend(big_update, update);
 					skills_array.push(...pfoglobals_skill_list); // Completing skills list from before buffs
-					update = calc_skill(skills_array,v,true);
+					update = calc_skill(skills_array, v, true, true); // Also check if class skill flag matches class skill checkbox
 					_.extend(big_update, update);
 					_.extend(v, update);
 					// Attacks
@@ -5815,8 +5785,10 @@
 					update = calc_traits(repsec_agr.filter(current_section => current_section.section == "abilities"), v);
 					_.extend(big_update, update);
 
-					// AC Items
-					update_ac_items(); // NEW
+					// NEW -- Update speed unit and AC Items
+					if (opts.reset_speed_unit) {
+						update_speed_unit(null, true); // force update (invovle update_ac_items)
+					} else update_ac_items();
 
 					// Update (finally)
 					// console.log("*** DEBUG recalculate big_update: " + JSON.stringify(big_update,null,"  "))
@@ -5995,10 +5967,42 @@
 
 // =============================================================================
 // -----------------------------------------------------------------------------
-// # Module : VERSIONING & UPDATING
+// # Module : MODALS
 // -----------------------------------------------------------------------------
 // =============================================================================
 
+		const open_migrate_confirm =  function() { // NEW
+			setAttrs({"migrate_confirm_flag" : "1"});
+		};
+		const close_migrate_confirm =  function(s) { // NEW -- s = console string
+			setAttrs({"migrate_confirm_flag" : "0"});
+			if (s !== undefined) console.info(s); // DEBUG
+		};
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Module : RESET, INITIALIZE and OPEN
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+		// === RESET
+		const reset_to_xpc = function(npcvalue) { // 0 = PC, 1 = NPC
+			// reset and revert from NPC to PC or PC to NPC
+			setAttrs({"initialize_character_flag" : 1, "npc" : npcvalue}, {silent: true}, () => {
+				erase_repsec_ids(JSON.parse(JSON.stringify(pfoglobals_allrepsecs)), () => { // delete repeating sections
+					setAttrs(calc_reset_character(), {silent: true}, (npcvalue) => { // reset other attributes
+						if (npcvalue == 0) {
+							recalculate("all", {}, () => {
+								versioning();
+								setAttrs({"initialize_character_flag": 0, "npc_confirm_flag": 0}, {silent: true});
+							}); // recalculate all for PC
+						} else {
+							setAttrs({"initialize_character_flag": 0, "npc_confirm_flag": 0}, {silent: true});
+						}
+					});
+				});
+			});
+		};
 		const calc_reset_character = function() {
 			let update = {};
 
@@ -6033,6 +6037,9 @@
 			toResetAsZero = toResetAsZero.concat(pfoglobals_skill_list.map((sk) => `${sk}_misc`));
 			toResetAsZero = toResetAsZero.concat(pfoglobals_skill_list.map((sk) => `${sk}_bonus`));
 			toResetAsZero = toResetAsZero.concat(pfoglobals_skill_list.map((sk) => `${sk}_flag`));
+			toResetAsZero = toResetAsZero.concat(pfoglobals_skill_list.map((sk) => `${sk}_base_mod`)); // NEW
+			toResetAsZero = toResetAsZero.concat(pfoglobals_skill_list.map((sk) => `${sk}_class_skill_bonus`)); // NEW
+			toResetAsZero = toResetAsZero.concat(pfoglobals_skill_list.map((sk) => `${sk}_check_penalty_value`)); // NEW
 
 			toResetAsZero = toResetAsZero.concat(pfoglobals_mods,["initiative","initiative_misc","initiative_bonus"],["fortitude","fortitude_base","fortitude_ability_mod","fortitude_misc","fortitude_bonus","reflex","reflex_base","reflex_ability_mod","reflex_misc","reflex_bonus","will","will_base","will_ability_mod","will_misc","will_bonus"],["encumbrance_ability_maximum"],["ac_condition_nobonus","ac_bonus","ac_ability_mod","ac_armor","ac_shield","ac_size","ac_natural_items","ac_deflection_items","ac_misc","ac_dodge_items","ac_touch_items","ac_flatfooted_items","ac_natural_bonus","ac_deflection_bonus","ac_dodge_bonus","ac_noflatflooted","ac_touchshield","ac_condition","ac_secab_monk","ac_ff_ability_mod"],["bab","bab_max","bab_multi","bab_size","cmb_mod","cmb_size","cmb_ability_mod","cmb_misc","cmb_bonus","melee_mod","melee_ability_mod","melee_misc","melee_bonus","ranged_mod","ranged_ability_mod","ranged_misc","ranged_bonus","cmd_misc","cmd_bonus","cmd_condition","fob","fob_multi"],pfoglobals_skill_fields,["caster1_flag","caster2_flag","caster1_level","caster1_ability_mod","caster1_concentration","caster1_concentration_misc","caster1_concentration_bonus","caster2_level","caster2_ability_mod","caster2_concentration","caster2_concentration_misc","caster2_concentration_bonus"],["encumbrance_load_bonus","stealth_size","encumbrance_size","fly_size","encumbrance_gear_weight","encumbrance_load_light","encumbrance_load_medium","encumbrance_load_heavy","encumbrance"],["encumbrance","speed_notmodified","speed_bonus","speed_condition_multiplier","speed_condition_norun","speed_condition_nospeed","speed_class"],pfoglobals_conditions,["armor_spell_failure","caster1_dc_misc","caster2_dc_misc"]);
 
@@ -6076,16 +6083,19 @@
 			update["ranged_ability"] = "dexterity";
 			update["cmd_mod"] = 10;
 
-			update["speed"] = 6; // 30 ft = 6 sq
-			update["speed_race"] = 6; // 30 ft = 6 sq
-			update["speed_base"] = 6; // 30 ft = 6 sq
-			update["speed_character"] = 6; // 30 ft = 6 sq
-			update["speed_encumbrance"] = 6; // 30 ft = 6 sq
-			update["speed_armor"] = 6; // 30 ft = 6 sq
+			update["speed_unit"] = "ft";
+			update["speed_unit_long"] = "ft-lp",
+
+			update["speed"] = 30;
+			update["speed_race"] = 30;
+			update["speed_base"] = 30;
+			update["speed_character"] = 30;
+			update["speed_encumbrance"] = 30;
+			update["speed_armor"] = 30;
 			update["speed_run_factor"] = 4;
-			update["speed_run"] = 24; // 30*4=120 ft = 6*4=24 sq
-			update["speed_swim"] = 1.5; // 7.5 ft = 1.5 sq
-			update["speed_climb"] = 1.5; // 7.5 ft = 1.5 sq
+			update["speed_run"] = 120;
+			update["speed_swim"] = 7.5;
+			update["speed_climb"] = 7.5;
 
 			update["encumbrance_load_light"] = 33;
 			update["encumbrance_load_medium"] = 66;
@@ -6149,6 +6159,60 @@
 
 			return update;
 		};
+
+		// === INITIALIZE
+		const initialize_character = function(callback) {
+			getAttrs(["character_name","npc"], (v) => {
+				console.log("Initializing character " + v.character_name); // DEBUG
+				if ((v["npc"] || "0") != "1") { // is PC
+					setAttrs(calc_reset_character(), {silent: true}, () => {
+						callback();
+					});
+				} else { // is NPC
+					callback();
+				}
+			});
+		};
+
+		// === OPEN
+		const sheet_open = function(eventinfo) {
+			if (pfoglobals_initdone == 0) { // NOTE : once per session
+				// Constructing array of repeating sections' attributes
+				var obj = {};
+				obj["section"] = "spell-like";
+				obj["attrs"] = pfoglobals_spell_attr.concat(pfoglobals_spell_like_attr);
+				pfoglobals_repsec_spell.push(obj);
+				for (var i = 0; i < 10; i++) {
+					obj = {};
+					obj["section"] = "spell-" + i;
+					obj["attrs"] = pfoglobals_spell_attr.concat(pfoglobals_spell_only_attr);
+					pfoglobals_repsec_spell.push(obj);
+				}
+				// console.log("*** DEBUG pfoglobals_repsec_spell:" + JSON.stringify(pfoglobals_repsec_spell,null,"  "));
+				// Query modifiers translation
+				setAttrs({
+					ask_modifier: getTranslationByKey("ask-modifier"),
+					ask_atk_modifier: getTranslationByKey("ask-atk-modifier"),
+					ask_dmg_modifier: getTranslationByKey("ask-dmg-modifier"),
+					ask_whisper: getTranslationByKey("ask-whisper"),
+					ask_public_roll: getTranslationByKey("ask-public-roll"),
+					ask_whisper_roll: getTranslationByKey("ask-whisper-roll")},{silent: true},() => {
+						pfoglobals_initdone = 1;
+				});
+			}
+			// console.log("*** OPENED:" + JSON.stringify(eventinfo,null,"  "));
+			if ((!eventinfo.sourceType) || (eventinfo.sourceType && eventinfo.sourceType != "sheetworker")) { // not NPC dropped from Compendium
+				versioning();
+			}
+		};
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Module : VERSIONS and UPDATES
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+		// === VERSIONS
 		const check_l1_mancer = function() {
 			getAttrs(["l1mancer_status","npc","charactermancer_step"], function(v) {
 				// console.log("*** DEBUG check_l1_mancer: l1mancer_status = " + v.l1mancer_status + ", npc = " + v.npc + ", charactermancer_step = " + v.charactermancer_step);
@@ -6156,38 +6220,157 @@
 					if (v["l1mancer_status"] && v["l1mancer_status"] == "completed") {
 						return;
 					}
-
 					if (v["charactermancer_step"]) {
 						startCharactermancer(v["charactermancer_step"]);
 					} else {
 						if (v["l1mancer_status"] && v["l1mancer_status"] == "relaunch") {
 							startCharactermancer("l1-welcome");
 						} else {
-							setAttrs({mancer_confirm_flag: 1}, {silent: true});
+							// setAttrs({"mancer_confirm_flag": 1}, {silent: true}); // EDIT
+							setAttrs({"l1mancer_status" : "completed"}, {silent: true}); // Do NOT use Level 1 Charactermancer for new characters
 						}
 					}
 				}
 			});
 		};
 
-		const initializeChar = function(doneupdating) {
-			getAttrs(["character_name","npc"], (v) => {
-				console.log("Initializing character " + v.character_name);
-				if ((v["npc"] || "0") != "1") {
-					let update = calc_reset_character();
-					// update["version"] = pfoglobals_currentversion;
-					updateVersionAttributes(); // NEW
-					update["initialize_character_flag"] = 0;
-					setAttrs(update, {silent: true}, () => {
-						doneupdating();
+		const versioning = function() {
+			getAttrs(["version", "build", "build_version", "initialize_character_flag"], (v) => {
+				let vrs = parseFloat(v["version"]) || 0.0;
+				if (vrs === pfoglobals_currentversion) {
+					console.log("Pathfinder by Roll20 v" + vrs + " " + pfoglobals_currentbuild + " " + pfoglobals_currentbuildversion); // DEBUG
+					if (v["initialize_character_flag"] == 1) setAttrs({"initialize_character_flag" : 0}, {silent: true}); // close initialize modal
+					if (!v["build"] || !v["build_version"]) open_migrate_confirm(); // migrate from official
+					else check_l1_mancer(); // check charactermancer (pursue or start)
+				} else if (vrs < 1.0) {
+					setAttrs({"initialize_character_flag": 1, ...pfoglobals_currentversion_obj}, {silent: true}, () => { // update version
+						initialize_character(() => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.07) {
+					update_to_1_07(() => {
+						setAttrs({"version": "1.07"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.08) {
+					update_to_1_08(() => {
+						setAttrs({"version": "1.08"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.10) {
+					update_to_1_10(() => {
+						setAttrs({"version": "1.10"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.12) {
+					update_to_1_12(() => {
+						setAttrs({"version": "1.12"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.14) {
+					update_to_1_14(() => {
+						setAttrs({"version": "1.14"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.16) {
+					update_to_1_16(() => {
+						setAttrs({"version": "1.16"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.17) {
+					update_to_1_17(() => {
+						setAttrs({"version": "1.17"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.18) {
+					update_to_1_18(() => {
+						setAttrs({"version": "1.18"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.19) {
+					update_to_1_19(() => {
+						setAttrs({"version": "1.19"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.20) {
+					update_to_1_20(() => {
+						setAttrs({"version": "1.20"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.21) {
+					update_to_1_21(() => {
+						setAttrs({"version": "1.21"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.22) {
+					update_to_1_22(() => {
+						setAttrs({"version": "1.22"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.26) {
+					update_to_1_26(() => {
+						setAttrs({"version": "1.26"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.27) {
+					update_to_1_27(() => {
+						setAttrs({"version": "1.27"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.28) {
+					update_to_1_28(() => {
+						setAttrs({"version": "1.28"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.29) {
+					update_to_1_29(() => {
+						setAttrs({"version": "1.29"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.30) {
+					update_to_1_30(() => {
+						setAttrs({"version": "1.30"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.301) {
+					update_to_1_301(() => {
+						setAttrs({"version": "1.301"}, {silent: true}, () => {
+							versioning();
+						});
+					});
+				} else if (vrs < 1.302) {
+					update_to_1_302(() => {
+						setAttrs({"version": "1.302"}, {silent: true}, () => {
+							versioning();
+						});
 					});
 				} else {
-					// update["version"] = pfoglobals_currentversion;
-					updateVersionAttributes(); // NEW
-					setAttrs({"initialize_character_flag": 0},{silent: true});
+					setAttrs({...pfoglobals_currentversion_obj}, {silent: true}, () => { // update version
+						versioning();
+					});
 				}
 			});
 		};
+
+		// === UPDATES
 		const update_to_1_07 = function(doneupdating) {
 			console.log("UPDATING TO v1.07");
 			setAttrs({"ac_natural_bonus": 0,"ac_deflection_bonus":0,"ac_dodge_bonus":0},{silent: true},() => {
@@ -6515,139 +6698,69 @@
 				}
 			});
 		};
-		const versioning = function() {
-			getAttrs(["version"], (v) => {
-				let vrs = parseFloat(v["version"]) || 0.0;
-				if (vrs === pfoglobals_currentversion) {
-					updateVersionAttributes(); // NEW TEMP -- update version at sheet open
-					console.log("Pathfinder by Roll20 v" + vrs + " " + pfoglobals_currentbuild); // DEBUG
-					check_l1_mancer();
-				} else if (vrs < 1.0) {
-					setAttrs({initialize_character_flag: 1}, () => {
-						initializeChar(() => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.07) {
-					update_to_1_07(() => {
-						setAttrs({"version": "1.07"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.08) {
-					update_to_1_08(() => {
-						setAttrs({"version": "1.08"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.10) {
-					update_to_1_10(() => {
-						setAttrs({"version": "1.10"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.12) {
-					update_to_1_12(() => {
-						setAttrs({"version": "1.12"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.14) {
-					update_to_1_14(() => {
-						setAttrs({"version": "1.14"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.16) {
-					update_to_1_16(() => {
-						setAttrs({"version": "1.16"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.17) {
-					update_to_1_17(() => {
-						setAttrs({"version": "1.17"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.18) {
-					update_to_1_18(() => {
-						setAttrs({"version": "1.18"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.19) {
-					update_to_1_19(() => {
-						setAttrs({"version": "1.19"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.20) {
-					update_to_1_20(() => {
-						setAttrs({"version": "1.20"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.21) {
-					update_to_1_21(() => {
-						setAttrs({"version": "1.21"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.22) {
-					update_to_1_22(() => {
-						setAttrs({"version": "1.22"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.26) {
-					update_to_1_26(() => {
-						setAttrs({"version": "1.26"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.27) {
-					update_to_1_27(() => {
-						setAttrs({"version": "1.27"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.28) {
-					update_to_1_28(() => {
-						setAttrs({"version": "1.28"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.29) {
-					update_to_1_29(() => {
-						setAttrs({"version": "1.29"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.30) {
-					update_to_1_30(() => {
-						setAttrs({"version": "1.30"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.301) {
-					update_to_1_301(() => {
-						setAttrs({"version": "1.301"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else if (vrs < 1.302) {
-					update_to_1_302(() => {
-						setAttrs({"version": "1.302"}, {silent: true}, () => {
-							versioning();
-						});
-					});
-				} else {
 
-					updateVersionAttributes();
-
-					setAttrs({"version": pfoglobals_currentversion}, {silent: true}, () => {
-						versioning();
+		// === MIGRATES
+		const migrate_from_official =  function() { // NEW
+			console.info("=== BEGIN > MIGRATE FROM OFFICIAL ==="); // DEBUG
+			let s = "=== END > MIGRATE FROM OFFICIAL ===";
+			getAttrs(["npc", "background"], (v) => {
+				let update = {...pfoglobals_currentversion_obj};
+				if ((v["npc"] || "0") != "1") { // is PC
+					get_repsec_ids([
+						{section:"feats",attrs:["type"]},
+						{section:"abilities",attrs:["type_choice"]},
+						{section:"spell-like",attrs:["spellname", "spelltype"]}
+					], (repsec_agr) => {
+						let a = get_repsec_fields(repsec_agr), n, m;
+						getAttrs(a, (w) => {
+							for (n in w) {
+								// -------------------------------------------------------------
+								// * Fix feat type 'item creation' => 'item-creation'
+								// -------------------------------------------------------------
+								if (w[n] == "item creation") {
+									console.log("Change feat type 'item creation' to 'item-creation' on " + n); // DEBUG
+									update[n] = "item-creation";
+								}
+								// -------------------------------------------------------------
+								// * Fix empty ability type (due to choice list addition)
+								// -------------------------------------------------------------
+								if (n.slice(-6) == "choice" && w[n] == "") {
+									console.log("Found empty type choice for " + n + " ; set type to empty"); // DEBUG
+									update[n.slice(0, -7)] = "";
+								}
+								// -------------------------------------------------------------
+								// * Clear special ability type and reset name (due to choice list replacement)
+								// -------------------------------------------------------------
+								else if (n.slice(-9) == "spelltype" && w[n] != "") {
+									console.log("Found non empty type for " + n + " ; clear string and reset name"); // DEBUG
+									m = n.slice(0,-4) + "name";
+									update[n] = "";
+									update[m] = w[m];
+								}
+							}
+							// ---------------------------------------------------------------
+							// * Fix 'background' => 'misc_notes'
+							// ---------------------------------------------------------------
+							if (v["background"] && v["background"] != "") {
+								console.log("Update 'misc_notes' from 'background'"); // DEBUG
+								update["misc_notes"] = v["background"];
+								update["background"] = "";
+							}
+							// ---------------------------------------------------------------
+							// * Update attributes and Close migrate modal
+							// ---------------------------------------------------------------
+							setAttrs(update, {silent: true}, () => {
+								recalculate("all", {"reset_speed_unit" : true}, () => { // reset speed unit
+									close_migrate_confirm(s);
+									versioning(); // for charmancer
+								});
+							});
+						});
+					});
+				} else { // is NPC
+					setAttrs(update, {silent: true}, () => {
+						close_migrate_confirm(s);
+						versioning(); // for charmancer
 					});
 				}
 			});
@@ -6702,8 +6815,10 @@
 			update_sr: update_sr,
 			update_damage_bonus_flag: update_damage_bonus_flag,
 			update_special_ability_display: update_special_ability_display,
-			change_speed_unit:change_speed_unit, // NEW
-			update_ammo:update_ammo // NEW
+			update_speed_unit:update_speed_unit, // NEW
+			update_ammo:update_ammo, // NEW
+			migrate_from_official:migrate_from_official, // NEW
+			close_migrate_confirm:close_migrate_confirm // NEW
 		}
 
 	})();

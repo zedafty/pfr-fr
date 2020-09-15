@@ -4,31 +4,74 @@
 --------------------------------------------------------------------------------
 ================================================================================
 
-	Based upon Pathfinder Official by Roll20 by Natha [https://github.com/Roll20/roll20-character-sheets/tree/master/Pathfinder%20by%20Roll20]
-	Version 1.303
-
-	Start  - 2020-08-11
-	Beta 1 - 2020-09-07
+	Start    - 2020-08-11
+	Beta 1   - 2020-09-07
+	Beta 1.1 - 2020-09-15
 
 ================================================================================
 --------------------------------------------------------------------------------
-# Beta 1 Summary
+# Beta 1.1
 --------------------------------------------------------------------------------
 ================================================================================
 
-	Worker
-	CSS
-	HTML
-	HTML PC
-	HTML NPC
-	Translation
+# Global
+	Fix initialize, compendium_warning, mancer_confirm, npc_confirm procedures and display
+	Add modal box for choosing to migrate from official character sheet or not
+	Add spaces before rolls parameter flags and set string to lower case in HTML (i.e. [CONDITION], [QUERY], [MOD], [TEMP])
 
-================================================================================
---------------------------------------------------------------------------------
 # Worker
+	Rollback base speed unit to feet (compatibility issue)
+	Do NOT use Level 1 Charactermancer for new characters ('l1mancer_status' = 1) [NOTE : custom sheet fix only ; not necessary if sheet.json]
+
+# PC
+	Fix skills ranks total fail on recalc and update skill
+	Fix skill check penalty greybox not updated
+	Fix class skill bonus and check penalty value initialized at 'undefined'
+	Fix by default chatsetattr icons are visible
+	Fix no encumbrance update on size change
+	Fix missing space after feat name
+	Fix too much space after trait name
+
+# NPC
+	Fix missing translation entry 'special-abilites-notes-ph'
+	Fix missing space before npc hd roll
+	Fix spell resistance showed even when input value is 0
+	Fix skills list last item colon visible
+
+# Migrate (i.e. update from ANY Official)
+	Fix 'background' to new 'misc notes' attribute if character is PC [NOTE : old 'background' still exists ; cannot destroy/delete attribute from worker]
+	Fix feat type 'item creation' => 'item_creation'
+	Update abilities type (empty choice list should result in no display instead of empty string)
+	Update special abilities types (clear entry and update name)
+	Update skills new attributes
+	Update 'skill_ranks_total'
+	Check if 'class_skill_flag' matches 'class_skill' checkbox
+
+# Roll Templates
+	Replace pointy image by CSS pseudo-elements
+	Add margin to labels
+
+# Charactermancer
+	Set 'step' bar background to dark (instead of white)
+	Set 'bottom' bar background to white and opacity to full (instead of transparent and half)
+
+# CSS
+	Fix missing .pinbox on Charmancer options section
+
+# Translation
+	Rename 'erase_data_character' => 'erase-character-data'
+	Rename 'confirm_npc' ('confirm-npc')
+	Rename 'do_you_want_mancer'('do-you-want-mancer')
+	Rename 'initializing_character' ('initializing-character')
+	Replace 'wpn-type-ph' ('Armes de guerre' by 'Arme de guerre')
+
+================================================================================
+--------------------------------------------------------------------------------
+# Beta 1
 --------------------------------------------------------------------------------
 ================================================================================
 
+# Worker
 	Convert feet to squares -- WARNING
 	Rename 'le_big_stuff' function to 'recalculate'
 	Update sheet version at sheet open (instead of creation)
@@ -39,7 +82,7 @@
 	Add left-over 'fly_size' and 'stealth_size' modifiers to skill updates
 	Add attributes 'caster1_ability_name' & 'caster2_ability_name'
 	Add option 'speed_factor_base' (can be set up to x8)
-	Add 'use_ammo' on click based on CharSetAttr API (one ammo per attack)
+	Add 'use_ammo' on click based on ChatSetAttr API (one ammo per attack)
 	Rename 'attr_options-flag-conditions' to 'attr_options_flag_conditions' (format consistency) -- WARNING
 	Changed speed based unit to 'sq' (squares) instead of 'ft' (feet) -- WARNING
 	Change 'misc' attribute for 'other' in 'acitems' select -- WARNING
@@ -48,12 +91,7 @@
 	Fix 'armor_speed_max' and 'run_max' => changing armor type change inputs values, calc are based upon inputs values
 	Hide 'armor_speed' if AC Item type is 'shield' or 'other'
 
-================================================================================
---------------------------------------------------------------------------------
 # CSS
---------------------------------------------------------------------------------
-================================================================================
-
 	Reorder CSS file (remove most of useless tag markers ; like div.myclass) -- WARNING
 	Rename .weight to .wgt
 	Rename .grtopbrd to .topborder
@@ -103,12 +141,7 @@
 	Fix .sheet-boxed children width to maximum space available (width: 100%)
 	Fix elements vertical align to top or default (radio, .roundblack)
 
-================================================================================
---------------------------------------------------------------------------------
 # HTML
---------------------------------------------------------------------------------
-================================================================================
-
 	Globally add titles and help cursor to sheet labels when it was necessary and possible
 	Globally remove white spaces (i.e. minify code without any trailing spaces) -- WARNING
 	Sort Conditions alphabetically (HTML only, JS unaffected)
@@ -156,12 +189,7 @@
 	Add 'min' and 'max' properties to type'number'
 	Add field 'domain' to spells
 
-================================================================================
---------------------------------------------------------------------------------
 # HTML PC
---------------------------------------------------------------------------------
-================================================================================
-
 	Reorder BAB / CMB / CMD / SR / Melee / Range (change fields order, align fields) -- WARNING
 	Remove <span class='lab under' data-i18n='max'>Max</span> under 'Natural'
 	Remove <span class='lab under' data-i18n='max'>Max</span> under 'Deflection'
@@ -194,12 +222,7 @@
 	Add block collider to 'Weapon Extra-attacks'
 	Add cusor icon help on titled elements (except on labels where cursor is pointer)
 
-================================================================================
---------------------------------------------------------------------------------
 # HTML NPC
---------------------------------------------------------------------------------
-================================================================================
-
 	Sort Skills alphabetically (HTML only, Worker unaffected)
 	Reorder NPC Defensive Abilities block (both edit and view ; Immune/Resist/DR/SR -- Weaknesses)
 	Set 'Languages' field optional (i.e. hidden if empty)
@@ -223,21 +246,14 @@
 	Change order of 'alignment', 'size' and 'type' to 'type', 'size' and 'alignment' in 'NPC options'
 	Alternate 'Notes' and 'Type' in attack repeating section ('Notes/Type' by 'Type/Notes')
 
-================================================================================
---------------------------------------------------------------------------------
 # Translation
---------------------------------------------------------------------------------
-================================================================================
-
 ~ Reorder keys by HTML use (i.e. NPC then PC then Template) and category (when possible)
-
 	Global lower case fix #1 (specialized skill between parenthesis)
 	Global lower case fix #2 (description placeholders)
 	Global punctuation fix #1 ('letter + colon' replaced by 'letter + white space + colon')
 	Global punctuation fix #2 (''' replaced by '’')
 	Global punctuation fix #3 ('...' replaced by '…')
 	Global ligature fix ('oe' replaced by 'œ')
-
 	Remove 'slashing' (replaced data attribute)
 	Remove 'c.-u' (replaced data attribute)
 	Remove 'fire' (replaced data attribute)
@@ -246,10 +262,8 @@
 	Remove 'group' (replaced data attribute)
 	Remove 'field-of-study' (replaced data attribute)
 	Remove 'damage-resistance' (replaced data attribute)
-
 	Rename 'domaine-spell' ('domain-spell')
 	Rename 'domaine-spell-u' ('domain-spell-u')
-
 	Replace 'close' ('Mêlée' by 'Fermer')
 	Replace 'sickened' ('Nauséeux' by 'Fiévreux')
 	Replace 'will' ('Volonté' by 'Vol')
@@ -344,7 +358,6 @@
 	Replace 'cha-u' ('CHA' by 'Cha') [case fix]
 	Replace 'skills-notes' ('Notes sur les compétences' by 'Notes')
 	Replace 'money' ('Richesses' by 'Argent') [unused]
-
 	Add 'dmgtype-ph' ('tranchants')
 	Add 'class-skill-u' ('Cls')
 	Add 'spelldmg1type-ph' ('feu')
@@ -476,7 +489,7 @@
 	Add 'tab-spells-t' ('Sorts, Pouvoirs magiques et Métamagie')
 	Add 'tab-configuration-t' ('Classes, Race et Affichage')
 	Add 'strength-value-bonus' ('Bonus à la valeur de Force')
-	Add 'load-factor' ('Facteur de charge')
+	Add 'load-multiplier' ('Multiplicateur de charge')
 	Add 'uses' ('Utilisations')
 	Add 'prepared' ('Préparé')
 	Add 'initiative-notes-ph' ('Notes sur l’initiative …')
@@ -501,4 +514,4 @@
 	Add 'skills-notes-ph' ('Notes sur les compétences …')
 	Add 'display' ('Affichage')
 	Add 'use-ammo' ('Utiliser munitions')
-	Add 'use-ammo-t' ('Retire les munitions de l’attaque primaire (API CharSetAttr)')
+	Add 'use-ammo-t' ('Retire les munitions de l’attaque primaire (API ChatSetAttr)')

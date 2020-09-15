@@ -1,5 +1,12 @@
+<!-- === SHEETS === -->
+<input type="checkbox" name="attr_npc" class="hidden npc-toggle" value="1" />
+<input type="hidden" name="attr_initialize_character_flag" value="1" class="initialize-character-flag" />
+<input type="hidden" name="attr_mancer_confirm_flag" value="0" class="mancer-confirm-flag" />
+<input type="hidden" name="attr_npc_confirm_flag" value="0" class="npc-confirm-flag" />
+<input type="hidden" name="attr_migrate_confirm_flag" value="0" class="migrate-confirm-flag" />
+
 <!-- PC SHEET -->
-<div class="fullpc compendium-drop-target">
+<div class="fullpc pc-sheet compendium-drop-target">
 	<input type="hidden" name="attr_pcdrop_name" accept="Name" />
 	<input type="hidden" name="attr_pcdrop_uniq" accept="uniqueName" />
 	<input type="hidden" name="attr_pcdrop_category" accept="Category" />
@@ -406,7 +413,7 @@
 					<input class="options-flag" name="attr_options-flag-str" type="checkbox" data-i18n-title="show-hide-notes" title="Show/hide notes"><span>y</span>
 					<div class="myrow">
 						<div class="blacklabel sqr">
-							<button class="myrol big" type="roll" name="roll_strength" data-i18n-title="strength-roll" title="Strength roll" value="@{whispertype} &{template:pc} {{name=^{strength}}} {{type=ability}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{strength_mod}[MOD]+(@{ability_check_condition})[CONDITION]+@{rollmod_ability}[QUERY]]]}} {{shownotes=@{rollnotes_ability}}} {{notes=@{strength_notes}}} {{conditionsflag=[[@{ability_check_condition}+@{strength_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="str">str</span></button>
+							<button class="myrol big" type="roll" name="roll_strength" data-i18n-title="strength-roll" title="Strength roll" value="@{whispertype} &{template:pc} {{name=^{strength}}} {{type=ability}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{strength_mod} [Mod]+(@{ability_check_condition}) [Condition]+@{rollmod_ability} [Query]]]}} {{shownotes=@{rollnotes_ability}}} {{notes=@{strength_notes}}} {{conditionsflag=[[@{ability_check_condition}+@{strength_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="str">str</span></button>
 							<span class="sml" data-i18n="strength">Strength</span>
 							<span class="pictos" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
 						</div>
@@ -439,7 +446,7 @@
 					<input class="options-flag" name="attr_options-flag-dex" type="checkbox" data-i18n-title="show-hide-notes" title="Show/hide notes"><span>y</span>
 					<div class="myrow">
 						<div class="blacklabel sqr">
-							<button class="myrol big" type="roll" name="roll_dexterity" data-i18n-title="dexterity-roll" title="Dexterity roll" value="@{whispertype} &{template:pc} {{name=^{dexterity}}} {{type=ability}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{dexterity_mod}[MOD]+(@{ability_check_condition})[CONDITION]+@{rollmod_ability}[QUERY]]]}} {{shownotes=@{rollnotes_ability}}} {{notes=@{dexterity_notes}}} {{conditionsflag=[[@{ability_check_condition}+@{dexterity_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="dex">dex</span></button>
+							<button class="myrol big" type="roll" name="roll_dexterity" data-i18n-title="dexterity-roll" title="Dexterity roll" value="@{whispertype} &{template:pc} {{name=^{dexterity}}} {{type=ability}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{dexterity_mod} [Mod]+(@{ability_check_condition}) [Condition]+@{rollmod_ability} [Query]]]}} {{shownotes=@{rollnotes_ability}}} {{notes=@{dexterity_notes}}} {{conditionsflag=[[@{ability_check_condition}+@{dexterity_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="dex">dex</span></button>
 							<span class="sml" data-i18n="dexterity">Dexterity</span>
 							<span class="pictos" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
 						</div>
@@ -473,7 +480,7 @@
 					<input class="options-flag" name="attr_options-flag-con" type="checkbox" data-i18n-title="show-hide-notes" title="Show/hide notes"><span>y</span>
 					<div class="myrow">
 						<div class="blacklabel sqr">
-							<button class="myrol big" type="roll" name="roll_constitution" data-i18n-title="constitution-roll" title="Constitution roll" value="@{whispertype} &{template:pc} {{name=^{constitution}}} {{type=ability}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{constitution_mod}[MOD]+(@{ability_check_condition})[CONDITION]+@{rollmod_ability}[QUERY]]]}} {{shownotes=@{rollnotes_ability}}} {{notes=@{constitution_notes}}} {{conditionsflag=[[@{ability_check_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="con">con</span></button>
+							<button class="myrol big" type="roll" name="roll_constitution" data-i18n-title="constitution-roll" title="Constitution roll" value="@{whispertype} &{template:pc} {{name=^{constitution}}} {{type=ability}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{constitution_mod} [Mod]+(@{ability_check_condition}) [Condition]+@{rollmod_ability} [Query]]]}} {{shownotes=@{rollnotes_ability}}} {{notes=@{constitution_notes}}} {{conditionsflag=[[@{ability_check_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="con">con</span></button>
 							<span class="sml" data-i18n="constitution">Constitution</span>
 							<span class="pictos" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
 						</div>
@@ -501,7 +508,7 @@
 					<input class="options-flag" name="attr_options-flag-int" type="checkbox" data-i18n-title="show-hide-notes" title="Show/hide notes"><span>y</span>
 					<div class="myrow">
 						<div class="blacklabel sqr">
-							<button class="myrol big" type="roll" name="roll_intelligence" data-i18n-title="intelligence-roll" title="Intelligence roll" value="@{whispertype} &{template:pc} {{name=^{intelligence}}} {{type=ability}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{intelligence_mod}[MOD]+(@{ability_check_condition})[CONDITION]+@{rollmod_ability}[QUERY]]]}} {{shownotes=@{rollnotes_ability}}} {{notes=@{intelligence_notes}}} {{conditionsflag=[[@{ability_check_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="int">int</span></button>
+							<button class="myrol big" type="roll" name="roll_intelligence" data-i18n-title="intelligence-roll" title="Intelligence roll" value="@{whispertype} &{template:pc} {{name=^{intelligence}}} {{type=ability}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{intelligence_mod} [Mod]+(@{ability_check_condition}) [Condition]+@{rollmod_ability} [Query]]]}} {{shownotes=@{rollnotes_ability}}} {{notes=@{intelligence_notes}}} {{conditionsflag=[[@{ability_check_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="int">int</span></button>
 							<span class="sml" data-i18n="intelligence">Intelligence</span>
 							<span class="pictos" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
 						</div>
@@ -529,7 +536,7 @@
 					<input class="options-flag" name="attr_options-flag-wis" type="checkbox" data-i18n-title="show-hide-notes" title="Show/hide notes"><span>y</span>
 					<div class="myrow">
 						<div class="blacklabel sqr">
-							<button class="myrol big" type="roll" name="roll_wisdom" data-i18n-title="wisdom-roll" title="Wisdom roll" value="@{whispertype} &{template:pc} {{name=^{wisdom}}} {{type=ability}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{wisdom_mod}[MOD]+(@{ability_check_condition})[CONDITION]+@{rollmod_ability}[QUERY]]]}} {{shownotes=@{rollnotes_ability}}} {{notes=@{wisdom_notes}}} {{conditionsflag=[[@{ability_check_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="wis">wis</span></button>
+							<button class="myrol big" type="roll" name="roll_wisdom" data-i18n-title="wisdom-roll" title="Wisdom roll" value="@{whispertype} &{template:pc} {{name=^{wisdom}}} {{type=ability}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{wisdom_mod} [Mod]+(@{ability_check_condition}) [Condition]+@{rollmod_ability} [Query]]]}} {{shownotes=@{rollnotes_ability}}} {{notes=@{wisdom_notes}}} {{conditionsflag=[[@{ability_check_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="wis">wis</span></button>
 							<span class="sml" data-i18n="wisdom">Wisdom</span>
 							<span class="pictos" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
 						</div>
@@ -557,7 +564,7 @@
 					<input class="options-flag" name="attr_options-flag-cha" type="checkbox" data-i18n-title="show-hide-notes" title="Show/hide notes"><span>y</span>
 					<div class="myrow">
 						<div class="blacklabel sqr">
-							<button class="myrol big" type="roll" name="roll_charisma" data-i18n-title="charisma-roll" title="Charisma roll" value="@{whispertype} &{template:pc} {{name=^{charisma}}} {{type=ability}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{charisma_mod}[MOD]+(@{ability_check_condition})[CONDITION]+@{rollmod_ability}[QUERY]]]}} {{shownotes=@{rollnotes_ability}}} {{notes=@{charisma_notes}}} {{conditionsflag=[[@{ability_check_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="cha">cha</span></button>
+							<button class="myrol big" type="roll" name="roll_charisma" data-i18n-title="charisma-roll" title="Charisma roll" value="@{whispertype} &{template:pc} {{name=^{charisma}}} {{type=ability}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{charisma_mod} [Mod]+(@{ability_check_condition}) [Condition]+@{rollmod_ability} [Query]]]}} {{shownotes=@{rollnotes_ability}}} {{notes=@{charisma_notes}}} {{conditionsflag=[[@{ability_check_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="cha">cha</span></button>
 							<span class="sml" data-i18n="charisma">Charisma</span>
 							<span class="pictos" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
 						</div>
@@ -589,7 +596,7 @@
 					<input class="options-flag" name="attr_options-flag-initiative" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 					<div class="myrow labunder">
 						<div class="blacklabel sqr">
-							<button class="myrol big" type="roll" name="roll_initiative" data-i18n-title="initiative-roll" title="Initiative roll" value="@{whispertype} &{template:pc} {{name=^{initiative}}} {{type=initiative}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{initiative}[MOD]+(@{initiative_condition})[CONDITION]+@{rollmod_initiative}[QUERY] &{tracker}]]}} {{shownotes=@{rollnotes_initiative}}} {{notes=@{initiative_notes}}} {{conditionsflag=[[@{initiative_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="init">Init</span></button>
+							<button class="myrol big" type="roll" name="roll_initiative" data-i18n-title="initiative-roll" title="Initiative roll" value="@{whispertype} &{template:pc} {{name=^{initiative}}} {{type=initiative}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{initiative} [Mod]+(@{initiative_condition}) [Condition]+@{rollmod_initiative} [Query] &{tracker}]]}} {{shownotes=@{rollnotes_initiative}}} {{notes=@{initiative_notes}}} {{conditionsflag=[[@{initiative_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="init">Init</span></button>
 							<span class="sml" data-i18n="initiative" data-i18n-title="initiative" title="Initiative">Initiative</span>
 							<input type="hidden" name="attr_initiative_condition" value="0" class="condition-flag" />
 							<span class="pictos" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
@@ -627,7 +634,7 @@
 				<div class="hpvalues"><!-- HP -->
 					<div class="myrow center">
 						<div class="blacklabel sqr">
-							<button class="myrol big" type="roll" name="roll_hitdice" data-i18n-title="hit-die-roll" title="Hit Die roll" value="@{whispertype} &{template:pc} {{name=^{hit-dice}}} {{type=hp}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[{1d@{hitdietype}+@{constitution_mod}[MOD],1d1}kh1]]}}">
+							<button class="myrol big" type="roll" name="roll_hitdice" data-i18n-title="hit-die-roll" title="Hit Die roll" value="@{whispertype} &{template:pc} {{name=^{hit-dice}}} {{type=hp}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[{1d@{hitdietype}+@{constitution_mod} [Mod],1d1}kh1]]}}">
 								<span data-i18n="hit-points">Hit Points</span>
 							</button>
 						</div>
@@ -817,7 +824,7 @@
 					<input type="hidden" name="attr_saves_condition" value="0" class="condition-flag" />
 					<div class="save reflex">
 						<div class="blacklabel sqr">
-							<button class="myrol big" type="roll" name="roll_reflex" data-i18n-title="reflex-roll" title="Reflex roll" value="@{whispertype} &{template:pc} {{name=^{reflex}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{reflex}[MOD]+(@{saves_condition})[CONDITION]+@{rollmod_save}[QUERY]]]}} {{shownotes=@{rollnotes_save}}} {{notes=@{reflex_notes}}} {{conditionsflag=[[@{saves_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="ref-u">REF</span></button>
+							<button class="myrol big" type="roll" name="roll_reflex" data-i18n-title="reflex-roll" title="Reflex roll" value="@{whispertype} &{template:pc} {{name=^{reflex}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{reflex} [Mod]+(@{saves_condition}) [Condition]+@{rollmod_save} [Query]]]}} {{shownotes=@{rollnotes_save}}} {{notes=@{reflex_notes}}} {{conditionsflag=[[@{saves_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="ref-u">REF</span></button>
 							<span class="sml" data-i18n="reflex">Reflex</span>
 							<span class="pictos" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
 						</div>
@@ -833,7 +840,7 @@
 					</div>
 					<div class="save fortitude margindent">
 						<div class="blacklabel sqr">
-							<button class="myrol big" type="roll" name="roll_fortitude" data-i18n-title="fortitude-roll" title="Fortitude roll" value="@{whispertype} &{template:pc} {{name=^{fortitude}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{fortitude}[MOD]+(@{saves_condition})[CONDITION]+@{rollmod_save}[QUERY]]]}} {{shownotes=@{rollnotes_save}}} {{notes=@{fortitude_notes}}} {{conditionsflag=[[@{saves_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="fort-u">FORT</span></button>
+							<button class="myrol big" type="roll" name="roll_fortitude" data-i18n-title="fortitude-roll" title="Fortitude roll" value="@{whispertype} &{template:pc} {{name=^{fortitude}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{fortitude} [Mod]+(@{saves_condition}) [Condition]+@{rollmod_save} [Query]]]}} {{shownotes=@{rollnotes_save}}} {{notes=@{fortitude_notes}}} {{conditionsflag=[[@{saves_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="fort-u">FORT</span></button>
 							<span class="sml" data-i18n="fortitude">Fortitude</span>
 							<span class="pictos" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
 						</div>
@@ -849,7 +856,7 @@
 					</div>
 					<div class="save will margindent">
 						<div class="blacklabel sqr">
-							<button class="myrol big" type="roll" name="roll_will" data-i18n-title="will-roll" title="Will roll" value="@{whispertype} &{template:pc} {{name=^{will}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{will}[MOD]+(@{saves_condition})[CONDITION]+@{rollmod_save}[QUERY]]]}} {{shownotes=@{rollnotes_save}}} {{notes=@{will_notes}}} {{conditionsflag=[[@{saves_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="will-u">WILL</span></button>
+							<button class="myrol big" type="roll" name="roll_will" data-i18n-title="will-roll" title="Will roll" value="@{whispertype} &{template:pc} {{name=^{will}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{will} [Mod]+(@{saves_condition}) [Condition]+@{rollmod_save} [Query]]]}} {{shownotes=@{rollnotes_save}}} {{notes=@{will_notes}}} {{conditionsflag=[[@{saves_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="will-u">WILL</span></button>
 							<span class="sml" data-i18n="will">Will</span>
 							<span class="pictos" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
 						</div>
@@ -1339,8 +1346,8 @@
 						</div>
 						<div class="lbbox w120">
 							<label class="pschckcont">
-								<input class="pseudocheck" name="attr_use_ammo" type="checkbox" value="1" title="@{use_ammo}" checked="checked" /><span></span>
-								<span class="lbl" data-i18n="use-ammo" data-i18n-title="use-ammo-t" title="Spend primary attack ammunition (CharSetAttr API)">Use Ammo</span>
+								<input class="pseudocheck" name="attr_use_ammo" type="checkbox" value="0" title="@{use_ammo}" /><span></span>
+								<span class="lbl" data-i18n="use-ammo" data-i18n-title="use-ammo-t" title="Spend primary attack ammunition (ChatSetAttr API)">Use Ammo</span>
 							</label>
 						</div>
 					</div>
@@ -1353,7 +1360,7 @@
 
 				<div class="myrow labunder">
 					<div class="blacklabel melee">
-						<button class="myrol big only" type="roll" name="roll_melee" data-i18n-title="basic-melee-attack-roll" title="Basic Melee Attack Roll" value="@{whispertype} &{template:pc} {{name=^{melee}}} {{type=attack}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20cs20+@{melee_mod}[MOD]+(@{attack_condition})[CONDITION]+@{rollmod_attack}[QUERY]]]}} {{shownotes=@{rollnotes_attack}}} {{notes=@{melee_notes}}} {{conditionsflag=[[@{attack_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{attack_condition_note}}}"><span data-i18n="melee-u">Melee</span></button>
+						<button class="myrol big only" type="roll" name="roll_melee" data-i18n-title="basic-melee-attack-roll" title="Basic Melee Attack Roll" value="@{whispertype} &{template:pc} {{name=^{melee}}} {{type=attack}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20cs20+@{melee_mod} [Mod]+(@{attack_condition}) [Condition]+@{rollmod_attack} [Query]]]}} {{shownotes=@{rollnotes_attack}}} {{notes=@{melee_notes}}} {{conditionsflag=[[@{attack_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{attack_condition_note}}}"><span data-i18n="melee-u">Melee</span></button>
 						<span class="pictos attacks" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
 					</div>
 					<div class="boxed greyed">
@@ -1366,7 +1373,7 @@
 						<span class="lab under help" data-i18n="temp" data-i18n-title="temp-adjustment" title="Temp Adjustment">Temp</span>
 					</div>
 					<div class="blacklabel ranged">
-						<button class="myrol big only" type="roll" name="roll_ranged" data-i18n-title="basic-ranged-attack-roll" title="Basic Ranged Attack Roll" value="@{whispertype} &{template:pc} {{name=^{ranged}}} {{type=attack}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20cs20+@{ranged_mod}[MOD]+(@{attack_condition})[CONDITION]+@{rollmod_attack}[QUERY]]]}} {{shownotes=@{rollnotes_attack}}} {{notes=@{ranged_notes}}} {{conditionsflag=[[@{attack_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{attack_condition_note}}}"><span data-i18n="ranged-u">Ranged</span></button>
+						<button class="myrol big only" type="roll" name="roll_ranged" data-i18n-title="basic-ranged-attack-roll" title="Basic Ranged Attack Roll" value="@{whispertype} &{template:pc} {{name=^{ranged}}} {{type=attack}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20cs20+@{ranged_mod} [Mod]+(@{attack_condition}) [Condition]+@{rollmod_attack} [Query]]]}} {{shownotes=@{rollnotes_attack}}} {{notes=@{ranged_notes}}} {{conditionsflag=[[@{attack_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{attack_condition_note}}}"><span data-i18n="ranged-u">Ranged</span></button>
 						<span class="pictos attacks" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
 					</div>
 					<div class="boxed greyed">
@@ -1448,7 +1455,7 @@
 
 				<div class="myrow labunder">
 					<div class="blacklabel cmb">
-						<button class="myrol big only" type="roll" name="roll_cmb" value="@{whispertype} &{template:pc} {{name=^{combat-maneuver}}} {{type=attack}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20cs20+@{cmb_mod}[MOD]+(@{attack_condition})[CONDITION]+@{rollmod_attack}[QUERY]]]}} {{shownotes=@{rollnotes_attack}}} {{notes=@{cmb_notes}}} {{conditionsflag=[[@{attack_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{cmb_condition_note} @{attack_condition_note}}}">
+						<button class="myrol big only" type="roll" name="roll_cmb" value="@{whispertype} &{template:pc} {{name=^{combat-maneuver}}} {{type=attack}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20cs20+@{cmb_mod} [Mod]+(@{attack_condition}) [Condition]+@{rollmod_attack} [Query]]]}} {{shownotes=@{rollnotes_attack}}} {{notes=@{cmb_notes}}} {{conditionsflag=[[@{attack_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{cmb_condition_note} @{attack_condition_note}}}">
 							<span data-i18n="cmb-u" data-i18n-title="cmb-roll" title="Combat Maneuver Bonus Roll">CMB</span>
 						</button>
 						<span class="pictos attacks" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
@@ -1678,17 +1685,17 @@
 						</div>
 						<span class="lbl spacer">)</span>
 						<div class="boxed greyed margindent">
-							<span class="pseudoattr" title="@{speed_run_factor}">x<span name="attr_speed_run_factor"></span></span>
+							<span class="pseudoattr" title="@{speed_run_factor}">&times;<span name="attr_speed_run_factor"></span></span>
 							<span class="lab under" data-i18n="run">Run</span>
 						</div>
 						<span class=" lbl spacer">=</span>
 						<span class="lbl">Min(</span>
 						<div class="boxed greyed">
-							<span class="pseudoattr" title="@{armor_run_factor}">x<span name="attr_armor_run_factor"></span></span>
+							<span class="pseudoattr" title="@{armor_run_factor}">&times;<span name="attr_armor_run_factor"></span></span>
 							<span class="lab under" data-i18n="armor">Armor</span>
 						</div>
 						<div class="boxed greyed">
-							<span class="pseudoattr" title="@{encumbrance_run_factor}">x<span name="attr_encumbrance_run_factor"></span></span>
+							<span class="pseudoattr" title="@{encumbrance_run_factor}">&times;<span name="attr_encumbrance_run_factor"></span></span>
 							<span class="lab under" data-i18n="load">Load</span>
 						</div>
 						<span class="lbl spacer">)</span>
@@ -1802,7 +1809,7 @@
 							<input class="options-flag" name="attr_options-flag-acrobatics" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_acrobatics_classkill_flag" type="hidden" value="0" title="@{acrobatics_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_acrobatics" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{acrobatics}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{acrobatics}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{acrobatics_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_acrobatics" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{acrobatics}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{acrobatics} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{acrobatics_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="acrobatics">Acrobatics</span>
 								</button>
 								<input class="attr-flag" name="attr_acrobatics_penalty_flag" type="hidden" value="0" />
@@ -1836,7 +1843,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_acrobatics_armor_penalty_value" title="@{acrobatics_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_acrobatics_check_penalty_value" title="@{acrobatics_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -1865,7 +1872,7 @@
 							<input class="options-flag" name="attr_options-flag-spellcraft" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_spellcraft_classkill_flag" type="hidden" value="0" title="@{spellcraft_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_spellcraft" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{spellcraft}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{spellcraft}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{spellcraft_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_spellcraft" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{spellcraft}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{spellcraft} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{spellcraft_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="spellcraft">Spellcraft</span>
 								</button>
 								<input class="attr-flag" name="attr_spellcraft_penalty_flag" type="hidden" value="0" />
@@ -1899,7 +1906,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_spellcraft_armor_penalty_value" title="@{spellcraft_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_spellcraft_check_penalty_value" title="@{spellcraft_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -1928,7 +1935,7 @@
 							<input class="options-flag" name="attr_options-flag-craft" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_craft_classkill_flag" type="hidden" value="0" title="@{craft_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_craft" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{craft}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{craft}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{craft_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_craft" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{craft}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{craft} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{craft_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name craft" data-i18n="craft">Craft</span>
 								</button>
 								<input class="craft underlined" name="attr_craft_name" type="text" data-i18n-placeholder="craft-ph" placeholder="alchemy" title="@{craft_name}">
@@ -1963,7 +1970,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_craft_armor_penalty_value" title="@{craft_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_craft_check_penalty_value" title="@{craft_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -1995,7 +2002,7 @@
 									<input class="options-flag" name="attr_options-flag-craft" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 									<div class="myrow right">
 										<input class="classkill" name="attr_classkill_flag" type="hidden" value="0" title="@{repeating_skillcraft_$id_classkill_flag}" /><span></span>
-										<button class="myrol" type="roll" name="roll_skill" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{craft} (@{name})}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{skill}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+										<button class="myrol" type="roll" name="roll_skill" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{craft} (@{name})}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{skill} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 											<span class="lbl craft" data-i18n="craft">Craft</span>
 										</button>
 										<input class="craft underlined" name="attr_name" type="text" data-i18n-placeholder="craft-ph" placeholder="alchemy" title="@{repeating_skillcraft_$id_name}" />
@@ -2031,7 +2038,7 @@
 											</div>
 											<span class="lbl spacer">+</span>
 											<div class="boxed greyed">
-												<span class="pseudoattr" name="attr_armor_penalty_value" title="@{repeating_skillcraft_$id_armor_penalty_value}"></span>
+												<span class="pseudoattr" name="attr_check_penalty_value" title="@{repeating_skillcraft_$id_check_penalty_value}"></span>
 												<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 											</div>
 										</div>
@@ -2062,7 +2069,7 @@
 							<input class="options-flag" name="attr_options-flag-bluff" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_bluff_classkill_flag" type="hidden" value="0" title="@{bluff_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_bluff" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{bluff}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{bluff}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{bluff_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_bluff" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{bluff}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{bluff} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{bluff_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="bluff">Bluff</span>
 								</button>
 								<input class="attr-flag" name="attr_bluff_penalty_flag" type="hidden" value="0" />
@@ -2096,7 +2103,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_bluff_armor_penalty_value" title="@{bluff_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_bluff_check_penalty_value" title="@{bluff_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -2125,7 +2132,7 @@
 							<input class="options-flag" name="attr_options-flag-knowledge_dungeoneering" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_knowledge_dungeoneering_classkill_flag" type="hidden" value="0" title="@{knowledge_dungeoneering_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_knowledge_dungeoneering" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_dungeoneering}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_dungeoneering}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_dungeoneering_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_knowledge_dungeoneering" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_dungeoneering}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_dungeoneering} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_dungeoneering_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="knowledge_dungeoneering">Knowledge (dungeoneering)</span>
 								</button>
 								<input class="attr-flag" name="attr_knowledge_dungeoneering_penalty_flag" type="hidden" value="0" />
@@ -2159,7 +2166,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_knowledge_dungeoneering_armor_penalty_value" title="@{knowledge_dungeoneering_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_knowledge_dungeoneering_check_penalty_value" title="@{knowledge_dungeoneering_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -2188,7 +2195,7 @@
 							<input class="options-flag" name="attr_options-flag-knowledge_local" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_knowledge_local_classkill_flag" type="hidden" value="0" title="@{knowledge_local_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_knowledge_local" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_local}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_local}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_local_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_knowledge_local" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_local}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_local} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_local_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="knowledge_local">Knowledge (local)</span>
 								</button>
 								<input class="attr-flag" name="attr_knowledge_local_penalty_flag" type="hidden" value="0" />
@@ -2222,7 +2229,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_knowledge_local_armor_penalty_value" title="@{knowledge_local_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_knowledge_local_check_penalty_value" title="@{knowledge_local_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -2251,7 +2258,7 @@
 							<input class="options-flag" name="attr_options-flag-knowledge_geography" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_knowledge_geography_classkill_flag" type="hidden" value="0" title="@{knowledge_geography_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_knowledge_geography" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_geography}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_geography}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_geography_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_knowledge_geography" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_geography}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_geography} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_geography_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="knowledge_geography">Knowledge (geography)</span>
 								</button>
 								<input class="attr-flag" name="attr_knowledge_geography_penalty_flag" type="hidden" value="0" />
@@ -2285,7 +2292,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_knowledge_geography_armor_penalty_value" title="@{knowledge_geography_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_knowledge_geography_check_penalty_value" title="@{knowledge_geography_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -2314,7 +2321,7 @@
 							<input class="options-flag" name="attr_options-flag-knowledge_history" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_knowledge_history_classkill_flag" type="hidden" value="0" title="@{knowledge_history_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_knowledge_history" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_history}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_history}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_history_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_knowledge_history" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_history}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_history} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_history_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="knowledge_history">Knowledge (history)</span>
 								</button>
 								<input class="attr-flag" name="attr_knowledge_history_penalty_flag" type="hidden" value="0" />
@@ -2348,7 +2355,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_knowledge_history_armor_penalty_value" title="@{knowledge_history_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_knowledge_history_check_penalty_value" title="@{knowledge_history_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -2377,7 +2384,7 @@
 							<input class="options-flag" name="attr_options-flag-knowledge_engineering" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_knowledge_engineering_classkill_flag" type="hidden" value="0" title="@{knowledge_engineering_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_knowledge_engineering" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_engineering}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_engineering}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_engineering_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_knowledge_engineering" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_engineering}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_engineering} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_engineering_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="knowledge_engineering">Knowledge (engineering)</span>
 								</button>
 								<input class="attr-flag" name="attr_knowledge_engineering_penalty_flag" type="hidden" value="0" />
@@ -2411,7 +2418,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_knowledge_engineering_armor_penalty_value" title="@{knowledge_engineering_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_knowledge_engineering_check_penalty_value" title="@{knowledge_engineering_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -2440,7 +2447,7 @@
 							<input class="options-flag" name="attr_options-flag-knowledge_arcana" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_knowledge_arcana_classkill_flag" type="hidden" value="0" title="@{knowledge_arcana_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_knowledge_arcana" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_arcana}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_arcana}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_arcana_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_knowledge_arcana" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_arcana}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_arcana} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_arcana_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="knowledge_arcana">Knowledge (arcana)</span>
 								</button>
 								<input class="attr-flag" name="attr_knowledge_arcana_penalty_flag" type="hidden" value="0" />
@@ -2474,7 +2481,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_knowledge_arcana_armor_penalty_value" title="@{knowledge_arcana_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_knowledge_arcana_check_penalty_value" title="@{knowledge_arcana_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -2503,7 +2510,7 @@
 							<input class="options-flag" name="attr_options-flag-knowledge_nature" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_knowledge_nature_classkill_flag" type="hidden" value="0" title="@{knowledge_nature_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_knowledge_nature" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_nature}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_nature}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_nature_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_knowledge_nature" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_nature}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_nature} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_nature_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="knowledge_nature">Knowledge (nature)</span>
 								</button>
 								<input class="attr-flag" name="attr_knowledge_nature_penalty_flag" type="hidden" value="0" />
@@ -2537,7 +2544,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_knowledge_nature_armor_penalty_value" title="@{knowledge_nature_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_knowledge_nature_check_penalty_value" title="@{knowledge_nature_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -2566,7 +2573,7 @@
 							<input class="options-flag" name="attr_options-flag-knowledge_nobility" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_knowledge_nobility_classkill_flag" type="hidden" value="0" title="@{knowledge_nobility_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_knowledge_nobility" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_nobility}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_nobility}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_nobility_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_knowledge_nobility" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_nobility}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_nobility} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_nobility_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="knowledge_nobility">Knowledge (nobility)</span>
 								</button>
 								<input class="attr-flag" name="attr_knowledge_nobility_penalty_flag" type="hidden" value="0" />
@@ -2600,7 +2607,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_knowledge_nobility_armor_penalty_value" title="@{knowledge_nobility_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_knowledge_nobility_check_penalty_value" title="@{knowledge_nobility_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -2629,7 +2636,7 @@
 							<input class="options-flag" name="attr_options-flag-knowledge_planes" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_knowledge_planes_classkill_flag" type="hidden" value="0" title="@{knowledge_planes_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_knowledge_planes" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_planes}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_planes}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_planes_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_knowledge_planes" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_planes}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_planes} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_planes_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="knowledge_planes">Knowledge (planes)</span>
 								</button>
 								<input class="attr-flag" name="attr_knowledge_planes_penalty_flag" type="hidden" value="0" />
@@ -2663,7 +2670,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_knowledge_planes_armor_penalty_value" title="@{knowledge_planes_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_knowledge_planes_check_penalty_value" title="@{knowledge_planes_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -2692,7 +2699,7 @@
 							<input class="options-flag" name="attr_options-flag-knowledge_religion" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_knowledge_religion_classkill_flag" type="hidden" value="0" title="@{knowledge_religion_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_knowledge_religion" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_religion}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_religion}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_religion_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_knowledge_religion" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge_religion}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{knowledge_religion} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{knowledge_religion_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="knowledge_religion">Knowledge (religion)</span>
 								</button>
 								<input class="attr-flag" name="attr_knowledge_religion_penalty_flag" type="hidden" value="0" />
@@ -2726,7 +2733,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_knowledge_religion_armor_penalty_value" title="@{knowledge_religion_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_knowledge_religion_check_penalty_value" title="@{knowledge_religion_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -2758,7 +2765,7 @@
 									<input class="options-flag" name="attr_options-flag-knowledge" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 									<div class="myrow right">
 										<input class="classkill" name="attr_classkill_flag" type="hidden" value="0" title="@{repeating_skillknowledge_$id_classkill_flag}" /><span></span>
-										<button class="myrol" type="roll" name="roll_skill" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge} (@{name})}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{skill}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+										<button class="myrol" type="roll" name="roll_skill" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{knowledge} (@{name})}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{skill} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 											<span class="lbl knowledge" data-i18n="knowledge">Knowledge</span>
 										</button>
 										<input class="knowledge underlined" name="attr_name" type="text" data-i18n-placeholder="knowledge-ph" placeholder="Cthulhu mythos" title="@{repeating_skillknowledge_$id_name}" />
@@ -2794,7 +2801,7 @@
 											</div>
 											<span class="lbl spacer">+</span>
 											<div class="boxed greyed">
-												<span class="pseudoattr" name="attr_armor_penalty_value" title="@{repeating_skillknowledge_$id_armor_penalty_value}"></span>
+												<span class="pseudoattr" name="attr_check_penalty_value" title="@{repeating_skillknowledge_$id_check_penalty_value}"></span>
 												<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 											</div>
 										</div>
@@ -2825,7 +2832,7 @@
 							<input class="options-flag" name="attr_options-flag-disguise" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_disguise_classkill_flag" type="hidden" value="0" title="@{disguise_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_disguise" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{disguise}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{disguise}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{disguise_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_disguise" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{disguise}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{disguise} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{disguise_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="disguise">Disguise</span>
 								</button>
 								<input class="attr-flag" name="attr_disguise_penalty_flag" type="hidden" value="0" />
@@ -2859,7 +2866,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_disguise_armor_penalty_value" title="@{disguise_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_disguise_check_penalty_value" title="@{disguise_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -2888,7 +2895,7 @@
 							<input class="options-flag" name="attr_options-flag-diplomacy" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_diplomacy_classkill_flag" type="hidden" value="0" title="@{diplomacy_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_diplomacy" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{diplomacy}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{diplomacy}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{diplomacy_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_diplomacy" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{diplomacy}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{diplomacy} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{diplomacy_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="diplomacy">Diplomacy</span>
 								</button>
 								<input class="attr-flag" name="attr_diplomacy_penalty_flag" type="hidden" value="0" />
@@ -2922,7 +2929,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_diplomacy_armor_penalty_value" title="@{diplomacy_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_diplomacy_check_penalty_value" title="@{diplomacy_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -2951,7 +2958,7 @@
 							<input class="options-flag" name="attr_options-flag-stealth" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_stealth_classkill_flag" type="hidden" value="0" title="@{stealth_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_stealth" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{stealth}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{stealth}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{stealth_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_stealth" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{stealth}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{stealth} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{stealth_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="stealth">Stealth</span>
 								</button>
 								<input class="attr-flag" name="attr_stealth_penalty_flag" type="hidden" value="0" />
@@ -2985,7 +2992,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_stealth_armor_penalty_value" title="@{stealth_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_stealth_check_penalty_value" title="@{stealth_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 									<span class="lbl spacer">+</span>
@@ -3019,7 +3026,7 @@
 							<input class="options-flag" name="attr_options-flag-handle_animal" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_handle_animal_classkill_flag" type="hidden" value="0" title="@{handle_animal_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_handle_animal" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{handle_animal}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{handle_animal}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{handle_animal_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_handle_animal" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{handle_animal}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{handle_animal} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{handle_animal_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="handle_animal">Handle animal</span>
 								</button>
 								<input class="attr-flag" name="attr_handle_animal_penalty_flag" type="hidden" value="0" />
@@ -3053,7 +3060,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_handle_animal_armor_penalty_value" title="@{handle_animal_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_handle_animal_check_penalty_value" title="@{handle_animal_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3082,7 +3089,7 @@
 							<input class="options-flag" name="attr_options-flag-ride" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_ride_classkill_flag" type="hidden" value="0" title="@{ride_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_ride" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{ride}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{ride}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{ride_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_ride" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{ride}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{ride} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{ride_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="ride">Ride</span>
 								</button>
 								<input class="attr-flag" name="attr_ride_penalty_flag" type="hidden" value="0" />
@@ -3116,7 +3123,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_ride_armor_penalty_value" title="@{ride_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_ride_check_penalty_value" title="@{ride_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3145,7 +3152,7 @@
 							<input class="options-flag" name="attr_options-flag-climb" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_climb_classkill_flag" type="hidden" value="0" title="@{climb_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_climb" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{climb}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{climb}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{climb_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_climb" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{climb}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{climb} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{climb_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="climb">Climb</span>
 								</button>
 								<input class="attr-flag" name="attr_climb_penalty_flag" type="hidden" value="0" />
@@ -3179,7 +3186,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_climb_armor_penalty_value" title="@{climb_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_climb_check_penalty_value" title="@{climb_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3208,7 +3215,7 @@
 							<input class="options-flag" name="attr_options-flag-sleight_of_hand" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_sleight_of_hand_classkill_flag" type="hidden" value="0" title="@{sleight_of_hand_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_sleight_of_hand" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{sleight_of_hand}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{sleight_of_hand}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{sleight_of_hand_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_sleight_of_hand" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{sleight_of_hand}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{sleight_of_hand} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{sleight_of_hand_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="sleight_of_hand">Sleight of hand</span>
 								</button>
 								<input class="attr-flag" name="attr_sleight_of_hand_penalty_flag" type="hidden" value="0" />
@@ -3242,7 +3249,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_sleight_of_hand_armor_penalty_value" title="@{sleight_of_hand_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_sleight_of_hand_check_penalty_value" title="@{sleight_of_hand_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3271,7 +3278,7 @@
 							<input class="options-flag" name="attr_options-flag-appraise" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_appraise_classkill_flag" type="hidden" value="0" title="@{appraise_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_appraise" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{appraise}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{appraise}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{appraise_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_appraise" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{appraise}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{appraise} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{appraise_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="appraise">Appraise</span>
 								</button>
 								<input class="attr-flag" name="attr_appraise_penalty_flag" type="hidden" value="0" />
@@ -3305,7 +3312,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_appraise_armor_penalty_value" title="@{appraise_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_appraise_check_penalty_value" title="@{appraise_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3334,7 +3341,7 @@
 							<input class="options-flag" name="attr_options-flag-escape_artist" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_escape_artist_classkill_flag" type="hidden" value="0" title="@{escape_artist_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_escape_artist" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{escape_artist}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{escape_artist}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{escape_artist_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_escape_artist" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{escape_artist}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{escape_artist} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{escape_artist_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="escape_artist">Escape artist</span>
 								</button>
 								<input class="attr-flag" name="attr_escape_artist_penalty_flag" type="hidden" value="0" />
@@ -3368,7 +3375,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_escape_artist_armor_penalty_value" title="@{escape_artist_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_escape_artist_check_penalty_value" title="@{escape_artist_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3397,7 +3404,7 @@
 							<input class="options-flag" name="attr_options-flag-intimidate" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_intimidate_classkill_flag" type="hidden" value="0" title="@{intimidate_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_intimidate" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{intimidate}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{intimidate}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{intimidate_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_intimidate" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{intimidate}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{intimidate} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{intimidate_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="intimidate">Intimidate</span>
 								</button>
 								<input class="attr-flag" name="attr_intimidate_penalty_flag" type="hidden" value="0" />
@@ -3431,7 +3438,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_intimidate_armor_penalty_value" title="@{intimidate_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_intimidate_check_penalty_value" title="@{intimidate_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3460,7 +3467,7 @@
 							<input class="options-flag" name="attr_options-flag-linguistics" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_linguistics_classkill_flag" type="hidden" value="0" title="@{linguistics_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_linguistics" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{linguistics}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{linguistics}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{linguistics_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_linguistics" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{linguistics}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{linguistics} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{linguistics_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="linguistics">Linguistics</span>
 								</button>
 								<input class="attr-flag" name="attr_linguistics_penalty_flag" type="hidden" value="0" />
@@ -3494,7 +3501,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_linguistics_armor_penalty_value" title="@{linguistics_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_linguistics_check_penalty_value" title="@{linguistics_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3523,7 +3530,7 @@
 							<input class="options-flag" name="attr_options-flag-swim" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_swim_classkill_flag" type="hidden" value="0" title="@{swim_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_swim" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{swim}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{swim}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{swim_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_swim" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{swim}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{swim} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{swim_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="swim">Swim</span>
 								</button>
 								<input class="attr-flag" name="attr_swim_penalty_flag" type="hidden" value="0" />
@@ -3557,7 +3564,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_swim_armor_penalty_value" title="@{swim_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_swim_check_penalty_value" title="@{swim_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3586,7 +3593,7 @@
 							<input class="options-flag" name="attr_options-flag-perception" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_perception_classkill_flag" type="hidden" value="0" title="@{perception_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_perception" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{perception}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{perception}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{perception_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_perception" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{perception}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{perception} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{perception_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="perception">Perception</span>
 								</button>
 								<input class="attr-flag" name="attr_perception_penalty_flag" type="hidden" value="0" />
@@ -3620,7 +3627,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_perception_armor_penalty_value" title="@{perception_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_perception_check_penalty_value" title="@{perception_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3649,7 +3656,7 @@
 							<input class="options-flag" name="attr_options-flag-heal" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_heal_classkill_flag" type="hidden" value="0" title="@{heal_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_heal" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{heal}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{heal}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{heal_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_heal" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{heal}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{heal} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{heal_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="heal">Heal</span>
 								</button>
 								<input class="attr-flag" name="attr_heal_penalty_flag" type="hidden" value="0" />
@@ -3683,7 +3690,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_heal_armor_penalty_value" title="@{heal_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_heal_check_penalty_value" title="@{heal_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3712,7 +3719,7 @@
 							<input class="options-flag" name="attr_options-flag-profession" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_profession_classkill_flag" type="hidden" value="0" title="@{profession_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_profession" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{profession}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{profession}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{profession_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_profession" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{profession}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{profession} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{profession_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name profession" data-i18n="profession">Profession</span>
 								</button>
 								<input class="profession underlined" name="attr_profession_name" type="text" data-i18n-placeholder="profession-ph" placeholder="merchant" title="@{profession_name}">
@@ -3747,7 +3754,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_profession_armor_penalty_value" title="@{profession_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_profession_check_penalty_value" title="@{profession_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3779,7 +3786,7 @@
 									<input class="options-flag" name="attr_options-flag-profession" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 									<div class="myrow right">
 										<input class="classkill" name="attr_classkill_flag" type="hidden" value="0" title="@{repeating_skillprofession_$id_classkill_flag}" /><span></span>
-										<button class="myrol" type="roll" name="roll_skill" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{profession} (@{name})}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{skill}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+										<button class="myrol" type="roll" name="roll_skill" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{profession} (@{name})}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{skill} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 											<span class="lbl profession" data-i18n="profession">Profession</span>
 										</button>
 										<input class="profession underlined" name="attr_name"data-i18n-placeholder="profession-ph" type="text" placeholder="merchant" title="@{repeating_skillprofession_$id_name}" />
@@ -3815,7 +3822,7 @@
 											</div>
 											<span class="lbl spacer">+</span>
 											<div class="boxed greyed">
-												<span class="pseudoattr" name="attr_armor_penalty_value" title="@{repeating_skillprofession_$id_armor_penalty_value}"></span>
+												<span class="pseudoattr" name="attr_check_penalty_value" title="@{repeating_skillprofession_$id_check_penalty_value}"></span>
 												<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 											</div>
 										</div>
@@ -3846,7 +3853,7 @@
 							<input class="options-flag" name="attr_options-flag-sense_motive" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_sense_motive_classkill_flag" type="hidden" value="0" title="@{sense_motive_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_sense_motive" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{sense_motive}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{sense_motive}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{sense_motive_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_sense_motive" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{sense_motive}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{sense_motive} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{sense_motive_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="sense_motive">Sense motive</span>
 								</button>
 								<input class="attr-flag" name="attr_sense_motive_penalty_flag" type="hidden" value="0" />
@@ -3880,7 +3887,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_sense_motive_armor_penalty_value" title="@{sense_motive_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_sense_motive_check_penalty_value" title="@{sense_motive_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3909,7 +3916,7 @@
 							<input class="options-flag" name="attr_options-flag-perform" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_perform_classkill_flag" type="hidden" value="0" title="@{perform_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_perform" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{perform}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{perform}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{perform_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_perform" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{perform}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{perform} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{perform_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name perform" data-i18n="perform">Perform</span>
 								</button>
 								<input class="perform underlined" name="attr_perform_name" type="text" data-i18n-placeholder="perform-ph" placeholder="oratory" title="@{perform_name}">
@@ -3944,7 +3951,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_perform_armor_penalty_value" title="@{perform_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_perform_check_penalty_value" title="@{perform_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -3976,7 +3983,7 @@
 								<input class="options-flag" name="attr_options-flag-perform" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 								<div class="myrow right">
 									<input class="classkill" name="attr_classkill_flag" type="hidden" value="0" title="@{repeating_skillperform_$id_classkill_flag}" /><span></span>
-									<button class="myrol" type="roll" name="roll_skill" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{perform} (@{name})}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{skill}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+									<button class="myrol" type="roll" name="roll_skill" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{perform} (@{name})}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{skill} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 										<span class="lbl perform" data-i18n="perform">Perform</span>
 									</button>
 									<input class="perform underlined" name="attr_name" type="text" data-i18n-placeholder="perform-ph" placeholder="oratory" title="@{repeating_skillperform_$id_name}" />
@@ -4012,7 +4019,7 @@
 										</div>
 										<span class="lbl spacer">+</span>
 										<div class="boxed greyed">
-											<span class="pseudoattr" name="attr_armor_penalty_value" title="@{repeating_skillperform_$id_armor_penalty_value}"></span>
+											<span class="pseudoattr" name="attr_check_penalty_value" title="@{repeating_skillperform_$id_check_penalty_value}"></span>
 											<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 										</div>
 									</div>
@@ -4043,7 +4050,7 @@
 							<input class="options-flag" name="attr_options-flag-disable_device" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_disable_device_classkill_flag" type="hidden" value="0" title="@{disable_device_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_disable_device" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{disable_device}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{disable_device}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{disable_device_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_disable_device" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{disable_device}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{disable_device} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{disable_device_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="disable_device">Disable device</span>
 								</button>
 								<input class="attr-flag" name="attr_disable_device_penalty_flag" type="hidden" value="0" />
@@ -4077,7 +4084,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_disable_device_armor_penalty_value" title="@{disable_device_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_disable_device_check_penalty_value" title="@{disable_device_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -4106,7 +4113,7 @@
 							<input class="options-flag" name="attr_options-flag-survival" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_survival_classkill_flag" type="hidden" value="0" title="@{survival_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_survival" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{survival}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{survival}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{survival_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_survival" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{survival}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{survival} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{survival_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="survival">Survival</span>
 								</button>
 								<input class="attr-flag" name="attr_survival_penalty_flag" type="hidden" value="0" />
@@ -4140,7 +4147,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_survival_armor_penalty_value" title="@{survival_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_survival_check_penalty_value" title="@{survival_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -4169,7 +4176,7 @@
 							<input class="options-flag" name="attr_options-flag-use_magic_device" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_use_magic_device_classkill_flag" type="hidden" value="0" title="@{use_magic_device_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_use_magic_device" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{use_magic_device}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{use_magic_device}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{use_magic_device_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_use_magic_device" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{use_magic_device}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{use_magic_device} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{use_magic_device_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="use_magic_device">Use magic device</span>
 								</button>
 								<input class="attr-flag" name="attr_use_magic_device_penalty_flag" type="hidden" value="0" />
@@ -4203,7 +4210,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_use_magic_device_armor_penalty_value" title="@{use_magic_device_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_use_magic_device_check_penalty_value" title="@{use_magic_device_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 								</div>
@@ -4232,7 +4239,7 @@
 							<input class="options-flag" name="attr_options-flag-fly" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 							<div class="myrow right">
 								<input class="classkill" name="attr_fly_classkill_flag" type="hidden" value="0" title="@{fly_classkill_flag}" /><span></span>
-								<button class="myrol" name="roll_fly" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{fly}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{fly}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{fly_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+								<button class="myrol" name="roll_fly" type="roll" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{fly}}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{fly} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{fly_notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 									<span class="lbl name" data-i18n="fly">Fly</span>
 								</button>
 								<input class="attr-flag" name="attr_fly_penalty_flag" type="hidden" value="0" />
@@ -4266,7 +4273,7 @@
 									</div>
 									<span class="lbl spacer">+</span>
 									<div class="boxed greyed">
-										<span class="pseudoattr" name="attr_fly_armor_penalty_value" title="@{fly_armor_penalty_value}"></span>
+										<span class="pseudoattr" name="attr_fly_check_penalty_value" title="@{fly_check_penalty_value}"></span>
 										<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 									</div>
 									<span class="lbl spacer">+</span>
@@ -4301,7 +4308,7 @@
 								<input class="options-flag" name="attr_options-flag" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 								<div class="myrow right">
 									<input class="classkill" name="attr_classkill_flag" type="hidden" value="0" title="@{repeating_skillcustom_$id_classkill_flag}" /><span></span>
-									<button class="myrol" type="roll" name="roll_skill" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{custom} (@{name})}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{skill}[MOD]+(@{skill_condition})[CONDITION]+@{rollmod_skill}[QUERY]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
+									<button class="myrol" type="roll" name="roll_skill" data-i18n-title="skill-roll" title="Roll Skill" value="@{whispertype} &{template:pc} {{name=^{custom} (@{name})}} {{type=skill}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{skill} [Mod]+(@{skill_condition}) [Condition]+@{rollmod_skill} [Query]]]}} {{shownotes=@{rollnotes_skill}}} {{notes=@{notes}}} {{conditionsflag=[[@{skill_condition}]]}} {{conditions=@{conditions_display}}} {{conditionsnote=@{skill_condition_note}}}">
 										<span class="lbl custom only" name="attr_name">####</span>
 									</button>
 									<input class="attr-flag" name="attr_penalty_flag" type="hidden" value="0" />
@@ -4340,7 +4347,7 @@
 										</div>
 										<span class="lbl spacer">+</span>
 										<div class="boxed greyed">
-											<span class="pseudoattr" name="attr_armor_penalty_value" title="@{repeating_skillcustom_$id_armor_penalty_value}"></span>
+											<span class="pseudoattr" name="attr_check_penalty_value" title="@{repeating_skillcustom_$id_check_penalty_value}"></span>
 											<span class="lab under help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 										</div>
 									</div>
@@ -4470,7 +4477,7 @@
 							<span class="lab under help" data-i18n="spd-u" data-i18n-title="speed" title="Speed">Spd</span>
 						</div>
 						<div class="boxed greyed">
-							<span class="pseudoattr" title="@{armor_run_factor}">x<span name="attr_armor_run_factor"></span></span>
+							<span class="pseudoattr" title="@{armor_run_factor}">&times;<span name="attr_armor_run_factor"></span></span>
 							<span class="lab under help" data-i18n="max" data-i18n-title="run" title="Run">Max</span>
 						</div>
 						<div class="boxed greyed margindent">
@@ -4556,13 +4563,13 @@
 						<span class="med only wgt" data-i18n="weight">Weight</span>
 					</div>
 				</div>
-				<input class="optional-flag charsetattr-toggle" name="attr_show_charsetattr_flag" type="hidden" value="1" />
+				<input class="optional-flag ChatSetAttr-toggle" name="attr_show_ChatSetAttr_flag" type="hidden" value="0" />
 				<div class="bordered titled inbox right">
 					<input type="hidden" name="attr_repcontrol_toggle_gear" value="0" class="repcontrol-toggle" />
 					<fieldset class="repeating_gear">
 						<div class="gearitem">
 							<input class="options-flag" name="attr_options-flag" type="checkbox" data-i18n-title="show-hide-notes" title="Show/hide notes" /><span>y</span>
-							<button class="myrol chatsetattr inl" type="roll" value="@{whispertype}!setattr --sel --silent --replace --repeating_gear_-CREATE_name|@{name} --repeating_gear_-CREATE_cost|@{cost} --repeating_gear_-CREATE_slot|@{slot} --repeating_gear_-CREATE_special|@{special} --repeating_gear_-CREATE_quantity|@{quantity} --repeating_gear_-CREATE_weight|@{weight} --repeating_gear_-CREATE_description|@{description}" data-i18n-title="charsetattr-t" title="Send item to selected token's sheet with CharSetAttr API">~</button>
+							<button class="myrol chatsetattr inl" type="roll" value="@{whispertype}!setattr --sel --silent --replace --repeating_gear_-CREATE_name|@{name} --repeating_gear_-CREATE_cost|@{cost} --repeating_gear_-CREATE_slot|@{slot} --repeating_gear_-CREATE_special|@{special} --repeating_gear_-CREATE_quantity|@{quantity} --repeating_gear_-CREATE_weight|@{weight} --repeating_gear_-CREATE_description|@{description}" data-i18n-title="ChatSetAttr-t" title="Send item to selected token's sheet with ChatSetAttr API">~</button>
 							<div class="myrow right">
 								<input class="underlined itm" type="text" name="attr_name" spellcheck="false" title="@{repeating_gear_$id_name}" />
 								<button class="myrol pictos" type="roll" name="rollShowGear" value="@{whispertype} &{template:pc} {{smallname=^{gear}: @{name}}} {{type=feat}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{special=@{special}}} {{cost=@{cost}}} {{slot=@{slot}}} {{descflag=1}} {{desc=@{description}}} {{shownotes=[[1]]}} {{notes=^{quantity}:[[@{quantity}]] ^{weight}:[[@{weight_total}]]}}" data-i18n-title="show-chat" title="Show in chat">E</button>
@@ -4640,24 +4647,20 @@
 					<div class="boxed greyed"><span class="pseudoattr" tabindex="0" name="attr_speed_encumbrance" title="@{speed_encumbrance}"></span></div>
 					<span class="lab" data-i18n="max-run">Max Run</span>
 					<div class="boxed greyed"><span class="pseudoattr" title="@{encumbrance_run_factor}">&times;<span name="attr_encumbrance_run_factor"></span></span></div>
-				</div>
-				<div class="myrow topspace">
 					<span class="lab help" data-i18n="check-penalty-u" data-i18n-title="check-penalty" title="Check penalty">Chk. pen.</span>
 					<div class="boxed greyed"><span class="pseudoattr" tabindex="0" name="attr_encumbrance_check_penalty" title="@{encumbrance_check_penalty}"></span></div>
+				</div>
+				<div class="myrow topspace">
 					<span class="lab help" data-i18n="max-dex-bonus-u" data-i18n-title="max-dex-bonus" title="Maximum Dexterity Bonus">Max Dex</span>
 					<div class="boxed greyed"><span class="pseudoattr" tabindex="0" name="attr_encumbrance_ability_maximum" title="@{encumbrance_ability_maximum}"></span></div>
+					<span class="lab help" data-i18n="size-load-multiplier-u" data-i18n-title="size-load-multiplier" title="Load multiplier due to size">Load × (size)</span>
+					<div class="boxed greyed"><span class="pseudoattr" tabindex="0" name="attr_encumbrance_size" title="@{encumbrance_size}"></span></div>
 				</div>
 				<div class="options">
 					<div class="myrow">
-						<span class="lab help" data-i18n-title="strength-value-bonus" title="Strength value bonus">
-							<span data-i18n="strength">Strength</span>&nbsp;<span class="spacer">(+)</span>
-						</span>
-						<div class="boxed">
-							<input class="nospin" name="attr_encumbrance_load_bonus" type="number" value="0" title="@{encumbrance_load_bonus}" />
-						</div>
-						<span class="lab help" data-i18n-title="load-factor" title="Load Factor">
-							<span data-i18n="load-factor-u">Factor</span>&nbsp;<span class="spacer">(&times;)</span>
-						</span>
+						<span class="lab help" data-i18n="strength-value-bonus-u" data-i18n-title="strength-value-bonus" title="Strength value bonus">Strength +</span>
+						<div class="boxed"><input class="nospin" name="attr_encumbrance_load_bonus" type="number" value="0" title="@{encumbrance_load_bonus}" /></div>
+						<span class="lab help" data-i18n="encumbrance-load-multiplier-u" data-i18n-title="encumbrance-load-multiplier" title="Bonus load multiplier">Load × (bonus)</span>
 						<div class="boxed"><input class="nospin" type="number" name="attr_encumbrance_load_multiplier" value="1.0" step="0.01"title="@{encumbrance_load_multiplier}" /></div>
 					</div>
 					<div class="autoex">
@@ -4700,7 +4703,7 @@
 					<div class="feat underlined">
 						<input class="options-flag" name="attr_options-flag" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options" checked="checked"><span>y</span>
 						<button class="myrol" type="roll" name="roll_feat" data-i18n-title="show-feat" title="Show Feat" value="@{whispertype} &{template:pc} {{name=@{name}}} {{type=feat}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{shortdesc=@{descshort}}} {{feattype=^{@{type}}}} {{prerequisites=@{prerequisites}}} {{benefits=@{benefits}}} {{normal=@{normal}}} {{special=@{special}}} @{descflag} {{shownotes=@{rollnotes_traits}}} {{notes=@{notes}}}"><span class="pseudoattr"><span name="attr_name"></span> (<span name="attr_type" data-i18n-dynamic></span>)</span></button>
-						<span name="attr_descshort"></span>
+						<span name="attr_descshort" class="charindent"></span>
 						<div class="options">
 							<input class="fromcompendium" name="attr_fromcompendium" type="hidden" value="" />
 							<button class="myrol" type="compendium" name="attr_fromcompendium" data-i18n-title="open-compendium-item" title="Open Compendium Item"></button>
@@ -4794,8 +4797,7 @@
 							<input type="hidden" class="optional-flag" name="attr_type" value="" />
 							<span class="optional pseudoattr"> (<span name="attr_type_display"></span>)</span>
 						</button>
-						<span class="spacer"></span>
-						<span name="attr_descshort"></span>
+						<span class="charindent" name="attr_descshort"></span>
 						<input type="hidden" class="optional-flag" name="attr_perday_max" value="" />
 						<span class="optional inl">&nbsp;<input type="number" class="nospin xxs" name="attr_perday" value="0" min="0" data-i18n-title="#-used" title="# used" />/<span name="attr_perday_max" data-i18n-title="max-#-per-day" title="Max # per day"></span>&nbsp;<span class="lower" data-i18n="per-day-u">per day</span></span>
 						<input type="hidden" class="optional-flag" name="attr_category" value="" />
@@ -4882,7 +4884,7 @@
 				<input type="hidden" class="optional-flag0" name="attr_caster1_flag" value="0" />
 				<div class="optional blk bordered titled inbox"><!-- CASTER CLASS 1 -->
 					<div class="myrow">
-						<button type="roll" class="myrol" name="RollCaster1Check" value="@{whispertype} &{template:pc} {{name=^{caster-level-check}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{casterclass=@{caster1_class}}} {{level=@{caster1_level}}} {{roll=[[1d20+@{caster1_level}[MOD]+@{rollmod_save}[QUERY]]]}}" data-i18n-title="caster-level-check" title="Caster Level Check">
+						<button type="roll" class="myrol" name="RollCaster1Check" value="@{whispertype} &{template:pc} {{name=^{caster-level-check}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{casterclass=@{caster1_class}}} {{level=@{caster1_level}}} {{roll=[[1d20+@{caster1_level} [Mod]+@{rollmod_save} [Query]]]}}" data-i18n-title="caster-level-check" title="Caster Level Check">
 							<span class="roundblack">1</span>
 							<span class="pseudoattr underlined">
 								<span tabindex="0" name="attr_caster1_class" title="@{caster1_class}"></span>
@@ -4897,7 +4899,7 @@
 						<input class="options-flag" name="attr_options-flag-caster1-concentration" type="checkbox" value="1" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 						<div class="myrow">
 							<button class="myrol" type="roll" name="roll_caster1_concentration_roll" data-i18n-title="concentration-roll" title="Concentration roll" value="@{caster1_concentration_roll}"><span class="lbl" data-i18n="concentration">Concentration</span></button>
-							<input type="hidden" name="attr_caster1_concentration_roll" value="@{whispertype} &{template:pc} {{name=^{concentration}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{casterclass=@{caster1_class}}} {{level=@{caster1_level}}} {{roll=[[1d20+@{caster1_concentration}[MOD]+@{rollmod_save}[QUERY]]]}} {{shownotes=@{rollnotes_save}}} {{notes=@{caster1_concentration_notes}}}" />
+							<input type="hidden" name="attr_caster1_concentration_roll" value="@{whispertype} &{template:pc} {{name=^{concentration}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{casterclass=@{caster1_class}}} {{level=@{caster1_level}}} {{roll=[[1d20+@{caster1_concentration} [Mod]+@{rollmod_save} [Query]]]}} {{shownotes=@{rollnotes_save}}} {{notes=@{caster1_concentration_notes}}}" />
 							<input class="attr-flag" name="attr_caster1_concentration_bonus" type="hidden" value="0" />
 							<span name="attr_caster1_concentration" class="pseudoattr number greyed underlined" title="@{caster1_concentration}"></span>
 							<span class="lab margindent help" data-i18n="temp" data-i18n-title="temp-adjustment" title="Temp Adjustment">Temp</span><input class="nospin underlined tmpval" name="attr_caster1_concentration_bonus" type="number" value="0" title="@{caster1_concentration_bonus}" />
@@ -5025,7 +5027,7 @@
 				<input type="hidden" class="optional-flag0" name="attr_caster2_flag" value="0" />
 				<div class="optional blk bordered inbox toppad"><!-- CASTER CLASS 2 -->
 					<div class="myrow">
-						<button type="roll" class="myrol" name="RollCaster2Check" value="@{whispertype} &{template:pc} {{name=^{caster-level-check}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{casterclass=@{caster2_class}}} {{level=@{caster2_level}}} {{roll=[[1d20+@{caster2_level}[MOD]+@{rollmod_save}[QUERY]]]}}" data-i18n-title="caster-level-check" title="Caster Level Check">
+						<button type="roll" class="myrol" name="RollCaster2Check" value="@{whispertype} &{template:pc} {{name=^{caster-level-check}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{casterclass=@{caster2_class}}} {{level=@{caster2_level}}} {{roll=[[1d20+@{caster2_level} [Mod]+@{rollmod_save} [Query]]]}}" data-i18n-title="caster-level-check" title="Caster Level Check">
 							<span class="roundblack">2</span>
 							<span class="pseudoattr underlined">
 								<span tabindex="0" name="attr_caster2_class" title="@{caster2_class}"></span>
@@ -5039,7 +5041,7 @@
 						<input class="options-flag" name="attr_options-flag-caster2-concentration" type="checkbox" value="1" data-i18n-title="show-hide-options" title="Show/hide options"><span>y</span>
 						<div class="myrow">
 							<button class="myrol" type="roll" name="roll_caster2_concentration_roll" data-i18n-title="concentration-roll" title="Concentration roll" value="@{caster2_concentration_roll}"><span class="lbl" data-i18n="concentration">Concentration</span></button>
-							<input type="hidden" name="attr_caster2_concentration_roll" value="@{whispertype} &{template:pc} {{name=^{concentration}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{casterclass=@{caster2_class}}} {{level=@{caster2_level}}} {{roll=[[1d20+@{caster2_concentration}[MOD]+@{rollmod_save}[QUERY]]]}} {{shownotes=@{rollnotes_save}}} {{notes=@{caster2_concentration_notes}}}" />
+							<input type="hidden" name="attr_caster2_concentration_roll" value="@{whispertype} &{template:pc} {{name=^{concentration}}} {{type=save}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{casterclass=@{caster2_class}}} {{level=@{caster2_level}}} {{roll=[[1d20+@{caster2_concentration} [Mod]+@{rollmod_save} [Query]]]}} {{shownotes=@{rollnotes_save}}} {{notes=@{caster2_concentration_notes}}}" />
 							<input class="attr-flag" name="attr_caster2_concentration_bonus" type="hidden" value="0" />
 							<span name="attr_caster2_concentration" class="pseudoattr number greyed underlined" title="@{caster2_concentration}"></span>
 							<span class="lab margindent help" data-i18n="temp" data-i18n-title="temp-adjustment" title="Temp Adjustment">Temp</span><input class="nospin underlined tmpval" name="attr_caster2_concentration_bonus" type="number" value="0" title="@{caster2_concentration_bonus}" />
@@ -5201,7 +5203,7 @@
 					<fieldset class="repeating_spell-0"><!-- REPEATING 0 LVL SPELL -->
 						<input type="hidden" name="attr_spelllevel" value="0" />
 						<input type="hidden" name="attr_rollconcentration" />
-						<button type="roll" name="roll_concentration" style="display: none;" value="@{rollconcentration}"></button>
+						<button type="roll" name="roll_concentration" class="hidden" value="@{rollconcentration}"></button>
 						<div class="spell">
 							<input class="options-flag" name="attr_options-flag" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options" checked="checked"><span>y</span>
 							<div>
@@ -5414,7 +5416,7 @@
 					<fieldset class="repeating_spell-1"><!-- REPEATING LVL 1 SPELL -->
 						<input type="hidden" name="attr_spelllevel" value="1" />
 						<input type="hidden" name="attr_rollconcentration" />
-						<button type="roll" name="roll_concentration" style="display: none;" value="@{rollconcentration}"></button>
+						<button type="roll" name="roll_concentration" class="hidden" value="@{rollconcentration}"></button>
 						<input type="hidden" name="attr_rollcontent" />
 						<div class="spell">
 							<input class="options-flag" name="attr_options-flag" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options" checked="checked"><span>y</span>
@@ -5644,7 +5646,7 @@
 					<fieldset class="repeating_spell-2"><!-- REPEATING LVL 2 SPELL -->
 						<input type="hidden" name="attr_spelllevel" value="2" />
 						<input type="hidden" name="attr_rollconcentration" />
-						<button type="roll" name="roll_concentration" style="display: none;" value="@{rollconcentration}"></button>
+						<button type="roll" name="roll_concentration" class="hidden" value="@{rollconcentration}"></button>
 						<input type="hidden" name="attr_rollcontent" />
 						<div class="spell">
 							<input class="options-flag" name="attr_options-flag" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options" checked="checked"><span>y</span>
@@ -5870,7 +5872,7 @@
 					<fieldset class="repeating_spell-3"><!-- REPEATING LVL 3 SPELL -->
 						<input type="hidden" name="attr_spelllevel" value="3" />
 						<input type="hidden" name="attr_rollconcentration" />
-						<button type="roll" name="roll_concentration" style="display: none;" value="@{rollconcentration}"></button>
+						<button type="roll" name="roll_concentration" class="hidden" value="@{rollconcentration}"></button>
 						<input type="hidden" name="attr_rollcontent" />
 						<div class="spell">
 							<input class="options-flag" name="attr_options-flag" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options" checked="checked"><span>y</span>
@@ -6100,7 +6102,7 @@
 					<fieldset class="repeating_spell-4"><!-- REPEATING LVL 4 SPELL -->
 						<input type="hidden" name="attr_spelllevel" value="4" />
 						<input type="hidden" name="attr_rollconcentration" />
-						<button type="roll" name="roll_concentration" style="display: none;" value="@{rollconcentration}"></button>
+						<button type="roll" name="roll_concentration" class="hidden" value="@{rollconcentration}"></button>
 						<input type="hidden" name="attr_rollcontent" />
 						<div class="spell">
 							<input class="options-flag" name="attr_options-flag" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options" checked="checked"><span>y</span>
@@ -6326,7 +6328,7 @@
 					<fieldset class="repeating_spell-5"><!-- REPEATING LVL 5 SPELL -->
 						<input type="hidden" name="attr_spelllevel" value="5" />
 						<input type="hidden" name="attr_rollconcentration" />
-						<button type="roll" name="roll_concentration" style="display: none;" value="@{rollconcentration}"></button>
+						<button type="roll" name="roll_concentration" class="hidden" value="@{rollconcentration}"></button>
 						<input type="hidden" name="attr_rollcontent" />
 						<div class="spell">
 							<input class="options-flag" name="attr_options-flag" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options" checked="checked"><span>y</span>
@@ -6556,7 +6558,7 @@
 					<fieldset class="repeating_spell-6"><!-- REPEATING LVL 6 SPELL -->
 						<input type="hidden" name="attr_spelllevel" value="6" />
 						<input type="hidden" name="attr_rollconcentration" />
-						<button type="roll" name="roll_concentration" style="display: none;" value="@{rollconcentration}"></button>
+						<button type="roll" name="roll_concentration" class="hidden" value="@{rollconcentration}"></button>
 						<input type="hidden" name="attr_rollcontent" />
 						<div class="spell">
 							<input class="options-flag" name="attr_options-flag" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options" checked="checked"><span>y</span>
@@ -6782,7 +6784,7 @@
 					<fieldset class="repeating_spell-7"><!-- REPEATING LVL 7 SPELL -->
 						<input type="hidden" name="attr_spelllevel" value="7" />
 						<input type="hidden" name="attr_rollconcentration" />
-						<button type="roll" name="roll_concentration" style="display: none;" value="@{rollconcentration}"></button>
+						<button type="roll" name="roll_concentration" class="hidden" value="@{rollconcentration}"></button>
 						<input type="hidden" name="attr_rollcontent" />
 						<div class="spell">
 							<input class="options-flag" name="attr_options-flag" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options" checked="checked"><span>y</span>
@@ -7012,7 +7014,7 @@
 					<fieldset class="repeating_spell-8"><!-- REPEATING LVL 8 SPELL -->
 						<input type="hidden" name="attr_spelllevel" value="8" />
 						<input type="hidden" name="attr_rollconcentration" />
-						<button type="roll" name="roll_concentration" style="display: none;" value="@{rollconcentration}"></button>
+						<button type="roll" name="roll_concentration" class="hidden" value="@{rollconcentration}"></button>
 						<input type="hidden" name="attr_rollcontent" />
 						<div class="spell">
 							<input class="options-flag" name="attr_options-flag" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options" checked="checked"><span>y</span>
@@ -7238,7 +7240,7 @@
 					<fieldset class="repeating_spell-9"><!-- REPEATING LVL 9 SPELL -->
 						<input type="hidden" name="attr_spelllevel" value="9" />
 						<input type="hidden" name="attr_rollconcentration" />
-						<button type="roll" name="roll_concentration" style="display: none;" value="@{rollconcentration}"></button>
+						<button type="roll" name="roll_concentration" class="hidden" value="@{rollconcentration}"></button>
 						<input type="hidden" name="attr_rollcontent" />
 						<div class="spell">
 							<input class="options-flag" name="attr_options-flag" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options" checked="checked"><span>y</span>
@@ -7952,16 +7954,16 @@
 					<span class="big only" data-i18n="speed">Speed</span>
 				</div>
 				<div class="bordered titled inbox">
-					<input type="hidden" name="attr_speed_unit" value="sq" />
+					<input type="hidden" name="attr_speed_unit" value="ft" />
 					<span data-i18n="speed-unit">Speed unit</span>
 					<select class="underlined charindent" name="attr_speed_unit_select" title="@{speed_unit_select}">
 						<option value="sq" data-i18n="sq-lp">Squares</option>
-						<option value="ft" data-i18n="ft-lp">Feet</option>
+						<option value="ft" data-i18n="ft-lp" selected="selected">Feet</option>
 						<option value="m" data-i18n="m-lp">Meters</option>
 					</select>
 					<div class="myrow">
 						<span data-i18n="base-speed-t">Base Land Speed</span>
-						<input class="nospin underlined charindent" name="attr_speed_race" type="number" value="6" title="@{speed_race}" />
+						<input class="nospin underlined charindent" name="attr_speed_race" type="number" value="30" title="@{speed_race}" />
 						<span class="charindent" name="attr_speed_unit_long" data-i18n-dynamic></span>
 					</div>
 					<div class="myrow">
@@ -8151,7 +8153,7 @@
 							</label>
 						</div>
 						<div class="myrow margindent">
-							<div style="display: none;" data-i18n-list-item="craft-rep"></div>
+							<div class="hidden" data-i18n-list-item="craft-rep"></div>
 						</div>
 						<div class="myrow margindent">
 							<label class="labelcheck" data-i18n-list-item="diplomacy">
@@ -8286,7 +8288,7 @@
 							</label>
 						</div>
 						<div class="myrow margindent">
-							<div style="display: none;" data-i18n-list-item="perform-rep"></div>
+							<div class="hidden" data-i18n-list-item="perform-rep"></div>
 						</div>
 						<div class="myrow margindent">
 							<label class="labelcheck" data-i18n-list-item="profession">
@@ -8295,7 +8297,7 @@
 							</label>
 						</div>
 						<div class="myrow margindent">
-							<div style="display: none;" data-i18n-list-item="profession-rep"></div>
+							<div class="hidden" data-i18n-list-item="profession-rep"></div>
 						</div>
 						<div class="myrow margindent">
 							<label class="labelcheck" data-i18n-list-item="ride">
@@ -8346,7 +8348,7 @@
 							</label>
 						</div>
 						<div class="myrow margindent">
-							<div style="display: none;" data-i18n-list-item="custom-rep"></div>
+							<div class="hidden" data-i18n-list-item="custom-rep"></div>
 						</div>
 					</div>
 				</div>
@@ -8491,12 +8493,12 @@
 			</div>
 			<div class="bordered titled inbox">
 				<label class="labelcheck">
-					<input type="checkbox" name="attr_show_charsetattr" />
-					<span data-i18n="show-charsetattr">Show CharSetAttr API buttons</span>
+					<input type="checkbox" name="attr_show_ChatSetAttr" />
+					<span data-i18n="show-ChatSetAttr">Show ChatSetAttr API buttons</span>
 				</label>
 			</div><!-- END API -->
 
-			<div class="blacklabel padlrt"><!-- CHARMANCER -->
+			<div class="blacklabel pinbox  padlrt"><!-- CHARMANCER -->
 				<span class="plft"></span><span class="prgt"></span>
 				<span class="big only">Charactermancer</span>
 			</div>
@@ -8519,112 +8521,10 @@
 				<span data-i18n="version">Version</span>
 				<span class="charindent" name="attr_version"></span>
 				<span class="charindent" name="attr_build"></span>
+				<span class="charindent" name="attr_build_version"></span>
 			</div>
 		</div><!-- END MISC, ROLLS, API and MANCER -->
 
 	</div><!-- END TAB CONFIGURATION -->
 
 </div><!-- END PC SHEET -->
-
-<!-- LICENCE -->
-<span class="licence">&copy; 2018. Pathfinder, their respective logos, the Paizo golem, all Paizo titles, the Pathfinder Roleplaying Game rules, and Paizo’s character names and distinctive likenesses are property and copyright of Paizo, Inc. in the United States and other countries.</span>
-
-<!-- HIDDEN ATTRIBUTES -->
-<div style="display: none;">
-	<input type="hidden" name="none_mod" value="0" />
-	<input type="hidden" name="cd_bar1_v" value="hp_max" />
-	<input type="hidden" name="cd_bar1_m" value="hp_max" />
-	<input type="hidden" name="cd_bar1_l" value="" />
-	<input type="hidden" name="cd_bar2_v" value="" />
-	<input type="hidden" name="cd_bar2_m" value="" />
-	<input type="hidden" name="cd_bar2_l" value="" />
-	<input type="hidden" name="cd_bar3_v" value="" />
-	<input type="hidden" name="cd_bar3_m" value="" />
-	<input type="hidden" name="cd_bar3_l" value="ac" />
-	<input type="hidden" name="attr_ask_modifier" value="Modifier" />
-	<input type="hidden" name="attr_ask_atk_modifier" value="Attack Modifier" />
-	<input type="hidden" name="attr_ask_dmg_modifier" value="Damage Modifier" />
-	<input type="hidden" name="attr_ask_whisper" value="Whisper?" />
-	<input type="hidden" name="attr_ask_public_roll" value="Public Roll" />
-	<input type="hidden" name="attr_ask_whisper_roll" value="Whisper Roll" />
-	<input type="hidden" name="attr_conditions_display" value="" />
-	<input type="hidden" name="attr_skill_condition_note" value="" />
-	<input type="hidden" name="attr_perception_condition_note" value="" />
-	<input type="hidden" name="attr_attack_condition_note" value="" />
-	<input type="hidden" name="attr_cmb_condition_note" value="" />
-	<input type="hidden" name="attr_damage_condition_note" value="" />
-	<input type="hidden" name="attr_spell_condition_note" value="" />
-	<input type="hidden" name="attr_speed_condition_multiplier" value="1" />
-	<input type="hidden" name="attr_speed_condition_nospeed" value="0" />
-	<input type="hidden" name="attr_l1mancer_status" value="" />
-</div>
-
-<!-- HIDDEN TRANSLATION TEXT -->
-<div style="display: none;">
-	<span data-i18n="combat-maneuver">Combat Maneuver</span>
-	<span data-i18n="light-load">Light load</span>
-	<span data-i18n="medium-load">Medium load</span>
-	<span data-i18n="heavy-load">Heavy load</span>
-	<span data-i18n="over-load">Overload</span>
-	<span data-i18n="success">Success</span>
-	<span data-i18n="failure">Failure</span>
-	<span data-i18n="caster-level">Caster Level</span>
-	<span data-i18n="ask-modifier">Modifier</span>
-	<span data-i18n="ask-atk-modifier">Attack Modifier</span>
-	<span data-i18n="ask-dmg-modifier">Damage Modifier</span>
-	<span data-i18n="ask-whisper">Whisper?</span>
-	<span data-i18n="ask-public-roll">Public Roll</span>
-	<span data-i18n="ask-whisper-roll">Whisper Roll</span>
-	<span data-i18n="bonus-dice">Bonus Dice</span>
-	<span data-i18n="mod">Mod</span>
-	<span data-i18n="#1">#1</span>
-	<span data-i18n="#2">#2</span>
-	<span data-i18n="#3">#3</span>
-	<span data-i18n="#4">#4</span>
-	<span data-i18n="#5">#5</span>
-	<span data-i18n="#6">#6</span>
-	<span data-i18n="#7">#7</span>
-	<span data-i18n="#8">#8</span>
-	<span data-i18n="#9">#9</span>
-	<span data-i18n="blinded-skills">Blinded: –4 penalty on most STR and DEX based skill checks.</span>
-	<span data-i18n="blinded-perception">Blinded: –4 penalty on opposed Perception skill checks.</span>
-	<span data-i18n="dazzled-perception">Dazzled: –1 penalty on sight-based Perception checks.</span>
-	<span data-i18n="deafened-perception">Deafened: automatically fails Perception checks based on sound, takes a –4 penalty on opposed Perception checks.</span>
-	<span data-i18n="deafened-spell">Deafened: 20% chance of spell failure when casting spells with verbal components.</span>
-	<span data-i18n="fascinated-skills">Fascinated: –4 penalty on skill checks made as reactions, such as Perception checks.</span>
-	<span data-i18n="grappled-cmb">Grappled: –2 penalty on all combat maneuver checks, except those made to grapple or escape a grapple.</span>
-	<span data-i18n="invisible-attack">Invisible: +2 bonus on attack rolls against sighted opponents, and ignores its opponents' Dexterity bonuses to AC (if any).</span>
-	<span data-i18n="prone-defender">Prone defender: +4 bonus to AC against ranged attacks, –4 penalty to AC against melee attacks.</span>
-	<span data-i18n="prone-attacker">Prone attacker: –4 penalty on melee attack rolls and cannot use a ranged weapon (except for a crossbow).</span>
-	<span data-i18n="sickened-damage">Sickened: –2 penalty on weapon damage rolls.</span>
-	<span data-i18n="attack">Attack</span>
-	<span data-i18n="crit-confirm">Crit confirm</span>
-	<span data-i18n="critical-damage">Critical damage</span>
-	<span data-i18n="damage2">Damage2</span>
-</div>
-
-<!-- MANCER CONFIRM -->
-<div class="mancer_confirm">
-	<span data-i18n="do_you_want_mancer">How do you want to create this character?</span>
-	<button type="action" class="myrol" name="act_mancer_confirm" data-i18n="mancer-confirm-yes">Use the Charactermancer</button>
-	<button type="action" class="myrol" name="act_mancer_npc" data-i18n="npc-new">Create an NPC</button>
-	<button type="action" class="myrol" name="act_mancer_cancel" data-i18n="edit-sheet">Edit sheet directly</button>
-</div>
-
-<!-- NPC CONFIRM -->
-<div class="npc_confirm">
-	<span data-i18n="confirm_npc">Are you sure you want to turn this character into an NPC?</span>
-	<span data-i18n="erase_data_character">This will erase all data from the character.</span>
-	<button type="action" class="myrol" name="act_npc_confirm" data-i18n="npc-new">Create an NPC</button>
-	<button type="action" class="myrol" name="act_npc_cancel" data-i18n="cancel">Cancel</button>
-</div>
-
-<!-- INITIALIZE CHARACTER -->
-<div class="initialize_character">
-	<span data-i18n="initializing_character">INITIALIZING CHARACTER...</span>
-</div>
-
-<!-- COMPENDIUM -->
-<div class="compendium_warning"><!-- Warning -->
-	<span data-i18n="accepting-drop-u">ACCEPTING DROP FROM COMPENDIUM</span>
-</div>

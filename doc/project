@@ -7,9 +7,6 @@
 	Based upon Pathfinder Official by Roll20 by Natha [https://github.com/Roll20/roll20-character-sheets/tree/master/Pathfinder%20by%20Roll20]
 	Version 1.303
 
-	Start  - 2020-08-11
-	Beta 1 - 2020-09-06
-
 ================================================================================
 --------------------------------------------------------------------------------
 # Regexp
@@ -25,15 +22,19 @@
 ================================================================================
 
 	on("clicked:") => only button, not repeating items
+	on("sheet:opened") => played at script startup once for ALL character sheets
 
 	data-i18n-dynamic => get select value translated
 	data-i18n-list="translation-key" + data-i18n-list-item="array-value" => sort item alphabetically
 
-	NOTE : PC sheet width => 850px
-	NOTE : NPC sheet width => 600px
-	NOTE : btn ui-draggable => put to the macro bar
-	NOTE : base line-height = 22 px ; small lines = 18px
-	NOTE : compendium not up to date => gearitem => notes + attr_strength_oneandahalf_mod (and such)
+	PC sheet width => 850px
+	NPC sheet width => 600px
+	btn .ui-draggable => put to the macro bar
+	base line-height = 22 px ; small lines = 18px
+	.optional-flag => next element will be hidden if input value is ""
+	.optional-flag0 => next element will be hidden if input value is "0"
+
+	PFR compendium not up to date => gearitem => notes + attr_strength_oneandahalf_mod (and such)
 
 ================================================================================
 --------------------------------------------------------------------------------
@@ -41,13 +42,15 @@
 --------------------------------------------------------------------------------
 ================================================================================
 
-# npc ranged miss =>  @{repeating_npcatk-ranged_$id_}
-	@{repeating_npcatk-ranged_$id_atkname}
-	@{repeating_npcatk-melee_$id_atkmod}
-	@{repeating_npcatk-melee_$id_atkcritrange}
-	@{repeating_npcatk-melee_$id_atkmod2}
-	@{repeating_npcatk-melee_$id_multipleatk_flag}
-> no change for now due to Compendium drop feature
+	BUG : npc ranged miss =>  @{repeating_npcatk-ranged_$id_}
+	> @{repeating_npcatk-ranged_$id_atkname}
+	> @{repeating_npcatk-melee_$id_atkmod}
+	> @{repeating_npcatk-melee_$id_atkcritrange}
+	> @{repeating_npcatk-melee_$id_atkmod2}
+	> @{repeating_npcatk-melee_$id_multipleatk_flag}
+	> no change for now due to Compendium drop feature
+
+	BUG : fix empty box issue (e.g. senses roll) [initial bug]
 
 ================================================================================
 --------------------------------------------------------------------------------
@@ -57,15 +60,18 @@
 
 	TODO : Global format HTML syntax => class="", name="", type=""
 	TODO : Add list-item for conditions + npc skills + skill option
-	TODO : Fix 'tabindex="0"' (remove from pseudoattr?)
-	TODO : Fix templates CSS classes (like overlapping boxes)
 	TODO : Remove blank grey under AC in chat log ('condition' line in template)
 	TODO : Rename class .npcatk
-	TODO : Rename .fullpc and .statblock
-	TODO : Rename .myrow and .myrol
 	TODO : Replace background by background-color when possible
+	TODO : Add icon on speed if armor or encumbrance reduces it
+	TODO : Put Wealth before Experience
+	TODO : Move up Category field in Traits (after Type and before Short Desc.)
 	TODO : Track and remove !important in CSS
 	TODO : Translate Mod = Mod. ; Temp = Temp. ; Condition = État préj. ; Query = Demande in rolls
+~ TODO : Fix templates CSS classes (like overlapping boxes)
+? TODO : Fix 'tabindex="0"' (remove from pseudoattr?)
+! TODO : Rename .fullpc and .statblock
+! TODO : Rename .myrow and .myrol
 
 ================================================================================
 --------------------------------------------------------------------------------
@@ -81,6 +87,8 @@
 	ENH : Spend spell use on click (like ammo)
 	ENH : Add choice list for Attack Type / Category / Damage Type
 	ENH : Add option to change kg to lbs and vice versa ; eventually the change can affect ALL objets weight
+	ENH : Add feedback to ammo spent
+	ENH : Add box to spend money without having to substract from total
 
 ================================================================================
 --------------------------------------------------------------------------------
@@ -94,3 +102,10 @@
 	IDEA : ALL input text/number are underlined ... set it by default ?
 	IDEA : ALMOST ALL of input number are nospin... set it by default and add class spin ?
 	IDEA : Find a way to put acvalues, saves, babandsr, combatmaneuvers and attackmods options out in order to have options-flag hover only on proper box
+	IDEA : Split 'Languages' into 'Race' + 'Bonus'
+	IDEA : Spit 'Abilities/Traits' into 'Race [Traits]' & 'Class [Abilities]' + Move Feats under ? => <Traits raciaux, Aptitudes de classe, Dons>
+	IDEA : Add weight to 'Other Wealth'
+	IDEA : Add race attribute and box to skills
+~ IDEA : Remove Charmancer feature => Deactivated on sheet open for now
+? IDEA : Hilight skills => if value > 0 then color ; unlite trained skill if rank = 0
+? IDEA : Set feats description unchecked by default

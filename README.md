@@ -1,26 +1,30 @@
   ## PFR Sheet FR (Unofficial)
 
-  Enhanced Pathfinder RPG French character sheet for Roll20
+  Unofficial Pathfinder RPG French character sheet for Roll20
   Based upon [Pathfinder Official by Roll20](https://github.com/Roll20/roll20-character-sheets/tree/master/Pathfinder%20by%20Roll20) by [Natha](https://app.roll20.net/users/75857/natha)
   Version 1.303
 
   ### Status
 
-  * pending 2020-09-07
+  * building 2020-09-15
 
   ### Milestone
 
   * beta
 
+  ### Lastest
+
+  * 1.1
+
   ### Features
 
-  * French translation enchancements (alphabetical orders for saves, conditions and NPC skills)
+  * French translation fixes (alphabetical orders for saves, conditions and NPC skills)
   * Visual enchancements (background and hover colors, full CSS decoration, aligned elements, bigger tabs, less punctuation)
-  * Edit mode toggler (show/hide repeating item contollers)
-  * Speed unit switcher (squares, feet and meters)
+  * Edit mode switch (show/hide repeating item contollers)
+  * Speed unit changer (squares, feet and meters)
   * Armor land speed and run factor toggler
-  * Give item feature ([CharSetAttr](https://github.com/Roll20/roll20-api-scripts/blob/master/ChatSetAttr/README.md) API)
-  * Use ammo feature ([CharSetAttr](https://github.com/Roll20/roll20-api-scripts/blob/master/ChatSetAttr/README.md) API)
+  * Use ammo feature ([ChatSetAttr](https://github.com/Roll20/roll20-api-scripts/blob/master/ChatSetAttr/README.md) API)
+  * Give item feature ([ChatSetAttr](https://github.com/Roll20/roll20-api-scripts/blob/master/ChatSetAttr/README.md) API)
 
   ### Note
 

@@ -4,8 +4,6 @@
 	// # COMMON
 	// ===========================================================================
 
-	"accepting-drop-u" : "PEUT RECEVOIR UN GLISSER-DÉPOSER DU COMPENDIUM",
-
 	// Show/Hide
 	"open-compendium-item" : "Ouvrir le Compendium",
 	"show-hide-options" : "Afficher/Masquer les options",
@@ -170,7 +168,7 @@
 	"space-ph" : "2 cases (3 m)",
 	"reach-ph" : "2 cases (3 m)",
 	"special-attacks-notes-ph" : "Notes sur les attaques spéciales …",
-	"spell-abilities-notes-ph" : "Notes sur les capacités spéciales …",
+	"special-abilities-notes-ph" : "Notes sur les capacités spéciales …",
 	"tactics-before-ph" : "Boit sa potion de peau d’écorce et se met à l’abri derrière …",
 	"tactics-during-ph" : "Attaque l’ennemi le plus proche au corps à corps et …",
 	"tactics-morale-ph" : "Fuit dès que ses points de vie sont réduits à …",
@@ -264,7 +262,7 @@
 
 	// Attacks Placeholders
 	"wpn-cat-ph" : "Arme à une main",
-	"wpn-type-ph" : "Armes de guerre",
+	"wpn-type-ph" : "Arme de guerre",
 	"range-ph" : "2 cases (3 m)",
 	"dmgtype-ph" : "tranchants",
 
@@ -400,13 +398,10 @@
 	"query-modifier" : "Demander un modificateur pour",
 	"reset-to-pc" : "RàZ en PJ",
 	"reset-to-pc-t" : "Effacer la feuille pour créer un personnage joueur",
-	"erase_data_character" : "Cette action effacera toutes les données du personnage.",
 
 	// ===========================================================================
 	// # PC SHEET
 	// ===========================================================================
-
-	"initializing_character" : "INITIALISATION DU PERSONNAGE …",
 
 	// Buffs & Conditions
 	"show-hide-conditions-buffs" : "Afficher/masquer les états préjudiciables et les buffs",
@@ -617,7 +612,7 @@
 	"ranged-dmg" : "Dég. distance",
 	"temp-adjustment" : "Modificateurs temporaires",
 	"use-ammo" : "Utiliser munitions",
-	"use-ammo-t" : "Retire les munitions de l’attaque primaire (API CharSetAttr)",
+	"use-ammo-t" : "Retire les munitions de l’attaque primaire (API ChatSetAttr)",
 
 	// Speed
 	"spd" : "VD",
@@ -762,9 +757,12 @@
 	"check-penalty" : "Pénalité aux tests de compétence",
 	"max-dex-bonus-u" : "Dex max.",
 	"max-dex-bonus" : "Bonus de Dextérité maximal",
+	"size-load-multiplier-u" : "Charge × (taille)",
+	"size-load-multiplier" : "Multiplicateur de charge dû à la taille",
+	"strength-value-bonus-u" : "Force + (bonus)",
 	"strength-value-bonus" : "Bonus à la valeur de Force",
-	"load-factor-u" : "Facteur",
-	"load-factor" : "Facteur de charge",
+	"encumbrance-load-multiplier-u" : "Charge × (bonus)",
+	"encumbrance-load-multiplier" : "Multiplicateur de charge bonus",
 
 	// Feats & Traits & Background
 	"features-traits-title" : "Aptitudes et traits",
@@ -856,7 +854,6 @@
 	"relaunch-lvl1mancer" : "Lancer le Charactermancer niveau 1",
 	"reset-to-npc" : "RàZ en PNJ",
 	"reset-to-npc-t" : "Effacer la feuille pour créer un personnage non joueur ou un monstre",
-	"confirm_npc" : "Êtes-vous sûr de vouloir transformer ce personnage en PNJ ?",
 
 	// Edit Mode
 	"edit-mode" : "Mode Édition",
@@ -864,8 +861,8 @@
 
 	// API
 	"api" : "API",
-	"show-charsetattr" : "Voir les boutons de l’API CharSetAttr",
-	"charsetattr-t" : "Envoyer l’objet vers la feuille de personnage du pion sélectionné avec l’API CharSetAttr",
+	"show-ChatSetAttr" : "Voir les boutons de l’API ChatSetAttr",
+	"ChatSetAttr-t" : "Envoyer l’objet vers la feuille de personnage du pion sélectionné avec l’API ChatSetAttr",
 
 	// ===========================================================================
 	// # CHARMANCER
@@ -885,10 +882,6 @@
 
 	// Mancer Start
 	"charmancer-welcome" : "Bienvenue sur le générateur officiel de personnage pour Pathfinder de Roll20.",
-	"do_you_want_mancer" : "Comment voulez-vous créer ce personnage ?",
-	"mancer-confirm-yes" : "Utiliser le Charactermancer",
-	"edit-sheet" : "Modifier la feuille directement",
-	"npc-new" : "Créer un PNJ",
 	"mancer-cancel-question" : "Quel est le chemin à suivre, Aventurier ?",
 	"mancer-warning" : "Annuler et Quitter entraînera la perte de tous les choix.",
 	"start" : "Départ",
@@ -994,6 +987,32 @@
 	"ask-public-roll" : "Jet publique",
 	"ask-whisper" : "Murmurer au MJ",
 	"ask-whisper-roll" : "Murmurer le jet",
+
+	// ===========================================================================
+	// # MODALS
+	// ===========================================================================
+
+	// Initialize
+	"initializing-character" : "INITIALISATION DU PERSONNAGE …",
+
+	// Compendium
+	"accepting-drop-u" : "PEUT RECEVOIR UN GLISSER-DÉPOSER DU COMPENDIUM",
+
+	// Mancer Confirm
+	"do-you-want-mancer" : "Comment voulez-vous créer ce personnage ?",
+	"mancer-confirm-yes" : "Utiliser le Charactermancer",
+	"npc-new" : "Créer un PNJ",
+	"edit-sheet" : "Modifier la feuille directement",
+
+	// NPC Confirm
+	"confirm-npc" : "Êtes-vous sûr de vouloir transformer ce personnage en PNJ ?",
+	"erase-character-data" : "Cette action effacera toutes les données du personnage.",
+
+	// Migrate Confirm
+	"migrate-sheet" : "Migrer la feuille de personnage depuis la feuille officielle ?",
+	"migrate-warning" : "Attention ! Cette action est irréversible !",
+	"migrate-proceed" : "Procéder à la migration",
+	"migrate-cancel" : "Annuler la migration",
 
 	// ===========================================================================
 	// # ORDERED LISTS
