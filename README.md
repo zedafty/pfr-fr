@@ -12,7 +12,7 @@
 
   * beta
 
-  ### Lastest
+  ### Latest
 
   * 1.1
 
