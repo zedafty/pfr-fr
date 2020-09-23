@@ -1,0 +1,4810 @@
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # SASS Variables
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+// Translation
+$tra-required: "* Requis" // default: "* Required"
+$tra-mp: "pm" // default: "mp"
+$tra-speciality-sup: "S" // default: "S"
+$tra-opposition-sup: "O" // default: "O"
+
+// Colors
+$cl-icon: gray // default: gray
+$cl-icon-hover: rgb(200,120,64) // default: rgb(200,120,64) ~= peru
+$cl-icon-buff: royalblue // default: royalblue
+$cl-icon-buff-black: powderblue // default: powderblue
+$cl-icon-condition: pink // default: pink
+$cl-icon-penalty: sienna // default: sienna
+$cl-focus: rgb(240,128,64) // default: rgb(240,128,64) ~= darkorange
+$cl-hover: crimson // default: crimson
+$cl-checked: crimson // default: crimson
+$cl-warning: crimson // default: crimson
+$cl-warning-lite: orangered // default: orangered
+$cl-warning-deep: firebrick // default: firebrick
+$cl-warning-dark: darkred // default: darkred
+$cl-caution: orange // default: orange
+$cl-caution-deep: darkorange // default: darkorange
+
+// Text
+$txt-white: #fff // default: #fff = white
+$txt-black: #321 // default: #321
+$txt-swart: #000 // default: #000 = black
+$txt-input: #321 // default: #321
+$txt-deep: #bbb // default: #bbb ~= darkgray
+$txt-dull: #876 // default: #876
+$txt-dark: rgb(102,76,52) // default: #666 ~= dimgray
+$txt-condition: rgb(192,64,64) // default: rgb(192,64,64)
+$txt-disabled: rgba(80,64,64,.9) // default: rgba(80,64,64,.9)
+$txt-selection: rgba(255,255,255,.9) // default: rgba(255,255,255,.9) ~= white
+
+// Borders
+$brd-black: #321 // default: #321
+$brd-lite: #eee // default: #eee ~= gainsboro
+$brd-pale: #ddd // default: #ddd
+$brd-dull: #876 // default: #876
+$brd-dark: rgb(102,76,52) // default: #666 ~= dimgray
+$brd-options: rgba(200,120,64,.75) // default: rgb(200,120,64,.75) ~= peru
+
+// Backgrounds
+$bg-white: #fff // default: #fff = white
+$bg-black: #321 // default: #321
+$bg-box: rgb(246,246,246) // default: rgb(246,246,246)
+$bg-options: rgb(248,248,240) // default: rgb(248,248,240)
+$bg-lite: #eee // default: #eee ~= gainsboro
+$bg-pale: #ddd // default: #ddd ~= lightgrey
+$bg-fair: #ccc // default: #ccc ~= silver
+$bg-deep: #bbb // default: #bbb ~= darkgray
+$bg-dull: #876 // default: #876
+$bg-dark: rgb(102,76,52) // default: rgb(102,76,52)
+$bg-dusk: rgb(64,48,32) // default: rgb(64,48,32)
+$bg-selection: rgba(255,128,0,.75) // default: rgba(255,128,0,.75) ~= darkorange
+
+// Inputs
+$bg-input: #fff // default: #fff = white
+$bg-input-focus: rgb(255,216,112) // default: rgb(255,216,112)
+$bg-input-hover: rgba(232,224,144,.5) // default: rgba(232,224,144,.5)
+$bg-ctrl-move: rgba(255,255,0,.9) // default: rgba(255,255,0,.9) ~= yellow
+$bg-greyed: rgba(112,104,96,.125) // default: rgba(112,104,96,.125)
+$bg-greyed-inbox: rgba(112,104,96,.125) // default: rgba(112,104,96,.125)
+$bg-greyed-hover: rgba(112,104,96,.125) // default: rgba(112,104,96,.125)
+$bg-tmpval: rgba(96,160,192,.125) // default: rgba(96,160,192,.125)
+$bg-tmpval-inbox: rgba(96,160,192,.25) // default: rgba(96,160,192,.25)
+
+// Points
+$cl-hp: #c33 // hits points */ /* default: #c33
+$cl-mp: #69c // magic points */ /* default: #69c
+$cl-nld: #966 // non letal damage */ /* default: #966
+$bg-points: rgb(32,32,32) // default: rgb(32,32,32)
+$bg-points-hover: rgb(244,240,200) // default: rgb(244,240,200)
+$bg-points-fixed: rgb(224,224,220) // default: rgb(224,224,220)
+$cl-skill-rank: rgba(144,232,160,.25) // default: rgba(144,232,160,.25)
+
+// Shadows
+$cl-shadow: rgba(128,128,128,.25) // default: rgba(128,128,128,.25)
+$cl-shadow-lite: rgba(128,128,128,.125) // default: rgba(128,128,128,.125)
+$cl-shadow-deep: rgba(128,128,128,.5) // default: rgba(128,128,128,.5)
+$cl-shadow-red: rgba(128,0,0,.125) // default: rgba(96,0,32,.0625)
+
+// Box Shadow
+$box-shadow: 4px 4px 4px $cl-shadow-lite // default: 4px 4px 4px $cl-shadow-lite
+$bar-shadow: 0 2px 4px $cl-shadow // default: 0 2px 4px $cl-shadow
+$btn-shadow: 1px 1px 0 $cl-shadow-deep // default: 1px 1px 0 $cl-shadow-deep
+$box-shadow-inbox: 0 0px 20px 10px $bg-box inset // default: 0 0px 20px 10px $bg-box inset
+$box-shadow-options: 0 0px 20px 10px rgba(240,232,200,.5) inset // default: 0 0px 20px 10px rgba(240,232,200,.5) inset
+
+// Rolltemplates
+$roll-success: #271 // default: #271
+$roll-failure: #c11 // default: #c11
+$roll-txt: #124 // default: #124
+$roll-txt-alt: #532 // default: #532
+$roll-notice: darkmagenta // default: darkmagenta
+$roll-react: royalblue // default: royalblue
+$roll-grad: lavender // default: lavender
+$roll-grad-alt: tan // default: tan
+$roll-label: palegoldenrod // default: palegoldenrod
+$roll-label-alt: maroon // default: maroon
+
+// Font Families
+$fnt-sans: sans-serif // default: sans-serif
+$fnt-serif: "Times New Roman" // default: "Times New Roman"
+$fnt-hand: "Patrick Hand" // default: "Patrick Hand"
+
+// Font Size
+$fs-50 : 6px // default: 6px ~= .5em
+$fs-60 : 8px // default: 8px ~= .6em
+$fs-70 : 10px // default: 10px ~= .8em
+$fs-80 : 11px // default: 11px ~= .825em
+$fs-90 : 12px // default: 12px ~= .9em
+$fs-100 : 13px // default: 13px ~= 1em
+$fs-110 : 14px // default: 14px ~= 1.1em
+$fs-120 : 16px // default: 16px ~= 1.2em
+$fs-130 : 18px // default: 18px ~= 1.3em
+$fs-140 : 20px // default: 20px ~= 1.5em
+$fs-150 : 22px // default: 22px ~= 1.6em
+$fs-175 : 24px // default: 24px ~= 1.75em
+$fs-200 : 26px // default: 26px ~= 2em
+
+// Line Height
+$lh-base: 13px // default: 13px = $fs-100
+$lh-min: 10px // default: 10px = $fs-70
+$lh-xxs: 18px // default: 18px = $fs-130
+$lh-sml: 20px // default: 26px = $fs-140
+$lh-med: 22px // default: 26px = $fs-150
+
+// Spaces
+$sp-base: 10px // default: 10px
+$sp-dbl: 20px // default: 20px
+$sp-hlf: 5px // default: 5px
+$sp-neg: -10px // default: -10px
+
+// URLS
+$bg-img-inbox: url("https://raw.githubusercontent.com/zedafty/pfr-fr/master/img/bg-inbox.jpg")
+$bg-img-options: url("https://raw.githubusercontent.com/zedafty/pfr-fr/master/img/bg-options.jpg")
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # HTML (reset)
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+div, button, textarea, span, input, select, img, label
+	box-sizing: border-box
+
+div
+	margin: 0
+	padding: 0
+
+span
+	display: inline-block
+
+label
+	cursor: pointer
+	display: inline-block
+	width: auto
+	margin: 0
+	padding: 0
+	font-size: $fs-100
+	font-weight: normal
+
+img
+	margin: 0
+	padding: 0
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # INPUTS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+button
+	outline: 0
+	border-radius: 0
+
+input, textarea
+	display: inline-block
+	padding: 0
+	margin: 0
+	font-family: $fnt-hand
+	font-size: $fs-120
+	line-height: $lh-min
+	color: $txt-input
+	border: none
+	border-radius: 0
+	background-color: transparent
+	box-shadow: none
+	resize: none
+
+input:hover, textarea:hover, select:hover
+	background-color: $bg-input-hover
+
+input:focus, textarea:focus, select:focus
+	background-color: $bg-input-focus
+	outline: none
+
+input::selection, textarea::selection
+	color: $txt-selection
+	background-color: $bg-selection
+
+input[type="text"]::placeholder, textarea::placeholder
+	color: $txt-disabled
+
+// Inputs
+.sheet-pc input,
+.sheet-npc input // NOTE : app.css override (.ui-dialog .charsheet)
+	vertical-align: top
+.sheet-pc input
+	height: $lh-sml
+.sheet-npc input
+	height: $lh-med
+
+// Numbers
+.sheet-number,
+input.sheet-number,
+.sheet-pc input[type="number"],
+.sheet-npc input[type="number"] // NOTE : app.css override (.ui-dialog .charsheet)
+	width: 30px
+	height: $lh-med
+	text-align: center
+
+// No Spin
+input[type="number"].sheet-nospin::-webkit-inner-spin-button,
+input[type="number"].sheet-nospin::-webkit-outer-spin-button
+	appearance: none
+	-webkit-appearance: none
+
+input[type=number].sheet-nospin
+	-moz-appearance: textfield
+
+select
+	cursor: pointer
+	width: auto
+	height: $lh-med
+	margin: 0
+	padding: 0
+	line-height: $lh-base
+	vertical-align: top
+	font-size: $fs-100
+	font-family: $fnt-sans
+	color: $txt-input
+	border: none
+	border-radius: 0
+	background: transparent
+	box-shadow: none
+	resize: none
+	appearance: none
+	-webkit-appearance: none
+	-moz-appearance: none
+
+select.sheet-underlined
+	font-family: $fnt-hand
+	font-size: $fs-120
+	text-indent: -2px // WARNING
+
+select.sheet-underlined option
+	font-family: $fnt-sans
+	font-size: $fs-90
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # LABELS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+label
+	color: $txt-input
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # BUTTONS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+button[type="compendium"].sheet-btn,
+button[type="roll"].sheet-btn,
+button[type="action"].sheet-btn
+	margin: 0 // NOTE : base.css override
+	padding: 0 // NOTE : base.css override
+	line-height: inherit
+	vertical-align: top // NOTE : vertical fix
+	font-family: inherit
+	font-size: inherit
+	text-transform: inherit
+	text-align: inherit
+	text-decoration: none
+	text-shadow: none
+	color: inherit
+	border: none
+	border-radius: none
+	background: none
+	background-image: none
+	box-shadow: none
+
+button[type="roll"].sheet-btn:before
+	content: none
+
+button[type="compendium"].sheet-btn:hover,
+button[type="action"].sheet-btn:hover,
+button[type="roll"].sheet-btn:hover,
+button[type="roll"].sheet-btn:hover span,
+button[type="roll"].sheet-btn:hover span.sheet-pseudoattr
+	color: $cl-hover
+
+button[type="compendium"].sheet-btn:focus,
+button[type="action"].sheet-btn:focus,
+button[type="roll"].sheet-btn:focus,
+button[type="roll"].sheet-btn:focus span,
+button[type="roll"].sheet-btn:focus span.sheet-pseudoattr
+	color: $cl-focus
+
+button[type="compendium"].sheet-btn:focus,
+button[type="roll"].sheet-btn:focus,
+button[type="action"].sheet-btn:focus
+	outline: 0
+
+button[type="compendium"].sheet-btn,
+button[type="roll"].sheet-btn.sheet-pictos
+	width: 16px
+	height: $lh-sml
+	text-align: center
+
+// Pictos
+button.sheet-btn.sheet-pictos
+	font-family: "Pictos"
+	font-size: $fs-130
+
+// Compendiums
+button[type="compendium"].sheet-btn
+	display: none
+
+.sheet-fromcompendium:not([value=""]) + button[type="compendium"].sheet-btn
+	display: inline-block
+
+.sheet-options button[type="compendium"].sheet-btn
+	position: absolute
+	top: 0
+	left: 0
+
+// Size
+button[type="action"].sheet-btn.sheet-big
+	font-size: $fs-120
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # COMMON CLASSES
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+// Extra Small & Mediums
+.sheet-xxs,
+.sheet-xxs.sheet-pseudoattr
+	height: $lh-sml
+.sheet-number.sheet-xxs,
+.sheet-pc input[type="number"].sheet-xxs,
+.sheet-npc input[type="number"].sheet-xxs // NOTE : app.css override
+	height: $lh-sml
+	width: 20px
+.sheet-number.sheet-medium
+	width: 60px
+
+// Auto-expandable Textareas
+.sheet-autoex.sheet-med
+	display: inline-block
+	vertical-align: top
+
+// Boxes
+.sheet-titled
+	margin-top: -13px
+	padding-top: 15px
+
+.sheet-toppad
+	padding-top: 15px
+
+.sheet-inbox
+	padding-left: $sp-hlf
+	padding-right: $sp-hlf
+	padding-bottom: $sp-hlf
+	text-align: left
+	background-color: $bg-box
+	background-image: $bg-img-inbox
+	box-shadow: $box-shadow-inbox
+
+// Black Labels
+.sheet-blacklabel
+	position: relative
+	display: inline-flex
+	align-items: center
+	height: 24px
+	vertical-align: top
+	text-align: center
+	text-transform: uppercase
+	color: $txt-white
+	background-color: $bg-black
+	.sheet-big
+		display: inline-block
+		font-size: $fs-130
+		line-height: $lh-base
+		font-weight: bold
+	.sheet-big.sheet-only
+		flex-grow: 2
+	.sheet-med
+		display: block
+		font-size: $fs-70
+		line-height: $lh-min
+	.sheet-sml
+		display: block
+		width: auto
+		margin-bottom: -3px
+		line-height: $lh-min
+		font-size: $fs-60
+		font-family: $fnt-sans
+		opacity: .875
+	button[type="roll"].sheet-btn.sheet-big
+		margin: 0
+		padding: 0
+		font-size: $fs-130
+		line-height: $lh-base
+	button[type="roll"].sheet-btn.sheet-big.sheet-only
+		flex-grow: 2
+	.sheet-med.sheet-only
+		align-self: flex-end
+		margin-bottom: 3px
+.sheet-blacklabel.sheet-flexible
+	flex-flow: row nowrap
+	justify-content: space-between
+.sheet-blacklabel.sheet-sqr
+	flex-flow: column wrap
+	justify-content: center
+.sheet-blacklabel.sheet-right
+	flex-flow: row nowrap
+	justify-content: flex-end
+
+// Pointy Padding
+.sheet-padlrt, .sheet-padlft
+	padding-left: 24px
+
+.sheet-padlrt, .sheet-padrgt
+	padding-right: 24px
+
+// Pointy
+.sheet-plft, .sheet-plft:before, .sheet-plft:after,
+.sheet-prgt, .sheet-prgt:before, .sheet-prgt:after
+	position: absolute
+	display: inline-block
+	height: 24px
+
+.sheet-plft,
+.sheet-prgt
+	width: 24px
+	top: 0
+	overflow: hidden
+
+.sheet-plft
+	left: 0
+.sheet-prgt
+	left: calc(100% - 24px)
+
+.sheet-plft:before, .sheet-plft:after,
+.sheet-prgt:before, .sheet-prgt:after
+	content: ""
+	width: 36px
+	border-radius: 100%
+	background-color: $bg-white
+
+.sheet-plft:before, .sheet-plft:after
+	left: -18px
+
+.sheet-prgt:before, .sheet-prgt:after
+	left: 6px
+
+.sheet-plft:before, .sheet-prgt:before
+	top: -13px // WARNING : 1px left for box border ; should be adjust to match middle
+.sheet-plft:after, .sheet-prgt:after
+	top: 12px
+
+.sheet-pinbox
+	.sheet-plft:after,
+	.sheet-prgt:after
+		background-color: $bg-box
+
+// Round Blacks
+.sheet-roundblack
+	width: 12px
+	height: 12px
+	margin: 4px
+	line-height: 12px
+	text-align: center
+	vertical-align: top
+	font-family: $fnt-sans
+	font-size: $fs-80
+	font-weight: bold
+	color: $txt-white
+	border-radius: 100%
+	background-color: $bg-black
+
+// Round Blocks
+.sheet-roundblock
+	position: relative
+	margin-left: 10px
+	.sheet-roundblack
+		position: absolute
+		top: 0
+		left: -10px
+
+// Vertical Labels
+.sheet-lab
+	line-height: $lh-base
+	vertical-align: bottom
+	text-align: center
+	font-family: $fnt-sans
+	font-size: $fs-70
+	white-space: pre
+	color: $txt-swart
+.sheet-lab:before
+	text-transform: none
+
+.sheet-initiative
+	.sheet-lab
+		width: 40px
+.sheet-acvalues,
+.sheet-babandsr,
+.sheet-attackmods,
+.sheet-combatmaneuvers,
+.sheet-saves
+	.sheet-lab
+		width: 35px
+
+.sheet-lab.sheet-top
+	line-height: $lh-min
+	vertical-align: top
+
+.sheet-lab.sheet-under
+	position: absolute
+	top: 22px
+	left: 0
+	width: 100%
+
+.sheet-labunder
+	margin-bottom: 12px
+
+.sheet-labholder
+	position: relative
+	width: 100%
+	height: 36px
+	line-height: $lh-med
+
+// Horizontal Labels
+.sheet-lbl
+	line-height: $lh-min
+	text-align: left
+	font-family: $fnt-sans
+	font-size: $fs-90
+	white-space: pre
+
+// Sheets
+.sheet-pc,
+.sheet-npc
+	line-height: $lh-sml
+.sheet-pc
+	display: block
+.sheet-npc
+	display: none
+.sheet-npc-toggle:checked ~ .sheet-pc
+	display: none
+.sheet-npc-toggle:checked ~ .sheet-npc
+	display: block
+
+// Line Heights
+.sheet-lhmin
+	line-height: $lh-min
+
+// Rows
+.sheet-row,
+.sheet-lbrow
+	width: 100%
+	text-align: left
+.sheet-flexrow
+	display: flex
+	align-items: center
+	justify-content: space-between
+
+// Label Rows
+.sheet-lbrow,
+.sheet-lbrow .sheet-pseudoattr,
+.sheet-lbrow select,
+.sheet-lbrow input[type="number"],
+.sheet-lbrow input[type="text"],
+.sheet-lbrow .sheet-autoex
+	min-height: $lh-med
+	line-height: $lh-sml
+	vertical-align: top
+.sheet-lbrow
+	.sheet-lbl
+		width: 75px
+	input[type="text"],
+	.sheet-autoex
+		width: 180px
+	.sheet-number,
+	input[type="text"].sheet-number,
+	input[type="number"]
+		width: 40px
+		text-align: center
+	.sheet-lbl,
+	select,
+	input[type="number"],
+	input[type="text"],
+	.sheet-autoex
+		display: inline-block
+	.sheet-spacer
+		margin-top: 2px // TEMP
+		height: $lh-sml
+	.sheet-lbl:not(.sheet-inline) // TEMP
+		padding-right: 4px
+		line-height: $lh-med
+		text-align: right
+		vertical-align: top
+	.sheet-lbl.sheet-nospace // TEMP
+		margin-top: 0
+		padding-right: 0
+
+// Columns
+.sheet-colhalf,
+.sheet-col1third,
+.sheet-col2third,
+.sheet-subcol
+	display: inline-block
+	vertical-align: top
+.sheet-colhalf
+	width: 420px
+	max-width: 420px
+.sheet-col1third
+	width: 275px
+	max-width: 275px
+.sheet-col2third
+	width: 565px
+	max-width: 565px
+.sheet-colhalf + .sheet-colhalf
+	margin-left: $sp-base
+.sheet-col1third + .sheet-col2third
+	margin-left: $sp-base
+.sheet-col2third + .sheet-col1third
+	margin-left: $sp-base
+.sheet-col1third ~ .sheet-col1third
+	margin-left: $sp-base
+
+// Label Rows Column Half
+.sheet-colhalf
+	.sheet-lbrow .sheet-lbl.sheet-nospace input[type="text"]
+		width: 55px
+	.sheet-lbrow
+		input[type="text"],
+		.sheet-autoex
+			width: 305px
+	.sheet-lbrow.sheet-lb2col
+		input[type="text"]
+			width: 140px
+	.sheet-lbrow.sheet-lb3col
+		input[type="text"],
+		select
+			width: 95px
+	.sheet-lbrow.sheet-lb2val
+		.sheet-lbl ~ .sheet-lbl
+			width: 65px
+		input[type="text"],
+		select
+			width: 120px
+
+// Label Rows Column One Third
+.sheet-col1third
+	.sheet-lbrow.sheet-lb2col
+		input[type="text"],
+		select
+			width: 85px
+	.sheet-lbrow.sheet-lb2val .sheet-lbl ~ .sheet-lbl
+		width: 50px
+	.sheet-lbrow.sheet-lb2val
+		input[type="text"],
+		select
+			width: 65px
+	.sheet-lbrow
+		.sheet-lbl
+			width: 75px
+		.sheet-lbl.sheet-nospace input[type="text"]
+			width: 55px
+		input[type="text"],
+		.sheet-autoex
+			width: 180px
+		label .sheet-lbl
+			width: auto
+	.sheet-lbrow.sheet-filled
+		padding-left: 75px
+
+// Lablines
+.sheet-labline
+	white-space: nowrap
+	> span
+		height: 12px
+
+// Boxed
+.sheet-boxed
+	display: inline-block
+	position: relative
+	width: 40px
+	height: 24px
+	text-align: center
+	vertical-align: top
+	border: 1px solid $brd-black
+	background-color: $bg-input
+	input[type="text"],
+	input[type="number"]
+		width: 100%
+		height: 100%
+
+.sheet-boxed + .sheet-boxed:not(.sheet-margindent):not(.sheet-gutter)
+	border-left: 0
+
+// Label Boxes
+.sheet-lbbox
+	display: inline-block
+	position: relative
+
+.sheet-attacks
+	.sheet-lbbox
+		width: 60px
+	.sheet-lbbox.sheet-w120
+		width: 120px
+
+.sheet-experience
+	.sheet-lbbox
+		width: 80px
+		height: 34px
+		input
+			width: 100%
+
+// Red Borders
+input.sheet-redbrd:not([value="0"]) + div.sheet-boxed.sheet-redbrd,
+.sheet-acvalues input.sheet-redbrd:not([value="0"]) ~ div.sheet-boxed.sheet-redbrd,
+.sheet-hpvalues input.sheet-redbrd[value="1"] ~ div.sheet-boxed.sheet-redbrd
+	border-color: $cl-warning
+input.sheet-redbrd:not([value="0"]) + div.sheet-boxed.sheet-redbrd span.sheet-pseudoattr,
+.sheet-acvalues input.sheet-redbrd:not([value="0"]) ~ div.sheet-boxed.sheet-redbrd span.sheet-pseudoattr,
+.sheet-hpvalues input.sheet-redbrd[value="1"] ~ div.sheet-boxed.sheet-redbrd *
+	color: $cl-warning
+.sheet-hpvalues input.sheet-redbrd[value="2"] ~ div.sheet-boxed.sheet-redbrd
+	border-color: $cl-warning-dark
+.sheet-hpvalues input.sheet-redbrd[value="2"] ~ div.sheet-boxed.sheet-redbrd *
+	color: $cl-warning-dark
+.sheet-hpvalues input.sheet-redbrd:not([value="0"]) ~ div.sheet-boxed.sheet-redbrd span:after
+	content: "e"
+	position: absolute
+	margin-left: 1px
+	font-family: "Pictos"
+	font-size: $fs-120
+	font-weight: normal
+	text-transform: lowercase
+	text-decoration: none
+
+// Borders
+.sheet-bordered
+	margin-bottom: $sp-base
+	border: 1px solid $brd-black
+
+.sheet-topborder
+	margin-top: 6px
+	padding-top: 6px
+	border-top: 1px dotted $brd-dark
+.sheet-botborder
+	margin-bottom: 3px
+	padding-bottom: 3px
+	border-bottom: 1px dotted $brd-dark
+
+.sheet-underlined
+	border-bottom: 1px solid $brd-black
+.sheet-underlined.sheet-greyed
+	border-bottom-color: transparent
+.sheet-underlined.sheet-greyed.sheet-boxed
+	border-bottom-color: $brd-black
+
+// Pseudo Attributes
+.sheet-pseudoattr
+	height: $lh-med
+	line-height: $lh-sml
+	vertical-align: top
+	font-family: $fnt-hand
+	font-size: $fs-120
+	color: $txt-input
+	white-space: pre-line
+	overflow: hidden
+.sheet-boxed
+	.sheet-pseudoattr
+		width: 100%
+		height: 100%
+		line-height: $lh-med
+.sheet-pseudoattr.sheet-redtxt
+	color: $cl-warning
+.sheet-pseudoattr.sheet-greyed:not(.sheet-number)
+	padding: 0 5px
+
+// Spacers
+.sheet-spacer
+	min-width: $sp-base
+	min-height: $lh-min
+	text-align: center
+.sheet-spacer.sheet-hlf
+	min-width: $sp-hlf
+
+// Text Colors
+.sheet-lbl,
+.sheet-lab,
+.sheet-spacer,
+.sheet-identity span:last-child
+	color: $txt-dark
+
+.sheet-lbl.sheet-name,
+.sheet-labelcheck .sheet-lbl // Skills, Conditions & Buffs
+	color: $txt-swart
+
+.sheet-lbl
+	.sheet-pseudocheck:hover + span,
+	.sheet-pseudocheck:checked + span,
+	.sheet-pseudocheck:hover + span + span,
+	.sheet-pseudocheck:checked + span + span // Checkboxes
+		color: $txt-swart
+
+label.sheet-labelcheck input:focus + span
+	background-color: $bg-input-focus
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # IMAGES
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+img.sheet-logo
+	width: 270px
+	margin-top: 50px
+
+img.sheet-imgicon
+	width: 20px
+	height: $lh-sml
+	margin-right: 4px
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # FONT ICONS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+// Font Icons Blocks
+label.sheet-fonticon,
+button[type="action"].sheet-fonticon
+	padding: 3px 4px
+	border-radius: 3px
+	font-family: $fnt-sans
+
+label.sheet-fonticon.sheet-big,
+button[type="action"].sheet-fonticon.sheet-big
+	padding: 4px 6px
+	font-size: $fs-110
+
+label.sheet-fonticon.sheet-sml,
+button[type="action"].sheet-fonticon.sheet-sml
+	padding: 2px 3px
+	font-size: $fs-90
+
+label.sheet-fonticon:hover,
+button[type="action"].sheet-fonticon:hover
+	background-color: $bg-greyed-hover
+
+label.sheet-fonticon.sheet-red:hover,
+button[type="action"].sheet-fonticon.sheet-red:hover
+	background-color: $cl-shadow-red
+
+label.sheet-fonticon:focus,
+button[type="action"].sheet-fonticon:focus,
+label.sheet-fonticon.sheet-red:focus,
+button[type="action"].sheet-fonticon.sheet-red:focus
+	background-color: $bg-input-focus
+
+.sheet-fonticon input[type="checkbox"]
+	display: none
+
+.sheet-fonticon span
+	color: $cl-icon
+	transition: color .125s
+
+.sheet-fonticon.sheet-strong span,
+.sheet-fonticon:hover span
+	color: $txt-swart
+
+.sheet-fonticon.sheet-red:hover span
+	color: $cl-warning
+
+.sheet-fonticon span:before
+	display: inline-block
+	width: 20px
+	font-family: "Pictos"
+	text-align: center
+	text-transform: none
+	font-size: $fs-130
+
+.sheet-fonticon.sheet-custom span:before
+	font-family: "Pictos Custom"
+
+.sheet-fonticon.sheet-big span:before
+	margin-right: 2px
+
+.sheet-fonticon
+	span.sheet-rest:before
+		content: "y"
+	span.sheet-recalc:before
+		content: "r"
+	span.sheet-close:before
+		content: "*"
+	span.sheet-clear:before
+		content: "d"
+	span.sheet-reset:before
+		content: "1"
+	span.sheet-condcheck:before
+		content: "Y"
+	span.sheet-buffcheck:before
+		content: "e"
+
+// Font Icons Inlines
+.sheet-fonthello,
+[class*="sheet-pictos"],
+[class*="sheet-dice"]
+	font-size: $fs-120
+	text-transform: none
+
+.sheet-fonthello.sheet-char,
+[class*="sheet-pictos"].sheet-char,
+[class*="sheet-dice"].sheet-char
+	margin-right: 4px
+	vertical-align: top
+
+.sheet-fonthello.sheet-char:last-child,
+[class*="sheet-pictos"].sheet-char:last-child,
+[class*="sheet-dice"].sheet-char:last-child
+	margin-right: 0
+
+.sheet-pictos
+	font-family: "Pictos"
+.sheet-pictos-three
+	font-family: "Pictos Three"
+.sheet-pictos-custom
+	font-family: "Pictos Custom"
+.sheet-dice-d4
+	font-family: "dicefontd4"
+.sheet-dice-d6
+	font-family: "dicefontd6"
+.sheet-dice-d8
+	font-family: "dicefontd8"
+.sheet-dice-d10
+	font-family: "dicefontd10"
+.sheet-dice-d12
+	font-family: "dicefontd12"
+.sheet-dice-d20
+	font-family: "dicefontd20"
+.sheet-dice-d30
+	font-family: "dicefontd30"
+.sheet-fonthello
+	font-family: "fontello"
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # COMMON ELEMENTS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-npc,
+.sheet-options-block,
+.sheet-options,
+.sheet-ability,
+.sheet-initiative,
+.sheet-acvalues,
+.sheet-saves,
+.sheet-babandsr,
+.sheet-combatmaneuvers,
+.sheet-attackmods,
+.sheet-attacks,
+.sheet-attack,
+.sheet-speeds,
+.sheet-skills,
+.sheet-skill,
+.sheet-acitem,
+.sheet-gearitem,
+.sheet-encumbrance,
+.sheet-concentration,
+.sheet-spell
+	position: relative
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # PC ELEMENTS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-pc // PC
+	position: relative
+	text-align: left
+	width: 850px
+	max-width: 850px
+	font-family: $fnt-serif
+	color: $txt-swart
+	background-color: $bg-white
+
+.sheet-toprow
+	height: 135px
+
+// PC Blacklabels
+.sheet-pc
+	.sheet-skills,
+	.sheet-senses,
+	.sheet-languages,
+	.sheet-additionalgear,
+	.sheet-experience,
+	.sheet-wealth,
+	.sheet-feats,
+	.sheet-traits,
+	.sheet-miscnotes,
+	.sheet-mpvalues,
+	.sheet-spellcasting,
+	.sheet-spells,
+	.sheet-tabconf
+		.sheet-blacklabel
+			min-width: 200px
+	.sheet-gear
+		.sheet-blacklabel.sheet-total
+			width: calc(100% + 2px)
+			padding-right: 2px
+			margin-top: 2px
+			margin-right: -2px
+			margin-bottom: -2px
+
+// Identity
+.sheet-identity
+	display: inline-block
+	margin-left: 4px
+	span
+		display: block
+	.sheet-number
+		width: 45px
+	.sheet-alignment
+		width: 120px
+	.sheet-size
+		width: 80px
+	.sheet-sml
+		width: 50px
+	.sheet-med
+		width: 140px
+	.sheet-lrg
+		width: 210px
+.sheet-identity:not(.sheet-center) span
+	padding-left: $sp-base
+
+// Abilities
+.sheet-abilities
+	display: inline-block
+	width: 225px
+	text-align: left
+	vertical-align: top
+	.sheet-labline
+		height: 12px
+		line-height: 12px
+	.sheet-blacklabel
+		width: 80px
+	.sheet-labline
+		.sheet-lab:first-child
+			width: 85px
+		.sheet-lab
+			width: 45px
+	.sheet-options .sheet-lab
+		width: 24px
+		margin-left: 55px
+	.sheet-ability
+		margin-bottom: $sp-hlf
+		.sheet-gutter
+			margin-left: $sp-hlf
+
+// Hit Points and Initiative
+.sheet-hpinit
+	display: inline-block
+	width: 175px
+	margin-top: 12px
+	margin-left: $sp-base
+	vertical-align: top
+
+// Hit Points
+.sheet-hpvalues
+	padding-top: 2px
+	.sheet-blacklabel
+		width: 100%
+		flex-flow: row
+	.sheet-labline
+		height: $lh-xxs
+		padding-top: 4px
+		.sheet-lab
+			vertical-align: top
+	.sheet-colhp
+		display: inline-block
+		height: 47px
+		text-align: center
+		vertical-align: top
+		.sheet-boxed
+			width: 45px
+			height: 45px
+		input
+			font-size: $fs-175
+			color: $txt-white
+			border-radius: inherit
+	.sheet-colhp.sheet-cur,
+	.sheet-colhp.sheet-nld
+		width: 60px
+		.sheet-boxed
+			border: $sp-hlf solid transparent
+			border-radius: 100%
+			background-color: $bg-points
+		input
+			padding-bottom: 1px
+			transition: color .125s, background-color .25s
+		input:hover
+			color: $txt-swart
+			background-color: $bg-points-hover
+		input:focus
+			color: $txt-swart
+			background-color: $bg-input-focus
+		input::selection
+			color: black
+			background-color: rgba(255,255,0,.75)
+	.sheet-colhp.sheet-cur
+		.sheet-boxed
+			border-color: $cl-hp
+	.sheet-colhp.sheet-nld
+		.sheet-boxed
+			border-color: $cl-nld
+	.sheet-colhp.sheet-max
+		width: 55px
+		.sheet-boxed
+			border: 0
+			background: transparent
+		input
+			position: absolute
+			padding-bottom: 4px
+			color: $txt-swart
+			z-index: 1
+		.sheet-pictos
+			pointer-events: none
+			position: relative
+			top: 0
+			left: -4px
+			width: inherit
+			height: inherit
+			line-height: 35px
+			text-align: center
+			font-size: 60px
+			color: $bg-points-fixed
+		input
+			transition: color .125s
+		.sheet-pictos
+			transition: color .375s
+		input:hover,
+		input:focus
+			color: $txt-white
+			background-color: transparent
+		input::selection
+			color: white
+			background-color: rgba(255,224,224,.5)
+		input:hover + .sheet-pictos,
+		input:focus + .sheet-pictos
+			color: $cl-hover
+.sheet-hpvalues.sheet-autoex
+	font-size: $fs-110
+	line-height: $fs-110
+
+// Initiative
+.sheet-initiative
+	display: block
+	.sheet-blacklabel
+		width: 95px // TEMP
+
+// AC Values
+.sheet-acvalues
+	margin-top: $sp-base
+	.sheet-blacklabel.sheet-ac
+		width: 60px
+	.sheet-blacklabel.sheet-touch,
+	.sheet-blacklabel.sheet-flatfooted
+		width: 95px
+		.sheet-big
+			font-size: $fs-110
+			line-height: $lh-min
+	.sheet-boxed
+		width: 35px
+
+.sheet-acvalue
+	display: inline-block
+
+.sheet-aclabel
+	width: 50px
+	margin-top: 2px
+	text-align: center
+	vertical-align: top
+
+.sheet-accondition
+	max-width: 420px
+	font-size: $fs-110
+	white-space: normal
+	color: $cl-warning
+
+// Saves
+.sheet-saves .sheet-boxed
+	width: 35px
+	.sheet-pseudoattr
+		width: 31px
+.sheet-save
+	display: inline-block
+.sheet-fortitude,
+.sheet-reflex,
+.sheet-will
+	.sheet-blacklabel
+		width: 60px
+
+// BAB, SR, Combat Maneuvers & Base Attacks
+.sheet-babandsr .sheet-blacklabel.sheet-bab,
+.sheet-babandsr .sheet-blacklabel.sheet-sr,
+.sheet-combatmaneuvers .sheet-blacklabel.sheet-cmb,
+.sheet-combatmaneuvers .sheet-blacklabel.sheet-cmd,
+.sheet-attackmods .sheet-blacklabel.sheet-melee,
+.sheet-attackmods .sheet-blacklabel.sheet-ranged
+	width: 120px
+
+.sheet-babandsr .sheet-blacklabel.sheet-sr
+	margin-left: 55px
+
+.sheet-combatmaneuvers .sheet-blacklabel.sheet-cmd,
+.sheet-attackmods .sheet-blacklabel.sheet-ranged
+	margin-left: 15px
+
+// Weapons & Attacks
+.sheet-attacks
+	text-align: right
+	.sheet-blacklabel
+		.sheet-weapon-title
+			width: 180px
+		.sheet-atk-title
+			width: 110px
+		.sheet-damage-title
+			width: 25px
+		.sheet-ammo-title
+			width: 60px
+	.sheet-ammo
+		background-color: $bg-input
+	.sheet-ammo:hover
+		background-color: $bg-input-hover
+	.sheet-ammo:focus
+		background-color: $bg-input-focus
+	.sheet-weapon .sheet-vs
+		width: auto
+		margin-left: $sp-base
+		text-align: left
+		font-family: $fnt-sans
+		font-size: $fs-70
+		white-space: pre
+
+// Weapons & Attacks : Attack Row
+.sheet-atkrow
+	.sheet-atk .sheet-pseudoattr,
+	.sheet-damage .sheet-pseudoattr
+		text-align: center
+		font-family: $fnt-sans
+		font-size: $fs-90
+	.sheet-weapon,
+	.sheet-atk,
+	.sheet-damage,
+	.sheet-ammo
+		display: inline-block
+		vertical-align: top
+	.sheet-atk > div,
+	.sheet-damage > div
+		height: $lh-med // NOTE : Fix margin-bottom
+	.sheet-weapon
+		width: 200px
+		text-align: left
+		button,
+		button span
+			width: 100%
+	.sheet-atk
+		width: 100px
+	.sheet-damage
+		width: 50px
+	input[type="number"].sheet-ammo
+		width: 40px
+
+// Weapons & Attacks : Extra Attacks
+.sheet-extra-attacks
+	margin-top: 4px
+	.sheet-pnty-right:before,
+	.sheet-pnty-right:after
+		background-color: $bg-options
+	.sheet-header
+		position: relative
+		height: 24px
+		margin: 4px 0 0
+		padding: 4px 8px
+		line-height: 16px
+		color: $txt-white
+		font-size: $fs-80
+		.sheet-brdright
+			pointer-events: none
+			position: absolute
+			top: 0
+			right: 0
+			width: 24px
+			height: 24px
+		background-color: $bg-black
+		input[type="checkbox"] + span
+			padding-right: 24px
+		input[type="checkbox"] + span:after
+			content : "("
+			margin-left: 4px
+			font-family: "Pictos"
+			font-size: $fs-120
+			text-transform: none
+			color: inherit
+			opacity: .5
+		input[type="checkbox"]:hover + span:after
+			opacity: 1
+		input[type="checkbox"]:checked + span:after
+			content : ")"
+		> input[type="checkbox"]
+			position: absolute
+			display: inline-block
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			opacity: 0
+		> input[type="checkbox"]:focus + span
+			color: $cl-focus
+
+
+	.sheet-header:hover
+		background-color: $bg-dull
+
+// Speeds
+.sheet-speeds .sheet-blacklabel.sheet-land
+	width: 70px
+.sheet-speeds:after // NOTE : Clearfix
+	content: ""
+	display: block
+	height: $lh-min
+
+// Skills
+.sheet-skills
+	.sheet-name,
+	.sheet-skill span.sheet-custom.sheet-only
+		width: 195px
+	.sheet-labline
+		.sheet-lab
+			width: 30px
+		.sheet-lab + .sheet-lab
+			margin-left: $sp-base
+		.sheet-lab.sheet-class
+			width: 20px
+			margin-left: 0
+		.sheet-lab.sheet-name
+			width: 185px
+			margin-left: 0
+			text-align: left
+
+.sheet-skill
+	.sheet-name
+		line-height: $lh-sml
+	.sheet-number,
+	input[type="text"],
+	input[type="number"]
+		height: $lh-sml
+		line-height: $lh-xxs
+	span.sheet-craft
+		width: 55px
+	span.sheet-knowledge
+		width: 95px
+	span.sheet-profession
+		width: 65px
+	span.sheet-perform
+		width: 90px
+	input[type="text"].sheet-craft
+		width: 140px
+	input[type="text"].sheet-knowledge
+		width: 100px
+	input[type="text"].sheet-profession
+		width: 130px
+	input[type="text"].sheet-perform
+		width: 105px
+	button[type="roll"].sheet-btn
+		height: $lh-sml
+	.sheet-checkpenalty + .sheet-pschckcont
+		display: none
+	.sheet-checkpenalty[value="strength"] + .sheet-pschckcont,
+	.sheet-checkpenalty[value="dexterity"] + .sheet-pschckcont
+		display: inline-block
+	.sheet-labelcheck input[type="checkbox"] + span:before
+		top: 2px
+		left: 0
+	.sheet-classkill + span
+		position: relative
+		width: 20px
+		height: $lh-sml
+		vertical-align: top
+	.sheet-classkill + span:after
+		content: "•"
+		position: absolute
+		top: 1px
+		right: 8px
+		font-size: $fs-90
+		transition: right .125s, opacity .25s
+		opacity: .25
+	.sheet-classkill[value="1"] + span:after
+		content: "3"
+		right: 4px
+		font-family: "Pictos"
+		opacity: 1
+.sheet-skill:hover
+	background-color: $bg-greyed-hover
+	[name$="ranks"]
+		background-color: $cl-skill-rank
+
+// AC Items
+.sheet-acitems
+	.sheet-item
+		width: 190px
+	.sheet-equipped
+		width: 16px
+	.sheet-boxed
+		width: 28px
+	.sheet-ac,
+	.sheet-flat,
+	.sheet-touch,
+	.sheet-natural,
+	.sheet-deflection,
+	.sheet-dodge,
+	.sheet-check,
+	.sheet-max,
+	.sheet-spellfailure
+		width: 30px
+	.sheet-spacer.sheet-type,
+	.sheet-type
+		width: 60px
+	.sheet-labunder
+		.sheet-lab.sheet-totals
+			width: 90px
+	.sheet-lab.sheet-shield,
+	.sheet-lab.sheet-armor
+		width: 50px
+	.sheet-labunder .sheet-lab
+		width: 28px
+	.sheet-boxed .sheet-pseudoattr
+		width: 26px
+		min-width: 26px
+	> .sheet-row > .sheet-blacklabel
+		padding-right: 4px
+
+.sheet-acitem
+	> .sheet-row
+		height: $lh-med
+	.sheet-name
+		width: 180px
+	select
+		width: 60px
+		height: $lh-med
+	.sheet-options
+		.sheet-row,
+		.sheet-autoex
+			margin-left: 20px
+
+// Experience
+.sheet-experience
+	.sheet-boxed
+		width: 80px
+	.sheet-boxed + .sheet-boxed
+		margin-left: $sp-base
+	input[type="text"]
+		text-align: center
+
+// Wealth
+.sheet-wealth
+	margin-top: $sp-base
+	.sheet-lab
+		padding-right: 4px
+	input[type="number"]
+		width: 40px
+	input[type="number"] + .sheet-lab
+		margin-left: $sp-base
+
+// Gear
+.sheet-gear
+	.sheet-qty
+		width: 50px
+	.sheet-wgt
+		width: 85px
+	.sheet-itm
+		width: 250px
+	.sheet-tot
+		width: 100%
+		margin-top: $sp-hlf
+	.sheet-pseudoattr.sheet-number
+		width: 40px
+	.sheet-coins
+		margin-right: 280px
+		margin-top: 4px
+	.sheet-overload
+		color: $txt-white
+	.sheet-overload + .sheet-number
+		background-color: $bg-white
+	input.sheet-overload[value="over"] + .sheet-overload
+		font-weight: bold
+		color: $cl-warning
+		text-transform: uppercase
+	input.sheet-overload[value="over"] + .sheet-overload + .sheet-number
+		color: $cl-warning
+
+.sheet-gearitem
+	.sheet-lbrow .sheet-lbl
+		width: 90px
+	button[type="roll"].sheet-chatsetattr
+		position: absolute
+		top: 0
+		left: 255px
+		width: 20px
+		height: $lh-sml
+		text-align: center
+		font-family: "Pictos"
+		font-size: $fs-120
+
+// Encumbrance
+.sheet-encumbrance
+	margin-bottom: $sp-base
+	.sheet-row
+		padding-left: 20px
+	.sheet-options
+		.sheet-row
+			padding-left: 14px
+	.sheet-lab
+		width: 75px
+		margin-left: $sp-base
+		padding-right: 4px
+		text-align: right
+		white-space: initial
+
+// Feats & Traits
+.sheet-pc
+	.sheet-feats,
+	.sheet-traits
+		margin-bottom: $sp-base
+	.sheet-feats,
+	.sheet-traits
+		.sheet-blacklabel
+			margin-bottom: $sp-hlf
+
+// Magic Points
+.sheet-mpvalues
+	position: relative
+	margin-bottom: $sp-base
+	padding-top: 2px
+	text-align: center
+	.sheet-blacklabel
+	.sheet-labline
+		height: $lh-xxs
+		padding-top: 4px
+		.sheet-lab
+			width: 55px
+			vertical-align: top
+	.sheet-colmp
+		display: inline-block
+		height: 45px
+		margin-bottom: 2px
+		text-align: center
+		.sheet-boxed
+			width: 45px
+			height: 45px
+		input,
+		.sheet-pseudoattr
+			font-size: $fs-175
+			color: $txt-white
+			border-radius: inherit
+		input
+			padding-bottom: 2px
+	.sheet-colmp.sheet-cur
+		width: 55px
+		.sheet-boxed
+			border: $sp-hlf solid transparent
+			border-radius: 100%
+			background-color: $bg-points
+		input
+			transition: color .125s, background-color .25s
+		input:hover
+			color: $txt-swart
+			background-color: $bg-points-hover
+		input:focus
+			color: $txt-swart
+			background-color: $bg-input-focus
+		input::selection
+			color: black
+			background-color: rgba(255,255,0,.75)
+	.sheet-colmp.sheet-cur
+		.sheet-boxed
+			border-color: $cl-mp
+	.sheet-colmp.sheet-max,
+	.sheet-colmp.sheet-box
+		width: 55px
+		.sheet-boxed
+			border: 0
+			background: transparent
+		input,
+		.sheet-pseudoattr
+			position: absolute
+			color: $txt-swart
+		.sheet-pseudoattr
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			line-height: 43px
+			z-index: 1
+		input
+			top: 5px
+			left: 5px
+			width: 35px
+			height: 35px
+	.sheet-colmp.sheet-max
+		.sheet-pictos,
+		.sheet-pictos:before
+			position: absolute
+			width: 35px
+			height: 35px
+			background-color: $bg-points-fixed
+		.sheet-pictos
+			top: 5px
+			left: 5px
+		.sheet-pictos:before
+			content: ""
+			display: inline-block
+			top: 0
+			left: 0
+			transform: rotate(45deg)
+
+// Concentration
+.sheet-concentration
+	margin-top: $sp-base
+	> .sheet-row
+		margin-left: 20px
+
+// Spellcasting
+.sheet-spellcasting
+	.sheet-casterlevel
+		position: relative
+		padding-left: 10px
+		.sheet-more,
+		.sheet-less
+			position: absolute
+			display: none
+			left: 0
+			width: 16px
+			height: 16px
+			padding: 2px
+			text-align: center
+			line-height: $lh-base
+			font-family: "Pictos"
+			font-size: $fs-110
+			color: $cl-icon
+			border: 0
+			border-radius: 100%
+			background: -webkit-radial-gradient(circle, white 40%, transparent 42.5%)
+		.sheet-more
+			top: 25px
+		.sheet-less
+			top: 45px
+		.sheet-more:hover,
+		.sheet-less:hover
+			color: $cl-hover
+		.sheet-more:focus,
+		.sheet-less:focus
+			color: $cl-focus
+
+		.sheet-casterlevel-ctrl[value="0"] ~ .sheet-more,
+		.sheet-casterlevel-ctrl[value="1"] ~ .sheet-more,
+		.sheet-casterlevel-ctrl[value="1"] ~ .sheet-less,
+		.sheet-casterlevel-ctrl[value="2"] ~ .sheet-more,
+		.sheet-casterlevel-ctrl[value="2"] ~ .sheet-less,
+		.sheet-casterlevel-ctrl[value="3"] ~ .sheet-more,
+		.sheet-casterlevel-ctrl[value="3"] ~ .sheet-less,
+		.sheet-casterlevel-ctrl[value="4"] ~ .sheet-more,
+		.sheet-casterlevel-ctrl[value="4"] ~ .sheet-less,
+		.sheet-casterlevel-ctrl[value="5"] ~ .sheet-more,
+		.sheet-casterlevel-ctrl[value="5"] ~ .sheet-less,
+		.sheet-casterlevel-ctrl[value="6"] ~ .sheet-more,
+		.sheet-casterlevel-ctrl[value="6"] ~ .sheet-less,
+		.sheet-casterlevel-ctrl[value="7"] ~ .sheet-more,
+		.sheet-casterlevel-ctrl[value="7"] ~ .sheet-less,
+		.sheet-casterlevel-ctrl[value="8"] ~ .sheet-more,
+		.sheet-casterlevel-ctrl[value="8"] ~ .sheet-less,
+		.sheet-casterlevel-ctrl[value="9"] ~ .sheet-less
+			display: inline-block
+		.sheet-casterlevel-ctrl[value="0"] ~ .sheet-perlevel[class*="1"],
+		.sheet-casterlevel-ctrl[value="1"] ~ .sheet-perlevel[class*="2"],
+		.sheet-casterlevel-ctrl[value="2"] ~ .sheet-perlevel[class*="3"],
+		.sheet-casterlevel-ctrl[value="3"] ~ .sheet-perlevel[class*="4"],
+		.sheet-casterlevel-ctrl[value="4"] ~ .sheet-perlevel[class*="5"],
+		.sheet-casterlevel-ctrl[value="5"] ~ .sheet-perlevel[class*="6"],
+		.sheet-casterlevel-ctrl[value="6"] ~ .sheet-perlevel[class*="7"],
+		.sheet-casterlevel-ctrl[value="7"] ~ .sheet-perlevel[class*="8"],
+		.sheet-casterlevel-ctrl[value="8"] ~ .sheet-perlevel[class*="9"]
+			display: none
+
+		.sheet-perlevel
+			margin-bottom: 4px
+		.sheet-perlevel
+			.sheet-lab,
+			.sheet-level,
+			.sheet-boxed
+				width: 35px
+			.sheet-lbl
+				margin-top: 7px // 10/2+4/2 (lh=24)
+				vertical-align: top
+	.sheet-domains,
+	.sheet-schools
+		display: none
+	.sheet-domains-schools[value="domains"] ~ .sheet-domains,
+	.sheet-domains-schools[value="schools"] ~ .sheet-schools
+		display: block
+
+// Spells
+.sheet-spells
+	label
+		display: inline-block
+	.sheet-blacklabel
+		margin-bottom: $sp-hlf
+
+// Spell
+.sheet-spell
+	> .sheet-row
+		button[type="roll"]
+			height: $lh-sml
+	.sheet-domain-flag,
+	.sheet-school-flag
+		display: none
+		margin-left: 2px
+		line-height: $fs-90
+		vertical-align: super
+		font-family: $fnt-serif
+		font-size: $fs-70
+		font-weight: normal
+		color: $txt-swart
+		background: transparent
+	.sheet-domprep,
+	.sheet-cost
+		width: 70px
+		text-align: right
+	.sheet-domprep
+		display: none
+		position: relative
+		vertical-align: top
+		height: $lh-sml
+		.sheet-pseudocheck,
+		.sheet-pseudocheck + span,
+		.sheet-lbl
+			position: absolute
+		.sheet-pseudocheck
+			right: 0
+		.sheet-pseudocheck + span
+			top: 4px
+			right: -4px
+		.sheet-pseudocheck + span
+			left: unset
+		.sheet-lbl
+			right: 20px
+			font-size: $fs-80
+			font-family: $fnt-sans
+			margin-top: 5px
+		.sheet-pseudocheck:checked + span + .sheet-lbl
+			font-weight: bold
+	.sheet-cost
+		color: $cl-mp
+	.sheet-cost:after
+		content: $tra-mp
+		text-align: left
+		padding-left: 4px
+	.sheet-domain-flag-ctrl:not([value="0"]) ~ .sheet-btn .sheet-domain-flag,
+	.sheet-school-flag-ctrl:not([value="0"]) ~ .sheet-btn .sheet-school-flag
+		display: initial
+	.sheet-domain-flag-ctrl:not([value="0"]) ~ .sheet-dots,
+	.sheet-domain-flag-ctrl:not([value="0"]) ~ .sheet-cost
+		display: none
+	.sheet-domain-flag-ctrl:not([value="0"]) ~ .sheet-domprep
+		display: inline-block
+	.sheet-school-flag-ctrl[value="speciality"] ~ .sheet-btn .sheet-school-flag:after
+		content: $tra-speciality-sup
+	.sheet-school-flag-ctrl[value="opposition"] ~ .sheet-btn .sheet-school-flag:after
+		content: $tra-opposition-sup
+	.sheet-domain,
+	.sheet-school
+		display: none
+	.sheet-domain-school[value="domains"] ~ .sheet-domain,
+	.sheet-domain-school[value="schools"] ~ .sheet-school
+		display: block
+
+// Spellcasting Mode
+.sheet-spellcasting-mode[value="sp"] ~ div .sheet-mp,
+.sheet-spellcasting-mode[value="mp"] ~ div .sheet-sp
+	display: none
+.sheet-spellcasting-mode[value="mp"] ~ .sheet-spells
+	.sheet-spell
+		.sheet-display
+			width: 185px
+			margin-right: 0 // no icon
+
+// Metamagic
+.sheet-feat,
+.sheet-trait,
+.sheet-metamagic
+	> button[type="roll"].sheet-btn
+		width: inherit
+		padding-left: 20px
+
+// Display
+.sheet-pc
+	.sheet-feats,
+	.sheet-traits,
+	.sheet-spells
+		.repitem:nth-child(even)
+			background-color: $bg-greyed-hover
+		button[type="roll"].sheet-btn
+			height: $lh-sml
+		.sheet-display
+			height: $lh-sml
+			font-family: $fnt-sans
+			overflow: hidden
+			text-overflow: ellipsis
+		.sheet-display:hover
+			background-color: $bg-greyed-hover
+	.sheet-feat,
+	.sheet-trait
+		.sheet-display
+			max-width: 200px
+	.sheet-spell
+		.sheet-display
+			width: 165px
+			margin-right: 20px // prepared icon
+	.sheet-splike
+		.sheet-display
+			width: 200px
+			margin-right: 5px
+			margin-left: 20px
+		.sheet-headline .sheet-optional // perday-permanent
+			width: 50px
+			padding-right: 4px
+			text-align: right
+	.sheet-metamagic
+		.sheet-display
+			width: inherit
+
+// Multiclass
+.sheet-multiclass
+	display: flex
+	flex-wrap: nowrap
+	padding-right: $sp-base
+	text-align: center
+	justify-content: space-between
+
+// Multiclass Containers
+.sheet-multiclass-a
+	min-width: 200px
+.sheet-multiclass-b
+	min-width: 200px
+.sheet-multiclass-c
+	min-width: 225px
+.sheet-multiclass-d
+	min-width: 180px
+
+.sheet-multiclass > [class*="multiclass"]
+	white-space: nowrap
+
+// Multiclass Headers Container
+.sheet-multiclass.sheet-labline:first-child
+	margin-bottom: -5px
+
+// Multiclass Headers
+.sheet-multiclass .sheet-header:after
+	content: ""
+	position: absolute
+	left: 5%
+	bottom: 0
+	width: 90%
+	height: 8px
+	border: 1px solid $brd-pale
+	border-bottom: 0
+.sheet-multiclass .sheet-header
+	position: relative
+	height: $lh-xxs
+	text-align: center
+	text-transform: uppercase
+	.sheet-labwrap
+		position: absolute
+		width: 100%
+		top: 0
+		left: 0
+		z-index: 1
+		.sheet-lab
+			width: auto
+			padding: 0 $sp-hlf
+			color: $txt-dark
+			vertical-align: top
+			background-color: $bg-box
+.sheet-multiclass .sheet-subheader
+	border-bottom: 1px dotted $brd-pale
+
+// Multiclass Filled
+.sheet-multiclass .sheet-filled
+	display: inline-block
+.sheet-multiclass-a .sheet-filled
+	width: 154px
+.sheet-multiclass-b .sheet-filled
+	width: 30px
+.sheet-multiclass-c .sheet-filled
+	width: 180px
+
+// Multiclass Elements
+.sheet-multiclass-b select,
+.sheet-multiclass .sheet-lab,
+.sheet-multiclass .sheet-boxed
+	width: 30px
+
+.sheet-multiclass-a .sheet-headline,
+.sheet-multiclass-a input[type="text"]
+	width: 115px
+
+.sheet-multiclass-d .sheet-headline,
+.sheet-multiclass-d select
+	width: 70px
+
+.sheet-multiclass .sheet-lab.sheet-spacer
+	width: $sp-base
+
+.sheet-multiclass .sheet-headcheck
+	width: 20px
+
+// Multiclass Fonts
+.sheet-multiclass .sheet-lab
+	font-weight: bold
+
+// Configuration
+.sheet-restrecalc
+	padding: $sp-base
+
+.sheet-abimods span
+	width: 35px
+	text-align: center
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # NPC ICONS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-npc-icons
+	display: flex
+	flex-flow: row nowrap
+	align-items: center
+	margin-right: 6px
+	font-size: 0
+	span.sheet-npctype,
+	span.sheet-npcterrain,
+	span.sheet-npcclimate
+		background-position: center
+		background-repeat: no-repeat
+	input.sheet-npctype:not([value=""]) + span.sheet-npctype,
+	input.sheet-npcterrain:not([value=""]) + span.sheet-npcterrain,
+	input.sheet-npcclimate:not([value=""]) + span.sheet-npcclimate
+		width: 50px
+		height: 50px
+		margin: 0
+		background-size: 70px 70px
+		z-index: 1
+	input.sheet-npctype[value="aberration"] + span.sheet-npctype
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548538/r3Rsbc7uIJz-O7pf8XxeGA/med.png")
+	input.sheet-npctype[value="animal"] + span.sheet-npctype
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548559/Slmy0KlzDt0iNXkbVQROjw/med.png")
+	input.sheet-npctype[value="construct"] + span.sheet-npctype
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548540/_i5Y1uKgt2cSDW7kHRlTpw/med.png")
+	input.sheet-npctype[value="dragon"] + span.sheet-npctype
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548645/gDMjZqAb6ykBb6yiWx_aKw/med.png")
+	input.sheet-npctype[value="fey"] + span.sheet-npctype
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548694/zlS-SGzbPhUDLx-oSsLEIQ/med.png")
+	input.sheet-npctype[value="humanoid"] + span.sheet-npctype
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548737/DGyt11RQJzAes-sC932Hdw/med.png")
+	input.sheet-npctype[value="monstrous-humanoid"] + span.sheet-npctype
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548873/ZvNmcaFOG56_ZjGPgIeRGA/med.png")
+	input.sheet-npctype[value="magical-beast"] + span.sheet-npctype
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548954/QQXsWVOsgQjxw3Hn2vW0FQ/med.png")
+	input.sheet-npctype[value="ooze"] + span.sheet-npctype
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548966/R4cNA8XUWboy6xXWBxW1IQ/med.png")
+	input.sheet-npctype[value="outsider"] + span.sheet-npctype
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548977/KnTWZnXIM4XrJsl_qtjd3Q/med.png")
+	input.sheet-npctype[value="plant"] + span.sheet-npctype
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62549433/EdCGXBMMJFC7XvVAcXSiKw/med.png")
+	input.sheet-npctype[value="undead"] + span.sheet-npctype
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62549900/8mKziv92YzttbONAEry5fw/med.png")
+	input.sheet-npctype[value="vermin"] + span.sheet-npctype
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62550067/b69paJDk_FfyloamwKEleg/med.png")
+	input.sheet-npcterrain[value="desert"] + span.sheet-npcterrain
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548539/TcFgRD-zleqwp3YjdopPZw/med.png")
+	input.sheet-npcterrain[value="forest"] + span.sheet-npcterrain
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548700/RW6MawNZcnYDVUooKhp3NQ/med.png")
+	input.sheet-npcterrain[value="jungle"] + span.sheet-npcterrain
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548700/RW6MawNZcnYDVUooKhp3NQ/med.png")
+	input.sheet-npcterrain[value="hill"] + span.sheet-npcterrain
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548745/gWQYP1lgyDsopDtKWiQCxw/med.png")
+	input.sheet-npcterrain[value="mountain"] + span.sheet-npcterrain
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548959/TqWCzneN_lj2to1Tw59vJA/med.png")
+	input.sheet-npcterrain[value="plain"] + span.sheet-npcterrain
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548984/WV3iUV7iFAdHpaHvSDuzSg/med.png")
+	input.sheet-npcterrain[value="ruins"] + span.sheet-npcterrain
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62549436/w0ykODBInBjOrypAyTHUAg/med.png")
+	input.sheet-npcterrain[value="dungeon"] + span.sheet-npcterrain
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62549436/w0ykODBInBjOrypAyTHUAg/med.png")
+	input.sheet-npcterrain[value="sky"] + span.sheet-npcterrain
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62549524/4Gl6m7XQaGiF2SchQgxB1w/med.png")
+	input.sheet-npcterrain[value="swamp"] + span.sheet-npcterrain
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62549696/TJK9ax-AFp_n559AbF6wIw/med.png")
+	input.sheet-npcterrain[value="underground"] + span.sheet-npcterrain
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62549906/sNMPSyiybFjeno0v2cLTfg/med.png")
+	input.sheet-npcterrain[value="urban"] + span.sheet-npcterrain
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62550040/-CB6pti3YcUu2V0aGxE7Kw/med.png")
+	input.sheet-npcterrain[value="water"] + span.sheet-npcterrain
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62550078/RxZT55sijPZh0gV-56aHoQ/med.png")
+	input.sheet-npcclimate[value="cold"] + span.sheet-npcclimate
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548565/XPEA3006C2Mm4X-rWo2_FA/med.png")
+	input.sheet-npcclimate[value="extraplanar"] + span.sheet-npcclimate
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62548648/Agoyfi00_KZhmVCpQ_WL3A/med.png")
+	input.sheet-npcclimate[value="temperate"] + span.sheet-npcclimate
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62549791/fm4DFa9HAslcLVGW-oa6ZQ/med.png")
+	input.sheet-npcclimate[value="tropical"] + span.sheet-npcclimate
+		background-image: url("https://s3.amazonaws.com/files.d20.io/images/62549799/NmQRtg53WtVmU47EdsWnpA/med.png")
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # NPC ELEMENTS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+// NPC
+.sheet-npc
+	position: relative
+	width: 600px
+	max-width: 600px
+	text-align: left
+	vertical-align: top
+	font-size: $fs-100
+	font-family: $fnt-sans
+	color: $txt-swart
+	background-color: $bg-white
+	.sheet-lbl:not(.sheet-center)
+		margin-right: 4px
+	.sheet-lbindent
+		margin-left: 3px
+		margin-right: 0
+
+// Noteblock
+.sheet-noteblock
+	margin: 6px 15px
+	padding: 4px 4px 4px 8px
+	font-size: $fs-90
+	font-style: italic
+	color: $txt-black
+	border-left: 4px solid $brd-lite
+	background-color: $bg-lite
+
+// Expansion
+.sheet-npc-expansion[value="8"] + .sheet-blacklabel.sheet-flexible
+	color: $txt-black
+	background-color: $bg-white
+
+// =============================================================================
+// A. NPC Options
+// =============================================================================
+
+// Container
+.sheet-npc-options
+	position: relative
+	.sheet-options
+		margin-bottom: 6px
+	// Black Labels
+	.sheet-blacklabel
+		width: 100%
+		.sheet-big
+			margin: 2px 4px 0 22px
+	// Options Section
+	.sheet-npc-section
+		width: 100%
+		margin: 6px 0
+		padding: 2px 6px
+		line-height: $lh-med
+		font-weight: bold
+		background-color: $cl-shadow-deep
+	// NPC Options Skills
+	.sheet-npc-skills
+		.sheet-lbl
+			width: 115px
+			text-align: right
+		input[type="text"]
+			width: 140px
+	// NPC Options Columns
+	.sheet-col1for2
+		display: inline-block
+		width: 280px
+.sheet-npc-options:before
+	content: ""
+	display: inline-block
+	position: absolute
+	top: -20px
+	left: 0
+	width: 100%
+	height: $lh-sml
+
+// Options Flags
+.sheet-npc-options > .sheet-options-flag,
+.sheet-npc-options > .sheet-options-flag + span
+	top: 2px
+	left: 2px
+
+// =============================================================================
+// B. NPC Display
+// =============================================================================
+
+.sheet-npc-display
+	.sheet-npc-section
+		display: block
+		width: 100%
+		margin: $sp-base 0 6px
+		padding: 0 2px
+		font-size: $fs-120
+		text-transform: uppercase
+		border-top: 1px solid $brd-black
+		border-bottom: 1px solid $brd-black
+
+	// NPC Display Defenses
+	.npc-defenses
+		.lbl:first-of-type
+			width: 125px // TEMP
+		input,
+		textarea
+			width: 180px // TEMP
+
+	// NPC Display Skills
+	.sheet-npc-skills span:not(.sheet-spacer):not(.sheet-optional)
+		display: inline
+	.sheet-skills-list
+		.sheet-optional .sheet-btn:after
+			margin-right: $sp-hlf
+		.sheet-optional:last-of-type .sheet-btn:after
+			margin-right: 0
+
+	// Colons
+	.sheet-spells .repitem:last-of-type .sheet-colon,
+	.sheet-spelllike .repitem:last-of-type .sheet-colon,
+	.sheet-melee .repitem:last-of-type .sheet-colon,
+	.sheet-ranged .repitem:last-of-type .sheet-colon,
+	.sheet-special .repitem:last-of-type .sheet-colon,
+	.sheet-feats .repitem:last-of-type .sheet-colon
+		display: none
+
+	// Pseudo Semi-colons
+	.sheet-defabils .sheet-optional:not(:last-of-type):after // TEMP
+		content: ";"
+		margin: 0 4px
+
+	// Pseudo Colons
+	.sheet-skills-list .sheet-optional-flag0[value="1"] + .sheet-optional ~ .sheet-optional:before
+		content: ","
+		margin-right: 4px
+
+	// NPC Display Attacks
+	.sheet-npc-multatks
+		.sheet-lbl
+			width: 25px
+			padding-right: 0
+			text-align: center
+		.sheet-lbl:first-of-type
+			width: 50px
+			text-align: right
+
+	.sheet-lbrow .sheet-pseudoattr
+		width: 40px
+
+	// NPC Display Spells
+	.sheet-prep
+		width: 55px
+		text-align: center
+
+// NPC Optioned
+button[type="roll"].sheet-btn.sheet-optioned
+	margin-right: 2px
+	margin-left: 20px
+
+button[type="roll"].sheet-btn.sheet-optioned > span
+	text-decoration: underline dotted grey
+
+button[type="roll"].sheet-btn.sheet-optioned:hover > span
+	text-decoration: underline $cl-hover
+
+// NPC Options Containers
+.sheet-npc-repeating-block .sheet-options
+	width: 600px
+	background-color: $bg-options
+
+// NPC Background
+.sheet-npcbackground
+	margin-top: 20px
+	font-size: $fs-110
+	font-family: $fnt-serif
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # CONDITIONS & BUFFS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-condbuff
+	position: absolute
+	top: 0
+	left: 0
+	z-index: 2
+
+.sheet-condbuff
+	.sheet-lab
+		font-size: $fs-90
+	.sheet-condcheck,
+	.sheet-buffcheck
+		width: 75px
+		height: $lh-xxs
+		line-height: $lh-xxs
+		text-align: left
+	.sheet-panel
+		position: absolute
+		width: 190px
+		min-height: $lh-xxs
+		left: 85px
+		padding: 1px 3px
+		line-height: 1.1
+		font-family: $fnt-sans
+		font-size: $fs-90
+		white-space: nowrap
+		overflow: hidden
+		text-overflow: ellipsis
+		border: 1px solid transparent
+		background-color: $bg-white
+		z-index: inherit
+	.sheet-panel:hover
+		white-space: normal
+		border-color: $brd-black
+		box-shadow: $box-shadow
+		z-index: 1
+	.sheet-options .sheet-row.sheet-conds
+		white-space: nowrap
+	.sheet-panel.sheet-conds,
+	.sheet-options .sheet-row.sheet-conds .sheet-flexrow .sheet-lab,
+	.sheet-options .sheet-conds .sheet-labelcheck input[type="checkbox"]:checked + span,
+	.sheet-options .sheet-conds .sheet-labelcheck input[type="hidden"]:not([value="0"]) + span
+		color: $cl-checked
+
+.sheet-condbuff > .sheet-options
+	position: absolute
+	top: -2px
+	left: 85px
+	min-width: 500px
+	padding: 4px $sp-base 16px $sp-base
+	border: 1px solid $brd-black
+	background-color: $bg-white
+	box-shadow: $box-shadow
+	z-index: 3
+
+.sheet-condbuff > .sheet-options > .sheet-flexrow:first-child
+	height: 30px
+	padding-top: 4px
+
+.sheet-conds .sheet-labelcheck
+	min-width: 100px
+
+.sheet-buffs .sheet-buff
+	label
+		margin-left: 20px
+	.sheet-options
+		width: 475px
+		margin-top: 0
+		margin-bottom: 4px
+		padding: $sp-hlf
+	.sheet-btn
+		margin-left: $sp-hlf
+	.sheet-options input[type="text"],
+	.sheet-options .sheet-autoex
+		width: 300px
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # ATTRIBUTES
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-baseattr
+	pointer-events: none
+	display: inline-block
+	position: absolute
+	opacity: 0
+
+.sheet-finalattr
+	display: inline-block
+
+.sheet-boxed:hover .sheet-baseattr,
+.sheet-boxed .sheet-baseattr:focus
+	pointer-events: auto
+	position: static
+	opacity: 1
+
+.sheet-boxed:hover .sheet-finalattr,
+.sheet-boxed .sheet-baseattr:focus ~ .sheet-finalattr
+	display: none
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # ATTRIBUTE FLAGS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-attr-flag + span
+	position: relative
+	overflow: visible
+
+.sheet-boxed .sheet-attr-flag:not([value="0"]) + span:after,
+.sheet-boxed .sheet-attr-flag:not([value="0"]) + .sheet-finalattr:after,
+.sheet-spellcasting .sheet-attr-flag:not([value="0"]) + span:after,
+.sheet-spells .sheet-attr-flag:not([value="0"]) + span.sheet-prepared:before,
+.sheet-attacks .sheet-attr-flag:not([value="0"]) + span:after,
+.sheet-skill .sheet-attr-flag:not([value="0"]) + span:before,
+.sheet-skill .sheet-attr-flag:not([value="0"]) + span:after
+	position: absolute
+	margin-left: 1px
+	font-family: "Pictos"
+	font-size: $fs-120
+	font-weight: normal
+	text-decoration: none
+	text-transform: none
+
+.sheet-skill .sheet-attr-flag:not([value="0"]) + span,
+.sheet-boxed .sheet-attr-flag:not([value="0"]) + span,
+.sheet-boxed .sheet-attr-flag:not([value="0"]) + .sheet-finalattr,
+.sheet-spellcasting .sheet-attr-flag:not([value="0"]) + span
+	color: $cl-icon-buff
+
+.sheet-attacks .sheet-attr-flag:not([value="0"]) + span:after
+	color: $cl-icon-buff-black
+
+.sheet-boxed .sheet-attr-flag:not([value="0"]) + span:after,
+.sheet-boxed .sheet-attr-flag:not([value="0"]) + .sheet-finalattr:after,
+.sheet-spellcasting .sheet-attr-flag:not([value="0"]) + span:after,
+.sheet-attacks .sheet-attr-flag:not([value="0"]) + span:after
+	content: "e"
+
+.sheet-spells
+	.sheet-attr-flag:not([value="0"]) + span.sheet-prepared
+		color: $cl-warning
+	.sheet-attr-flag:not([value="0"]) + span.sheet-prepared:before
+		content: "!"
+		left: 30px
+		width: 10px
+		height: 22px
+		text-indent: -2px
+		background-color: $bg-white
+
+.sheet-skill
+	.sheet-attr-flag[value="1"] + span
+		color: $cl-icon-penalty
+	.sheet-attr-flag[value="2"] + span
+		color: $cl-icon-buff
+	.sheet-attr-flag[value="3"] + span
+		color: $txt-input
+	.sheet-attr-flag[value="1"] + span:before,
+	.sheet-attr-flag[value="3"] + span:before
+		content: "U"
+		left: -7px
+		color: $cl-icon-penalty
+	.sheet-attr-flag[value="2"] + span:after,
+	.sheet-attr-flag[value="3"] + span:after
+		content: "e"
+		right: 0
+		color: $cl-icon-buff
+
+.sheet-spell
+	.sheet-attr-flag + span
+		position: absolute
+		right: 75px
+	.sheet-attr-flag:not([value="0"]) + span:after
+		content: "g"
+		line-height: $lh-sml
+		font-family: "Pictos Three"
+		font-size: $fs-120
+		font-weight: bold
+		color: $cl-checked
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # CONDITION FLAGS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-abilities .sheet-ability .sheet-pictos,
+.sheet-initiative .sheet-pictos,
+.sheet-saves .sheet-pictos,
+.sheet-combatmaneuvers .sheet-cmb .sheet-pictos,
+.sheet-attackmods .sheet-melee .sheet-pictos,
+.sheet-attackmods .sheet-ranged .sheet-pictos,
+.sheet-attacks .sheet-pictos,
+.sheet-skills .sheet-pictos
+	display: none
+	position: absolute
+	top: 2px
+	width: 13px
+	color: $cl-icon-condition
+	z-index: 1
+
+.sheet-abilities .sheet-ability .sheet-pictos
+	left: 65px
+
+.sheet-initiative .sheet-pictos
+	left: 70px
+
+.sheet-saves .sheet-fortitude .sheet-pictos,
+.sheet-saves .sheet-reflex .sheet-pictos,
+.sheet-saves .sheet-will .sheet-pictos
+	left: 45px
+
+.sheet-combatmaneuvers .sheet-cmb .sheet-pictos,
+.sheet-attackmods .sheet-melee .sheet-pictos,
+.sheet-attackmods .sheet-ranged .sheet-pictos
+	left: 100px
+
+.sheet-attacks .sheet-pictos
+	left: 205px
+
+.sheet-skills .sheet-pictos
+	left: 250px
+
+.sheet-abilities input.sheet-condition-flag:not([value="0"]) ~ div.sheet-ability div.sheet-blacklabel span.sheet-pictos,
+.sheet-initiative input.sheet-condition-flag:not([value="0"]) + span.sheet-pictos,
+.sheet-tabmain input.sheet-condition-flag.sheet-attacks:not([value="0"]) ~ div span.sheet-pictos.sheet-attacks,
+.sheet-saves input.sheet-condition-flag:not([value="0"]) ~ .sheet-save span.sheet-pictos,
+.sheet-skills input.sheet-condition-flag:not([value="0"]) + .sheet-pictos
+	display: inline-block
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # PSEUDO CHECKS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+input[type="checkbox"].sheet-pseudocheck,
+input[type="radio"].sheet-pseudocheck
+	cursor: pointer
+	width: 20px
+	height: $lh-sml
+	opacity: 0
+
+input[type="checkbox"].sheet-pseudocheck + span,
+input[type="radio"].sheet-pseudocheck + span
+	pointer-events: none
+	display: inline-block
+	position: relative
+	margin-left: -20px
+	width: 20px
+	height: $lh-sml
+	line-height: $lh-min
+	font-size: $fs-130
+	border: 1px solid $brd-dark
+	background-color: $bg-input
+
+input[type="checkbox"].sheet-pseudocheck + span
+	width: 12px
+	height: 12px
+	top: 2px
+	left: 4px
+	margin-right: 8px
+
+input[type="radio"].sheet-pseudocheck + span
+	width: 13px
+	height: $lh-base
+	top: 3px
+	left: 0
+	margin-right: 2px
+	border-radius: 100%
+
+input[type="checkbox"].sheet-pseudocheck:hover + span,
+input[type="radio"].sheet-pseudocheck:hover + span
+	background-color: $bg-input-hover
+
+input[type="checkbox"].sheet-pseudocheck:focus + span,
+input[type="radio"].sheet-pseudocheck:focus + span
+	background-color: $bg-input-focus
+
+input[type="checkbox"].sheet-pseudocheck + span:before,
+input[type="radio"].sheet-pseudocheck + span:before
+	content: ""
+	display: inline-block
+	position: absolute
+	top: -2px
+	width: 12px
+	text-align: center
+
+input[type="checkbox"].sheet-pseudocheck + span:before
+	left: -1px
+	height: 12px
+
+input[type="radio"].sheet-pseudocheck + span:before
+	left: 1px
+	height: 16px
+
+input[type="radio"].sheet-pseudocheck:checked + span
+	border-color: $cl-icon
+
+input[type="checkbox"].sheet-pseudocheck:checked + span:before,
+input[type="radio"].sheet-pseudocheck:checked + span:before
+	content: "✔"
+
+// Margins
+input[type="radio"].sheet-pseudocheck + span .sheet-lbl
+	margin-left: 4px
+
+// Condensed
+input[type="checkbox"].sheet-pseudocheck.sheet-condensed
+	height: 16px
+input[type="checkbox"].sheet-pseudocheck.sheet-condensed + span
+	left: 2px
+
+// Clear
+.sheet-clear
+	input[type="radio"].sheet-pseudocheck + span
+		top: 0
+		left: 0
+		width: 20px
+		height: 20px
+		vertical-align: top
+		border: none
+		border-radius: unset
+		background-color: transparent
+	input[type="radio"].sheet-pseudocheck + span:before
+		content: "D"
+		font-family: "Pictos"
+		font-size: $fs-120
+		color: $cl-warning-dark
+		top: inherit
+		left: inherit
+		width: inherit
+		height: inherit
+		line-height: 20px
+	input[type="radio"].sheet-pseudocheck:hover + span:before,
+	input[type="radio"].sheet-pseudocheck:focus + span:before
+		color: $cl-warning-lite
+	input[type="radio"].sheet-pseudocheck:checked + span:before
+		color: transparent
+label.sheet-clear:hover
+	background-color: transparent
+label.sheet-clear,
+label.sheet-clear input[type="radio"].sheet-pseudocheck
+	cursor: default
+label.sheet-clear input[type="radio"].sheet-pseudocheck:not(:checked)
+	cursor: pointer
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # LABEL CHECKS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-labelcheck
+	cursor: pointer
+	position: relative
+	input[type="checkbox"],
+	input[type="radio"]
+		opacity: 0
+		z-index: 1
+	input[type="checkbox"] + span,
+	input[type="radio"] + span
+		margin-left: 0
+		padding-left: 18px
+	input[type="checkbox"] + span:before,
+	input[type="radio"] + span:before
+		content: "☐"
+		display: inline-block
+		font-size: $fs-120
+	input[type="checkbox"],
+	input[type="radio"],
+	input[type="checkbox"] + span:before,
+	input[type="radio"] + span:before
+		position: absolute
+		left: 2px
+	input[type="checkbox"]:checked + span,
+	input[type="radio"]:checked + span
+		font-weight: bold
+	input[type="checkbox"]:checked + span:before,
+	input[type="radio"]:checked + span:before
+		content: "☑"
+		font-weight: normal
+
+.sheet-pschckcont:hover,
+.sheet-labelcheck:hover
+	background-color: $bg-greyed-hover
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # LEFT FILLED RADIO
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-dots
+	position: relative
+	display: inline-block
+	line-height: 12px
+	white-space: nowrap
+	input[type="radio"]
+		position: absolute
+		opacity: 0
+		z-index: 1
+	input[type="radio"],
+	input[type="radio"] + span
+		display: inline-block
+		width: 13px
+		height: $lh-base
+	input[type="radio"] + span
+		position: relative
+		vertical-align: top
+		border-radius: 100%
+		background: $bg-white
+	input[type="radio"]:first-of-type + span
+		margin: 0 2px
+
+	// Cross
+	input[type="radio"][value="0"] + span:before
+		content: "D"
+		position: absolute
+		top: 0
+		left: 0
+		font-family: "Pictos"
+		font-size: $fs-120
+		color: $cl-icon
+	input[type="radio"][value="0"]:hover + span:before
+		color: $cl-warning
+	input[type="radio"][value="0"]:focus + span:before
+		color: $cl-focus
+
+	// Rounds
+	input[type="radio"]:not([value="0"]) + span
+		border: 1px solid $cl-icon
+	input[type="radio"]:not([value="0"]):hover + span
+		background-color: $bg-input-hover
+	input[type="radio"]:not([value="0"]):focus + span
+		background-color: $bg-input-focus
+	input[type="radio"]:not([value="0"]) + span:before
+		content: ""
+		position: absolute
+		top: 2px
+		left: 2px
+		height: 7px
+		width: 7px
+		border-radius: inherit
+		background-color: $bg-black
+		opacity: 1
+		transition: .125s opacity
+	input[type="radio"]:checked ~ input[type="radio"] + span:before
+		content: ""
+		opacity: 0
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # AUTO EXPAND TEXTAREAS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-autoex
+	position: relative
+	cursor: text
+	font-family: $fnt-hand
+	font-size: $fs-120
+	line-height: $fs-130
+	min-height: $lh-med
+	text-align: left
+	span
+		visibility: hidden
+		display: block
+		font-family: inherit
+		font-size: inherit
+		line-height: inherit
+		white-space: pre-wrap
+		text-align: inherit
+		min-height: inherit
+	textarea
+		display: block
+		z-index: 1
+		position: absolute
+		top: 0
+		left: 0
+		height: 100%
+		width: 100%
+		overflow: hidden
+		font-family: inherit
+		font-size: inherit
+		line-height: inherit
+		white-space: pre-wrap
+		text-align: inherit
+		min-height: inherit
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # OPTIONALS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-optional,
+.sheet-optional-flag,
+.sheet-optional-flag0
+	display: none
+
+.sheet-optional-flag:not([value=""]) + .sheet-optional,
+.sheet-optional-flag0:not([value="0"]) + .sheet-optional
+	display: inline
+
+.sheet-optional-flag:not([value=""]) + .sheet-optional.sheet-blk,
+.sheet-optional-flag0:not([value="0"]) + .sheet-optional.sheet-blk
+	display: block
+
+.sheet-optional-flag:not([value=""]) + .sheet-optional.sheet-inl,
+.sheet-optional-flag0:not([value="0"]) + .sheet-optional.sheet-inl
+	display: inline-block
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # OPTIONS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+%options-ext
+	background-color: $bg-options
+	background-image: $bg-img-options
+	box-shadow: $box-shadow-options
+
+%options-def
+	background-color: $bg-white
+	background-image: none
+	box-shadow: none
+
+.sheet-options
+	display: none
+	margin-top: 4px
+	margin-bottom: 4px
+	padding: 4px
+	border: 2px dotted $brd-options
+	@extend %options-ext
+	.sheet-lbl.sheet-spacer
+		margin-top: 4px // TEMP
+
+.sheet-attacks,
+.sheet-acitems,
+.sheet-gear,
+.sheet-spellcasting
+	.sheet-options
+		@extend %options-def
+
+.sheet-condbuff
+	> .sheet-options
+		@extend %options-def
+
+.sheet-buff,
+.sheet-attacks .sheet-extra-attacks
+	.sheet-options
+		margin-top: 4px
+		@extend %options-ext
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # OPTIONS FLAGS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+input.sheet-options-flag,
+.sheet-options-flag + span,
+.sheet-options-flag + span:before,
+.sheet-options-flag + span:after
+	position: absolute
+	top: 0
+	left: 0
+	width: 20px
+	height: $lh-sml
+input.sheet-options-flag
+	opacity: 0
+	z-index: 2
+.sheet-options-flag + span
+	cursor: pointer
+	display: none
+	text-align: center
+	line-height: $lh-sml
+	font-size: $fs-120
+	font-family: "Pictos"
+	color: $cl-icon
+	z-index: 1
+.sheet-options-flag + span:before
+	content: "y"
+	display: inline-block
+	z-index: 1
+
+.sheet-options-flag:hover + span,
+.sheet-options-flag:checked + span
+	color: $cl-icon-hover
+.sheet-options-flag:focus + span
+	color: $cl-focus
+
+.sheet-options-flag:hover + span, .sheet-options-flag:checked + span, .sheet-options-flag:focus + span,
+.sheet-npc .sheet-npc-options:hover .sheet-options-flag + span,
+.sheet-npc .sheet-npc-repeating-block .sheet-attack:hover .sheet-options-flag + span,
+.sheet-options-block:hover .sheet-options-flag + span,
+.sheet-saves:hover .sheet-options-flag + span,
+.sheet-ability:hover .sheet-options-flag + span,
+.sheet-acvalues:hover .sheet-options-flag + span,
+.sheet-initiative:hover .sheet-options-flag + span,
+.sheet-acitem:hover .sheet-options-flag + span,
+.sheet-babandsr:hover .sheet-options-flag + span,
+.sheet-attackmods:hover .sheet-options-flag + span,
+.sheet-combatmaneuvers:hover .sheet-options-flag + span,
+.sheet-attack:hover .sheet-options-flag + span,
+.sheet-skill:hover .sheet-options-flag + span,
+.sheet-mpvalues:hover .sheet-options-flag + span,
+.sheet-concentration:hover .sheet-options-flag + span,
+.sheet-spell:hover .sheet-options-flag + span,
+.sheet-feat:hover .sheet-options-flag + span,
+.sheet-trait:hover .sheet-options-flag + span,
+.sheet-metamagic:hover .sheet-options-flag + span,
+.sheet-encumbrance:hover .sheet-options-flag + span,
+.sheet-speeds:hover .sheet-options-flag + span,
+.sheet-gearitem:hover .sheet-options-flag + span,
+.sheet-buff:hover .sheet-options-flag + span
+	display: inline-block
+
+.sheet-abilities .sheet-options-flag,
+.sheet-abilities .sheet-options-flag + span,
+.sheet-initiative .sheet-options-flag,
+.sheet-initiative .sheet-options-flag + span,
+.sheet-babandsr .sheet-options-flag,
+.sheet-babandsr .sheet-options-flag + span,
+.sheet-combatmaneuvers .sheet-options-flag,
+.sheet-combatmaneuvers .sheet-options-flag + span,
+.sheet-attackmods .sheet-options-flag,
+.sheet-attackmods .sheet-options-flag + span,
+.sheet-speeds .sheet-options-flag,
+.sheet-speeds .sheet-options-flag + span
+	top: 2px
+
+.sheet-spell .sheet-options-flag:focus ~ .sheet-headline .sheet-roundblack,
+.sheet-spell .sheet-options-flag:checked ~ .sheet-headline .sheet-roundblack,
+.sheet-spell:hover .sheet-headline .sheet-roundblack
+	opacity: 0
+
+.sheet-acvalues .sheet-options-flag,
+.sheet-acvalues .sheet-options-flag + span,
+.sheet-saves .sheet-options-flag,
+.sheet-saves .sheet-options-flag + span
+	width: 24px
+	height: 24px
+
+.sheet-acvalues .sheet-options-flag + span:before,
+.sheet-saves .sheet-options-flag + span:before
+	top: 2px
+
+.sheet-acvalues .sheet-options-flag + span:after,
+.sheet-saves .sheet-options-flag + span:after
+	pointer-events: none
+	content: ""
+	width: 50%
+	height: 100%
+	background-color: $bg-black
+
+// Position
+.sheet-acvalues .sheet-options-flag,
+.sheet-acvalues .sheet-options-flag + span,
+.sheet-saves .sheet-options-flag.sheet-reflex,
+.sheet-saves .sheet-options-flag.sheet-reflex + span
+	left: -10px // 0px
+.sheet-saves .sheet-options-flag.sheet-fortitude,
+.sheet-saves .sheet-options-flag.sheet-fortitude + span
+	left: 130px // 140px
+.sheet-saves .sheet-options-flag.sheet-will,
+.sheet-saves .sheet-options-flag.sheet-will + span
+	left: 270px // 280px
+.sheet-mpvalues .sheet-options-flag,
+.sheet-mpvalues .sheet-options-flag + span
+	left: 10px
+	top: 57px
+
+.sheet-babandsr .sheet-options-flag.sheet-sr,
+.sheet-babandsr .sheet-options-flag.sheet-sr + span,
+.sheet-combatmaneuvers .sheet-options-flag.sheet-cmd,
+.sheet-combatmaneuvers .sheet-options-flag.sheet-cmd + span,
+.sheet-attackmods .sheet-options-flag.sheet-ranged,
+.sheet-attackmods .sheet-options-flag.sheet-ranged + span
+	left: 215px
+
+.sheet-encumbrance .sheet-options-flag,
+.sheet-encumbrance .sheet-options-flag + span
+	top: $sp-hlf
+	left: $sp-base
+
+// Visibility
+.sheet-options-flag:checked ~ .sheet-options
+	display: inherit
+
+.sheet-options-flag.sheet-fortitude ~ .sheet-options,
+.sheet-options-flag.sheet-reflex ~ .sheet-options,
+.sheet-options-flag.sheet-will ~ .sheet-options,
+.sheet-options-flag.sheet-bab ~ .sheet-options,
+.sheet-options-flag.sheet-sr ~ .sheet-options,
+.sheet-options-flag.sheet-cmb ~ .sheet-options,
+.sheet-options-flag.sheet-cmd ~ .sheet-options,
+.sheet-options-flag.sheet-melee ~ .sheet-options,
+.sheet-options-flag.sheet-ranged ~ .sheet-options
+	display: none
+
+.sheet-options-flag.sheet-fortitude:checked ~ .sheet-options.sheet-fortitude,
+.sheet-options-flag.sheet-reflex:checked ~ .sheet-options.sheet-reflex,
+.sheet-options-flag.sheet-will:checked ~ .sheet-options.sheet-will,
+.sheet-options-flag.sheet-bab:checked ~ .sheet-options.sheet-bab,
+.sheet-options-flag.sheet-sr:checked ~ .sheet-options.sheet-sr,
+.sheet-options-flag.sheet-cmb:checked ~ .sheet-options.sheet-cmb,
+.sheet-options-flag.sheet-cmd:checked ~ .sheet-options.sheet-cmd,
+.sheet-options-flag.sheet-melee:checked ~ .sheet-options.sheet-melee,
+.sheet-options-flag.sheet-ranged:checked ~ .sheet-options.sheet-ranged
+	display: inherit
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # REPEATING SECTIONS CONTROLS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.repcontrol
+	.btn // NOTE : base.css override
+		border: none
+		font-size: 0
+		color: initial // TEMP
+		background: none
+		box-shadow: none
+	.btn:focus
+		outline: 0
+	.repcontrol_add:before,
+	.repcontrol_edit:after
+		display: inline-block
+		font-family: "Pictos"
+	.repcontrol_add:before
+		content: "&"
+	.repcontrol_edit:after
+		content: "("
+
+.repcontainer .repitem .itemcontrol
+	z-index: 5
+	.repcontrol_move,
+	.repcontrol_del
+		width: 16px
+		height: 16px
+		margin: 1px
+		padding: 0
+		border: 1px solid transparent
+		border-radius: 3px
+		text-shadow: none
+		box-shadow: $btn-shadow
+		box-sizing: content-box
+	.repcontrol_move
+		cursor: move
+		float: left
+		line-height: $lh-xxs
+		font-size: $fs-90
+		color: $txt-swart
+		border-color: $bg-fair $bg-dark $bg-dark $bg-fair
+		background: $bg-input
+	.repcontrol_del
+		position: relative
+		float: right
+		line-height: $lh-sml
+		font-size: 0
+		color: $txt-white
+		border-color: $cl-warning-lite $cl-warning-deep $cl-warning-deep $cl-warning-lite
+		background: $cl-warning
+	.repcontrol_del:before
+		content: "*"
+		position: absolute
+		display: inline-block
+		top: -3px
+		left: -2px
+		width: 20px
+		height: $lh-sml
+		font-family: "Pictos"
+		font-size: $fs-100
+	.repcontrol_move:hover
+		background-color: $bg-ctrl-move
+	.repcontrol_move:focus
+		background-color: $bg-input-focus
+	.repcontrol_del:hover
+	.repcontrol_del:focus
+		color: $txt-swart
+		border-top-color: $cl-caution
+		border-left-color: $cl-caution
+		background-color: $cl-caution-deep
+
+// PC
+.sheet-pc
+	.repcontrol
+		position: relative
+		margin: $sp-base 0 $sp-base
+		width: 100%
+		height: $lh-sml
+		text-align: left
+		overflow: hidden
+	.repcontrol:after
+		content: ""
+		position: absolute
+		display: inline-block
+		width: 75%
+		height: $lh-sml
+		border: 1px dotted $brd-dark
+		top: -11px
+		left: 12.5%
+	.repcontrol
+		.btn
+			position: relative
+			width: 20px
+			height: $lh-sml
+			padding: 0
+			vertical-align: top
+			text-shadow: none
+			color: $cl-icon
+			border: 1px solid $cl-icon
+			border-radius: 100%
+			background-color: $bg-input
+			z-index: 1
+		.repcontrol_add
+			left: calc(50%)
+		.repcontrol_edit
+			left: calc(50% - 40px)
+			float: none
+		.repcontrol_add:before,
+		.repcontrol_edit:after
+			position: absolute
+			top: 4px
+			left: 4px
+			width: $sp-base
+			height: $lh-min
+			line-height: $lh-min
+			font-size: $fs-110
+		.repcontrol_edit:hover,
+		.repcontrol_add:hover
+			border-color: $cl-icon-hover
+		.repcontrol_edit:hover:after,
+		.repcontrol_add:hover:before
+			color: $cl-icon-hover
+		.repcontrol_edit:focus,
+		.repcontrol_add:focus
+			border-color: $cl-focus
+		.repcontrol_edit:focus:after,
+		.repcontrol_add:focus:before
+			color: $cl-focus
+
+// NPC
+.sheet-npc
+	.repcontrol,
+	.sheet-npc-repeating-block .repitem
+		display: inline-block
+	.sheet-npc-repeating-block .repcontainer
+		display: inline
+	.repcontrol
+		position: relative
+		margin: 0 $sp-base
+		width: 40px
+		height: $lh-sml
+		vertical-align: bottom
+	.repcontrol
+		.btn
+			width: 20px
+			height: $lh-sml
+			padding: 2px 0 0
+			vertical-align: top
+			font-size: 0
+			color: $cl-icon
+		.btn:hover
+			color: $cl-icon-hover
+		.btn:focus
+			color: $cl-focus
+		.repcontrol_edit,
+		.repcontrol_add
+			position: absolute
+			top: 0
+		.repcontrol_edit
+			left: 0
+		.repcontrol_add
+			left: 20px
+		.repcontrol_edit:after,
+		.repcontrol_add:before
+			width: $sp-base
+			height: $lh-min
+			padding: 2px
+			line-height: $lh-min
+			font-size: $fs-90
+
+// Buffs
+.sheet-buffs .repitem
+	display: inline-block
+
+// Edit Mode
+.editmode ~ .repcontrol .repcontrol_edit:after
+	content: ")"
+	vertical-align: top
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # REPEATING ITEMS CONTROLLER
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-pc .sheet-repcontrol-toggle[value="0"] ~ .repcontrol
+	display: none
+
+.sheet-toggle-box
+	position: absolute
+	display: inline-block
+	top: 140px
+	right: 0
+	z-index: 1
+
+.sheet-tabspell .sheet-toggle-box
+	top: 180px // TEMP
+
+.sheet-toggle-box
+	.sheet-lbl,
+	.sheet-toggle
+		position: relative
+		display: inline-block
+		vertical-align: top
+	.sheet-lbl
+		margin-right: $sp-hlf
+		font-weight: bold
+		font-size: $fs-90
+		line-height: $lh-sml
+		text-transform: uppercase
+	.sheet-toggle
+		width: 36px
+		height: $lh-sml
+		border: 0
+		border-radius: 20px
+		background-color: $cl-icon
+		transition: .25s background-color
+
+.sheet-toggle .sheet-ticker
+	position: absolute
+	display: inline-block
+	left: 3px
+	top: 3px
+	width: 14px
+	height: 14px
+	border-radius: 100%
+	background-color: $bg-input
+	transition: .125s left
+
+.sheet-toggle-controller[value="1"] + .sheet-toggle
+	background-color: $cl-checked
+
+.sheet-toggle-controller[value="1"] + .sheet-toggle .sheet-ticker
+	left: 19px
+
+.sheet-toggle-box .sheet-toggle-controller + .sheet-toggle:hover,
+.sheet-toggle-box .sheet-toggle-controller + .sheet-toggle:hover,
+.sheet-toggle-box .sheet-toggle-controller + .sheet-toggle:focus,
+.sheet-toggle-box .sheet-toggle-controller + .sheet-toggle:focus
+	background-color: $bg-input-focus
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # PSEUDO TABS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+input.sheet-tabmain, input.sheet-tabmain + span,
+input.sheet-tabadd, input.sheet-tabadd + span,
+input.sheet-tabspell, input.sheet-tabspell + span,
+input.sheet-tabconf, input.sheet-tabconf + span
+	display: inline-block
+	position: absolute
+	top: 135px
+	width: 150px
+	height: 31px
+	margin: 0
+	padding: 0
+
+input.sheet-tabmain, input.sheet-tabmain + span
+	left: 0
+
+input.sheet-tabadd, input.sheet-tabadd + span
+	left: 150px
+
+input.sheet-tabspell, input.sheet-tabspell + span,
+input.sheet-tabconf, input.sheet-tabconf + span
+	left: 300px
+
+input.sheet-tabmain,
+input.sheet-tabadd,
+input.sheet-tabspell,
+input.sheet-tabconf
+	opacity: 0
+	z-index: 1
+
+input.sheet-tabmain + span,
+input.sheet-tabadd + span,
+input.sheet-tabspell + span,
+input.sheet-tabconf + span
+	padding-top: 4px
+	color: $txt-dark
+	text-align: center
+	text-transform: uppercase
+	border-width: 1px 0 1px 1px
+	border-style: solid
+	border-color: $bg-fair
+	border-bottom-color: $brd-black
+	background-color: $bg-fair
+	transition: background-color .125s
+
+input.sheet-tabconf + span
+	border-right-width: 1px
+
+input.sheet-tabmain:hover + span,
+input.sheet-tabadd:hover + span,
+input.sheet-tabspell:hover + span,
+input.sheet-tabconf:hover + span
+	color: $txt-black
+	border-color: $bg-pale
+	border-bottom-color: $brd-black
+	background-color: $bg-pale
+
+input.sheet-tabmain:checked + span,
+input.sheet-tabadd:checked + span,
+input.sheet-tabspell:checked + span,
+input.sheet-tabconf:checked + span
+	color: $txt-swart
+	border-right-width: 1px
+	border-color: $brd-black
+	border-bottom-color: $bg-white
+	background-color: $bg-white
+
+input.sheet-tabmain:checked + span > [data-i18n],
+input.sheet-tabadd:checked + span > [data-i18n],
+input.sheet-tabspell:checked + span > [data-i18n],
+input.sheet-tabconf:checked + span > [data-i18n]
+	font-weight: bold
+
+input.sheet-tabmain:checked ~ div.sheet-tabmain,
+input.sheet-tabadd:checked ~ div.sheet-tabadd,
+input.sheet-tabspell:checked ~ div.sheet-tabspell,
+input.sheet-tabconf:checked ~ div.sheet-tabconf
+	display: block
+
+input.sheet-tabmain:focus + span,
+input.sheet-tabadd:focus + span,
+input.sheet-tabspell:focus + span,
+input.sheet-tabconf:focus + span
+	background-color: $bg-input-focus
+
+div.sheet-tabmain,
+div.sheet-tabadd,
+div.sheet-tabspell,
+div.sheet-tabconf
+	display: none
+	width: 100%
+	margin-top: 30px
+	padding-top: $sp-base
+	text-align: center
+	border-top: 1px solid $brd-black
+
+.sheet-tabspell.sheet-optional,
+.sheet-tabspell.sheet-optional + span.sheet-optional,
+.sheet-spells .sheet-col1third.sheet-optional
+	display: none
+
+.sheet-optional-flag0:not([value="0"]) + .sheet-tabspell.sheet-optional,
+.sheet-optional-flag0:not([value="0"]) + .sheet-tabspell.sheet-optional + span.sheet-optional
+	display: block
+
+.sheet-optional-flag0:not([value="0"]) + .sheet-tabspell + span + .sheet-tabconf,
+.sheet-optional-flag0:not([value="0"]) + .sheet-tabspell + span + .sheet-tabconf + span
+	left: 450px
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # API
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-ChatSetAttr-toggle + div button[type="roll"].sheet-chatsetattr
+	display: none
+
+.sheet-ChatSetAttr-toggle[value="1"] + div button[type="roll"].sheet-chatsetattr
+	display: inline-block
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # LICENCE
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-licence
+	margin-top: 6px
+	text-align: center
+	font-family: $fnt-sans
+	font-size: $fs-70
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # ROLL TEMPLATES
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+// Fonting
+.sheet-rolltemplate-pc,
+.sheet-rolltemplate-npc
+	font-family: $fnt-sans
+
+// Basics
+.sheet-rolltemplate-pc div,
+.sheet-rolltemplate-pc span,
+.sheet-rolltemplate-pc img,
+.sheet-rolltemplate-npc div,
+.sheet-rolltemplate-npc span,
+.sheet-rolltemplate-npc img,
+.sheet-rolltemplate-mancerroll div,
+.sheet-rolltemplate-mancerroll span,
+.sheet-rolltemplate-mancerroll img
+	box-sizing: border-box
+
+.sheet-rolltemplate-pc div,
+.sheet-rolltemplate-pc img,
+.sheet-rolltemplate-npc div,
+.sheet-rolltemplate-npc img,
+.sheet-rolltemplate-mancerroll div,
+.sheet-rolltemplate-mancerroll img
+	margin: 0
+	padding: 0
+
+// Basics
+.sheet-rolltemplate-pc .sheet-inl,
+.sheet-rolltemplate-npc .sheet-inl
+	display: inline
+
+.sheet-rolltemplate-pc .sheet-center,
+.sheet-rolltemplate-npc .sheet-center
+	text-align: center
+
+.sheet-rolltemplate-pc .sheet-right,
+.sheet-rolltemplate-npc .sheet-right
+	text-align: right
+
+.sheet-rolltemplate-pc .sheet-ital,
+.sheet-rolltemplate-npc .sheet-ital
+	font-style: italic
+
+.sheet-rolltemplate-pc .sheet-bold,
+.sheet-rolltemplate-npc .sheet-bold,
+.sheet-rolltemplate-mancerroll .sheet-bold
+	font-weight: bold
+
+.sheet-rolltemplate-pc .sheet-vtop,
+.sheet-rolltemplate-npc .sheet-vtop
+	overflow: hidden
+
+.sheet-rolltemplate-pc .sheet-notice
+	font-weight: bold
+	color: $roll-notice
+
+// API buttons
+.sheet-rolltemplate-pc a[href^="~"]
+	background-color: transparent
+	padding: 0
+	color: $roll-txt
+	display: inline-block
+	border: none
+	text-align: left
+	font-family: $fnt-sans
+	font-size: $fs-90
+	line-height: $lh-base
+	text-transform: capitalize
+	white-space: pre
+	font-weight: bold
+
+.sheet-rolltemplate-pc a:hover
+	color: $cl-hover
+
+// Rolls
+.sheet-rolltemplate-pc .inlinerollresult,
+.sheet-rolltemplate-npc .inlinerollresult,
+.sheet-rolltemplate-mancerroll .inlinerollresult
+	background-color: transparent
+	border: none
+	padding: 0 0
+	font-weight: bold
+	cursor: help
+	font-size: $fs-120
+	padding: 0 2px
+
+.sheet-rolltemplate-pc .inlinerollresult,
+.sheet-rolltemplate-mancerroll .inlinerollresult
+	color: $roll-txt
+
+.sheet-rolltemplate-npc .inlinerollresult
+	color: $txt-input
+
+.sheet-rolltemplate-pc .sheet-resright .inlinerollresult,
+.sheet-rolltemplate-npc .sheet-bigres .inlinerollresult
+	font-size: $fs-175
+	line-height: 36px
+
+.sheet-rolltemplate-pc .sheet-success,
+.sheet-rolltemplate-npc .sheet-success
+	color: $roll-success
+
+.sheet-rolltemplate-pc .sheet-failure,
+.sheet-rolltemplate-npc .sheet-failure
+	color: $cl-warning
+
+.sheet-rolltemplate-pc .inlinerollresult.fullcrit,
+.sheet-rolltemplate-npc .inlinerollresult.fullcrit,
+.sheet-rolltemplate-mancerroll .inlinerollresult.fullcrit
+	border: none
+	color: $roll-success
+
+.sheet-rolltemplate-pc .inlinerollresult.importantroll,
+.sheet-rolltemplate-npc .inlinerollresult.importantroll,
+.sheet-rolltemplate-mancerroll .inlinerollresult.importantroll
+	border: none
+	color: $roll-react
+
+.sheet-rolltemplate-pc .inlinerollresult.fullfail,
+.sheet-rolltemplate-npc .inlinerollresult.fullfail,
+.sheet-rolltemplate-mancerroll .inlinerollresult.fullfail
+	border: none
+	color: $roll-failure
+
+// Flex
+.sheet-rolltemplate-pc .sheet-flexatk,
+.sheet-rolltemplate-npc .sheet-flexatk,
+.sheet-rolltemplate-mancerroll .sheet-flexatk
+	display: flex
+	justify-content: space-between
+	align-items: center
+	height: $lh-sml // NEW
+
+.sheet-rolltemplate-pc .sheet-flexatk:not(:last-of-type),
+.sheet-rolltemplate-mancerroll .sheet-flexatk:not(:last-of-type) // EDIT
+	height: 21px // EDIT
+	border-bottom: 1px dotted $roll-txt
+
+.sheet-rolltemplate-npc .sheet-flexatk:not(:last-of-type) // EDIT
+	height: 21px // EDIT
+	border-bottom: 1px dotted $roll-txt-alt
+
+.sheet-rolltemplate-pc .sheet-spacer,
+.sheet-rolltemplate-npc .sheet-spacer
+	flex-grow: 2
+
+.sheet-rolltemplate-pc .sheet-flexdmg,
+.sheet-rolltemplate-npc .sheet-flexdmg
+	display: flex
+	align-items: center
+
+// Rows
+.sheet-rolltemplate-pc .sheet-row,
+.sheet-rolltemplate-npc .sheet-row
+	padding: 0 1px 0 2px
+
+// Charnames
+.sheet-rolltemplate-pc div.sheet-charname,
+.sheet-rolltemplate-mancerroll div.sheet-charname
+	border-style: solid
+	border-width: 1px 1px 0 1px
+	padding: 1px 1px 1px 2px
+	background-color: $bg-white
+	border-color: $roll-txt
+
+.sheet-rolltemplate-npc div.sheet-charname
+	padding: 4px 0 1px 0
+	background-color: transparent
+	margin-left: -14px
+	font-size: $fs-100
+
+// Descriptions
+.sheet-rolltemplate-pc div.sheet-desc,
+.sheet-rolltemplate-npc div.sheet-desc
+	max-height: 220px
+	overflow-y: auto
+	border-width: 1px
+	border-style: solid
+	margin-top: 2px
+	padding: 1px 1px 1px 2px
+
+.sheet-rolltemplate-pc div.sheet-desc
+	background-color: $bg-white
+	border-color: $roll-txt
+
+.sheet-rolltemplate-npc div.sheet-desc
+	border-color: $roll-txt-alt
+	background-color: $bg-white
+
+// Notes
+.sheet-rolltemplate-pc div.sheet-notes,
+.sheet-rolltemplate-npc div.sheet-notes
+	max-height: 220px
+	overflow-y: auto
+	border-width: 1px
+	border-style: solid
+	margin-top: 2px
+	padding: 1px 1px 1px 2px
+	background-color: $bg-pale
+	border-color: $bg-deep
+
+.sheet-rolltemplate-pc span.sheet-notes,
+.sheet-rolltemplate-npc span.sheet-notes
+	font-family: $fnt-sans
+	font-size: $fs-90
+	color: $txt-swart
+
+.sheet-rolltemplate-pc span.sheet-notes.sheet-conditions
+	color: $txt-condition
+
+// Labels
+.sheet-rolltemplate-pc .sheet-lbl,
+.sheet-rolltemplate-npc .sheet-lbl
+	text-align: left
+	font-family: $fnt-sans
+	font-size: $fs-90
+	line-height: $lh-base
+	white-space: pre
+
+.sheet-rolltemplate-pc .sheet-lbl
+	color: $roll-txt
+
+.sheet-rolltemplate-npc .sheet-lbl
+	color: $roll-txt-alt
+
+// Bordered
+.sheet-rolltemplate-pc .sheet-bordered,
+.sheet-rolltemplate-npc .sheet-bordered,
+.sheet-rolltemplate-mancerroll .sheet-bordered
+	position: relative
+	text-align: left
+	vertical-align: top
+	border-width: 1px
+	border-style: solid
+
+.sheet-rolltemplate-pc .sheet-bordered .sheet-row:nth-child(odd),
+.sheet-rolltemplate-mancerroll .sheet-bordered .sheet-row:nth-child(odd)
+	background: linear-gradient(to left, $bg-white, $roll-grad)
+
+.sheet-rolltemplate-npc .sheet-bordered .sheet-row:nth-child(even),
+.sheet-rolltemplate-mancerroll .sheet-bordered .sheet-row:nth-child(even)
+	background: linear-gradient(to left, $roll-grad-alt, $bg-white)
+
+// Icons
+.sheet-rolltemplate-pc .sheet-icon,
+.sheet-rolltemplate-npc .sheet-icon
+	position: absolute
+	top: 6px
+	left: -40px
+	width: 40px
+	text-align: center
+
+.sheet-rolltemplate-pc .sheet-icon:after,
+.sheet-rolltemplate-npc .sheet-icon:after
+	font-size: $fs-140
+
+.sheet-rolltemplate-pc .sheet-icon:after
+	color: $roll-txt
+
+.sheet-rolltemplate-npc .sheet-icon:after
+	color: $roll-txt-alt
+
+.sheet-rolltemplate-pc .sheet-icon.sheet-initiative:after,
+.sheet-rolltemplate-npc .sheet-icon.sheet-initiative:after
+	font-family: "Pictos"
+	content: "g"
+	font-size: $fs-200
+
+.sheet-rolltemplate-pc .sheet-icon.sheet-skill:after,
+.sheet-rolltemplate-npc .sheet-icon.sheet-skill:after
+	font-family: "Pictos"
+	content: "x"
+
+.sheet-rolltemplate-pc .sheet-icon.sheet-hp:after,
+.sheet-rolltemplate-npc .sheet-icon.sheet-hp:after
+	font-family: "Pictos"
+	content: "k"
+
+.sheet-rolltemplate-pc .sheet-icon.sheet-save:after,
+.sheet-rolltemplate-npc .sheet-icon.sheet-save:after
+	font-family: "Pictos Custom"
+	content: "e"
+
+.sheet-rolltemplate-pc .sheet-icon.sheet-attackdamage:after,
+.sheet-rolltemplate-npc .sheet-icon.sheet-attackdamage:after
+	font-family: "Pictos Custom"
+	font-weight: bold
+	content: "⚔t"
+
+.sheet-rolltemplate-pc .sheet-icon.sheet-attack:after,
+.sheet-rolltemplate-npc .sheet-icon.sheet-attack:after
+	font-family: "Pictos Custom"
+	font-weight: bold
+	content: "⚔"
+
+.sheet-rolltemplate-pc .sheet-icon.sheet-damage:after,
+.sheet-rolltemplate-npc .sheet-icon.sheet-damage:after
+	font-family: "Pictos Custom"
+	font-weight: bold
+	content: "t"
+
+.sheet-rolltemplate-pc .sheet-icon.sheet-ability:after,
+.sheet-rolltemplate-npc .sheet-icon.sheet-ability:after
+	font-family: "Pictos"
+	content: "U"
+
+.sheet-rolltemplate-pc .sheet-icon.sheet-feat:after,
+.sheet-rolltemplate-npc .sheet-icon.sheet-feat:after
+	font-family: "Pictos"
+	content: "E"
+
+.sheet-rolltemplate-pc .sheet-icon.sheet-spell:after,
+.sheet-rolltemplate-npc .sheet-icon.sheet-spell:after
+	font-family: "Pictos Three"
+	content: "j"
+	font-size: $fs-200
+
+.sheet-rolltemplate-pc .sheet-bordered,
+.sheet-rolltemplate-mancerroll .sheet-bordered
+	background-color: $bg-white
+	border-color: $roll-txt
+
+.sheet-rolltemplate-npc .sheet-bordered
+	background-color: $bg-white
+	border-color: $roll-txt-alt
+
+.sheet-rolltemplate-pc .sheet-symbol,
+.sheet-rolltemplate-npc .sheet-symbol
+	font-family: "Pictos Custom"
+	font-size: $fs-130
+	font-weight: bold
+	line-height: $lh-base
+
+.sheet-rolltemplate-pc .sheet-smallname,
+.sheet-rolltemplate-mancerroll .sheet-smallname,
+.sheet-rolltemplate-npc .sheet-smallname
+	font-family: $fnt-sans
+	font-size: $fs-90
+
+.sheet-rolltemplate-pc .sheet-smallname,
+.sheet-rolltemplate-mancerroll .sheet-smallname
+	color: $roll-txt
+
+.sheet-rolltemplate-npc .sheet-smallname
+	color: $roll-txt-alt
+
+// Black Labels
+.sheet-rolltemplate-pc .sheet-blacklabel,
+.sheet-rolltemplate-npc .sheet-blacklabel
+	position: relative
+	vertical-align: top
+	font-size: $fs-90
+	border: none
+
+.sheet-rolltemplate-pc .sheet-blacklabel,
+.sheet-rolltemplate-npc .sheet-blacklabel
+	display: inline-block
+
+.sheet-rolltemplate-mancerroll .sheet-blacklabel
+	display: flex
+	position: relative
+	align-items: flex-start
+	justify-content: space-between
+
+.sheet-rolltemplate-pc .sheet-blacklabel,
+.sheet-rolltemplate-mancerroll .sheet-blacklabel
+	background-color: $roll-txt
+	color: $txt-white
+
+.sheet-rolltemplate-npc .sheet-blacklabel
+	background-color: transparent
+	color: $roll-txt-alt
+	font-weight: bold
+
+// Black Label Tops
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-top,
+.sheet-rolltemplate-npc .sheet-blacklabel.sheet-top
+	width: 77.5%
+	max-width: 77.5%
+	height: 36px
+	padding-right: 27px
+	vertical-align: top
+
+// Black Label Meds
+.sheet-rolltemplate-pc span.sheet-med
+	font-weight: normal
+	font-size: $fs-90
+
+.sheet-rolltemplate-npc span.sheet-med
+	font-style: italic
+	color: $roll-txt-alt
+	font-size: $fs-90
+	font-weight: bold
+
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-med,
+.sheet-rolltemplate-npc .sheet-blacklabel.sheet-med,
+.sheet-rolltemplate-mancerroll .sheet-blacklabel.sheet-med
+	height: $lh-sml
+	line-height: $lh-sml
+	vertical-align: top
+	font-weight: bold
+	white-space: nowrap
+
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-med
+	min-width: 75px
+	padding: 0 20px 0 2px
+
+.sheet-rolltemplate-mancerroll .sheet-blacklabel.sheet-med
+	min-width: 110px
+	padding: 0 0 0 4px
+
+.sheet-rolltemplate-npc .sheet-blacklabel.sheet-med
+	min-width: 70px
+	padding: 0 2px 0 2px
+	background: linear-gradient(to right, $roll-grad-alt, $bg-white)
+
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-med.sheet-right
+	padding: 0 2px 0 20px
+
+.sheet-rolltemplate-npc .sheet-blacklabel.sheet-med.sheet-right
+	background: linear-gradient(to left, $roll-grad-alt, $bg-white)
+
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-med.sheet-yellow
+	color: $roll-label
+	font-weight: normal
+
+.sheet-rolltemplate-npc .sheet-blacklabel.sheet-med.sheet-yellow
+	color: $roll-label-alt
+	font-weight: normal
+
+// Black Label Bigs
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-big,
+.sheet-rolltemplate-npc .sheet-big
+	display: inline
+	padding-left: 1px
+	font-family: $fnt-sans
+	font-size: $fs-100
+	text-transform: uppercase
+	font-weight: bold
+
+.sheet-rolltemplate-npc .sheet-big
+	color: $roll-txt-alt
+
+// Pointy
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-prgt,
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-prgt:before,
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-prgt:after,
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-plft,
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-plft:before,
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-plft:after,
+.sheet-rolltemplate-mancerroll .sheet-blacklabel .sheet-prgt,
+.sheet-rolltemplate-mancerroll .sheet-blacklabel .sheet-prgt:before,
+.sheet-rolltemplate-mancerroll .sheet-blacklabel .sheet-prgt:after
+	position: absolute
+	display: inline-block
+	height: $lh-sml
+
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-top .sheet-prgt,
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-top .sheet-prgt:before,
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-top .sheet-prgt:after,
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-vtop .sheet-plft,
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-vtop .sheet-plft:before,
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-vtop .sheet-plft:after
+	height: 36px
+
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-prgt,
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-plft,
+.sheet-rolltemplate-mancerroll .sheet-blacklabel .sheet-prgt
+	top: 0
+	width: 10px
+	overflow: hidden
+
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-top .sheet-prgt,
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-vtop .sheet-plft
+	width: 20px
+
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-prgt,
+.sheet-rolltemplate-mancerroll .sheet-blacklabel .sheet-prgt
+	left: calc(100% - 10px)
+
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-top .sheet-prgt
+	left: calc(100% - 20px)
+
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-plft
+	left: 0
+
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-prgt:before,
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-prgt:after,
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-plft:before,
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-plft:after,
+.sheet-rolltemplate-mancerroll .sheet-blacklabel .sheet-prgt:before,
+.sheet-rolltemplate-mancerroll .sheet-blacklabel .sheet-prgt:after
+	content: ""
+	width: 20px
+	border-radius: 100%
+	background-color: $bg-white
+
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-top .sheet-prgt:before,
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-top .sheet-prgt:after,
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-vtop .sheet-plft:before,
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-vtop .sheet-plft:after
+	width: 40px
+
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-prgt:before,
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-prgt:after,
+.sheet-rolltemplate-mancerroll .sheet-blacklabel .sheet-prgt:before,
+.sheet-rolltemplate-mancerroll .sheet-blacklabel .sheet-prgt:after
+	left: 0px
+
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-plft:before,
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-plft:after
+	left: -10px
+
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-vtop .sheet-plft:before,
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-vtop .sheet-plft:after
+	left: -20px
+
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-prgt:before,
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-plft:before,
+.sheet-rolltemplate-mancerroll .sheet-blacklabel .sheet-prgt:before
+	top: -11px // WARNING : +1px left for box border ; should be adjust to match middle
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-prgt:after,
+.sheet-rolltemplate-pc .sheet-blacklabel .sheet-plft:after,
+.sheet-rolltemplate-mancerroll .sheet-blacklabel .sheet-prgt:after
+	top: $sp-base
+
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-top .sheet-prgt:before,
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-vtop .sheet-plft:before
+	top: -19px // WARNING : +1px left for box border ; should be adjust to match middle
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-top .sheet-prgt:after,
+.sheet-rolltemplate-pc .sheet-blacklabel.sheet-vtop .sheet-plft:after
+	top: 18px
+
+// Clearfix
+.sheet-rolltemplate-pc .sheet-resright,
+.sheet-rolltemplate-npc .sheet-resright
+	display: inline-block
+	width: 20% // TEMP
+	height: 36px
+	text-align: center
+
+// Margin Indentations
+.sheet-rolltemplate-pc div.sheet-notes > .sheet-lbl,
+.sheet-rolltemplate-npc div.sheet-notes > .sheet-lbl
+	margin-right: 2px
+
+.sheet-rolltemplate-pc .sheet-lbl,
+.sheet-rolltemplate-npc .sheet-lbl
+	margin-right: 4px
+
+.sheet-rolltemplate-pc .sheet-lbl:not(:first-of-type),
+.sheet-rolltemplate-npc .sheet-lbl:not(:first-of-type),
+.sheet-rolltemplate-pc .sheet-big + .sheet-bigres,
+.sheet-rolltemplate-npc .sheet-big + .sheet-bigres,
+.sheet-rolltemplate-pc .sheet-big + .sheet-med,
+.sheet-rolltemplate-npc .sheet-big + .sheet-med
+	margin-left: 4px
+
+// Vertical aligns
+.sheet-rolltemplate-pc,
+.sheet-rolltemplate-npc,
+.sheet-rolltemplate-mancerroll
+	.inlinerollresult,
+	.sheet-notes,
+	.sheet-symbol
+		vertical-align: middle // NEW
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # CHARMANCER
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-charmancer
+	padding: 0
+
+.sheet-charmancer
+	.sheet-flexrow
+		display: flex
+		align-items: center
+		justify-content: space-between
+	select
+		font-family: $fnt-hand
+		font-size: $fs-120
+	label
+		margin: 0
+	label.sheet-inl
+		display: inline
+		margin-right: 4px
+
+	.sheet-subrow
+		margin-top: 2px
+		border-top: 1px dashed $brd-lite
+	.sheet-charmancer.sheet-container
+		display: flex
+		flex-flow: row wrap
+		flex-basis: 1 1 100%
+		width: 100%
+		background-color: $bg-white
+	.sheet-choices
+		flex: 50%
+		max-width: 50%
+		padding-right: $sp-base
+	.sheet-info
+		flex: 50%
+		max-width: calc(50% - 2px)
+	.sheet-compendium-page
+		height: 100%
+	iframe
+		height: 100%
+		min-height: 50vh
+		contain: paint
+	.sheet-choice-showing option:disabled
+		background-color: $bg-lite
+	select span.sheet-initials
+		font-size: $fs-50
+
+	// Buttons
+	button
+		display: inline-block
+		text-align: center
+		font-family: inherit
+		font-size: inherit
+		font-weight: inherit
+		text-transform: inherit
+		color: inherit
+		border: none
+		background-color: transparent
+	button:hover
+		color: $cl-hover
+	button:focus
+		color: $cl-focus
+		outline: 0
+
+	// Top Bars
+	.sheet-topbar
+		display: flex
+		flex: 100%
+		margin-bottom: $sp-base
+		align-items: center
+		flex-direction: row
+		justify-content: space-around
+	.sheet-topbar
+		div
+			display: inline-block
+			width: auto
+			margin: auto
+			text-align: center
+		div span
+			line-height: $lh-base
+			font-size: $fs-100
+			font-weight: bold
+
+	// Bottom Bar
+	.sheet-bottombar
+		position: sticky
+		display: flex
+		flex: 100%
+		flex-flow: row
+		align-items: center
+		justify-content: center
+		bottom: 0
+		margin: $sp-base 0 $sp-base
+		padding: $fs-175 0 $fs-100
+		border-top: 1px solid $bg-fair
+		background-color: $bg-white
+
+	// Steps Bar
+	.sheet-steps
+		display: flex
+		flex: 100%
+		flex-flow: row
+		justify-content: space-between
+		margin: 0 0 $sp-base
+		padding: $sp-base
+		background-color: $bg-dark
+		box-shadow: $bar-shadow
+	.sheet-steps.sheet-center
+		justify-content: center
+	.sheet-steps.sheet-center .sheet-step.sheet-here span
+		padding-left: 80px
+		padding-right: 80px
+
+	// Step and Navigation Buttons
+	.sheet-step,
+	.sheet-nav
+		display: flex
+		align-items: center
+		justify-content: center
+		height: 26px
+		max-height: 26px
+		text-align: center
+		text-transform: uppercase
+		font-family: $fnt-serif
+		font-size: $fs-120
+		font-weight: bold
+		color: $txt-dull
+	.sheet-step button,
+	.sheet-nav button
+		width: 100%
+		height: 100%
+		padding: 0 18px
+
+	// Step Buttons
+	.sheet-step.sheet-prev
+		color: $bg-dusk
+		background: -webkit-radial-gradient(0 1px, circle, $bg-dull, $bg-dull), -webkit-radial-gradient(0 13px, circle, $bg-dull, $bg-dull), -webkit-radial-gradient(100% 1px, circle, transparent 12px, $bg-dull 13px), -webkit-radial-gradient(100% 13px, circle, transparent 12px, $bg-dull 13px)
+	.sheet-step.sheet-prev:hover,
+	.sheet-step.sheet-prev:focus
+		color: $txt-swart
+		background: -webkit-radial-gradient(0 1px, circle, $bg-fair, $bg-fair), -webkit-radial-gradient(0 13px, circle, $bg-fair, $bg-fair), -webkit-radial-gradient(100% 1px, circle, transparent 12px, $bg-fair 13px), -webkit-radial-gradient(100% 13px, circle, transparent 12px, $bg-fair 13px)
+	.sheet-step.sheet-next
+		color: $txt-deep
+		font-weight: normal
+		background: -webkit-radial-gradient(0 1px, circle, transparent 12px, $bg-dark 13px), -webkit-radial-gradient(0 13px, circle, transparent 12px, $bg-dark 13px), -webkit-radial-gradient(100% 1px, circle, $bg-dark, $bg-dark), -webkit-radial-gradient(100% 13px, circle, $bg-dark, $bg-dark)
+	.sheet-step.sheet-next:hover,
+	.sheet-step.sheet-next:focus
+		color: $txt-white
+		background: -webkit-radial-gradient(0 1px, circle, transparent 12px, $bg-dull 13px), -webkit-radial-gradient(0 13px, circle, transparent 12px, $bg-dull 13px), -webkit-radial-gradient(100% 1px, circle, $bg-dull, $bg-dull), -webkit-radial-gradient(100% 13px, circle, $bg-dull, $bg-dull)
+	.sheet-step.sheet-here
+		color: $txt-swart
+		background: -webkit-radial-gradient(0 1px, circle, transparent 12px, $bg-white 13px), -webkit-radial-gradient(0 13px, circle, transparent 12px,$bg-white 13px), -webkit-radial-gradient(100% 1px, circle, transparent 12px,$bg-white 13px), -webkit-radial-gradient(100% 13px, circle, transparent 12px,$bg-white 13px)
+	.sheet-step.sheet-done
+		color: $txt-swart
+		background: -webkit-radial-gradient(0 1px, circle, transparent 12px, $bg-lite 13px), -webkit-radial-gradient(0 13px, circle, transparent 12px, $bg-lite 13px), -webkit-radial-gradient(100% 1px, circle, transparent 12px, $bg-lite 13px), -webkit-radial-gradient(100% 13px, circle, transparent 12px, $bg-lite 13px)
+
+	// Navigation Buttons
+	.sheet-nav.sheet-back
+		color: $txt-white
+		background: -webkit-radial-gradient(0 1px, circle, transparent 12px, $bg-black 13px), -webkit-radial-gradient(0 13px, circle, transparent 12px, $bg-black 13px), -webkit-radial-gradient(100% 1px, circle, $bg-black, $bg-black), -webkit-radial-gradient(100% 13px, circle, $bg-black, $bg-black)
+	.sheet-nav.sheet-next
+		color: $txt-white
+		background: -webkit-radial-gradient(0 1px, circle, $bg-black, $bg-black), -webkit-radial-gradient(0 13px, circle, $bg-black, $bg-black), -webkit-radial-gradient(100% 1px, circle, transparent 12px, $bg-black 13px), -webkit-radial-gradient(100% 13px, circle, transparent 12px, $bg-black 13px)
+
+	// Step and Navigation Buttons Backgrounds
+	.sheet-step.sheet-prev, .sheet-step.sheet-prev:hover, .sheet-step.sheet-prev:focus,
+	.sheet-step.sheet-here, .sheet-step.sheet-here:hover, .sheet-step.sheet-here:focus,
+	.sheet-step.sheet-next, .sheet-step.sheet-next:hover, .sheet-step.sheet-next:focus,
+	.sheet-step.sheet-done, .sheet-step.sheet-done:hover, .sheet-step.sheet-done:focus,
+	.sheet-nav.sheet-next, .sheet-nav.sheet-next:hover, .sheet-nav.sheet-next:focus,
+	.sheet-nav.sheet-back, .sheet-nav.sheet-back:hover, .sheet-nav.sheet-back:focus
+		background-size: 55% 55%
+		background-repeat: no-repeat
+		background-position: 0 -1px, 0 13px, 100% -1px, 100% 13px
+
+	// Step and Navigation Buttons Inputs
+	.sheet-step.sheet-next button,
+	.sheet-nav.sheet-back button
+		padding-right: 6px
+	.sheet-step.sheet-prev button,
+	.sheet-nav.sheet-next button
+		padding-left: 6px
+
+	.sheet-steps button:hover
+		color: inherit // TEMP
+	.sheet-steps .sheet-here button:hover
+		cursor: default // TEMP
+
+	// Summary Buttons
+	.sheet-summary .sheet-step
+		display: inline-block
+		font-size: $fs-100
+		color: $txt-white
+
+	// Cancel Buttons
+	.sheet-steps .sheet-step.sheet-cancel button
+		padding: 0 6px
+		color: $txt-white
+		background-color: $bg-black
+		border-radius: 3px
+	.sheet-steps .sheet-step.sheet-cancel button:hover
+		color: $cl-hover
+	.sheet-bottombar .sheet-cancel
+		color: $txt-swart
+		background-color: $bg-white
+		border: 1px solid $brd-black
+
+	// Rows
+	.sheet-row
+		border: 1px solid $brd-black
+		border-width: 1px 1px 0 1px
+		padding: 2px
+	.sheet-row.sheet-last
+		border-width: 0 1px 1px 1px
+
+	// Various
+	.sheet-race_traits,
+	.sheet-class_traits,
+	.sheet-subclass1_traits,
+	.sheet-subclass1_powers,
+	.sheet-subclass2_traits,
+	.sheet-subclass2_powers
+		color: $txt-black
+		font-family: $fnt-sans
+		font-size: $fs-100
+
+	.sheet-race_traits b,
+	.sheet-class_traits b,
+	.sheet-subclass1_traits b,
+	.sheet-subclass1_powers b,
+	.sheet-subclass2_traits b,
+	.sheet-subclass2_powers b
+		display: block
+
+	select
+		margin-bottom: 0
+
+	label p,
+	label span
+		font-family: $fnt-sans
+		font-size: $fs-100
+		font-weight: normal
+		color: $txt-swart
+
+	label span.sheet-title
+		font-family: $fnt-sans
+		font-size: inherit
+		font-weight: bold
+		color: inherit
+	.sheet-subrow span.sheet-title
+		font-family: $fnt-sans
+		font-size: inherit
+		font-weight: bold
+		color: $txt-dark
+
+	label,
+	.sheet-label
+		font-size: $fs-110
+		padding: 0
+	.sheet-label
+		display: block
+		font-weight: bold
+
+	select + select
+		margin-top: $sp-hlf
+
+	label.sheet-compendium-opt,
+	label.sheet-compendium-opt > *,
+	label.sheet-abilities_attribute
+		display: inline
+		vertical-align: unset
+
+	.sheet-cancel-prompt
+		position: absolute
+		width: 500px
+		top: 150px
+		left: 25%
+		padding: 40px 50px 30px 50px
+		text-align: center
+		border: 1px solid $brd-black
+		background-color: $bg-white
+		box-shadow: $box-shadow
+
+	.sheet-hilite:after
+		content: $tra-required
+		display: block
+		font-size: $fs-90
+		font-style: italic
+		font-weight: normal
+		text-transform: capitalize
+	.sheet-abilities_custom .sheet-hilite:after
+		display: inline-block
+		margin-left: 4px
+
+	.sheet-abilities_custom span.sheet-title,
+	.sheet-custom_race.sheet-race_abilities label span.sheet-title
+		width: 100px
+
+	.sheet-warning
+		margin-top: $sp-base
+		font-style: italic
+		color: $cl-warning
+
+	.sheet-hilite
+		color: $cl-hover
+		box-sizing: border-box
+
+	// Buttons
+	button.sheet-mancer
+		padding: 0 2px 0 2px
+		font-family: $fnt-serif
+		font-size: $fs-110
+		font-weight: bold
+		color: $txt-white
+		border-radius: 4px
+		background-color: $bg-black
+	button.sheet-mancer.sheet-d6:before
+		content: "f"
+		margin: 0 2px 0 2px
+		font-family: "dicefontd6"
+		font-size: $fs-130
+		font-weight: normal
+		line-height: $lh-base
+	button.sheet-mancer.sheet-clear:before
+		content: "1"
+		margin: 0 2px 0 2px
+		line-height: $lh-base
+		font-family: "Pictos"
+		font-size: $fs-120
+		font-weight: normal
+	button.sheet-mancer_info
+		display: inline
+		font-family: "Pictos"
+		font-size: $fs-120
+		color: $txt-swart
+		border: none
+		background: none
+	button.sheet-mancer_info:hover
+		color: $txt-swart
+		background: none
+	button.sheet-mancer + button.sheet-mancer
+		margin-left: 4px // NEW
+
+	// Skill Items
+	.sheet-skillitem
+		display: flex
+		flex-flow: row nowrap
+		align-items: flex-start
+		align-content: flex-start
+		justify-content: space-between
+	.sheet-skillitem
+		.sheet-lab
+			font-weight: bold
+		.sheet-name_skill
+			width: 190px
+		.sheet-class_skill
+			width: 30px
+			text-align: center
+			font-weight: bold
+		.sheet-bonus_skill
+			width: 35px
+			text-align: right
+		.sheet-total_skill
+			width: 30px
+			padding-right: 3px
+			text-align: right
+			font-weight: bold
+	.sheet-skillitem:nth-child(even)
+		background-color: $bg-pale
+	.sheet-skillitem:first-child
+		margin-top: $sp-base
+
+	// Abilities
+	.sheet-abilities_radio_strength,
+	.sheet-abilities_radio_dexterity,
+	.sheet-abilities_radio_constitution,
+	.sheet-abilities_radio_intelligence,
+	.sheet-abilities_radio_wisdom,
+	.sheet-abilities_radio_charisma,
+	.sheet-abilities_radio_strengthd6,
+	.sheet-abilities_radio_dexterityd6,
+	.sheet-abilities_radio_constitutiond6,
+	.sheet-abilities_radio_intelligenced6,
+	.sheet-abilities_radio_wisdomd6,
+	.sheet-abilities_radio_charismad6
+		padding: 0 $sp-base
+		display: flex
+		justify-content: space-between
+
+	// Compendium Options
+	span label.sheet-compendium-opt
+		position: relative
+	span label.sheet-compendium-opt > span
+		cursor: pointer
+		display: inline-block
+		min-width: 20px
+		padding: 2px
+		text-align: center
+		font-family: $fnt-hand
+		font-size: $fs-120
+		font-weight: normal
+		color: $txt-swart
+		border: 1px solid $brd-black
+		background-color: $bg-pale
+	span label.sheet-compendium-opt > input[type=radio]:disabled + span
+		cursor: not-allowed
+		color: $txt-disabled
+		border-color: $brd-lite
+		background-color: $bg-white
+	span label.sheet-compendium-opt > input[type=radio]:checked + span
+		font-weight: bold
+		color: $txt-white
+		border: 3px solid $cl-checked
+		background-color: $bg-black
+	span .sheet-compendium-opt > input[type=radio]
+		cursor: none
+		width: 0
+		opacity: 0
+
+	// Headers
+	h4
+		margin: 0
+		padding: 2px 6px 2px 6px
+		line-height: $lh-xxs
+		font-family: $fnt-sans
+		font-size: $fs-120
+		text-transform: capitalize
+		font-weight: normal
+		color: $txt-white
+		background-color: $bg-black
+		text-rendering: optimizelegibility
+
+	// Logos
+	.sheet-logos
+		height: 75px
+		width: 100%
+		display: flex
+		flex-direction: row
+		justify-content: space-between
+		align-items: center
+	.sheet-logo
+		margin: auto
+	.sheet-logo.sheet-pf
+		width: 235px
+	.sheet-logo.sheet-cm
+		width: 300px
+	.sheet-logo.sheet-r20
+		width: 200px
+	.sheet-boxed.sheet-greyed
+		display: flex
+		min-width: 35px
+
+	// Greyed
+	.sheet-boxed.sheet-greyed span
+		margin: auto
+		font-family: $fnt-hand
+		font-size: $fs-120
+		color: $txt-swart
+
+	// Separator
+	.sheet-separator:after
+		content: "●"
+		font-size: $fs-140
+		color: $txt-swart
+
+	// Summary
+	.sheet-summary_text
+		margin: $sp-hlf 0 $sp-hlf 30px
+		font-weight: normal
+		font-size: $fs-100
+	.sheet-summary_text.sheet-red
+		color: $cl-warning
+	.sheet-summary_text.sheet-red.sheet-req
+		font-weight: bold
+	.sheet-summary_text.sheet-red.sheet-req:before
+		content: "!"
+		font-family: "Pictos"
+		font-size: $fs-130
+		font-weight: normal
+
+	// Progress
+	.sheet-mancer_progress
+		width: 100%
+		height: $lh-sml
+		margin-top: 20px
+		border-width: 1px 0 0 1px
+		border-style: dotted
+		border-color: $brd-dull
+	.sheet-mancer_progress div
+		background-image: linear-gradient(to right, white, $cl-warning)
+		height: 100%
+
+	// Apply
+	button.sheet-apply
+		display: none
+	button.sheet-apply.sheet-not
+		display: block
+	input.sheet-apply:not([value="0"]) ~ button.sheet-apply
+		display: block
+	input.sheet-apply:not([value="0"]) ~ button.sheet-apply.sheet-not
+		display: none
+	button.sheet-apply.sheet-not:hover
+		cursor: not-allowed
+		color: $txt-disabled
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # MODALS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-pc,
+.sheet-npc // TEMP
+	transition: opacity .125s ease-out
+	opacity: 1
+
+.sheet-pc.active-drop-target.dropping ~ .sheet-modal,
+.sheet-building-npc-flag[value="1"] ~ .sheet-modal,
+.sheet-initialize-character-flag[value="1"] ~ .sheet-modal,
+.sheet-mancer-confirm-flag[value="1"] ~ .sheet-modal,
+.sheet-npc-confirm-flag[value="1"] ~ .sheet-modal,
+.sheet-migrate-confirm-flag[value="1"] ~ .sheet-modal
+	display: block
+
+.sheet-pc.active-drop-target.dropping ~ .sheet-modal .sheet-compendium-warning,
+.sheet-building-npc-flag[value="1"] ~ .sheet-modal .sheet-building-npc,
+.sheet-initialize-character-flag[value="1"] ~ .sheet-modal .sheet-initialize-character,
+.sheet-mancer-confirm-flag[value="1"] ~ .sheet-modal .sheet-mancer-confirm,
+.sheet-npc-confirm-flag[value="1"] ~ .sheet-modal .sheet-npc-confirm,
+.sheet-migrate-confirm-flag[value="1"] ~ .sheet-modal .sheet-migrate-confirm
+	display: flex
+
+.sheet-pc.active-drop-target.dropping,
+.sheet-building-npc-flag[value="1"] ~ .sheet-npc,
+.sheet-initialize-character-flag[value="1"] ~ .sheet-pc,
+.sheet-initialize-character-flag[value="1"] ~ .sheet-npc,
+.sheet-mancer-confirm-flag[value="1"] ~ .sheet-pc,
+.sheet-npc-confirm-flag[value="1"] ~ .sheet-pc,
+.sheet-migrate-confirm-flag[value="1"] ~ .sheet-pc,
+.sheet-migrate-confirm-flag[value="1"] ~ .sheet-npc
+	opacity: .375
+
+.sheet-pc.active-drop-target.dropping:before,
+.sheet-building-npc-flag[value="1"] ~ .sheet-npc:before,
+.sheet-initialize-character-flag[value="1"] ~ .sheet-pc:before,
+.sheet-initialize-character-flag[value="1"] ~ .sheet-npc:before,
+.sheet-mancer-confirm-flag[value="1"] ~ .sheet-pc:before,
+.sheet-npc-confirm-flag[value="1"] ~ .sheet-pc:before,
+.sheet-migrate-confirm-flag[value="1"] ~ .sheet-pc:before,
+.sheet-migrate-confirm-flag[value="1"] ~ .sheet-npc:before // WARNING : CSS mask
+	content: ""
+	position: absolute
+	display: block
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	z-index: 5
+
+.sheet-modal
+	pointer-events: none
+	display: none
+	position: sticky
+	z-index: 10
+	left: 25%
+	bottom: calc(100% - 370px)
+	width: 500px
+	height: 220px
+	margin-top: -220px
+	text-align: center
+
+%modal-content
+	pointer-events: all
+	display: none
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	border: 1px solid $brd-black
+	background-color: $bg-white
+	box-shadow: $box-shadow
+
+.sheet-initialize-character,
+.sheet-compendium-warning,
+.sheet-mancer-confirm,
+.sheet-npc-confirm,
+.sheet-migrate-confirm
+	@extend %modal-content
+	flex-flow: wrap
+	justify-content: space-around
+	align-items: center
+	padding: 20px 0
+
+.sheet-building-npc
+	@extend %modal-content
+	flex-flow: column wrap
+	align-items: center
+	justify-content: space-evenly
+	font-size: $fs-140
+	font-weight: bold
+	color: $cl-warning
+
+.sheet-compendium-warning
+	background-color: $bg-input-hover
+
+.sheet-modal button[type="action"].sheet-btn
+	width: 370px
+	height: 32px
+	text-transform: uppercase
+	font-family: $fnt-serif
+	font-size: $fs-110
+	font-weight: bold
+	color: $txt-white
+	background-color: $bg-black
+
+.sheet-modal button[type="action"].sheet-btn:hover
+	color: $cl-hover
+
+.sheet-modal span
+	font-size: $fs-110
+	font-weight: bold
+
+.sheet-modal .sheet-warning
+	font-size: $fs-100
+	font-weight: normal
+	font-style: italic
+	color: $cl-warning
+
+.sheet-initialize-character span,
+.sheet-compendium-warning span
+	font-size: $fs-120
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # GLOBALS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+// Helps
+.sheet-help
+	cursor: help
+
+label .sheet-help
+	cursor: pointer // NOTE : Prevent cursor help in labels
+
+// Blocks
+.sheet-block
+	display: block
+.sheet-inline
+	display: inline
+
+// Visbility
+.sheet-hidden
+	display: none
+
+// Formating
+.sheet-bold
+	font-weight: bold
+.sheet-upper
+	text-transform: uppercase
+.sheet-lower
+	text-transform: lowercase
+.sheet-prewrap
+	white-space: pre-wrap
+
+// Aligning
+.sheet-pc .sheet-left,
+.sheet-npc .sheet-left
+	text-align: left
+
+.sheet-pc .sheet-right,
+.sheet-npc .sheet-right
+	text-align: right
+
+.sheet-center,
+.sheet-center.sheet-row,
+.sheet-center > input
+	text-align: center
+
+// Indenting
+.sheet-padindent
+	padding-left: $sp-base
+.sheet-padindent-dbl
+	padding-left: $sp-dbl
+
+.sheet-margindent
+	margin-left: $sp-base
+.sheet-margindent-neg
+	margin-left: $sp-neg
+
+.sheet-charindent:not(:first-child)
+	margin-left: 4px
+
+.sheet-textindent
+	text-indent: -20px
+	margin-left: 20px
+	padding-right: 20px
+	.sheet-spacer
+		margin-left: 3px
+		margin-right: 3px
+	.sheet-spacer.sheet-left
+		margin-left: 0
+		margin-right: 6px
+	.sheet-spacer.sheet-right
+		margin-left: 6px
+		margin-right: 0
+	.sheet-spacer.sheet-half
+		margin-left: 0
+		margin-right: 0
+.sheet-textindent *:not(.sheet-optional)
+	display: inline
+
+// Spacing
+.sheet-topspace
+	margin-top: $sp-base
+
+// Colons
+.sheet-colon
+	width: $sp-hlf
+	height: $lh-xxs
+	text-align: left
+	vertical-align: top
+
+// Backgrounds
+.sheet-greyed
+	background-color: $bg-greyed
+.sheet-tmpval
+	background-color: $bg-tmpval
+.sheet-inbox,
+.sheet-options
+	.sheet-greyed
+		background-color: $bg-greyed-inbox
+	.sheet-tmpval
+		background-color: $bg-tmpval-inbox
+	input.sheet-tmpval:hover
+		background-color: $bg-input-hover
+
+// Widths
+.sheet-wmax
+	width: 100%
+.sheet-w525
+	width: 525px
+.sheet-w510
+	width: 510px
+.sheet-w490
+	width: 490px
+.sheet-w480
+	width: 480px
+.sheet-w470
+	width: 470px
+.sheet-w420
+	width: 420px
+.sheet-w370
+	width: 370px
+.sheet-w365
+	width: 365px
+.sheet-w360
+	width: 360px
+.sheet-w345
+	width: 345px
+.sheet-w330
+	width: 330px
+.sheet-w300
+	width: 300px
+.sheet-w290
+	width: 290px
+.sheet-w275
+	width: 275px
+.sheet-w255
+	width: 255px
+.sheet-w250
+	width: 250px
+.sheet-w225
+	width: 225px
+.sheet-w200
+	width: 200px
+.sheet-w185
+	width: 185px
+.sheet-w180
+	width: 180px
+.sheet-w160
+	width: 160px
+.sheet-w155
+	width: 155px
+.sheet-w150
+	width: 150px
+.sheet-w140
+	width: 140px
+.sheet-w135
+	width: 135px
+.sheet-w130
+	width: 130px
+.sheet-w125
+	width: 125px
+.sheet-w120
+	width: 120px
+.sheet-w110
+	width: 110px
+.sheet-w100
+	width: 100px
+.sheet-w95
+	width: 95px
+.sheet-w80
+	width: 80px
+.sheet-w75
+	width: 75px
+.sheet-w70
+	width: 70px
+.sheet-w65
+	width: 65px
+.sheet-w60
+	width: 60px
+.sheet-w55
+	width: 55px
+.sheet-w50
+	width: 50px
+.sheet-w45
+	width: 45px
+.sheet-w40
+	width: 40px
+.sheet-w35
+	width: 35px
+.sheet-w30
+	width: 30px
+.sheet-w25
+	width: 25px
+.sheet-w20
+	width: 20px
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # DEBUG
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-debug
+	input
+		background-color: rgba(0,0,255,.125) // DEBUG
+	.sheet-lab.sheet-under
+		background-color: rgba(255,0,0,.125) // DEBUG
+	div.sheet-boxed span.sheet-pseudoattr
+		background-color: yellow // DEBUG
+	input[type="number"]
+		background-color: rgba(0,255,0,.125) // DEBUG
+	select
+		background-color: rgba(128,0,255,.125) // DEBUG
+	span.sheet-spacer
+		background-color: rgba(255,128,0,.25) // DEBUG
+	span.sheet-spacer.sheet-half
+		background-color: rgba(0,255,192,.25) // DEBUG
+	textarea
+		background-color: rgba(0,128,255,.125) // DEBUG
+	.sheet-extra-attacks
+		background-color: rgba(240,240,0,.125) // DEBUG
+	.sheet-lab
+		background-color: rgba(255,128,0,.125) // DEBUG
+	.sheet-colhalf, .sheet-col1third, .sheet-col2third
+		background-color: rgba(128,96,0,.0625) // DEBUG
+	.sheet-abilities .sheet-ability .sheet-pictos,
+	.sheet-initiative .sheet-pictos,
+	.sheet-saves .sheet-pictos,
+	.sheet-combatmaneuvers .sheet-cmb .sheet-pictos,
+	.sheet-attackmods .sheet-melee .sheet-pictos,
+	.sheet-attackmods .sheet-ranged .sheet-pictos,
+	.sheet-attacks .sheet-pictos,
+	.sheet-skills .sheet-pictos
+		display: inline-block // DEBUG
+	button[type="compendium"].sheet-btn, button[type="roll"].sheet-btn, button[type="action"].sheet-btn
+		display: inline-block // DEBUG
+	.sheet-options button[type="compendium"].sheet-btn
+		background-color: yellow // DEBUG
+	.repcontrol
+		background-color: rgba(255,128,0,.25) // DEBUG
+	.sheet-lbrow .sheet-lbl
+		color: hotpink // DEBUG
+	.sheet-npc-display .sheet-lbrow .sheet-pseudoattr
+		background-color: lime // DEBUG
+	.sheet-npc-options:before
+		background-color: rgba(255,0,0,.125) // DEBUG
+	.sheet-colon
+		background-color: rgba(128,0,255,.25) // DEBUG
+	.sheet-npc-display .sheet-skills-list .sheet-optional .sheet-btn:after
+		content: ","
+		background-color: rgba(0,0,255,.25) // DEBUG
+	.sheet-npc-display .sheet-skills-list .sheet-optional:last-of-type .sheet-btn:after
+		content: "!"
+		background-color: rgba(255,192,0,.5) // DEBUG
+	.sheet-npc-display .sheet-skills-list .sheet-optional:last-of-type .sheet-btn:after
+		background-color: rgba(255,192,0,.5) // DEBUG
+	.sheet-textindent *:not(.sheet-spacer)
+		background-color: rgba(0,255,0,.125) // DEBUG
+	.sheet-npc-options .sheet-col1for2
+		background-color: rgba(255,0,0,.25) // DEBUG
+	.sheet-spacer, .sheet-lab, .sheet-lbl
+		color: blue // DEBUG
+	.sheet-lbl.sheet-name, .sheet-labelcheck .sheet-lbl
+		color: green // DEBUG
+

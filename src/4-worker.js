@@ -189,6 +189,20 @@
 		});
 	});
 
+	// === Spellcasting Mode
+	on("clicked:spellcasting_mode_toggle_button", () => { // NEW
+		getAttrs(["spellcasting_mode_toggle"], (v) => {
+			let b = v["spellcasting_mode_toggle"] == "0";
+			let s = b ? "mp" : "sp";
+			setAttrs({
+				"spellcasting_mode_toggle" : b ? "1" : "0",
+				"spellcasting_mode" : s
+			}, {silent: false}, () => {
+				pfom.update_all_spell_spend_mp();
+			});
+		});
+	});
+
 // =============================================================================
 // -----------------------------------------------------------------------------
 // # Events : NPC ICONS
@@ -249,7 +263,6 @@
 	});
 	on("change:class1_favored change:class2_favored change:class3_favored", (e) => {
 		setAttrs({"class_favored": e.triggerName.charAt(5)}, {silent: false});
-
 	});
 	on("change:class1_skillranks_misc change:class2_skillranks_misc change:class3_skillranks_misc", () => {
 		pfom.update_skillranks_total();
@@ -448,7 +461,7 @@
 		pfom.update_encumbrance();
 	});
 
-// === Feats / Traits
+	// === Feats / Traits
 	on("change:repeating_abilities:perday_qty", (e) => {
 		pfom.update_traits(e.sourceAttribute.substring(20, 40));
 	});
@@ -617,6 +630,16 @@
 // -----------------------------------------------------------------------------
 // =============================================================================
 
+	// === Caster Levels
+	on("clicked:caster1_more clicked:caster1_less clicked:caster2_more clicked:caster2_less", (e) => { // NEW
+		pfom.switch_caster_level(e.triggerName);
+	});
+
+	// === Domains and Schools
+	on("change:caster1_domains_schools change:caster2_domains_schools", (e) => {
+		pfom.update_all_domain_school(e.sourceAttribute.charAt(6), e.newValue);
+	});
+
 	// === Armor Spell Failure
 	on("change:armor_spell_failure change:caster1_spell_failure change:caster2_spell_failure", () => {
 		getAttrs(["npc","caster1_flag","caster2_flag"], (v) => {
@@ -652,43 +675,79 @@
 		pfom.update_spells_totals(e.sourceAttribute.charAt(e.sourceAttribute.length - 1),2);
 	});
 	on("change:repeating_spell-0:spellprepared change:repeating_spell-1:spellprepared change:repeating_spell-2:spellprepared change:repeating_spell-3:spellprepared change:repeating_spell-4:spellprepared change:repeating_spell-5:spellprepared change:repeating_spell-6:spellprepared change:repeating_spell-7:spellprepared change:repeating_spell-8:spellprepared change:repeating_spell-9:spellprepared", (e) => {
-		pfom.update_spells_prepared(e.sourceAttribute,e.newValue);
+		pfom.update_spells_prepared(e.sourceAttribute);
+	});
+
+	// === Spells Known
+	on("change:caster1_mp_known_level_0 change:caster1_mp_known_bonus_level_0 change:caster1_mp_known_level_1 change:caster1_mp_known_bonus_level_1 change:caster1_mp_known_level_2 change:caster1_mp_known_bonus_level_2 change:caster1_mp_known_level_3 change:caster1_mp_known_bonus_level_3 change:caster1_mp_known_level_4 change:caster1_mp_known_bonus_level_4 change:caster1_mp_known_level_5 change:caster1_mp_known_bonus_level_5 change:caster1_mp_known_level_6 change:caster1_mp_known_bonus_level_6 change:caster1_mp_known_level_7 change:caster1_mp_known_bonus_level_7 change:caster1_mp_known_level_8 change:caster1_mp_known_bonus_level_8 change:caster1_mp_known_level_9 change:caster1_mp_known_bonus_level_9 change:caster2_mp_known_level_0 change:caster2_mp_known_bonus_level_0 change:caster2_mp_known_level_1 change:caster2_mp_known_bonus_level_1 change:caster2_mp_known_level_2 change:caster2_mp_known_bonus_level_2 change:caster2_mp_known_level_3 change:caster2_mp_known_bonus_level_3 change:caster2_mp_known_level_4 change:caster2_mp_known_bonus_level_4 change:caster2_mp_known_level_5 change:caster2_mp_known_bonus_level_5 change:caster2_mp_known_level_6 change:caster2_mp_known_bonus_level_6 change:caster2_mp_known_level_7 change:caster2_mp_known_bonus_level_7 change:caster2_mp_known_level_8 change:caster2_mp_known_bonus_level_8 change:caster2_mp_known_level_9 change:caster2_mp_known_bonus_level_9", (e) => {
+		pfom.update_spells_known(e.sourceAttribute);
+	});
+
+	// === Spell Cost
+	on("change:caster1_mp_cost_level_0 change:caster1_mp_cost_level_1 change:caster1_mp_cost_level_2 change:caster1_mp_cost_level_3 change:caster1_mp_cost_level_4 change:caster1_mp_cost_level_5 change:caster1_mp_cost_level_6 change:caster1_mp_cost_level_7 change:caster1_mp_cost_level_8 change:caster1_mp_cost_level_9 change:caster2_mp_cost_level_0 change:caster2_mp_cost_level_1 change:caster2_mp_cost_level_2 change:caster2_mp_cost_level_3 change:caster2_mp_cost_level_4 change:caster2_mp_cost_level_5 change:caster2_mp_cost_level_6 change:caster2_mp_cost_level_7 change:caster2_mp_cost_level_8 change:caster2_mp_cost_level_9", (e) => { // NEW
+		pfom.update_spell_cost(e.sourceAttribute.slice(-1));
+	});
+	on("change:repeating_spell-0:spellcaster change:repeating_spell-1:spellcaster change:repeating_spell-2:spellcaster change:repeating_spell-3:spellcaster change:repeating_spell-4:spellcaster change:repeating_spell-5:spellcaster change:repeating_spell-6:spellcaster change:repeating_spell-7:spellcaster change:repeating_spell-8:spellcaster change:repeating_spell-9:spellcaster", (e) => { // NEW
+		pfom.update_spell_cost(e.sourceAttribute.substr(16,1));
+	});
+	on("change:repeating_spell-0:wizard_school change:repeating_spell-1:wizard_school change:repeating_spell-2:wizard_school change:repeating_spell-3:wizard_school change:repeating_spell-4:wizard_school change:repeating_spell-5:wizard_school change:repeating_spell-6:wizard_school change:repeating_spell-7:wizard_school change:repeating_spell-8:wizard_school change:repeating_spell-9:wizard_school", (e) => { // NEW
+		let upd = {};
+		upd[e.sourceAttribute + "_flag"] = e.newValue;
+		setAttrs(upd, {silent: true});
+		pfom.update_spell_cost(e.sourceAttribute.substr(16,1));
+	});
+
+	// === Magic Points
+	on("change:mp_max_base change:mp_temp", () => { // NEW
+		pfom.update_mp();
+	});
+	on("change:spend_mp", (e) => { // NEW
+		pfom.update_all_spell_spend_mp();
+	});
+	on("change:repeating_spell-0:spelldomainflag change:repeating_spell-1:spelldomainflag change:repeating_spell-2:spelldomainflag change:repeating_spell-3:spelldomainflag change:repeating_spell-4:spelldomainflag change:repeating_spell-5:spelldomainflag change:repeating_spell-6:spelldomainflag change:repeating_spell-7:spelldomainflag change:repeating_spell-8:spelldomainflag change:repeating_spell-9:spelldomainflag", (e) => { // NEW
+		let lvl = e.sourceAttribute.substr(16,1), id = e.sourceAttribute.substr(18,20);
+		pfom.update_spell_spend_mp_id(lvl, id);
+		if (e.newValue == "1") { // reset spell prepared
+			let update = {};
+			update[`repeating_spell-${lvl}_${id}_spellprepared`] = 0;
+			setAttrs(update, {silent: true});
+		}
 	});
 
 	// === Spell Removing
 	on("remove:repeating_spell-0 remove:repeating_spell-1 remove:repeating_spell-2 remove:repeating_spell-3 remove:repeating_spell-4 remove:repeating_spell-5 remove:repeating_spell-6 remove:repeating_spell-7 remove:repeating_spell-8 remove:repeating_spell-9", (e) => {
-		pfom.update_spells_prepared(e.sourceAttribute,"");
+		pfom.update_spells_prepared(e.sourceAttribute);
 	});
 
 	// === Spell Rolls / Spell Display
-	on("change:repeating_spell-0:spellcaster change:repeating_spell-0:spellname change:repeating_spell-0:spellschool change:repeating_spell-0:spellclasslevel change:repeating_spell-0:spellcastingtime change:repeating_spell-0:spellcomponent change:repeating_spell-0:spellrange change:repeating_spell-0:spellarea change:repeating_spell-0:spelltargets change:repeating_spell-0:spelleffect change:repeating_spell-0:spellduration change:repeating_spell-0:spellsaveflag change:repeating_spell-0:spellsave change:repeating_spell-0:spelldc_mod change:repeating_spell-0:spellresistanceflag change:repeating_spell-0:spellresistance change:repeating_spell-0:spellatkflag change:repeating_spell-0:spellatktype change:repeating_spell-0:spellatkmod change:repeating_spell-0:spellatkcritrange change:repeating_spell-0:spelldmgcritmulti change:repeating_spell-0:spelldmgflag change:repeating_spell-0:spelldmg change:repeating_spell-0:spelldmgtype change:repeating_spell-0:spelldmg2flag change:repeating_spell-0:spelldmg2name change:repeating_spell-0:spelldmg2 change:repeating_spell-0:spelldmg2type change:repeating_spell-0:spelldescflag change:repeating_spell-0:spelldesc change:repeating_spell-0:notes", (e) => {
+	on("change:repeating_spell-0:spellcaster change:repeating_spell-0:spellname change:repeating_spell-0:spellschool change:repeating_spell-0:spellclasslevel change:repeating_spell-0:spellcastingtime change:repeating_spell-0:spellcomponent change:repeating_spell-0:spellrange change:repeating_spell-0:spellarea change:repeating_spell-0:spelltargets change:repeating_spell-0:spelleffect change:repeating_spell-0:spellduration change:repeating_spell-0:spellsaveflag change:repeating_spell-0:spellsave change:repeating_spell-0:spelldc_mod change:repeating_spell-0:spellresistanceflag change:repeating_spell-0:spellresistance change:repeating_spell-0:spellatkflag change:repeating_spell-0:spellatktype change:repeating_spell-0:spellatkmod change:repeating_spell-0:spellatkcritrange change:repeating_spell-0:spelldmgcritmulti change:repeating_spell-0:spelldmgflag change:repeating_spell-0:spelldmg change:repeating_spell-0:spelldmgtype change:repeating_spell-0:spelldmg2flag change:repeating_spell-0:spelldmg2name change:repeating_spell-0:spelldmg2 change:repeating_spell-0:spelldmg2type change:repeating_spell-0:spelldescflag change:repeating_spell-0:spelldesc change:repeating_spell-0:notes change:repeating_spell-0:wizard_school", (e) => {
 		pfom.update_spells(0,e.sourceAttribute.substring(18, 38));
 	});
-	on("change:repeating_spell-1:spellcaster change:repeating_spell-1:spellname change:repeating_spell-1:spellschool change:repeating_spell-1:spellclasslevel change:repeating_spell-1:spellcastingtime change:repeating_spell-1:spellcomponent change:repeating_spell-1:spellrange change:repeating_spell-1:spellarea change:repeating_spell-1:spelltargets change:repeating_spell-1:spelleffect change:repeating_spell-1:spellduration change:repeating_spell-1:spellsaveflag change:repeating_spell-1:spellsave change:repeating_spell-1:spelldc_mod change:repeating_spell-1:spellresistanceflag change:repeating_spell-1:spellresistance change:repeating_spell-1:spellatkflag change:repeating_spell-1:spellatktype change:repeating_spell-1:spellatkmod change:repeating_spell-1:spellatkcritrange change:repeating_spell-1:spelldmgcritmulti change:repeating_spell-1:spelldmgflag change:repeating_spell-1:spelldmg change:repeating_spell-1:spelldmgtype change:repeating_spell-1:spelldmg2flag change:repeating_spell-1:spelldmg2name change:repeating_spell-1:spelldmg2 change:repeating_spell-1:spelldmg2type change:repeating_spell-1:spelldescflag change:repeating_spell-1:spelldesc change:repeating_spell-1:notes", (e) => {
+	on("change:repeating_spell-1:spellcaster change:repeating_spell-1:spellname change:repeating_spell-1:spellschool change:repeating_spell-1:spellclasslevel change:repeating_spell-1:spellcastingtime change:repeating_spell-1:spellcomponent change:repeating_spell-1:spellrange change:repeating_spell-1:spellarea change:repeating_spell-1:spelltargets change:repeating_spell-1:spelleffect change:repeating_spell-1:spellduration change:repeating_spell-1:spellsaveflag change:repeating_spell-1:spellsave change:repeating_spell-1:spelldc_mod change:repeating_spell-1:spellresistanceflag change:repeating_spell-1:spellresistance change:repeating_spell-1:spellatkflag change:repeating_spell-1:spellatktype change:repeating_spell-1:spellatkmod change:repeating_spell-1:spellatkcritrange change:repeating_spell-1:spelldmgcritmulti change:repeating_spell-1:spelldmgflag change:repeating_spell-1:spelldmg change:repeating_spell-1:spelldmgtype change:repeating_spell-1:spelldmg2flag change:repeating_spell-1:spelldmg2name change:repeating_spell-1:spelldmg2 change:repeating_spell-1:spelldmg2type change:repeating_spell-1:spelldescflag change:repeating_spell-1:spelldesc change:repeating_spell-1:notes change:repeating_spell-1:spelldomainflag change:repeating_spell-1:spelldomain change:repeating_spell-1:wizard_school", (e) => {
 		pfom.update_spells(1,e.sourceAttribute.substring(18, 38));
 	});
-	on("change:repeating_spell-2:spellcaster change:repeating_spell-2:spellname change:repeating_spell-2:spellschool change:repeating_spell-2:spellclasslevel change:repeating_spell-2:spellcastingtime change:repeating_spell-2:spellcomponent change:repeating_spell-2:spellrange change:repeating_spell-2:spellarea change:repeating_spell-2:spelltargets change:repeating_spell-2:spelleffect change:repeating_spell-2:spellduration change:repeating_spell-2:spellsaveflag change:repeating_spell-2:spellsave change:repeating_spell-2:spelldc_mod change:repeating_spell-2:spellresistanceflag change:repeating_spell-2:spellresistance change:repeating_spell-2:spellatkflag change:repeating_spell-2:spellatktype change:repeating_spell-2:spellatkmod change:repeating_spell-2:spellatkcritrange change:repeating_spell-2:spelldmgcritmulti change:repeating_spell-2:spelldmgflag change:repeating_spell-2:spelldmg change:repeating_spell-2:spelldmgtype change:repeating_spell-2:spelldmg2flag change:repeating_spell-2:spelldmg2name change:repeating_spell-2:spelldmg2 change:repeating_spell-2:spelldmg2type change:repeating_spell-2:spelldescflag change:repeating_spell-2:spelldesc change:repeating_spell-2:notes", (e) => {
+	on("change:repeating_spell-2:spellcaster change:repeating_spell-2:spellname change:repeating_spell-2:spellschool change:repeating_spell-2:spellclasslevel change:repeating_spell-2:spellcastingtime change:repeating_spell-2:spellcomponent change:repeating_spell-2:spellrange change:repeating_spell-2:spellarea change:repeating_spell-2:spelltargets change:repeating_spell-2:spelleffect change:repeating_spell-2:spellduration change:repeating_spell-2:spellsaveflag change:repeating_spell-2:spellsave change:repeating_spell-2:spelldc_mod change:repeating_spell-2:spellresistanceflag change:repeating_spell-2:spellresistance change:repeating_spell-2:spellatkflag change:repeating_spell-2:spellatktype change:repeating_spell-2:spellatkmod change:repeating_spell-2:spellatkcritrange change:repeating_spell-2:spelldmgcritmulti change:repeating_spell-2:spelldmgflag change:repeating_spell-2:spelldmg change:repeating_spell-2:spelldmgtype change:repeating_spell-2:spelldmg2flag change:repeating_spell-2:spelldmg2name change:repeating_spell-2:spelldmg2 change:repeating_spell-2:spelldmg2type change:repeating_spell-2:spelldescflag change:repeating_spell-2:spelldesc change:repeating_spell-2:notes change:repeating_spell-2:spelldomainflag change:repeating_spell-2:spelldomain change:repeating_spell-2:wizard_school", (e) => {
 		pfom.update_spells(2,e.sourceAttribute.substring(18, 38));
 	});
-	on("change:repeating_spell-3:spellcaster change:repeating_spell-3:spellname change:repeating_spell-3:spellschool change:repeating_spell-3:spellclasslevel change:repeating_spell-3:spellcastingtime change:repeating_spell-3:spellcomponent change:repeating_spell-3:spellrange change:repeating_spell-3:spellarea change:repeating_spell-3:spelltargets change:repeating_spell-3:spelleffect change:repeating_spell-3:spellduration change:repeating_spell-3:spellsaveflag change:repeating_spell-3:spellsave change:repeating_spell-3:spelldc_mod change:repeating_spell-3:spellresistanceflag change:repeating_spell-3:spellresistance change:repeating_spell-3:spellatkflag change:repeating_spell-3:spellatktype change:repeating_spell-3:spellatkmod change:repeating_spell-3:spellatkcritrange change:repeating_spell-3:spelldmgcritmulti change:repeating_spell-3:spelldmgflag change:repeating_spell-3:spelldmg change:repeating_spell-3:spelldmgtype change:repeating_spell-3:spelldmg2flag change:repeating_spell-3:spelldmg2name change:repeating_spell-3:spelldmg2 change:repeating_spell-3:spelldmg2type change:repeating_spell-3:spelldescflag change:repeating_spell-3:spelldesc change:repeating_spell-3:notes", (e) => {
+	on("change:repeating_spell-3:spellcaster change:repeating_spell-3:spellname change:repeating_spell-3:spellschool change:repeating_spell-3:spellclasslevel change:repeating_spell-3:spellcastingtime change:repeating_spell-3:spellcomponent change:repeating_spell-3:spellrange change:repeating_spell-3:spellarea change:repeating_spell-3:spelltargets change:repeating_spell-3:spelleffect change:repeating_spell-3:spellduration change:repeating_spell-3:spellsaveflag change:repeating_spell-3:spellsave change:repeating_spell-3:spelldc_mod change:repeating_spell-3:spellresistanceflag change:repeating_spell-3:spellresistance change:repeating_spell-3:spellatkflag change:repeating_spell-3:spellatktype change:repeating_spell-3:spellatkmod change:repeating_spell-3:spellatkcritrange change:repeating_spell-3:spelldmgcritmulti change:repeating_spell-3:spelldmgflag change:repeating_spell-3:spelldmg change:repeating_spell-3:spelldmgtype change:repeating_spell-3:spelldmg2flag change:repeating_spell-3:spelldmg2name change:repeating_spell-3:spelldmg2 change:repeating_spell-3:spelldmg2type change:repeating_spell-3:spelldescflag change:repeating_spell-3:spelldesc change:repeating_spell-3:notes change:repeating_spell-3:spelldomainflag change:repeating_spell-3:spelldomain change:repeating_spell-3:wizard_school", (e) => {
 		pfom.update_spells(3,e.sourceAttribute.substring(18, 38));
 	});
-	on("change:repeating_spell-4:spellcaster change:repeating_spell-4:spellname change:repeating_spell-4:spellschool change:repeating_spell-4:spellclasslevel change:repeating_spell-4:spellcastingtime change:repeating_spell-4:spellcomponent change:repeating_spell-4:spellrange change:repeating_spell-4:spellarea change:repeating_spell-4:spelltargets change:repeating_spell-4:spelleffect change:repeating_spell-4:spellduration change:repeating_spell-4:spellsaveflag change:repeating_spell-4:spellsave change:repeating_spell-4:spelldc_mod change:repeating_spell-4:spellresistanceflag change:repeating_spell-4:spellresistance change:repeating_spell-4:spellatkflag change:repeating_spell-4:spellatktype change:repeating_spell-4:spellatkmod change:repeating_spell-4:spellatkcritrange change:repeating_spell-4:spelldmgcritmulti change:repeating_spell-4:spelldmgflag change:repeating_spell-4:spelldmg change:repeating_spell-4:spelldmgtype change:repeating_spell-4:spelldmg2flag change:repeating_spell-4:spelldmg2name change:repeating_spell-4:spelldmg2 change:repeating_spell-4:spelldmg2type change:repeating_spell-4:spelldescflag change:repeating_spell-4:spelldesc change:repeating_spell-4:notes", (e) => {
+	on("change:repeating_spell-4:spellcaster change:repeating_spell-4:spellname change:repeating_spell-4:spellschool change:repeating_spell-4:spellclasslevel change:repeating_spell-4:spellcastingtime change:repeating_spell-4:spellcomponent change:repeating_spell-4:spellrange change:repeating_spell-4:spellarea change:repeating_spell-4:spelltargets change:repeating_spell-4:spelleffect change:repeating_spell-4:spellduration change:repeating_spell-4:spellsaveflag change:repeating_spell-4:spellsave change:repeating_spell-4:spelldc_mod change:repeating_spell-4:spellresistanceflag change:repeating_spell-4:spellresistance change:repeating_spell-4:spellatkflag change:repeating_spell-4:spellatktype change:repeating_spell-4:spellatkmod change:repeating_spell-4:spellatkcritrange change:repeating_spell-4:spelldmgcritmulti change:repeating_spell-4:spelldmgflag change:repeating_spell-4:spelldmg change:repeating_spell-4:spelldmgtype change:repeating_spell-4:spelldmg2flag change:repeating_spell-4:spelldmg2name change:repeating_spell-4:spelldmg2 change:repeating_spell-4:spelldmg2type change:repeating_spell-4:spelldescflag change:repeating_spell-4:spelldesc change:repeating_spell-4:notes change:repeating_spell-4:spelldomainflag change:repeating_spell-4:spelldomain change:repeating_spell-4:wizard_school", (e) => {
 		pfom.update_spells(4,e.sourceAttribute.substring(18, 38));
 	});
-	on("change:repeating_spell-5:spellcaster change:repeating_spell-5:spellname change:repeating_spell-5:spellschool change:repeating_spell-5:spellclasslevel change:repeating_spell-5:spellcastingtime change:repeating_spell-5:spellcomponent change:repeating_spell-5:spellrange change:repeating_spell-5:spellarea change:repeating_spell-5:spelltargets change:repeating_spell-5:spelleffect change:repeating_spell-5:spellduration change:repeating_spell-5:spellsaveflag change:repeating_spell-5:spellsave change:repeating_spell-5:spelldc_mod change:repeating_spell-5:spellresistanceflag change:repeating_spell-5:spellresistance change:repeating_spell-5:spellatkflag change:repeating_spell-5:spellatktype change:repeating_spell-5:spellatkmod change:repeating_spell-5:spellatkcritrange change:repeating_spell-5:spelldmgcritmulti change:repeating_spell-5:spelldmgflag change:repeating_spell-5:spelldmg change:repeating_spell-5:spelldmgtype change:repeating_spell-5:spelldmg2flag change:repeating_spell-5:spelldmg2name change:repeating_spell-5:spelldmg2 change:repeating_spell-5:spelldmg2type change:repeating_spell-5:spelldescflag change:repeating_spell-5:spelldesc change:repeating_spell-5:notes", (e) => {
+	on("change:repeating_spell-5:spellcaster change:repeating_spell-5:spellname change:repeating_spell-5:spellschool change:repeating_spell-5:spellclasslevel change:repeating_spell-5:spellcastingtime change:repeating_spell-5:spellcomponent change:repeating_spell-5:spellrange change:repeating_spell-5:spellarea change:repeating_spell-5:spelltargets change:repeating_spell-5:spelleffect change:repeating_spell-5:spellduration change:repeating_spell-5:spellsaveflag change:repeating_spell-5:spellsave change:repeating_spell-5:spelldc_mod change:repeating_spell-5:spellresistanceflag change:repeating_spell-5:spellresistance change:repeating_spell-5:spellatkflag change:repeating_spell-5:spellatktype change:repeating_spell-5:spellatkmod change:repeating_spell-5:spellatkcritrange change:repeating_spell-5:spelldmgcritmulti change:repeating_spell-5:spelldmgflag change:repeating_spell-5:spelldmg change:repeating_spell-5:spelldmgtype change:repeating_spell-5:spelldmg2flag change:repeating_spell-5:spelldmg2name change:repeating_spell-5:spelldmg2 change:repeating_spell-5:spelldmg2type change:repeating_spell-5:spelldescflag change:repeating_spell-5:spelldesc change:repeating_spell-5:notes change:repeating_spell-5:spelldomainflag change:repeating_spell-5:spelldomain change:repeating_spell-5:wizard_school", (e) => {
 		pfom.update_spells(5,e.sourceAttribute.substring(18, 38));
 	});
-	on("change:repeating_spell-6:spellcaster change:repeating_spell-6:spellname change:repeating_spell-6:spellschool change:repeating_spell-6:spellclasslevel change:repeating_spell-6:spellcastingtime change:repeating_spell-6:spellcomponent change:repeating_spell-6:spellrange change:repeating_spell-6:spellarea change:repeating_spell-6:spelltargets change:repeating_spell-6:spelleffect change:repeating_spell-6:spellduration change:repeating_spell-6:spellsaveflag change:repeating_spell-6:spellsave change:repeating_spell-6:spelldc_mod change:repeating_spell-6:spellresistanceflag change:repeating_spell-6:spellresistance change:repeating_spell-6:spellatkflag change:repeating_spell-6:spellatktype change:repeating_spell-6:spellatkmod change:repeating_spell-6:spellatkcritrange change:repeating_spell-6:spelldmgcritmulti change:repeating_spell-6:spelldmgflag change:repeating_spell-6:spelldmg change:repeating_spell-6:spelldmgtype change:repeating_spell-6:spelldmg2flag change:repeating_spell-6:spelldmg2name change:repeating_spell-6:spelldmg2 change:repeating_spell-6:spelldmg2type change:repeating_spell-6:spelldescflag change:repeating_spell-6:spelldesc change:repeating_spell-6:notes", (e) => {
+	on("change:repeating_spell-6:spellcaster change:repeating_spell-6:spellname change:repeating_spell-6:spellschool change:repeating_spell-6:spellclasslevel change:repeating_spell-6:spellcastingtime change:repeating_spell-6:spellcomponent change:repeating_spell-6:spellrange change:repeating_spell-6:spellarea change:repeating_spell-6:spelltargets change:repeating_spell-6:spelleffect change:repeating_spell-6:spellduration change:repeating_spell-6:spellsaveflag change:repeating_spell-6:spellsave change:repeating_spell-6:spelldc_mod change:repeating_spell-6:spellresistanceflag change:repeating_spell-6:spellresistance change:repeating_spell-6:spellatkflag change:repeating_spell-6:spellatktype change:repeating_spell-6:spellatkmod change:repeating_spell-6:spellatkcritrange change:repeating_spell-6:spelldmgcritmulti change:repeating_spell-6:spelldmgflag change:repeating_spell-6:spelldmg change:repeating_spell-6:spelldmgtype change:repeating_spell-6:spelldmg2flag change:repeating_spell-6:spelldmg2name change:repeating_spell-6:spelldmg2 change:repeating_spell-6:spelldmg2type change:repeating_spell-6:spelldescflag change:repeating_spell-6:spelldesc change:repeating_spell-6:notes change:repeating_spell-6:spelldomainflag change:repeating_spell-6:spelldomain change:repeating_spell-6:wizard_school", (e) => {
 		pfom.update_spells(6,e.sourceAttribute.substring(18, 38));
 	});
-	on("change:repeating_spell-7:spellcaster change:repeating_spell-7:spellname change:repeating_spell-7:spellschool change:repeating_spell-7:spellclasslevel change:repeating_spell-7:spellcastingtime change:repeating_spell-7:spellcomponent change:repeating_spell-7:spellrange change:repeating_spell-7:spellarea change:repeating_spell-7:spelltargets change:repeating_spell-7:spelleffect change:repeating_spell-7:spellduration change:repeating_spell-7:spellsaveflag change:repeating_spell-7:spellsave change:repeating_spell-7:spelldc_mod change:repeating_spell-7:spellresistanceflag change:repeating_spell-7:spellresistance change:repeating_spell-7:spellatkflag change:repeating_spell-7:spellatktype change:repeating_spell-7:spellatkmod change:repeating_spell-7:spellatkcritrange change:repeating_spell-7:spelldmgcritmulti change:repeating_spell-7:spelldmgflag change:repeating_spell-7:spelldmg change:repeating_spell-7:spelldmgtype change:repeating_spell-7:spelldmg2flag change:repeating_spell-7:spelldmg2name change:repeating_spell-7:spelldmg2 change:repeating_spell-7:spelldmg2type change:repeating_spell-7:spelldescflag change:repeating_spell-7:spelldesc change:repeating_spell-7:notes", (e) => {
+	on("change:repeating_spell-7:spellcaster change:repeating_spell-7:spellname change:repeating_spell-7:spellschool change:repeating_spell-7:spellclasslevel change:repeating_spell-7:spellcastingtime change:repeating_spell-7:spellcomponent change:repeating_spell-7:spellrange change:repeating_spell-7:spellarea change:repeating_spell-7:spelltargets change:repeating_spell-7:spelleffect change:repeating_spell-7:spellduration change:repeating_spell-7:spellsaveflag change:repeating_spell-7:spellsave change:repeating_spell-7:spelldc_mod change:repeating_spell-7:spellresistanceflag change:repeating_spell-7:spellresistance change:repeating_spell-7:spellatkflag change:repeating_spell-7:spellatktype change:repeating_spell-7:spellatkmod change:repeating_spell-7:spellatkcritrange change:repeating_spell-7:spelldmgcritmulti change:repeating_spell-7:spelldmgflag change:repeating_spell-7:spelldmg change:repeating_spell-7:spelldmgtype change:repeating_spell-7:spelldmg2flag change:repeating_spell-7:spelldmg2name change:repeating_spell-7:spelldmg2 change:repeating_spell-7:spelldmg2type change:repeating_spell-7:spelldescflag change:repeating_spell-7:spelldesc change:repeating_spell-7:notes change:repeating_spell-7:spelldomainflag change:repeating_spell-7:spelldomain change:repeating_spell-7:wizard_school", (e) => {
 		pfom.update_spells(7,e.sourceAttribute.substring(18, 38));
 	});
-	on("change:repeating_spell-8:spellcaster change:repeating_spell-8:spellname change:repeating_spell-8:spellschool change:repeating_spell-8:spellclasslevel change:repeating_spell-8:spellcastingtime change:repeating_spell-8:spellcomponent change:repeating_spell-8:spellrange change:repeating_spell-8:spellarea change:repeating_spell-8:spelltargets change:repeating_spell-8:spelleffect change:repeating_spell-8:spellduration change:repeating_spell-8:spellsaveflag change:repeating_spell-8:spellsave change:repeating_spell-8:spelldc_mod change:repeating_spell-8:spellresistanceflag change:repeating_spell-8:spellresistance change:repeating_spell-8:spellatkflag change:repeating_spell-8:spellatktype change:repeating_spell-8:spellatkmod change:repeating_spell-8:spellatkcritrange change:repeating_spell-8:spelldmgcritmulti change:repeating_spell-8:spelldmgflag change:repeating_spell-8:spelldmg change:repeating_spell-8:spelldmgtype change:repeating_spell-8:spelldmg2flag change:repeating_spell-8:spelldmg2name change:repeating_spell-8:spelldmg2 change:repeating_spell-8:spelldmg2type change:repeating_spell-8:spelldescflag change:repeating_spell-8:spelldesc change:repeating_spell-8:notes", (e) => {
+	on("change:repeating_spell-8:spellcaster change:repeating_spell-8:spellname change:repeating_spell-8:spellschool change:repeating_spell-8:spellclasslevel change:repeating_spell-8:spellcastingtime change:repeating_spell-8:spellcomponent change:repeating_spell-8:spellrange change:repeating_spell-8:spellarea change:repeating_spell-8:spelltargets change:repeating_spell-8:spelleffect change:repeating_spell-8:spellduration change:repeating_spell-8:spellsaveflag change:repeating_spell-8:spellsave change:repeating_spell-8:spelldc_mod change:repeating_spell-8:spellresistanceflag change:repeating_spell-8:spellresistance change:repeating_spell-8:spellatkflag change:repeating_spell-8:spellatktype change:repeating_spell-8:spellatkmod change:repeating_spell-8:spellatkcritrange change:repeating_spell-8:spelldmgcritmulti change:repeating_spell-8:spelldmgflag change:repeating_spell-8:spelldmg change:repeating_spell-8:spelldmgtype change:repeating_spell-8:spelldmg2flag change:repeating_spell-8:spelldmg2name change:repeating_spell-8:spelldmg2 change:repeating_spell-8:spelldmg2type change:repeating_spell-8:spelldescflag change:repeating_spell-8:spelldesc change:repeating_spell-8:notes change:repeating_spell-8:spelldomainflag change:repeating_spell-8:spelldomain change:repeating_spell-8:wizard_school", (e) => {
 		pfom.update_spells(8,e.sourceAttribute.substring(18, 38));
 	});
-	on("change:repeating_spell-9:spellcaster change:repeating_spell-9:spellname change:repeating_spell-9:spellschool change:repeating_spell-9:spellclasslevel change:repeating_spell-9:spellcastingtime change:repeating_spell-9:spellcomponent change:repeating_spell-9:spellrange change:repeating_spell-9:spellarea change:repeating_spell-9:spelltargets change:repeating_spell-9:spelleffect change:repeating_spell-9:spellduration change:repeating_spell-9:spellsaveflag change:repeating_spell-9:spellsave change:repeating_spell-9:spelldc_mod change:repeating_spell-9:spellresistanceflag change:repeating_spell-9:spellresistance change:repeating_spell-9:spellatkflag change:repeating_spell-9:spellatktype change:repeating_spell-9:spellatkmod change:repeating_spell-9:spellatkcritrange change:repeating_spell-9:spelldmgcritmulti change:repeating_spell-9:spelldmgflag change:repeating_spell-9:spelldmg change:repeating_spell-9:spelldmgtype change:repeating_spell-9:spelldmg2flag change:repeating_spell-9:spelldmg2name change:repeating_spell-9:spelldmg2 change:repeating_spell-9:spelldmg2type change:repeating_spell-9:spelldescflag change:repeating_spell-9:spelldesc change:repeating_spell-9:notes", (e) => {
+	on("change:repeating_spell-9:spellcaster change:repeating_spell-9:spellname change:repeating_spell-9:spellschool change:repeating_spell-9:spellclasslevel change:repeating_spell-9:spellcastingtime change:repeating_spell-9:spellcomponent change:repeating_spell-9:spellrange change:repeating_spell-9:spellarea change:repeating_spell-9:spelltargets change:repeating_spell-9:spelleffect change:repeating_spell-9:spellduration change:repeating_spell-9:spellsaveflag change:repeating_spell-9:spellsave change:repeating_spell-9:spelldc_mod change:repeating_spell-9:spellresistanceflag change:repeating_spell-9:spellresistance change:repeating_spell-9:spellatkflag change:repeating_spell-9:spellatktype change:repeating_spell-9:spellatkmod change:repeating_spell-9:spellatkcritrange change:repeating_spell-9:spelldmgcritmulti change:repeating_spell-9:spelldmgflag change:repeating_spell-9:spelldmg change:repeating_spell-9:spelldmgtype change:repeating_spell-9:spelldmg2flag change:repeating_spell-9:spelldmg2name change:repeating_spell-9:spelldmg2 change:repeating_spell-9:spelldmg2type change:repeating_spell-9:spelldescflag change:repeating_spell-9:spelldesc change:repeating_spell-9:notes change:repeating_spell-9:spelldomainflag change:repeating_spell-9:spelldomain change:repeating_spell-9:wizard_school", (e) => {
 		pfom.update_spells(9,e.sourceAttribute.substring(18, 38));
 	});
 
@@ -810,7 +869,7 @@
 				if (! _.isEmpty(cdata)) {
 					// console.log("*** DEBUG check_npc_drop:cdata: " + JSON.stringify(cdata,null,"  "));
 					if (cdata["Category"] && (cdata["Category"].toLowerCase() == "bestiary")) {
-						setAttrs({"npc": 1,"options-flag-npc": 0,"build-flag-npc": 1},{silent: true}, () => {
+						setAttrs({"npc": 1,"options_flag_npc": 0,"build_flag_npc": 1},{silent: true}, () => {
 							getAttrs(["npcdrop_name","npcdrop_uniq"], (v) => {
 								pfom.update_npc_drop(cdata, v, () => {
 									pfom.update_default_token();
@@ -986,14 +1045,14 @@
 
 // =============================================================================
 // -----------------------------------------------------------------------------
-// # Module : GLOBAL VARIABLES
+// # Module : VARIABLES
 // -----------------------------------------------------------------------------
 // =============================================================================
 
 		// === Version
 		const pfoglobals_currentversion = 1.303;
 		const pfoglobals_currentbuild = "Unofficial FR beta";
-		const pfoglobals_currentbuildversion = 1.1;
+		const pfoglobals_currentbuildversion = 1.2;
 		const pfoglobals_currentversion_obj = { // NEW
 				"version" : pfoglobals_currentversion,
 				"build" : pfoglobals_currentbuild,
@@ -1111,10 +1170,10 @@
 		const pfoglobals_abilities_attr = ["perday","perday_max","perday_qty"];
 		const pfoglobals_repsec_traits = [{section:"abilities",attrs:pfoglobals_abilities_attr}];
 		const pfoglobals_spell_attr = ["spelllevel","spellcaster","spellname","spellschool","spellclasslevel","spellcastingtime","spellrange","spellarea","spelltargets","spelleffect","spellduration","spellsaveflag","spellsave","spelldc_mod","spellresistanceflag","spellresistance","spellatkflag","spellatktype","spellatkmod","spellatkcritrange","spelldmgcritmulti","spelldmgflag","spelldmg","spelldmgtype","spelldmg2flag","spelldmg2name","spelldmg2","spelldmg2type","spelldescflag","spelldesc","notes"];
-		const pfoglobals_spell_only_attr = ["spellcomponent"];
+		const pfoglobals_spell_only_attr = ["spelldomainflag","spelldomain","wizard_school","spellcomponent"]; // EDIT
 		const pfoglobals_spell_like_attr = ["spelltype","timesperday","perday_max","perday_qty"];
 		var pfoglobals_repsec_spell = [];
-		const pfoglobals_spell_fields = ["melee_mod","ranged_mod","cmb_mod","rollnotes_spell","whispertype","rollshowchar","caster1_level", "caster2_level","caster1_flag","caster2_flag","caster1_class","caster2_class","armor_spell_failure","caster1_spell_failure","caster2_spell_failure","npc","caster1_concentration_roll","caster2_concentration_roll","caster1_dc_level_0","caster1_dc_level_1","caster1_dc_level_2","caster1_dc_level_3","caster1_dc_level_4","caster1_dc_level_5","caster1_dc_level_6","caster1_dc_level_7","caster1_dc_level_8","caster1_dc_level_9","caster2_dc_level_0","caster2_dc_level_1","caster2_dc_level_2","caster2_dc_level_3","caster2_dc_level_4","caster2_dc_level_5","caster2_dc_level_6","caster2_dc_level_7","caster2_dc_level_8","caster2_dc_level_9"].concat(pfoglobals_mods);
+		const pfoglobals_spell_fields = ["melee_mod","ranged_mod","cmb_mod","rollnotes_spell","whispertype","rollshowchar","caster1_level", "caster2_level","caster1_flag","caster2_flag","caster1_class","caster2_class","armor_spell_failure","caster1_spell_failure","caster2_spell_failure","npc","caster1_concentration_roll","caster2_concentration_roll","caster1_dc_level_0","caster1_dc_level_1","caster1_dc_level_2","caster1_dc_level_3","caster1_dc_level_4","caster1_dc_level_5","caster1_dc_level_6","caster1_dc_level_7","caster1_dc_level_8","caster1_dc_level_9","caster2_dc_level_0","caster2_dc_level_1","caster2_dc_level_2","caster2_dc_level_3","caster2_dc_level_4","caster2_dc_level_5","caster2_dc_level_6","caster2_dc_level_7","caster2_dc_level_8","caster2_dc_level_9","spend_mp"].concat(pfoglobals_mods); // EDIT
 		const pfoglobals_concentration_fields = ["npc","caster1_level","caster1_ability","caster1_ability_mod","caster1_concentration_misc","caster1_concentration_bonus","caster2_level","caster2_ability","caster2_ability_mod","caster2_concentration_misc","caster2_concentration_bonus"].concat(pfoglobals_mods);
 		const pfoglobals_spells_dc_fields = ["npc","caster1_ability","caster1_ability_mod","caster1_dc_misc","caster1_dcbonus_level_0","caster1_dcbonus_level_1","caster1_dcbonus_level_2","caster1_dcbonus_level_3","caster1_dcbonus_level_4","caster1_dcbonus_level_5","caster1_dcbonus_level_6","caster1_dcbonus_level_7","caster1_dcbonus_level_8","caster1_dcbonus_level_9","caster2_ability","caster2_ability_mod","caster2_dc_misc","caster2_dcbonus_level_0","caster2_dcbonus_level_1","caster2_dcbonus_level_2","caster2_dcbonus_level_3","caster2_dcbonus_level_4","caster2_dcbonus_level_5","caster2_dcbonus_level_6","caster2_dcbonus_level_7","caster2_dcbonus_level_8","caster2_dcbonus_level_9"].concat(pfoglobals_mods);
 		const pfoglobals_size = [{"size":"fine","atkac":8,"cmb":-8,"fly":8,"stealth":16,"load":0.125,"squares":0.5},{"size":"diminutive","atkac":4,"cmb":-4,"fly":6,"stealth":12,"load":0.25,"squares":0.5},{"size":"tiny","atkac":2,"cmb":-2,"fly":4,"stealth":8,"load":0.5,"squares":0.5},{"size":"small","atkac":1,"cmb":-1,"fly":2,"stealth":4,"load":0.75,"squares":0.75},{"size":"medium","atkac":0,"cmb":0,"fly":0,"stealth":0,"load":1,"squares":1.0},{"size":"large","atkac":-1,"cmb":1,"fly":-2,"stealth":-4,"load":2,"squares":2.0},{"size":"huge","atkac":-2,"cmb":2,"fly":-4,"stealth":-8,"load":4,"squares":3.0},{"size":"gargantuan","atkac":-4,"cmb":4,"fly":-6,"stealth":-12,"load":8,"squares":4.0},{"size":"colossal","atkac":-8,"cmb":8,"fly":-8,"stealth":-16,"load":16,"squares":4.0}];
@@ -1184,8 +1243,8 @@
 							abilities_scores[data["l1-race"].values["race_ability_choice1"]].race = parseInt(data["l1-race"].data.race["data-Ability Score Choice"].split("+")[1]) || 0;
 						}
 					}
+					// --- Custom race abilities bonuses
 					if (data["l1-race"].values["race"] == "Index:Races") {
-						//Custom race abilities bonuses
 						_.each(mncrAbilities, (ability) => {
 							if (data["l1-race"].values["race_" + ability]) {
 								abilities_scores[ability].race = data["l1-race"].values["race_" + ability];
@@ -1201,7 +1260,7 @@
 					abilities_scores[sbclsablt].subclass = parseInt(sbclsabltvalue) || 0;
 				}
 				// --- Abilities misc
-				// Final abilities calculation
+				// --- Final abilities calculation
 				_.each(mncrAbilities, (ability) => {
 					abilities_scores[ability].total = (parseInt(abilities_scores[ability].base) || 0) + (parseInt(abilities_scores[ability].race) || 0) + (parseInt(abilities_scores[ability].class) || 0) + (parseInt(abilities_scores[ability].subclass) || 0) + (parseInt(abilities_scores[ability].misc) || 0);
 				});
@@ -1216,7 +1275,7 @@
 			};
 
 			// === INIT ===
-			// -- Reset / Initialize
+			// --- Reset / Initialize
 			setCharmancerText({"mancer_category":"Resetting Attributes / Erasing Old Data","mancer_progress" :'<div style="width: 4%"></div>'});
 			erase_repsec_ids(JSON.parse(JSON.stringify(pfoglobals_allrepsecs)), () => {
 				charUpd = calc_reset_character();
@@ -1727,7 +1786,7 @@
 					if (trait["Name"]) {
 						let sec = "repeating_abilities_" + generateRowID() + "_";
 						charUpd[sec + "name"] = trait["Name"];
-						charUpd[sec + "options-flag"] = 0;
+						charUpd[sec + "options_flag"] = 0;
 						if (trait["Type"]) {
 							charUpd[sec + "type"] = trait["Type"];
 						}
@@ -1759,7 +1818,7 @@
 					charUpd["repeating_attacks_" + attackid + "_atktype2"] = "strength";
 					charUpd["repeating_attacks_" + attackid + "_dmgbase"] = "1d6";
 					charUpd["repeating_attacks_" + attackid + "_dmgattr"] = "strength";
-					charUpd["repeating_attacks_" + attackid + "_options-flag"] = "0";
+					charUpd["repeating_attacks_" + attackid + "_options_flag"] = "0";
 				}
 
 				setCharmancerText({"mancer_category":"Loading New Data","mancer_progress" :'<div style="width: 64%"></div>'});
@@ -1826,7 +1885,7 @@
 			// Initialize NPC & show building splash
 			update["l1mancer_status"] = "completed";
 			update["npc"] = 1;
-			update["options-flag-npc"] = 0;
+			update["options_flag_npc"] = 0;
 			setAttrs(update, {silent: true},() => {
 				update = {};
 				var tmpobj = {};
@@ -2504,7 +2563,7 @@
 						}
 						setAttrs(update,{silent: true},() => {
 							// Hide building splash
-							setAttrs({"build-flag-npc": 0},{silent: true});
+							setAttrs({"build_flag_npc": 0},{silent: true});
 						});
 					});
 				});
@@ -2531,7 +2590,7 @@
 						type = "melee";
 					}
 					update[`${repsec}${newrowid}_atkname`] = obj["Name"];
-					update[`${repsec}${newrowid}_options-flag`] = 0;
+					update[`${repsec}${newrowid}_options_flag`] = 0;
 					if (obj["Attack Bonuses"]) { // atkmod -> atkmod9
 						let atkmodz = obj["Attack Bonuses"].replace(/[^\d\/\-]/gi, '');
 						if (atkmodz.indexOf("/") == -1) { // one attack
@@ -2673,7 +2732,7 @@
 					update[`${repsec}${newrowid}_dmgtype`] = update[`${repsec}${newrowid}_dmgtype`].trim();
 				}
 				// Misc
-				update[`${repsec}${newrowid}_options-flag`] = 0;
+				update[`${repsec}${newrowid}_options_flag`] = 0;
 				update[`${repsec}${newrowid}_atkdesc`] = update[`${repsec}${newrowid}_atkdesc`].trim();
 				if (update[`${repsec}${newrowid}_atkdesc`].length) {
 					update[`${repsec}${newrowid}_descflag`] = `{{descflag=[[1]]}} {{desc=@{atkdesc}}}`;
@@ -2694,7 +2753,7 @@
 				var newrowid = generateRowID();
 				if (obj["Name"]) { //atkname
 					update[`${repsec}${newrowid}_atkname`] = obj["Name"];
-					update[`${repsec}${newrowid}_options-flag`] = 0;
+					update[`${repsec}${newrowid}_options_flag`] = 0;
 				}
 				if (obj["Per Day"]) {
 					update[`${repsec}${newrowid}_perday_max`] = parseInt(obj["Per Day"]) || 1;
@@ -2779,7 +2838,7 @@
 				var newrowid = generateRowID();
 				if (obj["Name"]) {
 					update[`${repsec}${newrowid}_name`] = obj["Name"];
-					update[`${repsec}${newrowid}_options-flag`] = 0;
+					update[`${repsec}${newrowid}_options_flag`] = 0;
 					update[`${repsec}${newrowid}_fromcompendium`] = obj["Name"];
 				}
 				if (obj["Type"]) {
@@ -3039,7 +3098,7 @@
 					featname2 = obj.split("(")[0].trim().replace("Feats:","").trim();
 				}
 				featObj[`${repsec}${newrowid}_name`] = featname;
-				featObj[`${repsec}${newrowid}_options-flag`] = 0;
+				featObj[`${repsec}${newrowid}_options_flag`] = 0;
 				featObj[`${repsec}${newrowid}_type`] = "misc";
 				if (! _.isEmpty(cdatarr)) {
 					let cdata = cdatarr.find(o => ((o.data) && (o.data["Feat Name"]) && (o.data["Feat Name"].toLowerCase().trim() === featname.toLowerCase()) && (o.data["Category"] === "Feats")));
@@ -3103,12 +3162,12 @@
 					update[`${repsec}${newrowid}_spellname`] = toTitleCase(obj.name.replace("Spells:",""));
 					if (obj.domain) {
 						if (isPc) {
-							update[`${repsec}${newrowid}_spelldomaineflag`] = 1;
+							update[`${repsec}${newrowid}_spelldomainflag`] = 1;
 						} else {
 							update[`${repsec}${newrowid}_spellname`] += " (D)";
 						}
 					}
-					update[`${repsec}${newrowid}_options-flag`] = 0;
+					update[`${repsec}${newrowid}_options_flag`] = 0;
 					if (obj.spellcaster) {
 						update[`${repsec}${newrowid}_spellcaster`] = obj.spellcaster;
 					} else {
@@ -3218,7 +3277,7 @@
 					// console.log("*** DEBUG drop_add_spellike obj :" + JSON.stringify(obj,null,"  "));
 					let newrowid = generateRowID();
 					update[`${repsec}${newrowid}_spellname`] = obj["Name"];
-					update[`${repsec}${newrowid}_options-flag`] = 0;
+					update[`${repsec}${newrowid}_options_flag`] = 0;
 					if (isPc) {
 						if (obj["Per-day"]) {
 							update[`${repsec}${newrowid}_timesperday`] = "per-day";
@@ -3514,7 +3573,7 @@
 			let update = {}, repsec = `repeating_attacks_${generateRowID()}_`;
 			update[`${repsec}fromcompendium`] = cdata["uniqueName"];
 			update[`${repsec}atkname`] = cdata["Name"];
-			update[`${repsec}options-flag`] = 0;
+			update[`${repsec}options_flag`] = 0;
 			update[`${repsec}category`] = (cdata["Weapon Category"] || "");
 			if (update[`${repsec}category`].toLowerCase().includes("ranged")) {
 				update[`${repsec}atktype`] = "ranged";
@@ -4081,9 +4140,9 @@
 
 		// === WEAPONS / ATTACKS
 		const update_ammo = function(flg, sid) {
-			let flds = ["atkammo", "atktype", "bab_multi"];
-			get_repsec_ids(JSON.parse(JSON.stringify([{section:"attacks", attrs:flds}])), (repsec) => {
-				getAttrs(get_repsec_fields(repsec, ["npc", "character_id", "use_ammo"].concat(flds)), (v) => {
+			let attrs = ["atkammo", "atktype", "bab_multi"];
+			get_repsec_ids(JSON.parse(JSON.stringify([{section:"attacks", attrs:attrs}])), (repsec) => {
+				getAttrs(get_repsec_fields(repsec, ["npc", "character_id", "use_ammo"].concat(attrs)), (v) => {
 					if ("npc" in v && v.npc == "1") return; // prompt if NPC
 					if (flg === undefined) flg = v.use_ammo; // get use ammo flag
 					setAttrs(do_update_ammo(repsec, v, flg, sid), {silent: true});
@@ -4242,7 +4301,7 @@
 						if (atkflag != "0") {
 							rolltype += "attack";
 							rollbase += `${atkflag}${atkrange}`;
-							for (i = 0; i < 7; i++){
+							for (i = 0; i < 7; i++) {
 								if (i in atktypearray) {
 									stemp = atktypearray[i] + " [" + pfoglobals_i18n_obj[v[`repeating_attacks_${attackid}_atktype`]] + "] + " + atktype2 + " [" + pfoglobals_i18n_obj[(v[`repeating_attacks_${attackid}_atktype2`] || "0") == "0" ? "ability" : v[`repeating_attacks_${attackid}_atktype2`]] + "] + " + atkmod + " [Mod] + " + atktmpbonus + " [Temp] + (@{attack_condition}) [Condition] + @{rollmod_attack} [Query]";
 									stemp = ` {{roll${i > 0 ? i : ""}=[[1d20cs>${atkcritrange} + ${stemp} ]]}} {{critconfirm${i > 0 ? i : ""}=[[1d20cs20 + ${stemp} + @{critconfirm_bonus} [Crit Confirm Bonus] ]]}}`;
@@ -4726,22 +4785,22 @@
 		};
 
 		// === SPEED
-		const rnd_sq = function(n) { // NEW -- converts a number to an integer multiple of 1
+		const rnd_sq = function(n) { // converts a number to an integer multiple of 1 // NEW
 			return Math.max(1, Math.floor(n));
 		};
-		const rnd_ft = function(n) { // NEW -- converts a number to an integer multiple of 5
+		const rnd_ft = function(n) { // converts a number to an integer multiple of 5 // NEW
 			return Math.max(5, Math.floor(n / 5) * 5);
 		};
-		const rnd_m = function(n) { // NEW -- converts a number to an float multiple of 1.5
+		const rnd_m = function(n) { // converts a number to an float multiple of 1.5 // NEW
 			return Math.max(1.5, Math.floor(n / 1.5) * 1.5);
 		};
-		const get_min_speed = function(u) { //NEW -- u = speed unit
+		const get_min_speed = function(u) { //u = speed unit // NEW
 			let n = 1;
 			if (u == "ft") n = 5;
 			else if (u == "m") n = 1.5;
 			return n;
 		};
-		const calc_round_speed = function(s, u, b) { // EDIT -- s = speed, u = unit, b = reduced speed flag
+		const calc_round_speed = function(s, u, b) { // s = speed, u = unit, b = reduced speed flag // EDIT
 			let n = (parseFloat(s) || 0);
 			if (u == "ft") n = rnd_ft(n);
 			else if (u == "m") n = rnd_m(n);
@@ -4754,7 +4813,7 @@
 				n -= t;
 			} return n;
 		};
-		const calc_reduced_speed = function(s, u) { // EDIT -- s = speed, u = unit
+		const calc_reduced_speed = function(s, u) { // s = speed, u = unit // EDIT
 			return calc_round_speed(s, u, true);
 		};
 		const update_speed = function() {
@@ -4802,7 +4861,7 @@
 			// console.log("*** DEBUG calc_speed update: " + JSON.stringify(update,null,"  "));
 			return update;
 		};
-		const update_speed_unit = function(src, flg) { // NEW -- src = source string, flg = force update flag
+		const update_speed_unit = function(src, flg) { // src = source string, flg = force update flag // NEW
 			getAttrs(["speed_unit", "speed_race"], (v) => {
 				let speed_unit = v.speed_unit, n = 0;
 				let old, val = speed_unit;
@@ -4968,7 +5027,68 @@
 			else {return ([115, 130, 150, 175][str - 11]);}
 		};
 
-		// === SPELLS / SPELLCASTING
+		// === MAGIC POINTS
+		const calc_mp = function(v) { // v = repsec values // NEW
+			let upd = {};
+			let val = parseInt(v["mp"]) || 0;
+			let temp = parseInt(v["mp_temp"]) || 0;
+			let temp_last = parseInt(v["mp_temp_last"]) || 0;
+			let base = parse_formula(v["mp_max_base"], v);
+			let max = Math.max(0, base + temp);
+			upd["mp"] = Math.max(0, val + temp - temp_last);
+			upd["mp_max"] = max;
+			upd["mp_max_view"] = max;
+			upd["mp_temp_last"] = temp;
+			setAttrs(upd, {silent: true});
+		};
+		const update_mp = function() { // NEW
+			getAttrs(["mp", "mp_max_base", "mp_temp", "mp_temp_last"], (v) => {
+				let s = v["mp_max_base"] || "";
+				let b = true;
+				if (s.length > 0) { // attributes in formula
+					let p = new RegExp("@{([^}]+)}", "g");
+					let a = s.match(p);
+					if (a && a.length > 0) {
+						a = a.map((m) => {return m.replace(p,(match, r) => {return r})});
+						b = false;
+						getAttrs(a, (w) => {calc_mp({...v, ...w})});
+					}
+				}
+				if (b) calc_mp(v); // no attributes in formula
+			});
+		};
+
+		// === DOMAINS and SCHOOLS
+		const get_domain_spell = function(lvl, id, v) { // lvl = spell level number, id = repeating spell id, v = repsec values // NEW
+			let update = {};
+			let num = v[`repeating_spell-${lvl}_${id}_spellcaster`] || "1";
+			let val = v[`caster${num}_domains_schools_flag`] || "none"; // "none", ""domains", ""schools
+			if (val == "none" || val == "domains") update[`repeating_spell-${lvl}_${id}_spellschoolflag`] = "0";
+			if (val == "none" || val == "schools") update[`repeating_spell-${lvl}_${id}_spelldomainflag`] = "0";
+			update[`repeating_spell-${lvl}_${id}_caster_domain_school_flag`] = val;
+			return update;
+		};
+		const update_domain_school = function(lvl) { // lvl = spell level number // NEW
+			getSectionIDs(`repeating_spell-${lvl}`, (ids) => {
+				let attrs = ["caster1_domains_schools_flag", "caster2_domains_schools_flag"];
+				_.each(ids, (id) => {attrs.push(`repeating_spell-${lvl}_${id}_spellcaster`)});
+				getAttrs(attrs, (v) => {
+					let update = {};
+					_.each(ids, (id) => {_.extend(update, get_domain_spell(lvl, id, v))});
+					setAttrs(update, {silent: true});
+				});
+			});
+		};
+		const update_all_domain_school = function(num, val) { // num = caster class number, val = "domains", "schools" or "none" // NEW
+			if (num && val) { // update radio
+				let update = {}, i;
+				update[`caster${num}_domains_schools_flag`] = val;
+				setAttrs(update, {silent: true});
+			}
+			for (i = 0; i < 10; i++) update_domain_school(i);
+		};
+
+		// === CONCENTRATION
 		const update_concentration = function(srcattr) {
 			let cster = srcattr.substr(0,7).slice(-1);
 			getAttrs(pfoglobals_concentration_fields, (v) => {
@@ -4991,6 +5111,8 @@
 			update[`caster${cster}_concentration`] = (parseInt(v[`caster${cster}_level`]) || 0) + (parseInt(v[`caster${cster}_ability_mod`]) || 0) + (parseInt(v[`caster${cster}_concentration_misc`]) || 0) + (parseInt(v[`caster${cster}_concentration_bonus`]) || 0);
 			return update;
 		};
+
+		// === SPELLS DC
 		const update_spells_dc = function(attr) {
 			// console.log("*** DEBUG update_spells_dc attr: " + attr);
 			let minlvl = 0, maxlvl = 0, update_all = false;
@@ -5026,13 +5148,33 @@
 			}
 			return update;
 		};
-		const update_spells_flag = function(level) {
-			// console.log("*** DEBUG update_spells_flag level: " + level);
-			getAttrs([`caster1_spells_known_level_${level}`, `caster2_spells_known_level_${level}`, `caster1_spells_total_level_${level}`, `caster2_spells_total_level_${level}`], (v) => {
-				let update = {};
-				let tot = (parseInt(v[`caster1_spells_known_level_${level}`]) || 0) + (parseInt(v[`caster2_spells_known_level_${level}`]) || 0) + (parseInt(v[`caster1_spells_total_level_${level}`]) || 0) + (parseInt(v[`caster2_spells_total_level_${level}`]) || 0);
-				update[`caster_spells_flag_level_${level}`] = (tot > 0) ? 1 : 0;
-				setAttrs(update);
+
+		// === SPELLS PREPARATION
+		const update_spells_flag = function(lvl) { // lvl = spell level number // EDIT
+			// console.log("*** DEBUG update_spells_flag lvl: " + lvl);
+			let a = [
+				`caster1_spells_known_level_${lvl}`, // sp
+				`caster2_spells_known_level_${lvl}`,
+				`caster1_spells_total_level_${lvl}`,
+				`caster2_spells_total_level_${lvl}`,
+				`caster1_mp_known_level_${lvl}`, // mp
+				`caster2_mp_known_level_${lvl}`,
+				`caster1_mp_known_bonus_level_${lvl}`,
+				`caster2_mp_known_bonus_level_${lvl}`,
+				"caster1_level_ctrl", // spell levels
+				"caster2_level_ctrl"
+			];
+			getAttrs(a, (v) => {
+				let u = {}, i, t = 0;
+				let n = parseInt(v[`caster1_level_ctrl`] || 0);
+				let m = parseInt(v[`caster2_level_ctrl`] || 0);
+				if (lvl > Math.max(n, m)) {
+					u[`caster_spells_flag_level_${lvl}`] = 0;
+				} else {
+					for (i in a) t += parseInt(v[a[i]] || 0);
+					u[`caster_spells_flag_level_${lvl}`] = (t > 0) ? 1 : 0;
+				}
+				setAttrs(u);
 			});
 		};
 		const update_spells_totals = function(level,cster) {
@@ -5043,17 +5185,16 @@
 				setAttrs(update, {silent: false});
 			});
 		};
-		const update_spells_prepared = function (src,val) {
-			// console.log("*** DEBUG update_spells_prepared src: " + src + ", val: " + val);
+		const update_spells_prepared = function (src) {
+			// console.log("*** DEBUG update_spells_prepared src: " + src + ");
 			let update = {};
-			let repsec = src.substr(0,17);
-			let level = repsec.charAt(repsec.length - 1);
-			getSectionIDs(`repeating_spell-${level}`, (idarray) => {
-				let spell_attribs = [`caster1_spells_total_level_${level}`,`caster2_spells_total_level_${level}`];
-				spell_attribs.push(...idarray.map((spellid) => `repeating_spell-${level}_${spellid}_spellprepared`), ...idarray.map((spellid) => `repeating_spell-${level}_${spellid}_spellcaster`));
-				getAttrs(spell_attribs, (v) => {
+			let level = src.substr(16,1);
+			getSectionIDs(`repeating_spell-${level}`, (ids) => {
+				let attrs = [`caster1_spells_total_level_${level}`,`caster2_spells_total_level_${level}`];
+				attrs.push(...ids.map((sid) => `repeating_spell-${level}_${sid}_spellprepared`),...ids.map((sid) => `repeating_spell-${level}_${sid}_spellcaster`));
+				getAttrs(attrs, (v) => {
 					let total1 = 0, total2 = 0;
-					_.each(idarray, (id) => {
+					_.each(ids, (id) => {
 						if (v[`repeating_spell-${level}_${id}_spellcaster`] == "2") {
 							total2 += (parseInt(v[`repeating_spell-${level}_${id}_spellprepared`]) || 0);
 						} else {
@@ -5068,6 +5209,115 @@
 				});
 			});
 		};
+
+		// === SPELLS KNOWN
+		const update_spells_known = function (src, num, lvl) { // src = source attribute, num = caster class number, lvl = spell level number // NEW
+			if (typeof(src) === "string") {
+				num = src.substr(6,1);
+				lvl = src.slice(-1);
+			}
+			if (num && lvl) {
+				let upd = {};
+				getAttrs([`caster${num}_mp_known_level_${lvl}`, `caster${num}_mp_known_bonus_level_${lvl}`], (v) => {
+					upd[`caster${num}_mp_known_total_level_${lvl}`] = Math.max(0, parseInt(v[`caster${num}_mp_known_level_${lvl}`]) + parseInt(v[`caster${num}_mp_known_bonus_level_${lvl}`]));
+					setAttrs(upd, {silent: true}, () => {
+						update_spells_flag(lvl); // callback
+					});
+				});
+			}
+		};
+		const update_all_spells_known = function () { // NEW
+			let i, j;
+			for (j = 1; j < 3; j++) {
+				for (i = 0; i < 10; i++) {
+					update_spells_known(null, j, i);
+				}
+			}
+		};
+
+		// === SPELLS SPEND MP
+		const get_spell_spend_mp = function(lvl, id, v) {// lvl = spell level number, id = repeating spell id, v = repsec values // NEW
+			let upd = {};
+			let spl = `repeating_spell-${lvl}_${id}`;
+			let val = v[`${spl}_spellcost`] || "0";
+			let str = "";
+			if (v["spellcasting_mode"] == "mp"
+			 && v["spend_mp"] == "1"
+			 && (v[`${spl}_spelldomainflag`] || "0") == "0") str = `!setattr --charid ${v["character_id"]} --modb --silent --mp|-${val}`;
+			upd[`${spl}_rollspellmp`] = str;
+			return upd;
+		};
+		const update_spell_spend_mp_id = function(lvl, id) { // lvl = spell level number, id = repeating spell id // NEW
+			let attrs = ["character_id", "spellcasting_mode", "spend_mp"];
+			attrs.push(
+				`repeating_spell-${lvl}_${id}_spelldomainflag`,
+				`repeating_spell-${lvl}_${id}_spellcost`
+			);
+			getAttrs(attrs, (v) => {
+				setAttrs(get_spell_spend_mp(lvl, id, v), {silent: true});
+			});
+		};
+		const update_spell_spend_mp = function(lvl) { // lvl = spell level number // NEW
+			getSectionIDs(`repeating_spell-${lvl}`, (ids) => {
+				let attrs = ["character_id", "spellcasting_mode", "spend_mp"];
+				_.each(ids, (id) => {
+					attrs.push(
+						`repeating_spell-${lvl}_${id}_spelldomainflag`,
+						`repeating_spell-${lvl}_${id}_spellcost`
+					);
+				});
+				getAttrs(attrs, (v) => {
+					let upd = {};
+					_.each(ids, (id) => {
+						_.extend(upd, get_spell_spend_mp(lvl, id, v));
+					});
+					setAttrs(upd, {silent: true});
+				});
+			});
+		};
+		const update_all_spell_spend_mp = function() { // NEW
+			for (i = 0; i < 10; i++) {
+				update_spell_spend_mp(i);
+			}
+		};
+
+		// === SPELLS COST
+		const update_spell_cost = function (lvl) { // lvl = spell level number // NEW
+			getSectionIDs(`repeating_spell-${lvl}`, (ids) => {
+				let attrs = [`caster1_mp_cost_level_${lvl}`, `caster2_mp_cost_level_${lvl}`, "spellcasting_mode", "spend_mp"];
+				_.each(ids, (id) => {
+					attrs.push(
+						`repeating_spell-${lvl}_${id}_spellcaster`,
+						`repeating_spell-${lvl}_${id}_spell_cost_mod`,
+						`repeating_spell-${lvl}_${id}_wizard_school`
+					);
+				});
+				let nbr, val, mod, spe, opp, upd = {};
+				getAttrs(attrs, (v) => {
+					_.each(ids, (id) => {
+						nbr = v[`repeating_spell-${lvl}_${id}_spellcaster`];
+						val = parseInt(v[`caster${nbr}_mp_cost_level_${lvl}`]) || 0;
+						mod = parseInt(v[`repeating_spell-${lvl}_${id}_spell_cost_mod`]) || 0;
+						wiz = v[`repeating_spell-${lvl}_${id}_wizard_school`] || 0;
+						if (wiz == "speciality") val -= 2;
+						else if (wiz == "opposition") val += 4;
+						upd[`repeating_spell-${lvl}_${id}_spellcost`] = Math.max(1, val + mod);
+					});
+					setAttrs(upd, {silent: true}, () => {
+						if (v["spellcasting_mode"] == "mp"
+						 && v["spend_mp"] == "1") update_spell_spend_mp(lvl); // callback
+					});
+				});
+			});
+		};
+		const update_all_spell_cost = function () { // NEW
+			let i;
+			for (i = 0; i < 10; i++) {
+				update_spell_cost(i);
+			}
+		};
+
+		// === SPELLS / SPELLCASTING
 		const update_all_spells = function(update_id) {
 			// Gathering all spells levels items ids to pass to update_spells()
 			get_repsec_ids(JSON.parse(JSON.stringify(pfoglobals_repsec_spell)), (repsec_agr)=> {
@@ -5093,7 +5343,7 @@
 		const do_update_spell = function(level, attributename = "", repsec_agr) {
 			// console.log("*** DEBUG do_update_spell: " + level + " / " + attributename);
 			let spell_attribs = get_repsec_fields(repsec_agr, pfoglobals_spell_fields);
-			spell_attribs = spell_attribs.concat(["level"],pfoglobals_babs_fields,pfoglobals_abilities); // For mods with levels, bab etc.
+			spell_attribs = spell_attribs.concat(["level"],pfoglobals_babs_fields,pfoglobals_abilities); // EDIT
 			getAttrs(spell_attribs, (v) => {
 				setAttrs(calc_spells(level, repsec_agr, v, attributename), {silent: true});
 			});
@@ -5148,6 +5398,8 @@
 			let spltype = v[`${repspl}_spelltype`];
 			let splperm = `${repspl}_spellpermanent`;
 			let splfreq = ["per-hour","per-day","per-week","per-month","per-year"];
+			let domain = v[`${repspl}_spelldomainflag`] || "0";
+			let wizsch = v[`${repspl}_wizard_school`] || "none";
 			if (spell_level == "like") {
 				// v1.21+: Dynamic occurences calculation for PCs
 				if (spltype) splname += " (" + getTranslationByKey(spltype) + ")";
@@ -5213,9 +5465,17 @@
 			if ((v.npc || "0") != "1" && csterflag1 == "1" && csterflag2 == "1" && v.caster1_class && v.caster2_class && spell_level != "like") {
 				rollbase += ` {{casterclass=${(cster == "1") ? v.caster1_class : v.caster2_class}}}`;
 			}
+			// domain
+			if (domain != "0") {
+				rollbase += ` {{domain=${v[repspl + "_spelldomain"]}}}`;
+			}
 			// school
 			if (v[`${repspl}_spellschool`]) {
 				rollbase += ` {{school=${v[repspl + "_spellschool"]}}}`;
+			}
+			// wizard arcane school
+			if (wizsch !== "none") {
+				rollbase += ` {{wizardschool=${getTranslationByKey("school-" + wizsch)}}}`;
 			}
 			// casting time
 			if (v[`${repspl}_spellcastingtime`]) {
@@ -5595,13 +5855,13 @@
 
 				// Gathering attributes
 				let tmpfields = [];
-				// Size, Level and other special fields
+				// Add size, level and other special fields
 				tmpfields.push("size","level","hp_base","hp_base_max","hp_condition","hp_bonus","hp_temp","dexterity_condition_nobonus","sr_base","sr_bonus");
-				// Saves
+				// Add saves
 				_.each(["fortitude","reflex","will"],(savename) => {
 					tmpfields.push(...pfoglobals_save_attr.map((fld) => `${savename}_${fld}`));
 				});
-				// Skills
+				// Add skills
 				_.each(pfoglobals_skill_list,(skillname) => {
 					tmpfields.push(...pfoglobals_skill_attr.map((skillattr) => skillname + "_" + skillattr));
 				});
@@ -5623,14 +5883,14 @@
 					_.each(repsec_agr.filter(current_section => current_section.section.substr(0,5) == "skill"), (repsec) => {
 						skills_array.push(...repsec.ids.map((id) => `repeating_${repsec.section}_${id}`));
 					});
-					// Conditions & Buffs
+					// --- Conditions & Buffs
 					update = calc_conditions(v, (true && opts.reset_conditions));
 					_.extend(big_update, update);
 					_.extend(v, update);
 					update = calc_buffs(repsec_agr.filter(current_section => current_section.section == "buff"),v, (true && opts.reset_buffs), skills_array);
 					_.extend(big_update, update);
 					_.extend(v, update);
-					// Abilities
+					// --- Abilities
 					if (["strength","all"].includes(ability)) {
 						if (v.npc != "1") {
 							update = calc_ability("strength",v);
@@ -5701,18 +5961,18 @@
 						_.extend(big_update, update);
 						_.extend(v, update);
 					}
-					// Size
+					// --- Size
 					update = calc_pc_size(v.size);
 					_.extend(big_update, update);
 					_.extend(v, update);
-					// Flex abilities
+					// --- Flex abilities
 					update = {};
 					_.each(pfoglobals_flex_abilities, (ablt) => {
 						update[`${ablt}_mod`] = v[`${v[ablt]}_mod`];
 					});
 					_.extend(big_update, update);
 					_.extend(v, update);
-					// HP
+					// --- HP
 					big_update["hp"] = (parseInt(v.hp_base) || 0) + (parseInt(v.hp_condition) || 0) + (parseInt(v.hp_bonus) || 0);
 					big_update["hp_max"] = (parseInt(v.hp_base_max) || 0) + (parseInt(v.hp_condition) || 0) + (parseInt(v.hp_bonus) || 0);
 					big_update["hp_mod"] = (parseInt(v.hp_condition) || 0) + (parseInt(v.hp_bonus) || 0);
@@ -5723,32 +5983,32 @@
 					} else {
 						big_update["hp_mod_flag"] = 0;
 					}
-					// Initiative
+					// --- Initiative
 					update = calc_initiative(v);
 					_.extend(big_update, update);
 					_.extend(v, update);
-					// AC
+					// --- AC
 					update = calc_ac_ability(ability,v);
 					_.extend(big_update, update);
 					_.extend(v, update);
 					update = calc_ac(v);
 					_.extend(big_update, update);
 					_.extend(v, update);
-					// BABs and CMD
+					// --- BABs and CMD
 					update = calc_babs_all(v);
 					_.extend(big_update, update);
 					_.extend(v, update);
-					// Saves
+					// --- Saves
 					_.each(["fortitude","reflex","will"],(savename) => {
 						update = calc_save(savename, v);
 						_.extend(big_update, update);
 						_.extend(v, update);
 					});
-					// Spell Resistance
+					// --- Spell Resistance
 					update = calc_sr(v);
 					_.extend(big_update, update);
 					_.extend(v, update);
-					// Concentration & Spell DC
+					// --- Concentration & Spell DC
 					if (v.caster1_flag == "1") {
 						update = calc_concentration("caster1",v);
 						_.extend(big_update, update);
@@ -5765,23 +6025,27 @@
 						_.extend(big_update, update);
 						_.extend(v, update);
 					}
-					// Skill Points & Skills
+					// --- Skill Points & Skills
 					update = calc_skillranks_total(v);
 					_.extend(big_update, update);
 					skills_array.push(...pfoglobals_skill_list); // Completing skills list from before buffs
 					update = calc_skill(skills_array, v, true, true); // Also check if class skill flag matches class skill checkbox
 					_.extend(big_update, update);
 					_.extend(v, update);
-					// Attacks
+					// --- Attacks
 					_.extend(big_update, calc_damage_bonus_flag(v));
 					update = calc_attacks(repsec_agr.filter(current_section => current_section.section == "attacks"), v, "all");
 					_.extend(big_update, update);
-					// Spells
+					// --- Spells
 					if ((v.caster1_flag == "1") || (v.caster2_flag == "1")) {
+						update_mp(); // NEW
+						update_all_spells_known(); // NEW
+						update_all_spell_cost(); // NEW
+						update_all_domain_school(); // NEW
 						update = calc_spells(["0","1","2","3","4","5","6","7","8","9","like"],repsec_agr.filter(current_section => current_section.section.substr(0,6) == "spell-"), v, "all");
 						_.extend(big_update, update);
 					}
-					// Traits
+					// --- Traits
 					update = calc_traits(repsec_agr.filter(current_section => current_section.section == "abilities"), v);
 					_.extend(big_update, update);
 
@@ -5799,6 +6063,33 @@
 						if (callback) callback();
 					});
 				});
+			});
+		};
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Module : USER INTERFACE
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+		const open_migrate_confirm = function() { // NEW
+			setAttrs({"migrate_confirm_flag" : "1"});
+		};
+		const close_migrate_confirm = function(s) { // s = console string // NEW
+			setAttrs({"migrate_confirm_flag" : "0"});
+			if (s !== undefined) console.info(s); // DEBUG
+		};
+		const switch_caster_level = function(src) { // src = trigger source // NEW
+			let num = src.substr(14,1); // => 1
+			let dir = src.substr(16,4); // => more
+			let max, i, n = 0, m = 0, update = {};
+			getAttrs(["caster1_level_ctrl", "caster2_level_ctrl"], (v) => {
+				n = Math.min(Math.max(parseInt(v[`caster${num}_level_ctrl`] || 0) + (dir == "more" ? 1 : -1), 0), 9);
+				m = parseInt(v[`caster${num == "1" ? "2" : "1"}_level_ctrl`] || 0);
+				max = Math.max(n, m);
+				for (i = 0; i <= 9; i++) update[`caster_spells_flag_level_${i}`] = i <= max ? "1" : "0";
+				update[`caster${num}_level_ctrl`] = n;
+				setAttrs(update);
 			});
 		};
 
@@ -5930,7 +6221,7 @@
 				//
 				// ,{"reg":``, "mod":"gi", "ori":`` ,"rep":``}
 			if (formula && formula.length) {
-				let zereg;
+				let regexp;
 				let regreparr = [
 					{"reg":`(\\d+)(d\\d+)([^$,\\.]*per\\s+caster\\s+level\\s+\\([^\\)]*maximum\\s+)(\\d+)(d\\d+\\))`
 						,"mod":"gi"
@@ -5952,31 +6243,17 @@
 				];
 
 				_.each(regreparr, (regrep) => {
-					zereg = new RegExp(regrep.reg,regrep.mod);
-					if (fnl.match(zereg)) {
+					regexp = new RegExp(regrep.reg,regrep.mod);
+					if (fnl.match(regexp)) {
 						if (inline) {
-							fnl = fnl.replace(zereg,`${regrep.ori} ([[${regrep.rep}]])`);
+							fnl = fnl.replace(regexp,`${regrep.ori} ([[${regrep.rep}]])`);
 						} else {
-							fnl = fnl.replace(zereg,regrep.rep);
+							fnl = fnl.replace(regexp,regrep.rep);
 						}
 					}
 				});
 			}
 			return fnl;
-		};
-
-// =============================================================================
-// -----------------------------------------------------------------------------
-// # Module : MODALS
-// -----------------------------------------------------------------------------
-// =============================================================================
-
-		const open_migrate_confirm =  function() { // NEW
-			setAttrs({"migrate_confirm_flag" : "1"});
-		};
-		const close_migrate_confirm =  function(s) { // NEW -- s = console string
-			setAttrs({"migrate_confirm_flag" : "0"});
-			if (s !== undefined) console.info(s); // DEBUG
 		};
 
 // =============================================================================
@@ -6006,8 +6283,8 @@
 		const calc_reset_character = function() {
 			let update = {};
 
-			// -- Reset to empty string
-			let toResetAsChar = ["race","class","class1_name","class2_name","class3_name","languages","senses","ac_notes","fortitude_notes","reflex_notes","will_notes","caster1_class","caster2_class","caster1_spells_notes","caster2_spells_notes","initiative_notes","speed_notes","encumbrance_display","encumbrance_load_notes","additional_gear","misc_notes","background","bab_notes","cmb_notes","melee_notes","ranged_notes","cmd_notes","sr_notes","craft_name","perform_name","profession_name","npc_alignment","aura","hd_roll","saves_modifiers","defensive_abilities","npc_type","npc_dr","immune","resist","weaknesses","npc_speed","space","reach","npc_spellabilities_notes","npc_spells_notes","tactics","skills_racial_modifiers","skills_notes","sq","combat_gear","environment","organization","npcdrop_name","npcdrop_uniq","npcdrop_category","npcdrop_data","npc_icon_type","npc_icon_terrain","npc_icon_climate","npc_cr","npc_mr","treasure"];
+			// --- Reset to empty string
+			let toResetAsChar = ["race","class","class1_name","class2_name","class3_name","languages","senses","ac_notes","fortitude_notes","reflex_notes","will_notes","caster1_class","caster2_class","caster1_spells_notes","caster2_spells_notes","initiative_notes","speed_notes","encumbrance_display","encumbrance_load_notes","additional_gear","misc_notes","background","bab_notes","cmb_notes","melee_notes","ranged_notes","cmd_notes","sr_notes","craft_name","perform_name","profession_name","npc_alignment","aura","hd_roll","saves_modifiers","defensive_abilities","npc_type","npc_dr","immune","resist","weaknesses","npc_speed","space","reach","npc_spellabilities_notes","npc_spells_notes","tactics","skills_racial_modifiers","skills_notes","sq","combat_gear","environment","organization","npcdrop_name","npcdrop_uniq","npcdrop_category","npcdrop_data","npc_icon_type","npc_icon_terrain","npc_icon_climate","npc_cr","npc_mr","treasure","mp_max_base","mp_notes","caster1_domain1","caster1_domain2","caster1_school_speciality","caster1_school_opposition1","caster1_school_opposition2","caster2_domain1","caster2_domain2","caster2_school_speciality","caster2_school_opposition1","caster2_school_opposition2"]; // EDIT
 			toResetAsChar = toResetAsChar.concat(pfoglobals_abilities.map((ablt) => `${ablt}_notes`));
 			toResetAsChar = toResetAsChar.concat(pfoglobals_skill_list.map((sk) => `${sk}_notes`));
 			toResetAsChar = toResetAsChar.concat(pfoglobals_skill_list.map((sk) => `${sk}_display`));
@@ -6015,14 +6292,14 @@
 				update[attr] = "";
 			});
 
-			// -- Reset to zero
-			var toResetAsZero = ["hp_base","hp_base_max","hp","hp_max","mancer_confirm_flag","caster_flag","class1_level","class2_level","class3_level","money_cp","money_sp","money_gp","money_pp","xp","sr","spells_flag","spellabilities_flag"];
+			// --- Reset to zero
+			var toResetAsZero = ["hp_base","hp_base_max","hp","hp_max","mancer_confirm_flag","caster_flag","class1_level","class2_level","class3_level","money_cp","money_sp","money_gp","money_pp","xp","sr","spells_flag","spellabilities_flag","mp","mp_max","mp_temp","mp_pool"];
 			for (var i = 1; i < 4; i++) {
-				toResetAsZero.push(`class${i}_bab`,`class${i}_fortitude`,`class${i}_reflex`,`class${i}_will`,`class${i}_skillranks_base`,`class${i}_speed`);
+				toResetAsZero.push(`class${i}_bab`,`class${i}_fortitude`,`class${i}_reflex`,`class${i}_will`,`class${i}_skillranks_base`,`class${i}_skillranks_misc`,`class${i}_speed`); // EDIT
 			}
 			for (var j = 1; j < 3; j++) {
 				for (var i = 0; i < 10; i++) {
-					toResetAsZero.push(`caster${j}_spells_known_level_${i}`, `caster${j}_spells_perday_level_${i}`, `caster${j}_spells_bonus_level_${i}`, `caster${j}_spells_prepared_level_${i}`, `caster${j}_spells_total_level_${i}`, `caster${j}_dc_level_${i}`, `caster${j}_dcbonus_level_${i}`,`caster_spells_flag_level_${i}`);
+					toResetAsZero.push(`caster${j}_spells_known_level_${i}`, `caster${j}_spells_perday_level_${i}`, `caster${j}_spells_bonus_level_${i}`, `caster${j}_spells_prepared_level_${i}`, `caster${j}_spells_total_level_${i}`, `caster${j}_dc_level_${i}`, `caster${j}_dcbonus_level_${i}`, `caster${j}_mp_known_level_${i}`, `caster${j}_mp_known_bonus_level_${i}`, `caster${j}_mp_known_total_level_${i}`, `caster_spells_flag_level_${i}`); // EDIT
 				}
 			}
 
@@ -6048,13 +6325,13 @@
 				update[attr] = 0;
 			});
 
-			// -- Reset to One (1)
+			// --- Reset to One (1)
 			var toResetAsOne = ["class1_level","level","class_favored","encumbrance_load_multiplier","caster1_spell_failure","caster2_spell_failure","meleeattacks_flag","rangedattacks_flag","specialattacks_flag","special_abilities_flag","ecology_flag","tactics_flag"];
 			_.each(toResetAsOne,(attr) => {
 				update[attr] = 1;
 			});
 
-			// -- Reset to default value
+			// --- Reset to default value
 			_.each(pfoglobals_abilities, (ablt) => {
 				update[ablt] = 10;
 				update[ablt + "_base"] = 10;
@@ -6157,6 +6434,11 @@
 			update["caster1_ability"] = "intelligence";
 			update["caster2_ability"] = "intelligence";
 
+			update["caster1_domains_schools_flag"] = "none";
+			update["caster1_domains_schools"] = "none"; // TEMP
+			update["caster2_domains_schools_flag"] = "none";
+			update["caster2_domains_schools"] = "none"; // TEMP
+
 			return update;
 		};
 
@@ -6237,11 +6519,14 @@
 		const versioning = function() {
 			getAttrs(["version", "build", "build_version", "initialize_character_flag"], (v) => {
 				let vrs = parseFloat(v["version"]) || 0.0;
+				let bldvrs = parseFloat(v["build_version"]) || 0.0;
 				if (vrs === pfoglobals_currentversion) {
-					console.log("Pathfinder by Roll20 v" + vrs + " " + pfoglobals_currentbuild + " " + pfoglobals_currentbuildversion); // DEBUG
-					if (v["initialize_character_flag"] == 1) setAttrs({"initialize_character_flag" : 0}, {silent: true}); // close initialize modal
 					if (!v["build"] || !v["build_version"]) open_migrate_confirm(); // migrate from official
-					else check_l1_mancer(); // check charactermancer (pursue or start)
+					else {
+						if (bldvrs !== pfoglobals_currentbuildversion || v["initialize_character_flag"] == 1) setAttrs({"initialize_character_flag" : 0, ...pfoglobals_currentversion_obj}, {silent: true}); // update version
+						check_l1_mancer(); // check charactermancer (pursue or start)
+						console.log("Pathfinder by Roll20 v" + vrs + " " + pfoglobals_currentbuild + " " + pfoglobals_currentbuildversion); // DEBUG
+					}
 				} else if (vrs < 1.0) {
 					setAttrs({"initialize_character_flag": 1, ...pfoglobals_currentversion_obj}, {silent: true}, () => { // update version
 						initialize_character(() => {
@@ -6700,7 +6985,7 @@
 		};
 
 		// === MIGRATES
-		const migrate_from_official =  function() { // NEW
+		const migrate_from_official = function() { // NEW
 			console.info("=== BEGIN > MIGRATE FROM OFFICIAL ==="); // DEBUG
 			let s = "=== END > MIGRATE FROM OFFICIAL ===";
 			getAttrs(["npc", "background"], (v) => {
@@ -6711,8 +6996,8 @@
 						{section:"abilities",attrs:["type_choice"]},
 						{section:"spell-like",attrs:["spellname", "spelltype"]}
 					], (repsec_agr) => {
-						let a = get_repsec_fields(repsec_agr), n, m;
-						getAttrs(a, (w) => {
+						let attrs = get_repsec_fields(repsec_agr), n, m;
+						getAttrs(attrs, (w) => {
 							for (n in w) {
 								// -------------------------------------------------------------
 								// * Fix feat type 'item creation' => 'item-creation'
@@ -6767,6 +7052,8 @@
 		};
 
 		return {
+			migrate_from_official:migrate_from_official, // NEW
+			close_migrate_confirm:close_migrate_confirm, // NEW
 			calc_npc_skill_display: calc_npc_skill_display,
 			check_l1_mancer: check_l1_mancer,
 			pc_drop_handler: pc_drop_handler,
@@ -6817,8 +7104,13 @@
 			update_special_ability_display: update_special_ability_display,
 			update_speed_unit:update_speed_unit, // NEW
 			update_ammo:update_ammo, // NEW
-			migrate_from_official:migrate_from_official, // NEW
-			close_migrate_confirm:close_migrate_confirm // NEW
+			update_mp:update_mp, // NEW
+			update_spells_known:update_spells_known, // NEW
+			update_spell_cost:update_spell_cost, // NEW
+			update_spell_spend_mp_id:update_spell_spend_mp_id, // NEW
+			update_all_spell_spend_mp:update_all_spell_spend_mp, // NEW
+			update_all_domain_school:update_all_domain_school, // NEW
+			switch_caster_level:switch_caster_level // NEW
 		}
 
 	})();

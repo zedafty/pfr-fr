@@ -7,6 +7,51 @@
 	Start    - 2020-08-11
 	Beta 1   - 2020-09-07
 	Beta 1.1 - 2020-09-15
+	Beta 1.2 - 2020-09-23
+
+================================================================================
+--------------------------------------------------------------------------------
+# Beta 1.2
+--------------------------------------------------------------------------------
+================================================================================
+
+# Features
+	Add magic points spellcasting mode
+	Add spend magic point on spell casting (i.e. like ammo)
+	Add spell level switcher (i.e. show/hide spell levels for each spellcaster)
+
+# HTML
+	Global HTML syntax format (class="" name="" type="" spellcheck="false" [data-i18n-]placeholder="" [data-i18n-]title="" checked="checked")
+	Remove tabindex="0" (seem to be useless)
+	Rename 'options-flag-' to 'options_flag_' (workers updated) [consistency fix]
+	Rename 'attr_spelldomaineflag' to 'attr_spelldomainflag'
+
+# PC
+	Fix weird moveable repeating Traits position
+	Replace 'RollCaster1Check' by 'roll_caster1_level_check'
+	Replace 'RollCaster2Check' by 'roll_caster2_level_check'
+
+# NPC
+	Put .sheet-building in .sheet-modal (reduce CSS classes)
+
+# CSS
+~ Convert CSS file to SASS (variables, nesting groups, extends, indented)
+~ Fix roll templates vertical align (i.e. overlapping boxes)
+~ Change color of black labels and box borders (dark brown instead of black)
+	Rename .sheet-fullpc to .sheet-pc
+	Rename .sheet-statblock to .sheet-npc
+	Rename .sheet-myrow to .sheet-row
+	Rename .sheet-myrol to .sheet-btn
+	Rename .sheet-npcatk to .sheet-npc-repeating-block
+	Replace .sheet-border by .sheet-fonticon
+	Replace 'background' property by' background-color' when possible (skipped 'transparent', 'none' properties and .repcontainer classes)
+	Remove !important attribute
+	Add focus color to buttons and inputs
+	Add background images to .sheet-inbox and .sheet-options
+
+# Templates
+	Add cleric domain to roll templates
+	Add wizard school to roll templates
 
 ================================================================================
 --------------------------------------------------------------------------------
@@ -83,7 +128,7 @@
 	Add attributes 'caster1_ability_name' & 'caster2_ability_name'
 	Add option 'speed_factor_base' (can be set up to x8)
 	Add 'use_ammo' on click based on ChatSetAttr API (one ammo per attack)
-	Rename 'attr_options-flag-conditions' to 'attr_options_flag_conditions' (format consistency) -- WARNING
+	Rename 'attr_options_flag_conditions' to 'attr_options_flag_conditions' (format consistency) -- WARNING
 	Changed speed based unit to 'sq' (squares) instead of 'ft' (feet) -- WARNING
 	Change 'misc' attribute for 'other' in 'acitems' select -- WARNING
 	Set 'overload' 'run_factor' to 1 and 'max_dex' to 0 (core rules do not specify that point)
@@ -93,37 +138,37 @@
 
 # CSS
 	Reorder CSS file (remove most of useless tag markers ; like div.myclass) -- WARNING
-	Rename .weight to .wgt
-	Rename .grtopbrd to .topborder
+	Rename .sheet-weight to .sheet-wgt
+	Rename .sheet-grtopbrd to .sheet-topborder
 	Rename .sheet-indent to .sheet-textindent
-	Rename 'head-info' to 'npc-options'
-	Rename .pictocheck to .fonticon
-	Rename .spelldsp to .headline
-	Rename .domain-flag to .flag
-	Rename .pnty to .flexible)
-	Expand .touch width (from 72px to 92px)
-	Expand .npc-speed width (from 210px to 550px)
+	Rename .sheet-head-info to .sheet-npc-options
+	Rename .sheet-pictocheck to .sheet-fonticon
+	Rename .sheet-spelldsp to .sheet-headline
+	Rename .sheet-domain-flag to .sheet-flag
+	Rename .sheet-pnty to .sheet-flexible)
+	Expand .sheet-touch width (from 72px to 92px)
+	Expand .sheet-npc-speed width (from 210px to 550px)
 	Expand .sheet-atk width (from 55px to 60px)
 	Expand .sheet-skills .sheet-name width (from 180px to 200px)
 	Expand .sheet-skill input[type="text"].sheet-custom width (from 117px to 140px)
-	Reduce .feat width (from 210px to 200px)
-	Reduce .dmgbase width (from 75px to 65px)
-	Reduce .type width from (350px to 300px)
-	Reduce .defensive_abilities, .npc_dr, .immune, .resist and .weaknesses width (from 210px to 200px)
+	Reduce .sheet-feat width (from 210px to 200px)
+	Reduce .sheet-dmgbase width (from 75px to 65px)
+	Reduce .sheet-type width from (350px to 300px)
+	Reduce .sheet-defensive_abilities, .sheet-npc_dr, .sheet-immune, .sheet-resist and .sheet-weaknesses width (from 210px to 200px)
 	Reduce .sheet-attacks .sheet-dmgbase width (from 115px to 110px)
 	Reduce .sheet-attacks .sheet-dmgtype width (from 115px to 110px)
-	Reduce .flat-footed width (from 131px to 111px)
+	Reduce .sheet-flat-footed width (from 131px to 111px)
 	Remove capitalization (.sheet-lbl)
 	Remove capitalization (.sheet-lab)
 	Remove .sheet-whitebg
-	Remove .bestiary
+	Remove .sheet-bestiary
 	Remove 'text-shadow' properties (use bold + background color on label checks hover) -- WARNING
 	Add .sheet-ac-notes
 	Add .sheet-wealth
 	Add .sheet-pictos
 	Add .sheet-upper
 	Add cover mask on npc options -- WARNING
-	Add black circle to caster number spells and placed radio after text instead of before (.roundblack)
+	Add black circle to caster number spells and placed radio after text instead of before (.sheet-roundblack)
 	Add .inbox and .options background color
 	Add temporary values (.tmpval) color (light blue)
 	Add skill color when hovered (grey) and skill rank (green)
@@ -136,8 +181,8 @@
 	Replace #d8dbe6 color by 'lavender' (#e6e6fa)
 	Replace .sheet-inboxright .sheet-inbox.sheet-right
 	Set .sheet-colhalf at fixed width (from 49.8% to 420px)
-	Set .atk, .dmg, .misc, .reset, .recalc to lowercase
-	Fix ability scores boxes (large and high enough to trigger title appearance ; .baseattr, .finalattr, .boxed)
+	Set .sheet-atk, .sheet-dmg, .sheet-misc, .sheet-reset, .sheet-recalc to lowercase
+	Fix ability scores boxes (large and high enough to trigger title appearance ; .sheet-baseattr, .sheet-finalattr, .sheet-boxed)
 	Fix .sheet-boxed children width to maximum space available (width: 100%)
 	Fix elements vertical align to top or default (radio, .roundblack)
 
@@ -263,7 +308,7 @@
 	Remove 'field-of-study' (replaced data attribute)
 	Remove 'damage-resistance' (replaced data attribute)
 	Rename 'domaine-spell' ('domain-spell')
-	Rename 'domaine-spell-u' ('domain-spell-u')
+	Rename 'domaine-spell-u' ('domain')
 	Replace 'close' ('Mêlée' by 'Fermer')
 	Replace 'sickened' ('Nauséeux' by 'Fiévreux')
 	Replace 'will' ('Volonté' by 'Vol')
@@ -474,7 +519,7 @@
 	Add 'spell-resistance-u' ('Résis.')
 	Add 'mod-two-handed' ('Modificateur à deux mains')
 	Add 'mod-off-hand' ('Modificateur main non directrice')
-	Add 'domain-spell-ph' ('Feu 1')
+	Add 'spelldomain-ph' ('Feu 1')
 	Add 'reset-to-npc-t' ('Effacer la feuille pour créer un personnage non joueur ou un monstre)
 	Add 'reset-to-pc-t' ('Effacer la feuille pour créer un personnage joueur')
 	Add 'base-speed' ('Vitesse de base')

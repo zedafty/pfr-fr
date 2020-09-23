@@ -36,6 +36,10 @@
 
 	PFR compendium not up to date => gearitem => notes + attr_strength_oneandahalf_mod (and such)
 
+	NPC Block 'build-flag-npc' doesn't seem to be used ... even when a NPC is dropped from Compendium + Same remark applies to .sheet-npc_expansion
+
+	ChatSetAPI : !setattr --sel --modb --silent --hp|-1
+
 ================================================================================
 --------------------------------------------------------------------------------
 # BUGS
@@ -50,7 +54,10 @@
 	> @{repeating_npcatk-melee_$id_multipleatk_flag}
 	> no change for now due to Compendium drop feature
 
-	BUG : fix empty box issue (e.g. senses roll) [initial bug]
+	BUG : Roll icon overlapping if short_desc box empty (e.g. senses roll) [initial bug]
+	BUG : Blank grey under AC in chat log ('condition' line in template) [initial bug]
+	BUG : Spell count warning feedback ; only level 1 on all spell levels
+	BUG : Cannot move draggable elements horizontally (e.g. editable npc feats) [not a bug]
 
 ================================================================================
 --------------------------------------------------------------------------------
@@ -58,20 +65,20 @@
 --------------------------------------------------------------------------------
 ================================================================================
 
-	TODO : Global format HTML syntax => class="", name="", type=""
-	TODO : Add list-item for conditions + npc skills + skill option
-	TODO : Remove blank grey under AC in chat log ('condition' line in template)
-	TODO : Rename class .npcatk
-	TODO : Replace background by background-color when possible
-	TODO : Add icon on speed if armor or encumbrance reduces it
+# Refactoring
+? TODO : Use columns instead of label rows
+? TODO : Replace pseudo-attr by label box (or the inverse)
+? TODO : Find a better way to handle .identity
+? TODO : Find a better way to handle w100 and such
+? TODO : Replace dash by underscore in attributes names
+
+# Tasks
 	TODO : Put Wealth before Experience
 	TODO : Move up Category field in Traits (after Type and before Short Desc.)
-	TODO : Track and remove !important in CSS
 	TODO : Translate Mod = Mod. ; Temp = Temp. ; Condition = État préj. ; Query = Demande in rolls
-~ TODO : Fix templates CSS classes (like overlapping boxes)
-? TODO : Fix 'tabindex="0"' (remove from pseudoattr?)
-! TODO : Rename .fullpc and .statblock
-! TODO : Rename .myrow and .myrol
+	TODO : Add list-item for conditions + npc skills + skill option
+	TODO : Add icon on speed if armor or encumbrance reduces it
+	TODO : Add controller for changing number of attacks buttons display
 
 ================================================================================
 --------------------------------------------------------------------------------
@@ -79,16 +86,14 @@
 --------------------------------------------------------------------------------
 ================================================================================
 
-	ENH : Use columns instead of label rows
-	ENH : Add xp boxes with calc like in DD3.5
-	ENH : Global toggle whisper to gm + global toggle query modifier
-	ENH : Restore hp on rest
+? ENH : Global toggle whisper to gm + global toggle query modifier
+! ENH : Restore hp on rest
+	ENH : Add feedback to ammo spent
+	ENH : Add xp boxes with calc (like in DD3.5)
+	ENH : Add box to spend money without having to substract from total
 	ENH : Add charges number in inventory
-	ENH : Spend spell use on click (like ammo)
 	ENH : Add choice list for Attack Type / Category / Damage Type
 	ENH : Add option to change kg to lbs and vice versa ; eventually the change can affect ALL objets weight
-	ENH : Add feedback to ammo spent
-	ENH : Add box to spend money without having to substract from total
 
 ================================================================================
 --------------------------------------------------------------------------------
@@ -97,7 +102,6 @@
 ================================================================================
 
 	IDEA : Féminisation (·e·s)
-	IDEA : Use SASS for CSS
 	IDEA : Replace labelcheck by pseudocheck
 	IDEA : ALL input text/number are underlined ... set it by default ?
 	IDEA : ALMOST ALL of input number are nospin... set it by default and add class spin ?
@@ -109,3 +113,5 @@
 ~ IDEA : Remove Charmancer feature => Deactivated on sheet open for now
 ? IDEA : Hilight skills => if value > 0 then color ; unlite trained skill if rank = 0
 ? IDEA : Set feats description unchecked by default
+	IDEA : Add 'collapse-all' button in each tab (set ALL options-flag to 0)
+	IDEA : Hide unattained spell levels
