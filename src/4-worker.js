@@ -4863,7 +4863,7 @@
 		const rnd_ft = function(n) { // converts a number to an integer multiple of 5 // NEW
 			return Math.max(5, Math.floor(n / 5) * 5);
 		};
-		const rnd_m = function(n) { // converts a number to an float multiple of 1.5 // NEW
+		const rnd_m = function(n) { // converts a number to a float multiple of 1.5 // NEW
 			return Math.max(1.5, Math.floor(n / 1.5) * 1.5);
 		};
 		const get_min_speed = function(u) { //u = speed unit // NEW
@@ -5024,8 +5024,8 @@
 					let quantity = 0;
 					let weight = 0;
 					_.each(section, (id) => {
-						if (v[`repeating_gear_${id}_quantity`] != "") quantity = v[`repeating_gear_${id}_quantity`];
-						if (v[`repeating_gear_${id}_weight`] != "") weight = v[`repeating_gear_${id}_weight`];
+						quantity = v[`repeating_gear_${id}_quantity`] != "" ? parseFloat(v[`repeating_gear_${id}_quantity`]) : 0;
+						weight = v[`repeating_gear_${id}_weight`] != "" ? parseFloat(v[`repeating_gear_${id}_weight`]) : 0;
 						update[`repeating_gear_${id}_weight`] = parseFloat((weight * multiplier).toFixed(2));
 						update[`repeating_gear_${id}_weight_total`] = parseFloat((quantity * weight * multiplier).toFixed(2));
 					});
@@ -5084,6 +5084,11 @@
 		};
 
 		// === ENCUMBRANCE
+		const rnd_enc = function(r) { // converts a number to a float rounded to 0.5 // NEW
+			let n = parseInt(r.toString());
+			let m = r - n;
+			return n + (m > (2/3) ? 0.5 : 0);
+		};
 		const update_encumbrance = function() {
 			getAttrs(pfoglobals_encumbrance_fields, (v) => {
 				// console.log("*** DEBUG update_encumbrance");
@@ -5113,12 +5118,12 @@
 			let prevenc = v.encumbrance; // light / medium / heavy / over
 			let speed = speedbase;
 			let newenc = prevenc;
-			update["encumbrance_load_light"] = light;
-			update["encumbrance_load_medium"] = medium;
-			update["encumbrance_load_heavy"] = heavy;
-			update["encumbrance_lift_head"] = heavy;
-			update["encumbrance_lift_ground"] = heavy * 2;
-			update["encumbrance_drag_push"] = heavy * 5;
+			update["encumbrance_load_light"] = rnd_enc(light);
+			update["encumbrance_load_medium"] = rnd_enc(medium);
+			update["encumbrance_load_heavy"] = rnd_enc(heavy);
+			update["encumbrance_lift_head"] = rnd_enc(heavy);
+			update["encumbrance_lift_ground"] = rnd_enc(heavy * 2);
+			update["encumbrance_drag_push"] = rnd_enc(heavy * 5);
 			if (v.encumbrance_display) {
 				display = v.encumbrance_display;
 			}
