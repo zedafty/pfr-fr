@@ -1347,7 +1347,7 @@
 						</div>
 						<div class="lbbox w120">
 							<label class="pschckcont">
-								<input class="pseudocheck condensed" name="attr_use_ammo" type="checkbox" value="0" title="@{use_ammo}" /><span></span>
+								<input class="pseudocheck condensed" name="attr_use_ammo" type="checkbox" value="1" title="@{use_ammo}" /><span></span>
 								<span class="lbl" data-i18n="use-ammo" data-i18n-title="use-ammo-t" title="Spend primary attack ammunition (ChatSetAttr API)">Use Ammo</span>
 							</label>
 						</div>
@@ -4562,21 +4562,23 @@
 						<span class="big only itm" data-i18n="gear">Gear</span>
 						<span class="med only qty help" data-i18n="qty" data-i18n-title="quantity" title="Quantity">Qty</span>
 						<span class="med only wgt" data-i18n="weight">Weight</span>
+						<span class="med only wgt-u" name="attr_weight_unit" data-i18n-dynamic>lb</span>
 					</div>
 				</div>
 				<input class="optional-flag ChatSetAttr-toggle" name="attr_show_ChatSetAttr_flag" type="hidden" value="0" />
 				<div class="bordered titled inbox right">
+					<input class="options-ctrl" name="attr_options_ctrl_gear" type="checkbox" value="1" data-i18n-title="expand_reduce_options" title="Expand/Collapse options" /><span></span>
 					<input class="repcontrol-toggle" name="attr_repcontrol_toggle_gear" type="hidden" value="0" />
 					<fieldset class="repeating_gear">
 						<div class="gearitem">
 							<input class="options-flag" name="attr_options_flag" type="checkbox" data-i18n-title="show-hide-notes" title="Show/hide notes" /><span></span>
-							<button class="btn chatsetattr inl" type="roll" value="@{whispertype}!setattr --sel --silent --replace --repeating_gear_-CREATE_name|@{name} --repeating_gear_-CREATE_cost|@{cost} --repeating_gear_-CREATE_slot|@{slot} --repeating_gear_-CREATE_special|@{special} --repeating_gear_-CREATE_quantity|@{quantity} --repeating_gear_-CREATE_weight|@{weight} --repeating_gear_-CREATE_description|@{description}" data-i18n-title="ChatSetAttr-t" title="Send item to selected token's sheet with ChatSetAttr API">~</button>
+							<button class="btn chatsetattr inl" type="roll" value="!setattr --sel --silent --replace --repeating_gear_-CREATE_name|@{name} --repeating_gear_-CREATE_cost|@{cost} --repeating_gear_-CREATE_slot|@{slot} --repeating_gear_-CREATE_special|@{special} --repeating_gear_-CREATE_quantity|@{quantity} --repeating_gear_-CREATE_weight|@{weight} --repeating_gear_-CREATE_description|@{description}" data-i18n-title="ChatSetAttr-t" title="Send item to selected token's sheet with ChatSetAttr API">~</button>
 							<div class="row right">
 								<input class="underlined itm" name="attr_name" type="text" spellcheck="false" title="@{repeating_gear_$id_name}" />
 								<button class="btn pictos" name="rollShowGear" type="roll" value="@{whispertype} &{template:pc} {{smallname=^{gear}: @{name}}} {{type=feat}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{special=@{special}}} {{cost=@{cost}}} {{slot=@{slot}}} {{descflag=1}} {{desc=@{description}}} {{shownotes=[[1]]}} {{notes=^{quantity}:[[@{quantity}]] ^{weight}:[[@{weight_total}]]}}" data-i18n-title="show-chat" title="Show in chat">E</button>
 								<input class="nospin underlined" name="attr_quantity" type="number" value="1" min="0" step="1" spellcheck="false" title="@{repeating_gear_$id_quantity}" />
 								<span class="spacer">&times;</span>
-								<input class="nospin underlined" name="attr_weight" type="number" value="0" min="0" step="0.5" spellcheck="false" title="@{repeating_gear_$id_weight}" />
+								<input class="nospin underlined" name="attr_weight" type="number" value="0" min="0" step="0.01" spellcheck="false" title="@{repeating_gear_$id_weight}" />
 								<span class="spacer">=</span>
 								<input name="attr_weight_total" type="hidden" value="0" />
 								<span class="pseudoattr greyed number underlined" name="attr_weight_total" title="@{repeating_gear_$id_weight_total}"></span>
@@ -8776,6 +8778,18 @@
 						</label>
 					</div>
 				</div><!-- END SPEED -->
+
+			<div class="blacklabel pinbox padlrt"><!-- WEIGHT -->
+				<span class="plft"></span><span class="prgt"></span>
+				<span class="big only upper" data-i18n="weight">Weight</span>
+			</div>
+			<div class="bordered titled inbox">
+				<span data-i18n="weight-unit">Weight unit</span>
+				<select class="underlined charindent" name="attr_weight_unit" title="@{weight_unit}">
+					<option value="lb" data-i18n="lb-ls" selected="selected">Pound</option>
+					<option value="kg" data-i18n="kg-ls">Kilogram</option>
+				</select>
+			</div><!-- END WEIGHT -->
 
 				<div class="blacklabel pinbox padlrt"><!-- ARMOR CLASS -->
 					<span class="plft"></span><span class="prgt"></span>

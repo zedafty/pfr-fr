@@ -14,6 +14,9 @@
 	"show-caster-level" : "Montrer un niveau de sorts de plus",
 	"hide-caster-level" : "Cacher le dernier niveau de sorts",
 
+	// Expand/Reduce
+	"expand_reduce_options" : "Étendre/Réduire les options",
+
 	// Descriptions / Notes
 	"notes" : "Notes",
 	"notes-ph" : "Notes …",
@@ -27,12 +30,19 @@
 	"sq" : "c",
 	"ft" : "pi",
 	"m" : "m",
-	"sq-lp" : "cases",
-	"ft-lp" : "pieds",
-	"m-lp" : "mètres",
 	"sq-ls" : "case",
 	"ft-ls" : "pied",
 	"m-ls" : "mètre",
+	"sq-lp" : "cases",
+	"ft-lp" : "pieds",
+	"m-lp" : "mètres",
+	"weight-unit" : "Unité de poids",
+	"lb" : "lbs",
+	"kg" : "kg",
+	"lb-ls" : "Livre",
+	"kg-ls" : "Kilogramme",
+	"lb-lp" : "Livres",
+	"kg-lp" : "Kilogrammes",
 
 	// Size
 	"size" : "Taille",

@@ -72,14 +72,6 @@
 ? TODO : Find a better way to handle w100 and such
 ? TODO : Replace dash by underscore in attributes names
 
-# Tasks
-	TODO : Put Wealth before Experience
-	TODO : Move up Category field in Traits (after Type and before Short Desc.)
-	TODO : Translate Mod = Mod. ; Temp = Temp. ; Condition = État préj. ; Query = Demande in rolls
-	TODO : Add list-item for conditions + npc skills + skill option
-	TODO : Add icon on speed if armor or encumbrance reduces it
-	TODO : Add controller for changing number of attacks buttons display
-
 ================================================================================
 --------------------------------------------------------------------------------
 # Enhancement
@@ -101,6 +93,8 @@
 --------------------------------------------------------------------------------
 ================================================================================
 
+! IDEA : Remove Charmancer feature => Deactivated on sheet open for now
+? IDEA : Hilight skills => if value > 0 then color ; unlite trained skill if rank = 0
 	IDEA : Féminisation (·e·s)
 	IDEA : Replace labelcheck by pseudocheck
 	IDEA : ALL input text/number are underlined ... set it by default ?
@@ -110,8 +104,6 @@
 	IDEA : Spit 'Abilities/Traits' into 'Race [Traits]' & 'Class [Abilities]' + Move Feats under ? => <Traits raciaux, Aptitudes de classe, Dons>
 	IDEA : Add weight to 'Other Wealth'
 	IDEA : Add race attribute and box to skills
-~ IDEA : Remove Charmancer feature => Deactivated on sheet open for now
-? IDEA : Hilight skills => if value > 0 then color ; unlite trained skill if rank = 0
-? IDEA : Set feats description unchecked by default
 	IDEA : Add 'collapse-all' button in each tab (set ALL options-flag to 0)
-	IDEA : Hide unattained spell levels
+	IDEA : Add collapse ALL options button
+* IDEA : Set feats description unchecked by default

@@ -152,7 +152,7 @@ $bg-img-options: url("https://raw.githubusercontent.com/zedafty/pfr-fr/master/im
 div, button, textarea, span, input, select, img, label
 	box-sizing: border-box
 
-div
+div, img
 	margin: 0
 	padding: 0
 
@@ -167,10 +167,6 @@ label
 	padding: 0
 	font-size: $fs-100
 	font-weight: normal
-
-img
-	margin: 0
-	padding: 0
 
 // =============================================================================
 // -----------------------------------------------------------------------------
@@ -1505,10 +1501,19 @@ button[type="action"].sheet-fonticon.sheet-red:focus
 
 // Gear
 .sheet-gear
+	> div
+		position: relative
+	> div:first-of-type
+		z-index: 1
 	.sheet-qty
 		width: 50px
 	.sheet-wgt
-		width: 85px
+		width: 30px
+		margin-right: 25px
+	.sheet-wgt-u
+		width: 30px
+		text-align: left
+		text-transform: lowercase
 	.sheet-itm
 		width: 250px
 	.sheet-tot
@@ -2396,8 +2401,10 @@ button[type="roll"].sheet-btn.sheet-optioned:hover > span
 		color: $txt-input
 	.sheet-attr-flag[value="1"] + span:before,
 	.sheet-attr-flag[value="3"] + span:before
-		content: "U"
+		content: "V"
 		left: -7px
+		font-size: 14px
+		transform: scaleY(0.875) rotate(-90deg)
 		color: $cl-icon-penalty
 	.sheet-attr-flag[value="2"] + span:after,
 	.sheet-attr-flag[value="3"] + span:after
@@ -2749,6 +2756,40 @@ label.sheet-clear input[type="radio"].sheet-pseudocheck:not(:checked)
 .sheet-optional-flag:not([value=""]) + .sheet-optional.sheet-inl,
 .sheet-optional-flag0:not([value="0"]) + .sheet-optional.sheet-inl
 	display: inline-block
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # OPTIONS CONTROLS
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-options-ctrl,
+.sheet-options-ctrl + span
+	position: absolute
+	top: 0
+	left: 0
+	width: 20px
+	height: 20px
+.sheet-options-ctrl
+	opacity: 0
+	z-index: 2
+.sheet-options-ctrl + span
+	margin-left: 0
+	z-index: 1
+	line-height: $lh-sml
+	font-size: $fs-100
+	font-family: "Pictos"
+	text-align: center
+	color: $cl-icon
+.sheet-options-ctrl:hover + span
+	color: $cl-icon-hover
+.sheet-options-ctrl:focus + span
+	color: $cl-focus
+.sheet-options-ctrl + span:before
+	content: "`"
+	display: inline-block
+.sheet-options-ctrl:checked + span:before
+	content: "J"
 
 // =============================================================================
 // -----------------------------------------------------------------------------
@@ -4807,4 +4848,3 @@ label .sheet-help
 		color: blue // DEBUG
 	.sheet-lbl.sheet-name, .sheet-labelcheck .sheet-lbl
 		color: green // DEBUG
-
