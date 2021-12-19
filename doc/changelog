@@ -10,6 +10,7 @@
 	Beta 1.2   - 2020-09-23
 	Beta 1.2.1 - 2020-09-23
 	Beta 1.2.2 - 2021-06-24
+	Beta 1.2.3 - 2021-12-19
 
 ================================================================================
 --------------------------------------------------------------------------------
@@ -23,13 +24,38 @@
 	TODO : Add list-item for conditions + npc skills + skill option
 	TODO : Add icon on speed if armor or encumbrance reduces it
 	TODO : Add controller for changing number of attacks buttons display
-	TODO : Ensure initiative call is right in character sheet ...
 	TODO : Add Hit Points Throws
+	TODO : Add Resistances and Immunities
 	TODO : Add critical damage box in templates (do not show computing until a user clicked on)
 	TODO : Fix inner result size in templates
 	TODO : Add custom talk/speech box in templates
 	TODO : Round encumbrance to 0.5
-	TODO : Add price/cost computing for gear and wealth
+	TODO : Add 'feat' and 'spell' categories to AC items
+	TODO : Remove armors and weapons from gear items (only dedicted sections)
+	TODO : Add specialized skills (craft, perform) in chatlog
+	TODO : Add birthdate character field
+	TODO : Add CMD chatlog output
+
+================================================================================
+--------------------------------------------------------------------------------
+# Beta 1.2.3
+--------------------------------------------------------------------------------
+================================================================================
+
+# Features
+	Add price/cost computing for gear and wealth
+
+# PC
+	Fix speed long unit translation bug in main and configuration tabs
+	Remove initiative button (the &{tracker} parameter cannot be interpreted if no token is selected)
+	Restore Monster feats category (missing out in HTML, but existant in translation)
+	Expand gear item fields (magical item, aura school, aura power, usage, charges and value)
+	Add wealth repeating section (including quantity, value, weight and inventory weight)
+	Add drop-down menu for gear slots
+	Add drop-down menus for weapon category and type
+
+# Worker
+	Add a console feedback for showing how much values in gp a pc has (money, wealth and gear) on sheet opened
 
 ================================================================================
 --------------------------------------------------------------------------------

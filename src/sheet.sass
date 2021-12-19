@@ -1345,7 +1345,6 @@ button[type="action"].sheet-fonticon.sheet-red:focus
 		> input[type="checkbox"]:focus + span
 			color: $cl-focus
 
-
 	.sheet-header:hover
 		background-color: $bg-dull
 
@@ -1498,6 +1497,26 @@ button[type="action"].sheet-fonticon.sheet-red:focus
 		width: 40px
 	input[type="number"] + .sheet-lab
 		margin-left: $sp-base
+	.sheet-labline
+		.sheet-lab
+			width: 40px
+			padding-right: 0
+		.sheet-lab:nth-child(1)
+			width: 110px
+			margin-left: 20px
+		.sheet-lab:nth-child(2)
+			margin-right: 10px
+	.sheet-line
+		button[type="roll"]
+			margin-right: 5px
+		select
+			width: 40px
+			text-align: center
+		select,
+		input[type="number"]
+			height: 20px
+		input[type="text"]
+			width: 110px
 
 // Gear
 .sheet-gear
@@ -1513,17 +1532,37 @@ button[type="action"].sheet-fonticon.sheet-red:focus
 	.sheet-wgt-u
 		width: 30px
 		text-align: left
-		text-transform: lowercase
 	.sheet-itm
-		width: 250px
+		width: 245px
+		margin-left: 5px
 	.sheet-tot
 		width: 100%
 		margin-top: $sp-hlf
 	.sheet-pseudoattr.sheet-number
 		width: 40px
+	.sheet-price
+		input[type="text"]
+			width: 160px
+		.sheet-number
+			width: 55px
+			margin-left: 5px
+	.sheet-slot
+		select
+			width: 200px
+	.sheet-aura,
+	.sheet-usage
+		select
+			width: 90px
+		select + select
+			margin-left: 10px
+	.sheet-usage
+		.sheet-extend
+			margin-left: 10px
 	.sheet-coins
-		margin-right: 280px
 		margin-top: 4px
+	.sheet-coins,
+	.sheet-gems-jewelery
+		width: 150px
 	.sheet-overload
 		color: $txt-white
 	.sheet-overload + .sheet-number
@@ -1536,8 +1575,17 @@ button[type="action"].sheet-fonticon.sheet-red:focus
 		color: $cl-warning
 
 .sheet-gearitem
-	.sheet-lbrow .sheet-lbl
-		width: 90px
+	.sheet-row input[type="text"]
+		height: $lh-med
+	.sheet-lbrow
+		span.sheet-lbl
+			width: 90px
+		label.sheet-lbl
+			width: auto
+		.sheet-lbl.sheet-small
+			width: 40px
+			padding: 0
+			text-align: center
 	button[type="roll"].sheet-chatsetattr
 		position: absolute
 		top: 0
@@ -1547,6 +1595,10 @@ button[type="action"].sheet-fonticon.sheet-red:focus
 		text-align: center
 		font-family: "Pictos"
 		font-size: $fs-120
+	.sheet-options input[name="attr_magical_item"][value="0"] ~ .sheet-aura,
+	.sheet-options input[name="attr_magical_item"][value="0"] ~ .sheet-usage,
+	.sheet-usage input[name="attr_show_uses"][value="0"] ~ .sheet-extend
+		display: none
 
 // Encumbrance
 .sheet-encumbrance
@@ -3231,7 +3283,6 @@ input.sheet-options-flag
 	left: 19px
 
 .sheet-toggle-box .sheet-toggle-controller + .sheet-toggle:hover,
-.sheet-toggle-box .sheet-toggle-controller + .sheet-toggle:hover,
 .sheet-toggle-box .sheet-toggle-controller + .sheet-toggle:focus,
 .sheet-toggle-box .sheet-toggle-controller + .sheet-toggle:focus
 	background-color: $bg-input-focus
@@ -3435,6 +3486,14 @@ div.sheet-tabconf
 .sheet-rolltemplate-pc .sheet-notice
 	font-weight: bold
 	color: $roll-notice
+
+.sheet-rolltemplate-pc .sheet-lower,
+.sheet-rolltemplate-npc .sheet-lower
+	text-transform: lowercase
+
+.sheet-rolltemplate-pc .sheet-help,
+.sheet-rolltemplate-npc .sheet-help
+	cursor: help
 
 // API buttons
 .sheet-rolltemplate-pc a[href^="~"]

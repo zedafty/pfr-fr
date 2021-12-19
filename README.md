@@ -6,7 +6,7 @@
 
   ### Status
 
-  * pending 2020-06-24
+  * pending 2021-12-19
 
   ### Milestone
 
@@ -14,7 +14,7 @@
 
   ### Latest
 
-  * 1.2.2
+  * 1.2.3
 
   ### Features
 
@@ -24,6 +24,7 @@
   * Speed unit changer (squares, feet and meters)
   * Weight unit changer (pounds and kilograms)
   * Armor land speed and run factor toggler
+  * Convenient drop-down menus for quick filling
   * Magic points system for arcane and divine spellcasting
   * Use ammo feature ([ChatSetAttr](https://github.com/Roll20/roll20-api-scripts/blob/master/ChatSetAttr/README.md) API)
   * Give item feature ([ChatSetAttr](https://github.com/Roll20/roll20-api-scripts/blob/master/ChatSetAttr/README.md) API)

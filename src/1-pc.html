@@ -597,7 +597,7 @@
 					<input class="options-flag" name="attr_options_flag_initiative" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span></span>
 					<div class="row labunder">
 						<div class="blacklabel sqr">
-							<button class="btn big" name="roll_initiative" type="roll" data-i18n-title="initiative-roll" title="Initiative roll" value="@{whispertype} &{template:pc} {{name=^{initiative}}} {{type=initiative}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{roll=[[1d20+@{initiative} [Mod]+(@{initiative_condition}) [Condition]+@{rollmod_initiative} [Query] &{tracker}]]}} {{shownotes=@{rollnotes_initiative}}} {{notes=@{initiative_notes}}} {{conditionsflag=[[@{initiative_condition}]]}} {{conditions=@{conditions_display}}}"><span data-i18n="init">Init</span></button>
+							<span class="big" data-i18n="init">Init</span>
 							<span class="sml" data-i18n="initiative" data-i18n-title="initiative" title="Initiative">Initiative</span>
 							<input class="condition-flag" name="attr_initiative_condition" type="hidden" value="0" />
 							<span class="pictos" data-i18n-title="condition-to-roll" title="Condition(s) applied to the roll">Y</span>
@@ -1003,8 +1003,25 @@
 										<input class="underlined" name="attr_atkname" type="text" spellcheck="false" data-i18n-placeholder="name" placeholder="Name" title="@{repeating_attacks_$id_atkname}" />
 									</div>
 									<div class="lbrow lb2val"><!-- Category / Type -->
-										<span class="lbl" data-i18n="category">Category</span><input class="underlined" name="attr_category" type="text" data-i18n-placeholder="wpn-cat-ph" placeholder="One-Handed Melee" spellcheck="false" title="@{repeating_attacks_$id_category}" />
-										<span class="lbl" data-i18n="type">Type</span><input class="underlined" name="attr_type" type="text" data-i18n-placeholder="wpn-type-ph" placeholder="Martial" spellcheck="false" title="@{repeating_attacks_$id_type}" />
+										<span class="lbl" data-i18n="category">Category</span>
+										<select class="underlined" name="attr_category" title="@{repeating_attacks_$id_category}">
+											<option value="natural" data-i18n="weapon-natural">Natural Weapon</option>
+											<option value="simple" data-i18n="weapon-simple">Simple Weapon</option>
+											<option value="martial" data-i18n="weapon-martial">Martial Weapon</option>
+											<option value="exotic" data-i18n="weapon-exotic">Exotic Weapon</option>
+											<option value="improvised" data-i18n="weapon-improvised">Improvised Weapon</option>
+										</select>
+										<span class="lbl" data-i18n="type">Type</span>
+										<select class="underlined" name="attr_type" title="@{repeating_attacks_$id_type}">
+											<option value="unarmed" data-i18n="unarmed">Unarmed</option>
+											<option value="light" data-i18n="weapon-light">Light Weapon</option>
+											<option value="one-handed" data-i18n="weapon-one-handed">One-handed Weapon</option>
+											<option value="two-handed" data-i18n="weapon-two-handed">Two-handed Weapon</option>
+											<option value="ranged" data-i18n="weapon-ranged">Ranged Weapon</option>
+											<option value="splash" data-i18n="weapon-splash">Splash Weapon</option>
+											<option value="thrown" data-i18n="weapon-thrown">Thrown Weapon</option>
+											<option value="ammunition" data-i18n="ammunition">Ammunition</option>
+										</select>
 									</div>
 									<div class="lbrow lb3col topborder"><!-- Attack -->
 										<label class="lbl pschckcont">
@@ -4451,7 +4468,7 @@
 										<span class="spacer charindent">(</span>
 										<span class="lbl lower help" data-i18n="max" data-i18n-title="max-land-speed" title="Maximum Land Speed">Max</span>
 										<span class="pseudoattr number underlined greyed charindent" name="attr_armor_speed_max" title="@{repeating_acitems_$id_armor_speed_max}">6</span>
-										<span class="lbl charindent" name="attr_speed_unit_long" data-i18n-dynamic></span>
+										<span class="lbl charindent" name="attr_speed_unit" data-i18n-dynamic></span>
 										<span class="spacer">)</span>
 										<label class="lbl pschckcont margindent pschckcont">
 											<input class="pseudocheck condensed" name="attr_run_factor_reduced" type="checkbox" title="@{run_factor_reduced}" value="1" /><span></span>
@@ -4461,7 +4478,6 @@
 										<span class="lbl lower help" data-i18n="max" data-i18n-title="max-run-factor" title="Maximum Run Factor">Max</span>
 										<span class="pseudoattr number underlined greyed charindent" name="attr_run_factor" title="@{repeating_acitems_$id_run_factor}">×4</span>
 										<span class="spacer">)</span>
-
 									</div>
 									<div class="autoex">
 										<span name="attr_notes"></span>
@@ -4538,15 +4554,40 @@
 				</div>
 				<div class="bordered titled inbox">
 					<div class="row center">
-						<span class="lab help" data-i18n="cp-u"data-i18n-title="cp" title="Copper Pieces">CP</span>
+						<span class="lab upper help" data-i18n="cp-u"data-i18n-title="cp" title="Copper Pieces">cp</span>
 						<input class="nospin underlined" name="attr_money_cp" type="number" value="0" min="0" title="@{money_cp}" />
-						<span class="lab help" data-i18n="sp-u"data-i18n-title="sp" title="Silver Pieces">SP</span>
+						<span class="lab upper help" data-i18n="sp-u"data-i18n-title="sp" title="Silver Pieces">sp</span>
 						<input class="nospin underlined" name="attr_money_sp" type="number" value="0" min="0" title="@{money_sp}" />
-						<span class="lab help" data-i18n="gp-u"data-i18n-title="gp" title="Gold Pieces">GP</span>
+						<span class="lab upper help" data-i18n="gp-u"data-i18n-title="gp" title="Gold Pieces">gp</span>
 						<input class="nospin underlined" name="attr_money_gp" type="number" value="0" min="0" title="@{money_gp}" />
-						<span class="lab help" data-i18n="pp-u"data-i18n-title="pp" title="Platinum Pieces">PP</span>
+						<span class="lab upper help" data-i18n="pp-u"data-i18n-title="pp" title="Platinum Pieces">pp</span>
 						<input class="nospin underlined" name="attr_money_pp" type="number" value="0" min="0" title="@{money_pp}" />
 					</div>
+					<div class="row labline">
+						<span class="lab" data-i18n="gem-or-jewelry">Gem or Jewelry</span>
+						<span class="lab help" data-i18n="qty" data-i18n-title="quantity" title="Quantity">Qty</span>
+						<span class="lab help" data-i18n="gp-u" data-i18n-title="gp" title="Gold Pieces">gp</span>
+						<span class="lab" name="attr_weight_unit" data-i18n-dynamic>lb</span>
+					</div>
+					<fieldset class="repeating_wealth">
+						<div class="row line">
+							<button class="btn pictos" name="rollShowGear" type="roll" value="@{whispertype} &{template:pc} {{smallname=^{gems-and-jewelries}: @{name}}} {{type=feat}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{quantity=[[@{quantity}]]}} {{value=[[@{quantity} * @{value}]] ^{gp-u}}}" data-i18n-title="show-chat" title="Show in chat">E</button>
+							<input class="underlined itm" name="attr_name" type="text" spellcheck="false" title="@{repeating_wealth$id_name}" />
+							<input class="nospin underlined" name="attr_quantity" type="number" value="1" min="0" step="1" title="@{repeating_wealth$id_quantity}" />
+							<span class="spacer">&times;</span>
+							<input class="nospin underlined" name="attr_value" type="number" value="0" min="0" step="1" title="@{repeating_wealth$id_value}" />
+							<select class="underlined" name="attr_weight" title="@{repeating_wealth$id_weight}">
+								<option value="0">0</option>
+								<option value="0.020" selected>1/50</option>
+								<option value="0.050">1/20</option>
+								<option value="0.1">1/10</option>
+								<option value="0.25">1/4</option>
+								<option value="0.5">1/2</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+							</select>
+						</div>
+					</fieldset>
 					<div class="autoex"><span name="attr_money_other"></span><textarea name="attr_money_other" spellcheck="false" data-i18n-placeholder="other-valuables" placeholder="Other valuables" title="@{money_other}"></textarea></div>
 				</div>
 			</div><!-- END WEALTH -->
@@ -4574,25 +4615,52 @@
 							<input class="options-flag" name="attr_options_flag" type="checkbox" data-i18n-title="show-hide-notes" title="Show/hide notes" /><span></span>
 							<button class="btn chatsetattr inl" type="roll" value="!setattr --sel --silent --replace --repeating_gear_-CREATE_name|@{name} --repeating_gear_-CREATE_cost|@{cost} --repeating_gear_-CREATE_slot|@{slot} --repeating_gear_-CREATE_special|@{special} --repeating_gear_-CREATE_quantity|@{quantity} --repeating_gear_-CREATE_weight|@{weight} --repeating_gear_-CREATE_description|@{description}" data-i18n-title="ChatSetAttr-t" title="Send item to selected token's sheet with ChatSetAttr API">~</button>
 							<div class="row right">
+								<button class="btn pictos" name="rollShowGear" type="roll" value="@{whispertype} &{template:pc} {{smallname=^{gear}: @{name}}} {{type=feat}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{quantity=[[@{quantity}]]}} {{value=[[@{value}]] ^{gp-u}}} {{weight=[[@{weight_total}]] @{weight_unit}}} {{special=@{special}}} {{slot=@{slot}}} {{magical_item=[[@{magical_item}]]}} {{aura_school=@{aura_school}}} {{aura_power=@{aura_power}}} {{caster_level=[[@{caster_level}]]}} {{usage=@{usage}}} {{uses=[[@{uses}]]}} {{uses_max=[[@{uses_max}]]}} {{descflag=1}} {{desc=@{description}}}" data-i18n-title="show-chat" title="Show in chat">E</button>
 								<input class="underlined itm" name="attr_name" type="text" spellcheck="false" title="@{repeating_gear_$id_name}" />
-								<button class="btn pictos" name="rollShowGear" type="roll" value="@{whispertype} &{template:pc} {{smallname=^{gear}: @{name}}} {{type=feat}} {{showchar=@{rollshowchar}}} {{charname=@{character_name}}} {{special=@{special}}} {{cost=@{cost}}} {{slot=@{slot}}} {{descflag=1}} {{desc=@{description}}} {{shownotes=[[1]]}} {{notes=^{quantity}:[[@{quantity}]] ^{weight}:[[@{weight_total}]]}}" data-i18n-title="show-chat" title="Show in chat">E</button>
-								<input class="nospin underlined" name="attr_quantity" type="number" value="1" min="0" step="1" spellcheck="false" title="@{repeating_gear_$id_quantity}" />
+								<input class="nospin underlined" name="attr_quantity" type="number" value="1" min="0" step="1" title="@{repeating_gear_$id_quantity}" />
 								<span class="spacer">&times;</span>
-								<input class="nospin underlined" name="attr_weight" type="number" value="0" min="0" step="0.01" spellcheck="false" title="@{repeating_gear_$id_weight}" />
+								<input class="nospin underlined" name="attr_weight" type="number" value="0" min="0" step="0.01" title="@{repeating_gear_$id_weight}" />
 								<span class="spacer">=</span>
 								<input name="attr_weight_total" type="hidden" value="0" />
 								<span class="pseudoattr greyed number underlined" name="attr_weight_total" title="@{repeating_gear_$id_weight_total}"></span>
 							</div>
 							<div class="options">
 								<input class="fromcompendium" name="attr_fromcompendium" type="hidden" value="" />
+								<input name="attr_magical_item" type="hidden" value="0">
 								<button class="btn" name="attr_fromcompendium" type="compendium" data-i18n-title="open-compendium-item" title="Open Compendium Item"></button>
-								<div class="lbrow">
+								<div class="lbrow price">
+									<input name="attr_value" type="hidden" value="0" />
 									<span class="lbl" data-i18n="cost">Cost</span>
+									<span name="attr_value" class="pseudoattr greyed number underlined" title="@{repeating_gear_$id_value}"></span>
+									<span class="lbl small help" data-i18n="gp-u" data-i18n-title="gp" title="Gold Pieces">GP</span>
+									<span class="spacer">(</span>
 									<input name="attr_cost" type="text" value="" spellcheck="false" class="underlined" title="@{repeating_gear_$id_cost}" />
+									<span class="spacer">)</span>
 								</div>
-								<div class="lbrow">
+								<div class="lbrow slot">
 									<span class="lbl" data-i18n="slot">Slot</span>
-									<input name="attr_slot" type="text" value="" spellcheck="false" class="underlined" title="@{repeating_gear_$id_slot}" />
+									<select name="attr_slot" class="underlined" title="@{repeating_gear_$id_slot}">
+										<option value="" selected></option>
+										<option value="none" data-i18n="slot-none">No slot</option>
+										<option value="shield" data-i18n="slot-shield">Shield</option>
+										<option value="armor" data-i18n="slot-armor">Armor</option>
+										<option value="head" data-i18n="slot-head">Head</option>
+										<option value="headband" data-i18n="slot-headband">Headband</option>
+										<option value="eyes" data-i18n="slot-eyes">Eyes</option>
+										<option value="neck" data-i18n="slot-neck">Neck</option>
+										<option value="shoulders" data-i18n="slot-shoulders">Shoulders</option>
+										<option value="chest" data-i18n="slot-chest">Chest</option>
+										<option value="body" data-i18n="slot-body">Body</option>
+										<option value="belts" data-i18n="slot-belts">Belts</option>
+										<option value="wrists" data-i18n="slot-wrists">Wrists</option>
+										<option value="hands" data-i18n="slot-hands">Hands</option>
+										<option value="fingers" data-i18n="slot-fingers">Fingers</option>
+										<option value="feet" data-i18n="slot-feet">Feet</option>
+									</select>
+									<label class="lbl pschckcont">
+										<input class="pseudocheck" name="attr_magical_item" type="checkbox" value="1" title="@{repeating_gear_$id_magical_item}" value="1"><span></span>
+										<span data-i18n="magical-item">Magical Item</span>
+									</label>
 								</div>
 								<div class="lbrow">
 									<span class="lbl" data-i18n="special">Special</span>
@@ -4608,6 +4676,50 @@
 										<textarea class="underlined" name="attr_description" spellcheck="false" data-i18n-placeholder="description-ph" placeholder="Description…" title="@{repeating_gear_$id_description}"></textarea>
 									</div>
 								</div>
+								<div class="lbrow aura">
+									<span class="lbl" data-i18n="aura">Aura</span>
+									<select name="attr_aura_school" class="underlined">
+										<option value="" selected></option>
+										<option value="abjuration" data-i18n="school-abjuration">Abjuration</option>
+										<option value="conjuration" data-i18n="school-conjuration">Conjuration</option>
+										<option value="divination" data-i18n="school-divination">Divination</option>
+										<option value="enchantment" data-i18n="school-enchantment">Enchantment</option>
+										<option value="evocation" data-i18n="school-evocation">Evocation</option>
+										<option value="illusion" data-i18n="school-illusion">Illusion</option>
+										<option value="necromancy" data-i18n="school-necromancy">Necromancy</option>
+										<option value="transmutation" data-i18n="school-transmutation">Transmutation</option>
+										<option value="universalist" data-i18n="school-universalist">Universalist</option>
+										<option value="other" data-i18n="school-other">Other</option>
+									</select>
+									<select name="attr_aura_power" class="underlined">
+										<option value="" selected></option>
+										<option value="faint" data-i18n="aura-faint">Faint</option>
+										<option value="moderate" data-i18n="aura-moderate">Moderate</option>
+										<option value="strong" data-i18n="aura-strong">Strong</option>
+										<option value="overwhelming" data-i18n="aura-overwhelming">Overwhelming</option>
+									</select>
+									<span class="lbl small help" data-i18n="cl-u" data-i18n-title="caster-level" title="Caster Level">CL</span>
+									<input name="attr_caster_level" type="number" value="0" min="0" class="nospin underlined" title="@{repeating_gear_$id_caster_level}" />
+								</div>
+								<div class="lbrow usage">
+									<input type="hidden" name="attr_show_uses" value="0" />
+									<span class="lbl" data-i18n="usage">Usage</span>
+									<select name="attr_usage" class="underlined" title="@{repeating_gear_$id_usage}">
+										<option value="" selected></option>
+										<option value="charges" data-i18n="charges">Charges</option>
+										<option value="constant" data-i18n="constant">Constant</option>
+										<option value="at-will" data-i18n="at-will">At will</option>
+										<option value="per-day" data-i18n="per-day">Per day</option>
+										<option value="per-week" data-i18n="per-week">Per week</option>
+										<option value="per-month" data-i18n="per-month">Per month</option>
+										<option value="per-year" data-i18n="per-year">Per year</option>
+									</select>
+									<span class="extend">
+										<input name="attr_uses" type="number" value="0" min="0" class="nospin underlined" title="@{repeating_gear_$id_uses}" />
+										<span class="spacer">/</span>
+										<input name="attr_uses_max" type="number" value="0" min="0" class="nospin underlined" title="@{repeating_gear_$id_uses_max}" />
+									</span>
+								</div>
 							</div>
 						</div>
 					</fieldset>
@@ -4617,6 +4729,13 @@
 							<span data-i18n="coins">Coins</span>
 						</label>
 						<span class="pseudoattr greyed number underlined margindent" name="attr_encumbrance_coins_weight" title="@{encumbrance_coins_weight}"></span>
+					</div>
+					<div class="row right">
+						<label class="lbl pschckcont gems-jewelery" title="If checked, adds weight from gems and jewelry to the total gear weight.">
+							<input class="pseudocheck condensed" name="attr_encumbrance_wealth_flag" type="checkbox" value="1" checked="checked" /><span></span>
+							<span data-i18n="gems-and-jewelries">Gems and Jewelry</span>
+						</label>
+						<span class="pseudoattr greyed number underlined margindent" name="attr_encumbrance_wealth_weight" title="@{encumbrance_wealth_weight}"></span>
 					</div>
 					<div class="blacklabel right tot">
 						<span class="big" data-i18n="total-weight">Total Weight</span>
@@ -4725,6 +4844,7 @@
 									<option value="grit" data-i18n="grit">Grit</option>
 									<option value="item-creation" data-i18n="item-creation">Item creation</option>
 									<option value="metamagic" data-i18n="metamagic">Metamagic</option>
+									<option value="monster" data-i18n="monster">Monstre</option>
 									<option value="panache" data-i18n="panache">Panache</option>
 									<option value="performance" data-i18n="performance">Performance</option>
 									<option value="style" data-i18n="style">Style</option>
@@ -8755,6 +8875,7 @@
 				</div>
 				<div class="bordered titled inbox">
 					<input name="attr_speed_unit" type="hidden" value="ft" />
+					<input name="attr_speed_unit_long" type="hidden" value="Feet" />
 					<span data-i18n="speed-unit">Speed unit</span>
 					<select class="underlined charindent" name="attr_speed_unit_select" title="@{speed_unit_select}">
 						<option value="sq" data-i18n="sq-lp">Squares</option>

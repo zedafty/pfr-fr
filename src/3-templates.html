@@ -643,29 +643,67 @@
 				<span class="notes inl">{{normal}}</span>
 			</div>
 		{{/normal}}
-		{{#special}}
-			<div class="row">
-				<span class="lbl bold" data-i18n="special">Special</span>
-				<span class="notes inl">{{special}}</span>
-			</div>
-		{{/special}}
 		{{#concentration}}
 			<div class="row center">
 				{{concentration}}
 			</div>
 		{{/concentration}}
+		{{#rollGreater() quantity 1}}
+			<div class="row">
+				<span class="lbl bold" data-i18n="quantity">Quantity</span>
+				<span class="notes inl">{{quantity}}</span>
+			</div>
+		{{/rollGreater() quantity 1}}
 		{{#cost}}
 			<div class="row">
 				<span class="lbl bold" data-i18n="cost">Cost</span>
 				<span class="notes inl">{{cost}}</span>
 			</div>
 		{{/cost}}
+		{{#value}}
+			<div class="row">
+				<span class="lbl bold" data-i18n="value">Value</span>
+				<span class="notes inl">{{value}}</span>
+			</div>
+		{{/value}}
+		{{#weight}}
+			<div class="row">
+				<span class="lbl bold" data-i18n="weight">Weight</span>
+				<span class="notes inl">{{weight}}</span>
+			</div>
+		{{/weight}}
 		{{#slot}}
 			<div class="row">
 				<span class="lbl bold" data-i18n="slot">Slot</span>
-				<span class="notes inl">{{slot}}</span>
+				<span class="notes inl"><span data-i18n="slot-{{slot}}"></span></span>
 			</div>
 		{{/slot}}
+		{{#special}}
+			<div class="row">
+				<span class="lbl bold" data-i18n="special">Special</span>
+				<span class="notes inl">{{special}}</span>
+			</div>
+		{{/special}}
+		{{#rollTotal() magical_item 1}}
+			{{#aura_school}}
+				<div class="row">
+					<span class="lbl bold" data-i18n="aura">Aura</span>
+					<span class="notes inl"><span data-i18n="school-{{aura_school}}"></span>{{#aura_power}}&nbsp;<span class="lower" data-i18n="aura-{{aura_power}}">&nbsp;</span>{{/aura_power}}</span>
+				</div>
+			{{/aura_school}}
+			{{#rollGreater() caster_level 0}}
+				<div class="row">
+					<span class="lbl bold help" data-i18n="cl-u" data-i18n-title="caster-level" title="Caster Level">CL</span>
+					<span class="notes inl">{{caster_level}}</span>
+				</div>
+			{{/rollGreater() caster_level 0}}
+			{{#usage}}
+			<div class="row">
+				<span class="lbl bold" data-i18n="usage">Usage</span>
+				<span class="notes inl"><span data-i18n="{{usage}}">&nbsp;</span>{{#rollGreater() uses 0}} {{uses}} / {{uses_max}}{{/rollGreater() uses 0}}</span>
+			</div>
+			{{/usage}}
+		{{/rollTotal() magical_item 1}}
 	</div>
 	{{#descflag}}
 		{{#desc}}

@@ -9,6 +9,7 @@
 
 	on("sheet:opened", (eventinfo) => {
 		pfom.sheet_open(eventinfo);
+		pfom.get_total_values();
 	});
 
 // =============================================================================
@@ -476,15 +477,26 @@
 		pfom.update_sr();
 	});
 
-	// === Gear / Weight
+	// === Gear Weight
 	on("change:repeating_gear:weight change:repeating_gear:quantity", (e) => {
 		pfom.update_gear_weight(e.sourceAttribute.substring(15, 35));
 	});
-	on("change:repeating_gear:weight_total remove:repeating_gear change:encumbrance_coins_weight change:encumbrance_coins_flag", () => {
+	on("change:repeating_gear:weight_total remove:repeating_gear change:encumbrance_coins_flag change:encumbrance_coins_weight change:encumbrance_wealth_flag change:encumbrance_wealth_weight", () => {
 		pfom.update_gear_weight_total();
 	});
 	on("change:money_cp change:money_sp change:money_gp change:money_pp", () => {
 		pfom.update_coins_weight();
+	});
+	on("change:repeating_wealth:quantity change:repeating_wealth:weight", () => {
+		pfom.update_wealth_weight();
+	});
+
+	// === Gear Cost and Usages
+	on("change:repeating_gear:cost change:repeating_gear:uses", (e) => {
+		pfom.update_gear_value(e.sourceAttribute.substr(15,20));
+	});
+	on("change:repeating_gear:usage", (e) => {
+		pfom.switch_gear_usage(e.sourceAttribute.substr(15,20));
 	});
 
 	// === Encumbrance / Overload
@@ -3321,8 +3333,7 @@
 							if (obj["Per-day"].indexOf("+") == -1) {
 								perday = parseInt(obj["Per-day"]) || 1;
 							} else {
-								perday = (parseInt(obj["Per-day"].split("+")[0].replace(/[^\d]/gi, "").trim()) || 1)
-										+ (parseInt(values[obj["Per-day"].split("+")[1].replace("modifier", "").trim().toLowerCase() + "_mod"]) || 0);
+								perday = (parseInt(obj["Per-day"].split("+")[0].replace(/[^\d]/gi, "").trim()) || 1) + (parseInt(values[obj["Per-day"].split("+")[1].replace("modifier", "").trim().toLowerCase() + "_mod"]) || 0);
 							}
 							if (perday > 0) {
 								update[`${repsec}${newrowid}_perday`] = 0;
@@ -3837,7 +3848,6 @@
 						`repeating_acitems_${id}_type`,
 						`repeating_acitems_${id}_check_penalty`,
 						`repeating_acitems_${id}_max_dex_bonus`,
-						`repeating_acitems_${id}_spell_failure`,
 						`repeating_acitems_${id}_spell_failure`,
 						`repeating_acitems_${id}_speed20`, // UNUSED -- kept for compendium
 						`repeating_acitems_${id}_speed30`, // UNUSED -- kept for compendium
@@ -4989,7 +4999,7 @@
 				update = {
 					"speed_unit" : val,
 					"speed_unit_short" : val,
-					"speed_unit_long" : val + "-l" + (n >= 2 ? "p" : "s"),
+					"speed_unit_long" : getTranslationByKey(val + "-l" + (n >= 2 ? "p" : "s")),
 					"speed_race" : n
 				};
 				let repsec = [{section:"acitems",attrs:["speed_unit_short"]}];
@@ -5031,6 +5041,7 @@
 					});
 					setAttrs(update, {silent: true}, () => {
 						update_coins_weight();
+						update_wealth_weight(); // NEW
 						update_gear_weight_total();
 					});
 				});
@@ -5056,16 +5067,36 @@
 			getAttrs(["weight_unit", "money_cp", "money_sp", "money_gp", "money_pp"], (v) => {
 				let f = v.weight_unit == "lb" ? 50 : 100;
 				let weight = ( (parseInt(v.money_cp) || 0) + (parseInt(v.money_sp) || 0) + (parseInt(v.money_gp) || 0) + (parseInt(v.money_pp) || 0) ) / f;
-				if ((weight - parseInt(weight)) > 0) {
-					weight = parseFloat(weight.toFixed(2));
-				}
+				if ((weight - parseInt(weight)) > 0) weight = parseFloat(weight.toFixed(2));
 				setAttrs({"encumbrance_coins_weight": weight}, {silent: false});
+			});
+		};
+		const update_wealth_weight = function() { // NEW
+			// console.log("*** DEBUG update_wealth_weight call");
+			getSectionIDs("repeating_wealth", (idarray) => {
+				let attribs = ["weight_unit","encumbrance_wealth_flag"];
+				_.each(idarray, (id) => attribs.push(
+					`repeating_wealth_${id}_quantity`,
+					`repeating_wealth_${id}_weight`
+				));
+				getAttrs(attribs, (v) => {
+					let f = v.weight_unit == "lb" ? 1 : 0.5;
+					let u = {};
+					let weight = 0;
+					_.each(idarray, (id) => {
+						weight += (parseFloat(v[`repeating_wealth_${id}_quantity`]) || 0) * (parseFloat(v[`repeating_wealth_${id}_weight`]) || 0);
+					});
+					weight *= (parseInt(v.encumbrance_wealth_flag) || 0) * f;
+					weight = weight > 0 ? parseFloat(weight.toFixed(2)) : 0.0;
+					u["encumbrance_wealth_weight"] = weight;
+					setAttrs(u, {silent: false});
+				});
 			});
 		};
 		const update_gear_weight_total = function() {
 			// console.log("*** DEBUG update_gear_weight_total call");
 			getSectionIDs("repeating_gear", (idarray) => {
-				let attribs = ["encumbrance_coins_weight","encumbrance_coins_flag"];
+				let attribs = ["encumbrance_coins_flag","encumbrance_coins_weight","encumbrance_wealth_flag","encumbrance_wealth_weight"];
 				_.each(idarray, (id) => {
 					attribs.push(`repeating_gear_${id}_weight_total`);
 				});
@@ -5075,6 +5106,7 @@
 						total += parseFloat(v[`repeating_gear_${id}_weight_total`]) || 0.0;
 					});
 					total += (parseInt(v.encumbrance_coins_flag) || 0) * (parseFloat(v.encumbrance_coins_weight) || 0);
+					total += (parseInt(v.encumbrance_wealth_flag) || 0) * (parseFloat(v.encumbrance_wealth_weight) || 0);
 					if ((total - parseInt(total)) > 0) {
 						total = parseFloat(total.toFixed(2));
 					}
@@ -5083,7 +5115,81 @@
 			});
 		};
 
-		// === ENCUMBRANCE
+		// === GEAR COST AND USAGES
+		const update_gear_value = function(id) { // id = repeating gear id
+			getAttrs([`repeating_gear_${id}_cost`], (q) => {
+				let s = q[`repeating_gear_${id}_cost`];
+				let a = [];
+				s = s.replace(/@{\s*([\w\d]+)\s*}/g, (match, r) => { // unique attributes
+					r = r.toLowerCase();
+					a.push(r);
+					return `@{${r}}`;
+				});
+				s = s.replace(/~{\s*([\w\d]+)\s*}/g, (match, r) => { // repeated attributes
+					r = "repeating_gear_" + id + "_" + r.toLowerCase();
+					a.push(r);
+					return `@{${r}}`;
+				});
+				getAttrs(a, (v) => {
+					let u = {};
+					u[`repeating_gear_${id}_value`] = parse_formula(s, v);
+					setAttrs(u, {silent: true});
+				});
+			});
+		}
+		const switch_gear_usage = function(id) { // id = repeating gear id
+			getAttrs([`repeating_gear_${id}_usage`], (q) => {
+				let s = q[`repeating_gear_${id}_usage`];
+				let b = e.newValue == undefined || e.newValue == "constant" || e.newValue == "at-will" ? "0" : "1";
+				let u = {};
+				u[`repeating_gear_${id}_show_uses`] = b;
+				setAttrs(u, {silent: true});
+			});
+		}
+
+		// === VALUES (GOLD PIECES)
+		const get_total_values = function(id) { // id = repeating gear id
+			let money_items = ["money_cp", "money_sp", "money_gp", "money_pp"]
+			let a = [...money_items, "character_name"];
+			getSectionIDs("repeating_wealth", (wealth_items) => {
+				_.each(wealth_items, (id) => a.push(
+					`repeating_wealth_${id}_quantity`,
+					`repeating_wealth_${id}_value`
+				));
+				getSectionIDs("repeating_gear", (gear_items) => {
+					_.each(gear_items, (id) => a.push(
+						`repeating_gear_${id}_quantity`,
+						`repeating_gear_${id}_value`
+					));
+					getAttrs(a, (v) => {
+						let s = v["character_name"];
+						let m = money_value = wealth_value = gear_value = 0;
+						_.each(money_items, (id) => {
+							switch (id) {
+								case "money_cp": m = 0.01; break;
+								case "money_sp": m = 0.1; break;
+								case "money_pp": m = 10 ; break;
+								default : m = 1;
+							}
+							money_value += (parseFloat(v[id]) || 0) * m;
+						});
+						_.each(wealth_items, (id) => {
+							wealth_value += (parseFloat(v[`repeating_wealth_${id}_quantity`]) || 0) * (parseFloat(v[`repeating_wealth_${id}_value`]) || 0);
+						});
+						_.each(gear_items, (id) => {
+							gear_value += (parseFloat(v[`repeating_gear_${id}_quantity`]) || 0) * (parseFloat(v[`repeating_gear_${id}_value`]) || 0);
+						});
+						s += ` has ${money_value + wealth_value + gear_value} values in gp`;
+						s += ` (money ${money_value} gp)`;
+						s += ` (wealth ${wealth_value} gp)`;
+						s += ` (gear ${gear_value} gp)`;
+						console.info(s);
+					});
+				});
+			});
+		};
+
+		// === ENCUMBRANCE / OVERLOAD
 		const rnd_enc = function(r) { // converts a number to a float rounded to 0.5 // NEW
 			let n = parseInt(r.toString());
 			let m = r - n;
@@ -5199,7 +5305,7 @@
 			});
 		};
 
-		// === DOMAINS and SCHOOLS
+		// === DOMAINS AND SCHOOLS
 		const get_domain_spell = function(lvl, id, v) { // lvl = spell level number, id = repeating spell id, v = repsec values // NEW
 			let update = {};
 			let num = v[`repeating_spell-${lvl}_${id}_spellcaster`] || "1";
@@ -6329,85 +6435,67 @@
 				}
 			});
 		};
-		const parse_formula = function(formula,v) {
-			// Turning a macro formula into a value (no dice handling)
+		const parse_formula = function(formula, v) { // Turning a macro formula into a value (no dice handling)
 			if ((formula || "").length) {
 				let value = 0;
-				// console.log("*** DEBUG parse_formula: formula = " + formula);
-				let trslate = (formula || "")
-					.replace(/\[[\w\s]+\]/gi,'')
-					.replace(/\[\[/g,'(')
-					.replace(/\]\]/g,')')
-					.replace(/[\[\]]*/g,'')
-					.replace(/(floor|ceil|abs|round|max|min)\(/g,'Math.$1(')
-					.replace(/@{([^}]+)}/g,(match, p1) => { return parseInt(v[p1.toLowerCase()]) || 0 });
-				// console.log("*** DEBUG parse_formula: trslate = " + trslate);
+				let string = (formula || "")
+					.replace(/\[[\w\s]+\]/gi, "")
+					.replace(/\[\[/g, "(")
+					.replace(/\]\]/g, ")")
+					.replace(/[\[\]]*/g, "")
+					.replace(/(floor|ceil|abs|round|max|min)\(/g, "Math.$1(")
+					.replace(/@{([^}]+)}/g, (match, p) => { return parseInt(v[p.toLowerCase()]) || 0 });
 				try {
-					value = eval(trslate);
+					value = eval(string);
 				} catch (error) {
-					console.log("*** DEBUG parse_formula: " + formula + " -> " + trslate + " -error-> " + error);
-				}
-				return value;
+					console.error("parse_formula: " + formula + " -> " + string + " -- Error: " + error);
+				} return value;
 			} else {
 				return 0;
 			}
 		};
 		const parse_compendium_formula = function(formula = "", caster = "1", inline = false) {
 			let fnl = "" + formula.trim();
-				// https://regex101.com/r/lqwmNy/5
-				//
-				// 1d6 [anything] per Caster Level ([anything] maximum 10d6)
-				// (\d+)(d\d+)([^$,\.]*per\s+caster\s+level\s+\([^\)]*maximum\s+)(\d+)(d\d+\))
-				// $1$2$3$4$5
-				// [[($1*{@{caster1_level}),$4}kl1]]$2
-				// [[(1*{@{caster1_level}),10}kl1]]d6
-				//
-				// https://regex101.com/r/UWVy6i/1
-				//
-				// 1d6 [anything] per two Caster Levels ([anything] maximum 10d6)
-				// (\d+)(d\d+)([^$,\.]*per\s+two\s+caster\s+levels\s+\([^\)]*maximum\s+)(\d+)(d\d+\))
-				// $1$2$3$4$5
-				// [[{@{caster1_level,$3}kl1]]$2
-				// ({@{caster1_level},10}kl1)d6
-				//
-				// https://regex101.com/r/cLWT7i/3
-				//
-				// 1d8 points of fire Damage + 1 point per Caster Level ([anything] maximum +5)
-				// 4d8+1 per Caster Level (maximum +35)
-				// (\d+d\d+)([^,\.]*?(?=\+))(\+\s*)(\d+)(.+?(?=per))(per\s+caster\s+level\s+\(maximum\s+\+)(\d+)(\s*\))
-				// $1$2$3$4$5$6$7$8
-				// $1+{($4*@{caster1_level}),$7}kl1
-				//
-				// 2d10 rounds => /(\d+d\d+)( rounds)/gi => 2d10 rounds ([[2d10]])
-				//
-				// https://regex101.com/r/t2ZZ8t/1
-				//  Divine favor
-				// +1 morale bonus on attack rolls and weapon damage rolls against that designated creature for every three caster levels you have (at least +1, maximum +3)
-				// (\+\s*)(\d+)(.*?(?=bonus))(.+?(?=for every three caster levels))(for every three caster levels)(.+?(?=maximum))(maximum\s+\+)(\d+)(\s*\))
-				//
-				// ,{"reg":``, "mod":"gi", "ori":`` ,"rep":``}
+			// https://regex101.com/r/lqwmNy/5
+			//
+			// 1d6 [anything] per Caster Level ([anything] maximum 10d6)
+			// (\d+)(d\d+)([^$,\.]*per\s+caster\s+level\s+\([^\)]*maximum\s+)(\d+)(d\d+\))
+			// $1$2$3$4$5
+			// [[($1*{@{caster1_level}),$4}kl1]]$2
+			// [[(1*{@{caster1_level}),10}kl1]]d6
+			//
+			// https://regex101.com/r/UWVy6i/1
+			//
+			// 1d6 [anything] per two Caster Levels ([anything] maximum 10d6)
+			// (\d+)(d\d+)([^$,\.]*per\s+two\s+caster\s+levels\s+\([^\)]*maximum\s+)(\d+)(d\d+\))
+			// $1$2$3$4$5
+			// [[{@{caster1_level,$3}kl1]]$2
+			// ({@{caster1_level},10}kl1)d6
+			//
+			// https://regex101.com/r/cLWT7i/3
+			//
+			// 1d8 points of fire Damage + 1 point per Caster Level ([anything] maximum +5)
+			// 4d8+1 per Caster Level (maximum +35)
+			// (\d+d\d+)([^,\.]*?(?=\+))(\+\s*)(\d+)(.+?(?=per))(per\s+caster\s+level\s+\(maximum\s+\+)(\d+)(\s*\))
+			// $1$2$3$4$5$6$7$8
+			// $1+{($4*@{caster1_level}),$7}kl1
+			//
+			// 2d10 rounds => /(\d+d\d+)( rounds)/gi => 2d10 rounds ([[2d10]])
+			//
+			// https://regex101.com/r/t2ZZ8t/1
+			//  Divine favor
+			// +1 morale bonus on attack rolls and weapon damage rolls against that designated creature for every three caster levels you have (at least +1, maximum +3)
+			// (\+\s*)(\d+)(.*?(?=bonus))(.+?(?=for every three caster levels))(for every three caster levels)(.+?(?=maximum))(maximum\s+\+)(\d+)(\s*\))
+			//
+			// {"reg":``, "mod":"gi", "ori":`` ,"rep":``}
 			if (formula && formula.length) {
 				let regexp;
 				let regreparr = [
-					{"reg":`(\\d+)(d\\d+)([^$,\\.]*per\\s+caster\\s+level\\s+\\([^\\)]*maximum\\s+)(\\d+)(d\\d+\\))`
-						,"mod":"gi"
-						,"ori":`$1$2$3$4$5`
-						,"rep":`[[{($1*@{caster${caster}_level}),$4}kl1]]$2`
-					}
-					,{"reg":`(\\d+)(d\\d+)([^$,\\.]*per\\s+two\\s+caster\\s+levels\\s+\\([^\\)]*maximum\\s+)(\\d+)(d\\d+\\))`
-						,"mod":"gi"
-						,"ori":`$1$2$3$4$5`
-						,"rep":`[[{($1*[[{floor((@{caster${caster}_level}/2)),1}kh1]]),$4}kl1]]$2`
-					}
-					,{"reg":`(\\d+d\\d+)([^,\\.]*?(?=\\+))(\\+\\s*)(\\d+)(.+?(?=per))(per\\s+caster\\s+level\\s+\\(maximum\\s+\\+)(\\d+)(\\s*\\))`
-						, "mod":"gi"
-						, "ori":`$1$2$3$4$5$6$7$8`
-						,"rep":`$1+{($4*@{caster${caster}_level}),$7}kl1`
-					}
-					,{"reg":`(\\d+d\\d+)(\\s+rounds)`, "mod":"gi", "ori":`$1$2`, "rep":`$1`}
-
+					{"reg":`(\\d+)(d\\d+)([^$,\\.]*per\\s+caster\\s+level\\s+\\([^\\)]*maximum\\s+)(\\d+)(d\\d+\\))`, "mod":"gi", "ori":`$1$2$3$4$5`, "rep":`[[{($1*@{caster${caster}_level}),$4}kl1]]$2`},
+					{"reg":`(\\d+)(d\\d+)([^$,\\.]*per\\s+two\\s+caster\\s+levels\\s+\\([^\\)]*maximum\\s+)(\\d+)(d\\d+\\))`, "mod":"gi", "ori":`$1$2$3$4$5`, "rep":`[[{($1*[[{floor((@{caster${caster}_level}/2)),1}kh1]]),$4}kl1]]$2`},
+					{"reg":`(\\d+d\\d+)([^,\\.]*?(?=\\+))(\\+\\s*)(\\d+)(.+?(?=per))(per\\s+caster\\s+level\\s+\\(maximum\\s+\\+)(\\d+)(\\s*\\))`, "mod":"gi", "ori":`$1$2$3$4$5$6$7$8`, "rep":`$1+{($4*@{caster${caster}_level}),$7}kl1`},
+					{"reg":`(\\d+d\\d+)(\\s+rounds)`,"mod":"gi", "ori":`$1$2`, "rep":`$1`}
 				];
-
 				_.each(regreparr, (regrep) => {
 					regexp = new RegExp(regrep.reg,regrep.mod);
 					if (fnl.match(regexp)) {
@@ -6552,6 +6640,7 @@
 			update["encumbrance_ability_maximum"] = "-";
 			update["encumbrance_run_factor"] = 4;
 			update["encumbrance_coins_weight"] = 0;
+			update["encumbrance_wealth_weight"] = 0; // NEW
 
 			update["acrobatics_ability"] = "dexterity";
 			update["appraise_ability"] = "intelligence";
@@ -7249,11 +7338,15 @@
 			update_class_numbers: update_class_numbers,
 			update_cmd: update_cmd,
 			update_coins_weight: update_coins_weight,
+			update_wealth_weight: update_wealth_weight, // NEW
 			update_concentration: update_concentration,
 			update_default_token: update_default_token,
 			update_encumbrance: update_encumbrance,
 			update_gear_weight: update_gear_weight,
 			update_gear_weight_total: update_gear_weight_total,
+			update_gear_value:update_gear_value, // NEW
+			switch_gear_usage:switch_gear_usage, // NEW
+			get_total_values:get_total_values,
 			update_hitdie: update_hitdie,
 			update_initiative: update_initiative,
 			update_mod: update_mod,
@@ -7282,7 +7375,8 @@
 			update_spell_spend_mp_id:update_spell_spend_mp_id, // NEW
 			update_all_spell_spend_mp:update_all_spell_spend_mp, // NEW
 			update_all_domain_school:update_all_domain_school, // NEW
-			switch_caster_level:switch_caster_level // NEW
+			switch_caster_level:switch_caster_level, // NEW
+			parse_formula: parse_formula
 		}
 
 	})();

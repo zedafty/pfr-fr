@@ -112,6 +112,18 @@
 	"#8" : "n°8",
 	"#9" : "n°9",
 
+	// Spell Schools
+	"school-abjuration" : "Abjuration",
+	"school-conjuration" : "Invocation",
+	"school-divination" : "Divination",
+	"school-enchantment" : "Enchantement",
+	"school-evocation" : "Évocation",
+	"school-illusion" : "Illusion",
+	"school-necromancy" : "Nécromancie",
+	"school-transmutation" : "Transmutation",
+	"school-universalist" : "Universelle",
+	"school-other" : "Autre",
+
 	// Spells
 	"caster-level" : "Niveau de lanceur de sorts",
 	"concentration" : "Concentration",
@@ -136,6 +148,13 @@
 	"dc-u" : "DD",
 	"spell-save-dc" : "Degré de difficulté de la sauvegarde",
 	"spell-resistance-u" : "RM",
+
+	// Magic Auras Power
+	"aura" : "Aura",
+	"aura-faint" : "Faible",
+	"aura-moderate" : "Modérée",
+	"aura-strong" : "Puissante",
+	"aura-overwhelming" : "Surpuissante",
 
 	// Magic Points
 	"magic-points" : "Points de magie",
@@ -352,6 +371,56 @@
 	"show-senses" : "Montrer les sens",
 	"show-languages" : "Montrer les langues",
 
+	// Speed
+	"spd" : "VD",
+	"spd-u" : "Vit.",
+	"land" : "Marche",
+	"run" : "Course",
+	"land-speed" : "Vitesse de déplacement",
+	"speed-bonus" : "Bonus de vitesse",
+	"base-speed" : "Vitesse de base",
+	"base-speed-t" : "Vitesse de base au sol",
+	"base-run-factor" : "Facteur de course de base",
+	"speed-reduced" : "Vitesse réduite",
+	"run-reduced" : "Course réduite",
+	"max-land-speed" : "Vitesse au sol maximum",
+	"max-run-factor" : "Facteur de course maximum",
+
+	// Skills
+	"class-skill-u" : "Cls",
+	"class-skill" : "Compétence de classe",
+	"class-skill-bonus" : "Bonus de compétence de classe",
+	"skill" : "Compétence",
+	"skill-names" : "Compétence",
+	"apply-armor-encumbrance-penalty" : "Pénalités d’encombrement et d’armure",
+	"ranks" : "Rangs",
+	"total-ranks" : "Rangs totaux",
+	"knowledge" : "Connaissances",
+	"knowledge_custom" : "Connaissances (perso.)*",
+	"knowledge_arcana" : "Connaissances (mystères)*",
+	"knowledge_dungeoneering" : "Connaissances (exploration)*",
+	"knowledge_engineering" : "Connaissances (ingénierie)*",
+	"knowledge_geography" : "Connaissances (géographie)*",
+	"knowledge_history" : "Connaissances (histoire)*",
+	"knowledge_local" : "Connaissances (folklore)*",
+	"knowledge_nature" : "Connaissances (nature)*",
+	"knowledge_nobility" : "Connaissances (noblesse)*",
+	"knowledge_planes" : "Connaissances (plans)*",
+	"knowledge_religion" : "Connaissances (religion)*",
+
+	// Skills Repeating
+	"custom-rep" : "Compétence perso.",
+	"craft-rep" : "Artisanat",
+	"knowledge-rep" : "Connaissances",
+	"perform-rep" : "Représentation",
+	"profession-rep" : "Profession",
+
+	// Skills Placeholders
+	"craft-ph" : "alchimie",
+	"knowledge-ph" : "mythe de Cthulhu",
+	"perform-ph" : "déclamation",
+	"profession-ph" : "marchand",
+
 	// Attacks
 	"nonlethal-damage" : "Dégâts non létaux",
 	"temporary-global-attack-bonus" : "Bonus d’attaque global temporaire. S’ajoutera à toutes les attaques d’armes et de sorts.",
@@ -413,55 +482,20 @@
 	"use-ammo" : "Utiliser munitions",
 	"use-ammo-t" : "Retire les munitions de l’attaque primaire (API ChatSetAttr)",
 
-	// Speed
-	"spd" : "VD",
-	"spd-u" : "Vit.",
-	"land" : "Marche",
-	"run" : "Course",
-	"land-speed" : "Vitesse de déplacement",
-	"speed-bonus" : "Bonus de vitesse",
-	"base-speed" : "Vitesse de base",
-	"base-speed-t" : "Vitesse de base au sol",
-	"base-run-factor" : "Facteur de course de base",
-	"speed-reduced" : "Vitesse réduite",
-	"run-reduced" : "Course réduite",
-	"max-land-speed" : "Vitesse au sol maximum",
-	"max-run-factor" : "Facteur de course maximum",
-
-	// Skills
-	"class-skill-u" : "Cls",
-	"class-skill" : "Compétence de classe",
-	"class-skill-bonus" : "Bonus de compétence de classe",
-	"skill" : "Compétence",
-	"skill-names" : "Compétence",
-	"apply-armor-encumbrance-penalty" : "Pénalités d’encombrement et d’armure",
-	"ranks" : "Rangs",
-	"total-ranks" : "Rangs totaux",
-	"knowledge" : "Connaissances",
-	"knowledge_custom" : "Connaissances (perso.)*",
-	"knowledge_arcana" : "Connaissances (mystères)*",
-	"knowledge_dungeoneering" : "Connaissances (exploration)*",
-	"knowledge_engineering" : "Connaissances (ingénierie)*",
-	"knowledge_geography" : "Connaissances (géographie)*",
-	"knowledge_history" : "Connaissances (histoire)*",
-	"knowledge_local" : "Connaissances (folklore)*",
-	"knowledge_nature" : "Connaissances (nature)*",
-	"knowledge_nobility" : "Connaissances (noblesse)*",
-	"knowledge_planes" : "Connaissances (plans)*",
-	"knowledge_religion" : "Connaissances (religion)*",
-
-	// Skills Repeating
-	"custom-rep" : "Compétence perso.",
-	"craft-rep" : "Artisanat",
-	"knowledge-rep" : "Connaissances",
-	"perform-rep" : "Représentation",
-	"profession-rep" : "Profession",
-
-	// Skills Placeholders
-	"craft-ph" : "alchimie",
-	"knowledge-ph" : "mythe de Cthulhu",
-	"perform-ph" : "déclamation",
-	"profession-ph" : "marchand",
+	// Weapons
+	"weapon-natural" : "Arme naturelle",
+	"weapon-simple" : "Arme courante",
+	"weapon-martial" : "Arme de guerre",
+	"weapon-exotic" : "Arme exotique",
+	"weapon-improvised" : "Arme improvisée",
+	"unarmed" : "Mains nues",
+	"weapon-light" : "Arme légère",
+	"weapon-one-handed" : "Arme à une main",
+	"weapon-two-handed" : "Arme à deux mains",
+	"weapon-ranged" : "Arme à distance",
+	"weapon-splash" : "Arme à impact",
+	"weapon-thrown" : "Arme de jet",
+	"ammunition" : "Munition",
 
 	// Armors
 	"ac-items" : "Armures",
@@ -520,10 +554,13 @@
 	// Wealth
 	"wealth" : "Richesses",
 	"money" : "Argent",
-	"cp-u" : "PC",
-	"sp-u" : "PA",
-	"gp-u" : "PO",
-	"pp-u" : "PP",
+	"gems-and-jewelries" : "Gemmes et bijoux",
+	"gem-or-jewelry" : "Gemme ou bijou",
+	"value" : "Valeur",
+	"cp-u" : "pc",
+	"sp-u" : "pa",
+	"gp-u" : "po",
+	"pp-u" : "pp",
 	"cp" : "Pièces de cuivre",
 	"sp" : "Pièces d’argent",
 	"gp" : "Pièces d’or",
@@ -540,6 +577,24 @@
 	"coins" : "Pièces",
 	"coins-weight-t" : "Ajouter le poids des pièces au poids total",
 	"total-weight" : "Poids total",
+	"magical-item" : "Objet magique",
+
+	// Slots
+	"slot-shield" : "Bouclier",
+	"slot-armor" : "Armure",
+	"slot-head" : "Sur la tête",
+	"slot-headband" : "Sur le front",
+	"slot-eyes" : "Devant les yeux",
+	"slot-neck" : "Autour du cou",
+	"slot-shoulders" : "Sur les épaules",
+	"slot-chest" : "Sur le torse",
+	"slot-body" : "Sur le corps",
+	"slot-belts" : "Autour de la taille",
+	"slot-wrists" : "Sur les bras ou les poignets",
+	"slot-hands" : "Aux mains",
+	"slot-feet" : "Aux pieds",
+	"slot-fingers" : "Aux doigts",
+	"slot-none" : "Pas d’emplacement",
 
 	// Load
 	"load" : "Charge",
@@ -839,13 +894,15 @@
 	"multiple-attacks" : "Attaques multiples",
 
 	// Attacks Placeholders
-	"wpn-cat-ph" : "Arme à une main",
-	"wpn-type-ph" : "Arme de guerre",
+	// "wpn-cat-ph" : "Arme à une main", // DEPRECATED
+	// "wpn-type-ph" : "Arme de guerre", // DEPRECATED
 	"range-ph" : "2 cases (3 m)",
 	"dmgtype-ph" : "tranchants",
 
 	// Frequency
 	"uses" : "Utilisations",
+	"usage" : "Usage",
+	"charges" : "Charges",
 	"constant" : "Constant",
 	"constant-u" : "const.",
 	"at-will" : "À volonté",
