@@ -5136,20 +5136,20 @@
 					setAttrs(u, {silent: true});
 				});
 			});
-		}
+		};
 		const switch_gear_usage = function(id) { // id = repeating gear id
 			getAttrs([`repeating_gear_${id}_usage`], (q) => {
 				let s = q[`repeating_gear_${id}_usage`];
-				let b = e.newValue == undefined || e.newValue == "constant" || e.newValue == "at-will" ? "0" : "1";
+				let b = s == "" || s == "constant" || s == "at-will" ? "0" : "1";
 				let u = {};
 				u[`repeating_gear_${id}_show_uses`] = b;
 				setAttrs(u, {silent: true});
 			});
-		}
+		};
 
 		// === VALUES (GOLD PIECES)
 		const get_total_values = function(id) { // id = repeating gear id
-			let money_items = ["money_cp", "money_sp", "money_gp", "money_pp"]
+			let money_items = ["money_cp", "money_sp", "money_gp", "money_pp"];
 			let a = [...money_items, "character_name"];
 			getSectionIDs("repeating_wealth", (wealth_items) => {
 				_.each(wealth_items, (id) => a.push(
